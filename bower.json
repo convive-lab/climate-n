@@ -1,0 +1,27 @@
+{
+  "name": "climate-neutral.org",
+  "homepage": "climate-neutral.org",
+  "authors": [
+    "convive.io"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "--",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#~1.2.3",
+    "paper-header-panel": "PolymerElements/paper-header-panel#~1.1.2",
+    "paper-toolbar": "PolymerElements/paper-toolbar#~1.1.2",
+    "bootstrap": "~3.3.6",
+    "paper-card": "PolymerElements/paper-card#~1.0.9",
+    "paper-menu": "PolymerElements/paper-menu#~1.2.2"
+  }
+}
