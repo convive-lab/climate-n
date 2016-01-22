@@ -1,0 +1,25 @@
+<link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
+  <link rel="import" href="../bower_components/paper-menu/paper-menu.html">
+  <link rel="import" href="../bower_components/paper-item/paper-item.html">
+
+<dom-module id="wp-menu-element">
+    <style>
+        :host {
+
+        }
+    </style>
+    <template>
+        <iron-ajax auto url="http://cn.convive.io/wp-json/menus/2" handle-as="json" last-response="{{ajaxResponse}}"></iron-ajax>
+        <paper-menu center-justified class="main-menu">
+          <template is="dom-repeat" items="{{ajaxResponse.items}}">
+            <paper-item>  <a href="[[item.url]]">{{item.title}}</a></paper-item>
+          </template>
+        </paper-menu>
+    </template>
+</dom-module>
+
+<script>
+    Polymer({
+        is: "wp-menu-element"
+    });
+</script>
