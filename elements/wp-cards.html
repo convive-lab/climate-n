@@ -1,0 +1,38 @@
+<link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
+  <link rel="import" href="../bower_components/paper-card/paper-card.html">
+
+<dom-module id="wp-cards">
+    <style>
+        :host {
+
+        }
+
+    </style>
+    <template>
+
+        <iron-ajax auto url="http://cn.convive.io/wp-json/posts/[[post]]" handle-as="json" last-response="{{ajaxResponse}}"></iron-ajax>
+        <paper-card heading="{{ajaxResponse.titel}}">
+ 
+          <div class="card-content">
+            <div class="wp-content"></div>
+              <script type="text/javascript">
+                 console.log({{ajaxResponse.content}});
+              </script>
+{{ajaxResponse.content}}
+          </div>
+          <div class="card-actions"></div>
+        </paper-card>
+    </template>
+</dom-module>
+
+<script>
+    Polymer({
+        is: "wp-cards",
+       properties:{
+          post:{
+            type:String
+          }
+        }
+
+    });
+</script>

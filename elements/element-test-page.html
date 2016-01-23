@@ -17,22 +17,33 @@
     <paper-header-panel mode="waterfall">
       <paper-toolbar class="header">
         <div>Hello World!</div>
-            <wp-menu-element></wp-menu-element>
+        <paper-menu center-justified class="main-menu">
+			<paper-item class="main-menu-item">HOME</paper-item>
+    		<paper-item class="main-menu-item">WHY</paper-item>
+    		<paper-item class="main-menu-item">HOW</paper-item>
+    		<paper-item class="main-menu-item">WHO</paper-item>
+    		<paper-item class="main-menu-item">FAQ</paper-item>
+    		<paper-item class="main-menu-item">BUY OFFSETS</paper-item>
+        </paper-menu>
       </paper-toolbar>
     </paper-header-panel>
     <div class="main-content">
-
+    	<paper-card image="./data/cnn_1_home_img.jpg" elevation="1" animated-shadow="false">
+    	  <div class="card-content">Yeai</div>
+    	  <div class="card-actions">
+    	    Tatue Tata der Fuchs ist da!
+    	    NONONONO
+			Oh doch
+			<lorem-element></lorem-element>
+			<wp-menu-element></wp-menu-element>
+    	  </div>
+    	</paper-card>
 		<paper-card heading="Wie viel CO2 macht was?">
-			<div class="card-content">1 mal pupsen: 100kg CO2
-                <a href="element-test-page.html">Hier gehts zur Elemente testSeite zum spielen</a>
-            </div>
+			<div class="card-content">1 mal pupsen: 100kg CO2</div>
 			<div class="card-actions">
 				<paper-button>Some action</paper-button>
 			</div>
 		</paper-card>
-        <br/>
-        <h2>Inhalte aus einem wp-blog-eintrag</h2>
-        <wp-cards post="2"></wp-cards>
     </div>
   </div>
 </body>
