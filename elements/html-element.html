@@ -1,0 +1,31 @@
+<!-- 
+author:Aaron
+description: This for rendering jsonhtml to html
+-->
+<dom-module id="html-echo">
+  <style>
+    :host {
+      display: block;
+    }
+  </style>
+  <template>
+  </template>
+</dom-module>
+
+<script>
+  (function () {
+    Polymer({
+      is: 'html-echo',
+      properties: {
+        html: {
+          type: String,
+          observer: '_htmlChanged'
+        }
+      },
+      _htmlChanged: function (neo) {
+        // WARNING: potential XSS vulnerability if `html` comes from an untrusted source
+        this.innerHTML = neo;
+      }
+    });
+  })();
+</script>

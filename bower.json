@@ -23,6 +23,7 @@
     "bootstrap": "~3.3.6",
     "paper-card": "PolymerElements/paper-card#~1.0.9",
     "paper-menu": "PolymerElements/paper-menu#~1.2.2",
-    "iron-ajax": "PolymerElements/iron-ajax#~1.1.1"
+    "iron-ajax": "PolymerElements/iron-ajax#~1.1.1",
+    "juicy-html": "~1.0.1"
   }
 }
