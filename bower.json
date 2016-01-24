@@ -24,6 +24,8 @@
     "paper-card": "PolymerElements/paper-card#~1.0.9",
     "paper-menu": "PolymerElements/paper-menu#~1.2.2",
     "iron-ajax": "PolymerElements/iron-ajax#~1.1.1",
-    "juicy-html": "~1.0.1"
+    "juicy-html": "~1.0.1",
+    "paper-radio-group": "PolymerElements/paper-radio-group#~1.0.9",
+    "paper-radio-button": "PolymerElements/paper-radio-button#~1.0.12"
   }
 }
