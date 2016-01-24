@@ -1,21 +1,21 @@
 <!-- 
 author:Aaron
-description: fetch a wp-post by his id
+description: fetch a question from wp
 properties: post:<post-number>
 -->
 <link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
 <link rel="import" href="../bower_components/paper-card/paper-card.html">
 <link rel="import" href="html-element.html">
-<dom-module id="wp-cards">
+<dom-module id="cal-question">
     <style>
         :host {
         }
     </style>
     <template>
-        <iron-ajax auto url="http://cn.convive.io/wp-json/wp/v2/posts/[[post]]" handle-as="json" last-response="{{ajaxResponse}}"></iron-ajax>
-        <paper-card heading="{{ajaxResponse.title.rendered}}"> 
+        <iron-ajax auto url="http://cn.convive.io/wp-json/posts/[[post]]" handle-as="json" last-response="{{ajaxResponse}}"></iron-ajax>
+        <paper-card heading="{{ajaxResponse.title}}"> 
           <div class="card-content">
-            <html-echo html="{{ajaxResponse.content.rendered}}"></html-echo>             
+            <html-echo html="{{ajaxResponse.content}}"></html-echo>             
           </div>
         </paper-card>
     </template>
@@ -23,9 +23,9 @@ properties: post:<post-number>
 
 <script>
     Polymer({
-        is: "wp-cards",
+        is: "cal-question",
        properties:{
-          post:{
+          position:{
             type:String
           }
         }

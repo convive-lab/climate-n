@@ -41,7 +41,7 @@ description: get wp menu number 2
     </style>
     <template>
     <div class="menu-wrapper">
-        <iron-ajax auto url="http://cn.convive.io/wp-json/menus/2" handle-as="json" last-response="{{ajaxResponse}}"></iron-ajax>
+        <iron-ajax auto url="http://cn.convive.io/wp-json/wp-api-menus/v2/menus/2" handle-as="json" last-response="{{ajaxResponse}}"></iron-ajax>
         <paper-menu center-justified horizontal class="wp-menu">
           <template is="dom-repeat" items="{{ajaxResponse.items}}">
             <paper-item class="entry">  <a  href="[[item.url]]">{{item.title}}</a></paper-item>
