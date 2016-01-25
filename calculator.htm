@@ -7,15 +7,30 @@
 	<link rel="import" href="elements.html">
 	<!-- Polymer -->
 	<link rel="import" href="bower_components/polymer/polymer.html">
+	  <link rel="import" href="bower_components/iron-flex-layout/iron-flex-layout.html">
 	<!-- Polyfill Web Components support for older browsers -->
 	<script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
 	<link rel="import" href="elements/cal-question.html">
+		<link rel="stylesheet" type="text/css" href="./css/main.css">
 </head>
 <body>
-	<paper-toolbar class="small">
-		<wp-menu-element></wp-menu-element>	
-	</paper-toolbar>
-	<cal-question position="1"></cal-question>
+<body class="fullbleed vertical layout">
+  <div class="wrapper">
+    <paper-header-panel>
+      <div class="paper-header">
+        <wp-menu menu="2" class></wp-menu>
+
+      </div>
+    </paper-header-panel >
+    <div class="main-content">
+    	<cal-question position="1"></cal-question>
+    	<cal-question position="1"></cal-question>
+  </div>
+</body>
+
+
+
+ 
 
 </body>
 </html>

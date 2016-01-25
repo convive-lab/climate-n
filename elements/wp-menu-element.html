@@ -3,64 +3,55 @@ author:Aaron
 description: get wp menu number 2
 -->
 <link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../bower_components/iron-image/iron-image.html">
   <link rel="import" href="../bower_components/paper-menu/paper-menu.html">
   <link rel="import" href="../bower_components/paper-item/paper-item.html">
     <link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
 
 
-<dom-module id="wp-menu-element">
+
+<dom-module id="wp-menu">
     <style is="custom-style">
         :host {
 
         }
-      paper-menu{
-        --paper-menu:{
+        .flex {
           @apply(--layout-horizontal);
-          @apply(--layout-center);
-          width: 100%;
-          background-color: black;
-        };
-
-      }
-      paper-item{
-        --paper-item:{
-          font-family: GCFCamingo;
-          font-weight: bold;
+          @apply(--layout-center-justified);
+        }
+      
+        .wp-menu > ::content a {
           text-transform: uppercase;
           text-decoration: none;
-          background: green;
-          @apply(--layout-horizontal);
-          @apply(--layout-center);
-        };
-      }
-      a {
-        text-decoration: none;
-      }
-      a:link {
-         text-decoration: none;
-         color: black;
-      }
-      a:hover {
-        text-decoration: none;
-         text-decoration: underline;
-         color: blue;
-      }
+          color: black;
+          font-family: GCFCamingo;
+          font-weight: /*500*/bold;
+        }
+        .wp-menu > ::content a:hover {
+            color: #4b92d8 !important;
+        }
     </style>
     <template>
-    
-        <iron-ajax auto url="http://cn.convive.io/wp-json/wp-api-menus/v2/menus/2" handle-as="json" last-response="{{ajaxResponse}}"></iron-ajax>
+      <content>
+      <div class="container flex wp-menu">
+        <iron-image src="../data/logo.png" ></iron-image>
+        <iron-ajax auto url="http://cn.convive.io/wp-json/wp-api-menus/v2/menus/{{menu}}" handle-as="json" last-response="{{ajaxResponse}}"></iron-ajax>
           <template is="dom-repeat" items="{{ajaxResponse.items}}">
-          <div class="layout horizontal ">
-            <paper-item class="center-justified flex layout">  <a  href="[[item.url]]">{{item.title}}</a></paper-item>
-        </div>
+            <paper-item class=""> <div> <a  href="[[item.url]]">{{item.title}}</a></div></paper-item>
           </template>
-        
+      </div>
+      </content>
     </template>
 
 </dom-module>
 
 <script>
     Polymer({
-        is: "wp-menu-element"
+        is: "wp-menu",
+        properties:{
+          menu:{
+            type:String
+          }
+        }
     });
 </script>

@@ -9,26 +9,29 @@ properties: post:<post-number>
 <link rel="import" href="../bower_components/paper-radio-group/paper-radio-group.html">
 <link rel="import" href="../bower_components/paper-radio-button/paper-radio-button.html">
 <link rel="import" href="html-element.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
 <dom-module id="cal-question">
     <style>
         :host {
         }
-        .question-wrapper{
-          float: left;
+        .flex{
+          @apply(--layout-horizontal);
+          @apply(--layout-center-justified);
         }
     </style>
     <template>
-         <div class="question-wrapper">
+         <div class="container question-wrapper flex">
         <iron-ajax auto url="http://cn.convive.io/wp-json/wp/v2/posts/14" handle-as="json" last-response="{{ajaxResponse}}"></iron-ajax>
         <paper-card heading="{{ajaxResponse.acf.frage}}"> 
           <div class="card-content">
+
           <img src="{{ajaxResponse.better_featured_image.media_details.sizes.medium.source_url}}"/>
-          <paper-radio-group>
+          <paper-radio-group class="flex">
            
-              <paper-radio-button noink name="1">{{ajaxResponse.acf.antwort1}}</paper-radio-button><br/>
-              <paper-radio-button noink name="2">{{ajaxResponse.acf.antwort2}}</paper-radio-button><br/>
-              <paper-radio-button noink name="3">{{ajaxResponse.acf.antwort3}}</paper-radio-button><br/>
-              <paper-radio-button noink name="4">{{ajaxResponse.acf.antwort4}}</paper-radio-button><br/>
+              <paper-radio-button noink name="1">{{ajaxResponse.acf.antwort1}}</paper-radio-button>
+              <paper-radio-button noink name="2">{{ajaxResponse.acf.antwort2}}</paper-radio-button>
+              <paper-radio-button noink name="3">{{ajaxResponse.acf.antwort3}}</paper-radio-button>
+              <paper-radio-button noink name="4">{{ajaxResponse.acf.antwort4}}</paper-radio-button>
               
             </paper-radio-group>
            
