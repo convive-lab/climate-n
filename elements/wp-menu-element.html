@@ -5,6 +5,8 @@ description: get wp menu number 2
 <link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
   <link rel="import" href="../bower_components/paper-menu/paper-menu.html">
   <link rel="import" href="../bower_components/paper-item/paper-item.html">
+    <link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
+
 
 <dom-module id="wp-menu-element">
     <style is="custom-style">
@@ -13,41 +15,46 @@ description: get wp menu number 2
         }
       paper-menu{
         --paper-menu:{
-          max-width: 100%;
-              display: inline-block;
-                  margin-top: 4px;
+          @apply(--layout-horizontal);
+          @apply(--layout-center);
+          width: 100%;
+          background-color: black;
         };
+
       }
       paper-item{
         --paper-item:{
           font-family: GCFCamingo;
           font-weight: bold;
-          text-align: center;
-          font-size: 16px !important;
-          float: left!important;
           text-transform: uppercase;
-          display: inline-block;
           text-decoration: none;
+          background: green;
+          @apply(--layout-horizontal);
+          @apply(--layout-center);
         };
+      }
+      a {
+        text-decoration: none;
       }
       a:link {
          text-decoration: none;
          color: black;
       }
       a:hover {
+        text-decoration: none;
          text-decoration: underline;
          color: blue;
       }
     </style>
     <template>
-    <div class="menu-wrapper">
+    
         <iron-ajax auto url="http://cn.convive.io/wp-json/wp-api-menus/v2/menus/2" handle-as="json" last-response="{{ajaxResponse}}"></iron-ajax>
-        <paper-menu center-justified horizontal class="wp-menu">
           <template is="dom-repeat" items="{{ajaxResponse.items}}">
-            <paper-item class="entry">  <a  href="[[item.url]]">{{item.title}}</a></paper-item>
-          </template>
-        </paper-menu>
+          <div class="layout horizontal ">
+            <paper-item class="center-justified flex layout">  <a  href="[[item.url]]">{{item.title}}</a></paper-item>
         </div>
+          </template>
+        
     </template>
 
 </dom-module>

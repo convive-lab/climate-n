@@ -26,6 +26,9 @@
     "iron-ajax": "PolymerElements/iron-ajax#~1.1.1",
     "juicy-html": "~1.0.1",
     "paper-radio-group": "PolymerElements/paper-radio-group#~1.0.9",
-    "paper-radio-button": "PolymerElements/paper-radio-button#~1.0.12"
+    "paper-radio-button": "PolymerElements/paper-radio-button#~1.0.12",
+    "iron-image": "PolymerElements/iron-image#~1.2.1",
+    "iron-flex-layout": "PolymerElements/iron-flex-layout#~1.2.2",
+    "paper-item": "PolymerElements/paper-item#~1.1.3"
   }
 }

@@ -4,6 +4,7 @@ description: fetch a question from wp
 properties: post:<post-number>
 -->
 <link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../bower_components/iron-image/iron-image.html">
 <link rel="import" href="../bower_components/paper-card/paper-card.html">
 <link rel="import" href="../bower_components/paper-radio-group/paper-radio-group.html">
 <link rel="import" href="../bower_components/paper-radio-button/paper-radio-button.html">
@@ -12,21 +13,28 @@ properties: post:<post-number>
     <style>
         :host {
         }
+        .question-wrapper{
+          float: left;
+        }
     </style>
     <template>
+         <div class="question-wrapper">
         <iron-ajax auto url="http://cn.convive.io/wp-json/wp/v2/posts/14" handle-as="json" last-response="{{ajaxResponse}}"></iron-ajax>
         <paper-card heading="{{ajaxResponse.acf.frage}}"> 
           <div class="card-content">
-
-            <paper-radio-group selected="1">
-              <paper-radio-button name="1">{{ajaxResponse.acf.antwort1}}</paper-radio-button>
-              <paper-radio-button name="2">{{ajaxResponse.acf.antwort2}}</paper-radio-button>
-              <paper-radio-button name="3">{{ajaxResponse.acf.antwort3}}</paper-radio-button>
-              <paper-radio-button name="4">{{ajaxResponse.acf.antwort4}}</paper-radio-button>
+          <img src="{{ajaxResponse.better_featured_image.media_details.sizes.medium.source_url}}"/>
+          <paper-radio-group>
+           
+              <paper-radio-button noink name="1">{{ajaxResponse.acf.antwort1}}</paper-radio-button><br/>
+              <paper-radio-button noink name="2">{{ajaxResponse.acf.antwort2}}</paper-radio-button><br/>
+              <paper-radio-button noink name="3">{{ajaxResponse.acf.antwort3}}</paper-radio-button><br/>
+              <paper-radio-button noink name="4">{{ajaxResponse.acf.antwort4}}</paper-radio-button><br/>
+              
             </paper-radio-group>
            
           </div>
         </paper-card>
+        </div>
     </template>
 </dom-module>
 

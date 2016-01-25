@@ -4,27 +4,30 @@
 	<title>Climate Neutral</title>
 	<meta charset="utf-8">
  	<meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+  <!-- Polymer -->
+  <link rel="import" href="bower_components/polymer/polymer.html">
+  <link rel="import" href="bower_components/iron-flex-layout/iron-flex-layout.html">
+  <!-- Polyfill Web Components support for older browsers -->
+  <script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
 	<link rel="import" href="elements.html">
-	<!-- Polymer -->
-	<link rel="import" href="bower_components/polymer/polymer.html">
-	<!-- Polyfill Web Components support for older browsers -->
-	<script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
 	<!--css-->
 	<link rel="stylesheet" type="text/css" href="./css/main.css">
 </head>
-<body class="fullbleed layout vertical">
+<body class="fullbleed vertical layout">
   <div class="wrapper">
-    <paper-header-panel mode="waterfall">
-      <paper-toolbar class="header">
-        <div>Hello World!</div>
-            <wp-menu-element></wp-menu-element>
-      </paper-toolbar>
-    </paper-header-panel>
+    <paper-header-panel class="flex">
+        <div class="paper-header">
+      <wp-menu-element class="horizontal end-justified layout"></wp-menu-element>
+    </div>
+    
+
+    </paper-header-panel >
     <div class="main-content">
 
 		<paper-card heading="Wie viel CO2 macht was?">
 			<div class="card-content">1 mal pupsen: 100kg CO2
                 <a href="element-test-page.html">Hier gehts zur Elemente testSeite zum spielen</a>
+              
             </div>
 			<div class="card-actions">
 				<paper-button>Some action</paper-button>
