@@ -1,0 +1,5 @@
+.horizontal{
+	@apply(--layout-horizontal);
+	@apply(--layout-wrap);
+	@apply(--layout-flex);
+}

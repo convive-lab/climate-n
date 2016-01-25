@@ -1,5 +1,10 @@
+
 .main-content{
     margin-top: 20px;
     @apply(--layout-center-justified);
     text-align: center;
+}
+.horizontal{
+    @apply(--layout-horizontal);
+    @apply(--layout-wrap);
 }

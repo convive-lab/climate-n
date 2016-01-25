@@ -1,3 +1,10 @@
+<!--
+Todo: 
+* iron local data storage
+* tabs für die Fragen oder der weiter button
+* selction speicher für zurück
+* Frage mit position suchen
+-->
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,14 +14,26 @@
 	<link rel="import" href="elements.html">
 	<!-- Polymer -->
 	<link rel="import" href="bower_components/polymer/polymer.html">
-	  <link rel="import" href="bower_components/iron-flex-layout/iron-flex-layout.html">
+	<link rel="import" href="bower_components/iron-flex-layout/iron-flex-layout.html">
+	<link rel="import" href="bower_components/iron-image/iron-image.html">
+	<link rel="import" href="bower_components/paper-button/paper-button.html">
 	<!-- Polyfill Web Components support for older browsers -->
 	<script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
 	<link rel="import" href="elements/cal-question.html">
-		<link rel="stylesheet" type="text/css" href="./css/main.css">
+		<link rel="stylesheet" type="text/css" href="css/main.css">
+		<link rel="stylesheet" type="text/css" href="css/calc.css">
 </head>
-<body>
-<body class="fullbleed vertical layout">
+<style is="custom-style">
+.horizontal{
+    @apply(--layout-horizontal);
+    @apply(--layout-wrap);
+    @apply(--layout-center-justified);
+}
+.right{
+	 @apply(--layout-end-justified);
+}
+</style>
+<body class="fullbleed vertical layout ">
   <div class="wrapper">
     <paper-header-panel>
       <div class="paper-header">
@@ -22,10 +41,22 @@
 
       </div>
     </paper-header-panel >
-    <div class="main-content">
-    	<cal-question position="1"></cal-question>
-    	<cal-question position="1"></cal-question>
-  </div>
+    <div class="container horizontal main-content">
+
+    	<div class="left">
+    		<cal-question position="1">
+    			<paper-button raised>weiter</paper-button>
+    		</cal-question>
+    		
+    	</div>
+    	<div class="right">
+    		<paper-card heading="Deine CO2 Emissionen" image="" elevation="1" animated-shadow="false">
+    		  <div class="card-content">
+    		<iron-image src="data/fever.png" ></iron-image>
+    		  </div>
+    		</paper-card>
+    	</div>
+  	</div>
 </body>
 
 
