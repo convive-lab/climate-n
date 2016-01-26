@@ -1,0 +1,42 @@
+<!--Autorin: Iris
+description: customizable full width element
+properties:
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+  <!-- Polymer -->
+  <link rel="import" href="bower_components/polymer/polymer.html">
+  <link rel="import" href="bower_components/iron-flex-layout/iron-flex-layout.html">
+  <link rel="import" href="bower_components/paper-card/paper-card.html">
+  <!-- Polyfill Web Components support for older browsers -->
+  <script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>  
+  </head>
+ <body>
+  <dom-module id="paper-card-fw">
+      <style is="custom-style">
+		.card-fw {
+		 width: 110%;
+		 background-color: var(--paper-card-fw-bg-color);
+		 color: var(--paper-card-fw-color);
+		 font: var(--paper-card-font)
+		 }
+       </style>
+			<template>
+				<paper-card class=card-fw>
+					<div class="card-content">
+						<content></content>
+					</div>
+				</paper-card>
+			</template>
+	</dom-module>
+			<script>
+    Polymer({
+        is:"paper-card-fw",
+			properties: {
+        }
+    });
+</script>
+
+ </body>
+</html>
