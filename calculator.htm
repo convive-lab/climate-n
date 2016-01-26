@@ -20,6 +20,7 @@ Todo:
 	<!-- Polyfill Web Components support for older browsers -->
 	<script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
 	<link rel="import" href="elements/cal-question.html">
+    <link rel="import" href="elements/local-storage.html">
 		<link rel="stylesheet" type="text/css" href="css/main.css">
 		<link rel="stylesheet" type="text/css" href="css/calc.css">
 </head>
@@ -30,7 +31,9 @@ Todo:
     @apply(--layout-center-justified);
 }
 .right{
+    color: green;
 	 @apply(--layout-end-justified);
+    float: right;
 }
 </style>
 <body class="fullbleed vertical layout ">
@@ -45,17 +48,25 @@ Todo:
 
     	<div class="left">
     		<cal-question position="1">
-    			<paper-button raised>weiter</paper-button>
+                <div class="container buttons">
+    			 <paper-button class="right">weiter</paper-button>
+                </div>
     		</cal-question>
     		
     	</div>
-    	<div class="right">
-    		<paper-card heading="Deine CO2 Emissionen" image="" elevation="1" animated-shadow="false">
-    		  <div class="card-content">
-    		<iron-image src="data/fever.png" ></iron-image>
-    		  </div>
-    		</paper-card>
-    	</div>
+         <template is="dom-bind">
+        	<div class="right">
+                
+                <paper-card heading="Deine CO2 Emissionen" image="" elevation="1" animated-shadow="false">
+                <local-storage q1={{question1}}>test</local-storage>
+        		  <div class="card-content">
+                  {{question1}}
+        		<iron-image src="data/fever.png" ></iron-image>
+        		  </div>
+        		</paper-card>
+
+        	</div>
+        </template>
   	</div>
 </body>
 

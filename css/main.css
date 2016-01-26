@@ -1,4 +1,6 @@
-
+body{
+	margin: 0px;
+}
 .main-content{
     margin-top: 20px;
     @apply(--layout-center-justified);

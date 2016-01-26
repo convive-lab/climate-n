@@ -13,10 +13,14 @@
   <body>
        <style is="custom-style">
            .flex {
-            @apply(--layout-);
+            @apply(--layout-vertical);
           }
           .com{
             width:100%;
+          }
+          .lorem {
+            --lorem-element-width: 30%;
+            --lorem-element-color:blue;
           }
         </style>
 
@@ -26,7 +30,11 @@
           <div>three </div>
         </div>
         <paper-card heading="Card Title" class="com">
-  <div class="card-content"><lorem-element starred=true></lorem-element></div>
+  <div class="card-content">
+  <lorem-element starred=true></lorem-element>
+  <br/>
+    <lorem-element class="lorem" bgcol="blue">akjsdlfhnmgffghfdh</lorem-element>
+  </div>
   <div class="card-actions">
     <paper-button>Some action</paper-button>
   </div>
