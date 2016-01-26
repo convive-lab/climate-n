@@ -1,0 +1,11 @@
+
+
+Stylesheets sollten immer in die Datei reingeschrieben werden, 
+
+Aufbau: Head mit Importen der Elemente, dann Body: oben der Style, dann die Elemente
+
+Eigenes Element schreiben (custom element):
+1. Polymer einbinden (head)
+2. Dom-Modul ID mit Namen
+3. TEmplate
+4. Polymer verfügbar machen
