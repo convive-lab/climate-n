@@ -1,0 +1,38 @@
+<!-- author:Iris
+description: simple custom element to understand the principles-->
+
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
+
+<dom-module id="color-element">
+  <style is="custom-style" type="text/css">
+.container {
+	@apply(--layout-horizontal);
+	@apply(--layout-end-justified);
+ }
+.card {
+background-color: var(--color-element-bg-color);
+width: var(--color-element-width);
+}
+ 
+  </style>
+  <template>
+	<div class="container">
+		<paper-card elevation=3 heading="Farb Element" class="card">
+		  <div class="card-content">
+			<content></content>
+		  </div>
+		</paper-card>
+	</div>
+  </template>
+  <script>
+    Polymer({
+      is: 'color-element',
+      properties: {
+        width: String,
+		color: String
+      }
+    });
+  </script>
+</dom-module>
