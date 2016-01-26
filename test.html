@@ -1,12 +1,22 @@
 <!DOCTYPE html>
 <html>
   <head>
-<link rel="import" href="bower_components/iron-flex-layout/iron-flex-layout.html">
+  <!-- Polymer -->
+  <link rel="import" href="bower_components/polymer/polymer.html">
+  <link rel="import" href="bower_components/iron-flex-layout/iron-flex-layout.html">
+  <link rel="import" href="bower_components/paper-button/paper-button.html">
+    <link rel="import" href="bower_components/paper-card/paper-card.html">
+  <!-- Polyfill Web Components support for older browsers -->
+  <script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>  
+  <link rel="import" href="elements/loremipsum.html">
   </head>
   <body>
-            <style is="custom-style">
-          .flex {
-            @apply(--layout-horizontal);
+       <style is="custom-style">
+           .flex {
+            @apply(--layout-);
+          }
+          .com{
+            width:100%;
           }
         </style>
 
@@ -15,5 +25,12 @@
           <div>two </div>
           <div>three </div>
         </div>
+        <paper-card heading="Card Title" class="com">
+  <div class="card-content"><lorem-element starred=true></lorem-element></div>
+  <div class="card-actions">
+    <paper-button>Some action</paper-button>
+  </div>
+</paper-card>
+        <paper-button> hello</paper-button>
   </body>
 </html>
