@@ -11,18 +11,20 @@ Todo:
 	<title>Climate Neutral</title>
 	<meta charset="utf-8">
  	<meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
-	<link rel="import" href="elements.html">
-	<!-- Polymer -->
-	<link rel="import" href="bower_components/polymer/polymer.html">
-	<link rel="import" href="bower_components/iron-flex-layout/iron-flex-layout.html">
-	<link rel="import" href="bower_components/iron-image/iron-image.html">
-	<link rel="import" href="bower_components/paper-button/paper-button.html">
-	<!-- Polyfill Web Components support for older browsers -->
-	<script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
-	<link rel="import" href="elements/cal-question.html">
+    <!-- Polymer -->
+    <link rel="import" href="bower_components/polymer/polymer.html">
+    <link rel="import" href="bower_components/iron-flex-layout/iron-flex-layout.html">
+    <link rel="import" href="bower_components/iron-image/iron-image.html">
+    <link rel="import" href="bower_components/iron-pages/iron-pages.html">
+    <link rel="import" href="bower_components/paper-button/paper-button.html">
+    <link rel="import" href="bower_components/paper-material/paper-material.html">
+    <!-- Polyfill Web Components support for older browsers -->
+    <link rel="import" href="elements/cal-question.html">
     <link rel="import" href="elements/local-storage.html">
-		<link rel="stylesheet" type="text/css" href="css/main.css">
-		<link rel="stylesheet" type="text/css" href="css/calc.css">
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+        <link rel="stylesheet" type="text/css" href="css/calc.css">
+	<link rel="import" href="elements.html">
+	<script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
 </head>
 <style is="custom-style">
 .horizontal{
@@ -30,10 +32,19 @@ Todo:
     @apply(--layout-wrap);
     @apply(--layout-center-justified);
 }
-.right{
-    color: green;
+#btnnext{
 	 @apply(--layout-end-justified);
-    float: right;
+}
+#btnback{
+     @apply(--layout-start-justified);
+}
+.vertical{
+    @apply(--layout-vertical);
+    @apply(--layout-center-justified);
+}
+span { font-weight: bold; }
+.co2Value{
+    font-size: 150%;
 }
 </style>
 <body class="fullbleed vertical layout ">
@@ -45,22 +56,48 @@ Todo:
       </div>
     </paper-header-panel >
     <div class="container horizontal main-content">
+    <template id="thermometer" is="dom-bind">
+    	<div class="left" is="auto-binding">
+            <iron-pages selected="0">
+                <section>           
+                    <cal-question position="1" co2={{q1}}>
+                        <div class="container buttons">
+                            <paper-button id="btnnext">weiter</paper-button>
+                        </div>
+                    </cal-question>
+                </section>
+                <section>
+                    <cal-question position="1">
+                        <div class="container buttons">
+                            <paper-button id="btnback">zurück</paper-button>
+                            <paper-button id="btnnext" class="right">weiter</paper-button>
+                        </div>
+                    </cal-question>
 
-    	<div class="left">
-    		<cal-question position="1">
-                <div class="container buttons">
-    			 <paper-button class="right">weiter</paper-button>
-                </div>
-    		</cal-question>
+                </section>
+                <section>
+                    drei
+                    <paper-button id="btnback">zurück</paper-button>
+                    <paper-button id="btnnext" class="right">weiter</paper-button>
+                </section>
+                <section>
+                    last
+                    <paper-button id="btnback">zurück</paper-button>
+                    <paper-button id="finish" class="right">berechnen</paper-button>
+                </section>
+            </iron-pages>
+ 
     		
     	</div>
-         <template is="dom-bind">
-        	<div class="right">
+
+        	<div class="right vertical">
                 
                 <paper-card heading="Deine CO2 Emissionen" image="" elevation="1" animated-shadow="false">
-                <local-storage q1={{question1}}>test</local-storage>
-        		  <div class="card-content">
-                  {{question1}}
+        		  <div class="card-content test vertical">
+                  <paper-material elevation="1">
+                       <div class="co2Value"><span>{{finalValue}}</span> t C02/Jahr</div>
+                  </paper-material>
+                 
         		<iron-image src="data/fever.png" ></iron-image>
         		  </div>
         		</paper-card>
@@ -68,11 +105,55 @@ Todo:
         	</div>
         </template>
   	</div>
-</body>
+    <script type="text/javascript">
+        var next =document.querySelectorAll('#btnnext');    
+        for (i = 0; i < next.length; ++i) {
+            next[i].addEventListener('click', function(e) {
+                    var pages = document.querySelector('iron-pages');
+                    //check if answer else alert
+                    pages.selectNext();
+                    getValues ();
+                    calFinalValue();
+                    
+            });
+        }
+        var back =document.querySelectorAll('#btnback');
+        for (i = 0; i < next.length; ++i) {
+            back[i].addEventListener('click', function(e) {
+                    var pages = document.querySelector('iron-pages');
+                    pages.selectPrevious();
+                    getValues ();
+                    calFinalValue();
+            });
+        }
+        var thermometer = document.querySelector('#thermometer');
+        thermometer.q1=0;
+        thermometer.q2=0;
+        thermometer.q3=0;
+        thermometer.q4=0;
+        thermometer.q5=0;
+        thermometer.q6=0;
+        thermometer.q7=0;
+        thermometer.q8=0;
+        thermometer.q8=0;
+        thermometer.q10=0;
+        thermometer.finalValue=0;
+        function getValues () {
+            var cal = document.querySelectorAll('cal-question');
+            thermometer.q1=parseInt(cal[0].co2);
+            thermometer.q2=parseInt(cal[1].co2);
 
+             // body...  
+        }
+        function calFinalValue(){
+           thermometer.finalValue= thermometer.q1+thermometer.q2+thermometer.q3+thermometer.q4+thermometer.q5+thermometer.q6+thermometer.q7+thermometer.q8+thermometer.q8+thermometer.q10;
+           console.log(thermometer.finalValue);
+        }
+        window.addEventListener('polymer-ready', function(e) {
+            var cal = document.querySelector('cal-question');
+            thermometer.question1=cal.getMyValue();
+        });
 
-
- 
-
+    </script>
 </body>
 </html>

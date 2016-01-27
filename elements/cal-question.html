@@ -21,12 +21,14 @@ properties: post:<post-number>
     </style>
     <template>
          <div class="container question-wrapper flex">
-        <iron-ajax auto url="http://cn.convive.io/wp-json/wp/v2/posts/14" handle-as="json" last-response="{{ajaxResponse}}"></iron-ajax>
+        <iron-ajax auto url="http://cn.convive.io/wp-json/wp/v2/posts/14" handle-as="json" last-response="{{ajaxResponse}}" id="question"></iron-ajax>
         <paper-card heading="{{ajaxResponse.acf.frage}}"> 
           <div class="card-content">
 
           <img src="{{ajaxResponse.better_featured_image.media_details.sizes.medium.source_url}}"/>
-          <paper-radio-group class="flex">
+          <paper-radio-group class="flex"
+            on-change=_changeHandler>
+          >
            
               <paper-radio-button noink name="1">{{ajaxResponse.acf.antwort1}}</paper-radio-button>
               <paper-radio-button noink name="2">{{ajaxResponse.acf.antwort2}}</paper-radio-button>
@@ -45,12 +47,53 @@ properties: post:<post-number>
 </dom-module>
 
 <script>
+
     Polymer({
         is: "cal-question",
+        selected:String,
        properties:{
           position:{
             type:String
+          },
+          co2:{
+            type:Number,
+            value:10
+
           }
+        },
+        _changeHandler(old){ 
+          var question =  document.querySelector('#question'); 
+          switch (old.target.name) {
+            case '1':
+              // statements_1
+              this.co2=question.lastResponse.acf.antwort1wert;
+              break;
+            case '2':
+              // statements_1
+              this.co2=question.lastResponse.acf.antwort2wert;
+              break;
+            case '3':
+              // statements_1
+              this.co2=question.lastResponse.acf.antwort3wert;
+              break;
+            case '4':
+              // statements_1
+              this.co2=question.lastResponse.acf.antwort4wert;
+              break;
+            default:
+              this.co2=0;
+              break;
+          }
+          console.log(this.co2)
+        },
+        getMyValue: function () {
+          var radioButtons = document.querySelector('paper-radio-button');
+          var question =  document.querySelector('#question');
+          return "50";
         }
+
     });
+    var answer=document.querySelectorAll('paper-radio-group'); 
+
+
 </script>
