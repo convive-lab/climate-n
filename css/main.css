@@ -10,3 +10,6 @@ body{
     @apply(--layout-horizontal);
     @apply(--layout-wrap);
 }
+.hidden{
+	display: none;
+}
