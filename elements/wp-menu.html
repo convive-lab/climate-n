@@ -48,24 +48,9 @@ description: get wp menu number 2
           menu:{
             type:String
           }
-        },
-          empty:true,
-        
+        },  
         ajaxResponse:{
           type:Object
-        },
-        _hresponse: function (request) {
-            this.empty=false;
-           localStorage.setItem("menu",JSON.stringify(request.detail.response));
-        },
-        ready:function () {
-          var url="http://cn.convive.io/wp-json/wp-api-menus/v2/menus/"+this.menu;
-          if (localStorage.getItem("menu") === null) {
-            console.log("menu empty");
-            
-          }
-          
         }
-
     });
 </script>

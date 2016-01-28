@@ -13,21 +13,20 @@ properties: post:<post-number>
           @apply(--layout-center-justified);
         }
     </style>
-    <template>
+    <template id="question">
          <div class="container question-wrapper flex">
-        <iron-ajax auto url="http://cn.convive.io/wp-json/wp/v2/posts/14" handle-as="json" last-response="{{ajaxResponse}}" id="question"></iron-ajax>
-        <paper-card elevation="0" heading="{{ajaxResponse.acf.frage}}"> 
+        <paper-card elevation="0" heading="{{data.acf.frage}}"> 
           <div class="card-content">
 
-          <img src="{{ajaxResponse.better_featured_image.media_details.sizes.medium.source_url}}"/>
+          <img src="{{data.better_featured_image.media_details.sizes.medium.source_url}}"/>
           <paper-radio-group class="flex"
             on-change=_changeHandler>
           >
            
-              <paper-radio-button noink name="1">{{ajaxResponse.acf.antwort1}}</paper-radio-button>
-              <paper-radio-button noink name="2">{{ajaxResponse.acf.antwort2}}</paper-radio-button>
-              <paper-radio-button noink name="3">{{ajaxResponse.acf.antwort3}}</paper-radio-button>
-              <paper-radio-button noink name="4">{{ajaxResponse.acf.antwort4}}</paper-radio-button>
+              <paper-radio-button noink name="1">{{data.acf.antwort1}}</paper-radio-button>
+              <paper-radio-button noink name="2">{{data.acf.antwort2}}</paper-radio-button>
+              <paper-radio-button noink name="3">{{data.acf.antwort3}}</paper-radio-button>
+              <paper-radio-button noink name="4">{{data.acf.antwort4}}</paper-radio-button>
               
             </paper-radio-group>
            
@@ -53,32 +52,34 @@ properties: post:<post-number>
             type:Number,
             value:0
 
+          },
+          data:{
+            type:Object
           }
         },
         _changeHandler(old){ 
-          var question =  document.querySelector('#question'); 
+          var question =  document.querySelector('cal-question'); 
           switch (old.target.name) {
             case '1':
               // statements_1
-              this.co2=question.lastResponse.acf.antwort1wert;
+              this.co2=question.data.acf.antwort1wert;
               break;
             case '2':
               // statements_1
-              this.co2=question.lastResponse.acf.antwort2wert;
+              this.co2=question.data.acf.antwort2wert;
               break;
             case '3':
               // statements_1
-              this.co2=question.lastResponse.acf.antwort3wert;
+              this.co2=question.data.acf.antwort3wert;
               break;
             case '4':
               // statements_1
-              this.co2=question.lastResponse.acf.antwort4wert;
+              this.co2=question.data.acf.antwort4wert;
               break;
             default:
               this.co2=0;
               break;
           }
-          console.log(this.co2)
         },
         getMyValue: function () {
           var radioButtons = document.querySelector('paper-radio-button');
