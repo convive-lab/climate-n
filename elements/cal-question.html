@@ -9,18 +9,28 @@ properties: post:<post-number>
         :host {
         }
         .flex{
-          @apply(--layout-horizontal);
+          @apply(--layout-vertical);
+          @apply(--layout-wrap);
           @apply(--layout-center-justified);
+        }
+        .questions{
+          @apply(--layout-vertical);
+          @apply(--layout-wrap);
+          @apply(--layout-start);
+        }
+        .horizontal{
+          @apply(--layout-horizontal);
+          @apply(--layout-wrap);
         }
     </style>
     <template id="question">
          <div class="container question-wrapper flex">
         <paper-card elevation="0" heading="{{data.titel.rendered}}"> 
-          <div class="card-content">
+              <paper-material elevation=0 class="flex"><h2>{{data.acf.frage}}</h2></paper-material>
+          <div class="card-content horizontal">
 
-              <paper-material elevation=0><h2>{{data.acf.frage}}</h2></paper-material>
           <img src="{{data.better_featured_image.media_details.sizes.medium.source_url}}"/>
-          <paper-radio-group class="flex"
+          <paper-radio-group class="questions"
             on-change=_changeHandler>
           >
            
