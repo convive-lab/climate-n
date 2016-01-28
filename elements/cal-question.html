@@ -15,9 +15,10 @@ properties: post:<post-number>
     </style>
     <template id="question">
          <div class="container question-wrapper flex">
-        <paper-card elevation="0" heading="{{data.acf.frage}}"> 
+        <paper-card elevation="0" heading="{{data.titel.rendered}}"> 
           <div class="card-content">
 
+              <paper-material elevation=0><h2>{{data.acf.frage}}</h2></paper-material>
           <img src="{{data.better_featured_image.media_details.sizes.medium.source_url}}"/>
           <paper-radio-group class="flex"
             on-change=_changeHandler>

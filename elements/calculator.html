@@ -36,16 +36,26 @@
             </template>
             <iron-localstorage name="questions" value="{{questionsResponse}}"></iron-localstorage>
             <iron-pages selected="0">
+                <selection>
+                    <h1>Los Geht's</h1>
+                    <paper-button id="btnnext" class="right" on-click="_addEventListn">weiter</paper-button>
+                </selection>
                 <template is="dom-repeat" items="{{questionsResponse}}">
                     <section> 
                         <cal-question data="[[item]]">
                             <div class="container buttons">
-                                <paper-button id="btnback" on-click="_addEventListn">zurück</paper-button>
-                                <paper-button id="btnnext" class="right" on-click="_addEventListn">weiter</paper-button>
+                                <paper-button id="btnback">zurück</paper-button>
+                                <paper-button id="btnnext" class="right">weiter</paper-button>
+
                             </div>
                         </cal-question>
                     </section>
                 </template>
+                <selection>
+                    <h1>Dankeschön</h1>
+                    <paper-button id="btnback">zurück</paper-button>
+                    <paper-button id="btnfin" class="right">finished</paper-button>
+                </selection>
             </iron-pages>
  
             
@@ -138,9 +148,6 @@
                 }
                 var back =document.querySelectorAll('#btnback');
                 for (i = 0; i < next.length; ++i) {
-                    if(i==0){
-                        back[0].className += " hidden"
-                    }
                     back[i].addEventListener('click', function(e) {
                             var pages = document.querySelector('iron-pages');
                             pages.selectPrevious();
@@ -151,6 +158,7 @@
             }
         },
         ready:function (){
+            localStorage.clear();
             var cal = document.querySelector('calculator-el');
             cal.finalValue=0;
             cal.q1=0;
