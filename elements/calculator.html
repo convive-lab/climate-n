@@ -1,0 +1,158 @@
+<dom-module id="calculator-el">
+  <style type="text/css">
+          :host {
+            width: 50%;
+            @apply(--paper-card);
+        }
+        .horizontal{
+            @apply(--layout-horizontal);
+            @apply(--layout-wrap);
+            @apply(--layout-center-justified);
+            @apply(--layout-center);
+        }
+        #btnnext{
+             @apply(--layout-end-justified);
+        }
+        #btnback{
+             @apply(--layout-start-justified);
+        }
+        .vertical{
+            @apply(--layout-vertical);
+            @apply(--layout-center-justified);
+        }
+        span { font-weight: bold; }
+        .co2Value{
+            font-size: 150%;
+        }
+
+  </style>
+  <template >
+    <div class="container horizontal">
+        <paper-card class=" horizontal" elevation="1" animated-shadow="false">
+
+        <div class="left" >
+            <iron-pages selected="0">
+                <section>           
+                    <cal-question position="{{position}}" co2={{q1}}>
+                        <div class="container buttons">
+                            <paper-button id="btnnext" on-tap="srchandler">weiter</paper-button>
+                        </div>
+                    </cal-question>
+                </section>
+                <section>
+                    <cal-question position="1">
+                        <div class="container buttons">
+                            <paper-button id="btnback">zurück</paper-button>
+                            <paper-button id="btnnext" class="right">weiter</paper-button>
+                        </div>
+                    </cal-question>
+
+                </section>
+                <section>
+                    drei
+                    <paper-button id="btnback">zurück</paper-button>
+                    <paper-button id="btnnext" class="right">weiter</paper-button>
+                </section>
+                <section>
+                    last
+                    <paper-button id="btnback">zurück</paper-button>
+                    <paper-button id="finish" class="right">berechnen</paper-button>
+                </section>
+            </iron-pages>
+ 
+            
+        </div>
+
+            <div class="right vertical">
+                
+                <paper-card elevation="0" heading="Deine CO2 Emissionen" image="" elevation="1" animated-shadow="false">
+                  <div class="card-content test vertical">
+                  <paper-material elevation="1">
+                       <div class="co2Value"><span>{{finalValue}}</span> t C02/Jahr</div>
+                  </paper-material>
+                 
+                <iron-image src="../data/fever.png" class=".vertical" ></iron-image>
+                  </div>
+                </paper-card>
+
+            </div>
+                      <div class="card-content"></div>
+        </paper-card>
+    </div>
+        
+  </template>
+  <script>
+    Polymer({
+        is: 'calculator-el',
+        properties: {
+            position:1,
+            q1:{type:Number,Value:0},
+            q2:{type:Number,Value:0},
+            q3:{type:Number,Value:0},
+            q4:{type:Number,Value:0},
+            q5:{type:Number,Value:0},
+            q6:{type:Number,Value:0},
+            q7:{type:Number,Value:0},
+            q8:{type:Number,Value:0},
+            q8:{type:Number,Value:0},
+            q10:{type:Number,Value:0},
+            finalValue:{type:Number,Value:0}    
+        },
+        srchandler:function (){
+            var cal = document.querySelector('calculator-el');
+                    console.log(cal.finalValue);
+        },
+        getValues(){
+            var cal = document.querySelector('calculator-el');
+            var quest = document.querySelectorAll('cal-question');
+            cal.q1=parseInt(quest[0].co2);
+            cal.q2=parseInt(quest[1].co2);
+             // body...  
+        },
+        calFinalValue:function (){
+            var cal = document.querySelector('calculator-el');
+           cal.finalValue= parseInt(cal.q1)+parseInt(cal.q2)+parseInt(cal.q3)+parseInt(cal.q4)+parseInt(cal.q5)+parseInt(cal.q6)+parseInt(cal.q7)+parseInt(cal.q8)+parseInt(cal.q8)+parseInt(cal.q10);
+           console.log(cal.finalValue);
+        },
+        ready:function (){
+         var next =document.querySelectorAll('#btnnext'); 
+            console.log(next)
+            var cal = document.querySelector('calculator-el');
+            cal.finalValue=0;
+            cal.q1=0;
+            cal.q2=0;
+            cal.q3=0;
+            cal.q4=0;
+            cal.q5=0;
+            cal.q6=0;
+            cal.q7=0;
+            cal.q8=0;
+            cal.q8=0;
+            cal.q10=0;
+
+            for (i = 0; i < next.length; ++i) {
+                next[i].addEventListener('click', function(e) {
+                        var pages = document.querySelector('iron-pages');
+                        console.log();
+                        //check if answer else ale rt
+                        pages.selectNext();
+                        cal.getValues ();
+                        cal.calFinalValue();
+                        
+                });
+            }
+            var back =document.querySelectorAll('#btnback');
+            for (i = 0; i < next.length; ++i) {
+                back[i].addEventListener('click', function(e) {
+                        var pages = document.querySelector('iron-pages');
+                        pages.selectPrevious();
+                        cal.getValues ();
+                        cal.calFinalValue();
+                });
+            }
+        }
+
+
+    });
+  </script>
+</dom-module>
