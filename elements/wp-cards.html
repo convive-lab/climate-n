@@ -11,7 +11,7 @@ properties: post:<post-number>
     </style>
     <template>
         <iron-ajax auto url="http://cn.convive.io/wp-json/wp/v2/posts/[[post]]" handle-as="json" last-response="{{ajaxResponse}}"></iron-ajax>
-        <paper-card heading="{{ajaxResponse.title.rendered}}"> 
+        <paper-card heading="{{ajaxResponse.title.rendered}}" elevation="0"> 
           <div class="card-content">
             <html-echo html="{{ajaxResponse.content.rendered}}"></html-echo>             
           </div>

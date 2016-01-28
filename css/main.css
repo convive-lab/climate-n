@@ -13,3 +13,7 @@ body{
 .hidden{
 	display: none;
 }
+
+.paper-card-fw {
+	margin-bottom: 10%;
+}
