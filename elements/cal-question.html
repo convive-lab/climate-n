@@ -20,7 +20,7 @@ properties: post:<post-number>
         }
         .horizontal{
           @apply(--layout-horizontal);
-          @apply(--layout-wrap);
+         
         }
     </style>
     <template id="question">
@@ -28,8 +28,7 @@ properties: post:<post-number>
         <paper-card elevation="0" heading="{{data.titel.rendered}}"> 
               <paper-material elevation=0 class="flex"><h2>{{data.acf.frage}}</h2></paper-material>
           <div class="card-content horizontal">
-
-          <img src="{{data.better_featured_image.media_details.sizes.medium.source_url}}"/>
+          <iron-image src="{{data.better_featured_image.media_details.sizes.medium.source_url}}" ></iron-image>
           <paper-radio-group class="questions"
             on-change=_changeHandler>
           >

@@ -7,30 +7,45 @@
         .horizontal{
             @apply(--layout-horizontal);
             @apply(--layout-wrap);
-            @apply(--layout-center-justified);
             @apply(--layout-center);
-        }
-        #btnnext{
-             @apply(--layout-end-justified);
-        }
-        #btnback{
-             @apply(--layout-start-justified);
-        }
+        }   
         .vertical{
             @apply(--layout-vertical);
-            @apply(--layout-center-justified);
         }
         span { font-weight: bold; }
         .co2Value{
             font-size: 150%;
         }
+        .container{
+            @apply(--layout-center-justified);
+        }
+        .wrapper-card {
+            @apply(--layout-horizontal);
+            width: 900px;
+ 
+            @apply(--layout-center);
+        }
+        .left-container{
+
+            @apply(--layout-flex); 
+            @apply(--layout-center-justified);  
+
+        }
+        .left{
+           @apply(--layout-start); 
+        }
+        .right{
+            @apply(--layout-end);         
+            @apply(--layout-flex);   
+
+        }
 
   </style>
   <template >
     <div class="container horizontal">
-        <paper-card class=" horizontal" elevation="1" animated-shadow="false">
+        <paper-card class="wrapper-card " elevation="1" animated-shadow="false">
 
-        <div class="left">
+        <div class="left-container">
             <template is="dom-if" if={{!questionsResponse}}>
                 <iron-ajax id="menu-data" auto url="http://cn.convive.io/wp-json/wp/v2/posts/?filter[cat]=3" handle-as="json" last-response="{{questionsResponse}}" ></iron-ajax>
             </template>
@@ -64,12 +79,12 @@
             <div class="right vertical">
                 
                 <paper-card elevation="0" heading="Deine CO2 Emissionen" image="" elevation="1" animated-shadow="false">
-                  <div class="card-content test vertical">
+                  <div class="card-content vertical">
                   <paper-material elevation="1">
                        <div class="co2Value"><span>{{finalValue}}</span> t C02/Jahr</div>
                   </paper-material>
                  
-                <iron-image src="../data/fever.png" class=".vertical" ></iron-image>
+                <iron-image src="../data/fever.png" class="vertical" ></iron-image>
                 </paper-card>
 
             </div>
