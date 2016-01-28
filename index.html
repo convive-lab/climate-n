@@ -8,6 +8,19 @@
   <link rel="import" href="bower_components/polymer/polymer.html">
   <!-- Polyfill Web Components support for older browsers -->
   <script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
+  <script></script>
+ <script>https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/AjaxLoader.gif</script>
+	<!--Owl-Carousel-Slider importieren-->
+<script>https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/grabbing.png</script>
+<script>https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.css</script>
+<script>https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.js</script>
+<script>https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.css</script>
+<script>https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js</script>
+<script>https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.theme.css</script>
+<script>https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.theme.min.css</script>
+<script>https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.transitions.css</script>
+<script>https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.transitions.min.css</script>
+
 	<link rel="import" href="elements.html">
 	<!--css-->
 	<link rel="stylesheet" type="text/css" href="./css/main.css">
@@ -24,10 +37,35 @@
 		<paper-card-fw><wp-cards post="41"></wp-cards></paper-card-fw>
 		<paper-card-fw><wp-cards post="43"></wp-cards></paper-card-fw>
 		<paper-card-fw><wp-cards post="45"></wp-cards></paper-card-fw>
-		<paper-card-fw><wp-cards post="47"></wp-cards></paper-card-fw>
+		<paper-card-fw><wp-cards post="47"></wp-cards>
+			<div id="owl-demo" class="owl-carousel owl-theme">
+			  <div class="item"><h1>1<h1></div>
+			  <div class="item"><h1>2</h1></div>
+			  <div class="item"><h1>3</h1></div>
+			  <div class="item"><h1>4</h1></div>
+			  <div class="item"><h1>5</h1></div>
+			  <div class="item"><h1>6</h1></div>
+			  <div class="item"><h1>7</h1></div>
+			  <div class="item"><h1>8</h1></div>
+			  <div class="item"><h1>9</h1></div>
+			  <div class="item"><h1>10</h1></div>
+			  <div class="item"><h1>11</h1></div>
+			  <div class="item"><h1>12</h1></div>
+			  <div class="item"><h1>13</h1></div>
+			  <div class="item"><h1>14</h1></div>
+			  <div class="item"><h1>15</h1></div>
+			  <div class="item"><h1>16</h1></div>
+			  <div class="item"><h1>17</h1></div>
+			  <div class="item"><h1>18</h1></div>
+			  <div class="item"><h1>19</h1></div>
+			  <div class="item"><h1>20</h1></div>
+			</div></paper-card-fw>
 		<paper-card-fw><wp-cards post="51"></wp-cards></paper-card-fw>
-
     </div>
+	<div class="footer">
+	<p>Footer to come</p>
+	</div>
+	
   </div>
 
     <script>
@@ -35,6 +73,23 @@
         document.querySelector('#spinner').classList.add('hidden');
       });
 
+    $(document).ready(function() {
+     var owl = $("#owl-demo");
+       owl.owlCarousel({
+         
+          itemsCustom : [
+            [0, 2],
+            [450, 4],
+            [600, 7],
+            [700, 9],
+            [1000, 10],
+            [1200, 12],
+            [1400, 13],
+            [1600, 15]
+          ],
+          navigation : true
+      });  
+    });
 
     </script>
 </body>
