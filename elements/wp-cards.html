@@ -10,7 +10,10 @@ properties: post:<post-number>
         }
     </style>
     <template>
-        <iron-ajax auto url="http://cn.convive.io/wp-json/wp/v2/posts/[[post]]" handle-as="json" last-response="{{ajaxResponse}}"></iron-ajax>
+        <iron-localstorage name="wp[[post]]" value="{{ajaxResponse}}"></iron-localstorage>
+        <template is="dom-if" if={{!ajaxResponse}}>
+          <iron-ajax id="menu-data" auto url="http://cn.convive.io/wp-json/wp/v2/posts/[[post]]" handle-as="json" last-response="{{ajaxResponse}}" ></iron-ajax>
+        </template>
         <paper-card heading="{{ajaxResponse.title.rendered}}" elevation="0"> 
           <div class="card-content">
             <html-echo html="{{ajaxResponse.content.rendered}}"></html-echo>             
