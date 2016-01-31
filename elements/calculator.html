@@ -1,159 +1,177 @@
 <dom-module id="calculator-el">
-  <style type="text/css">
-          :host {
-            width: 50%;
-            @apply(--paper-card);
-        }
-        .horizontal{
-            @apply(--layout-horizontal);
-            @apply(--layout-wrap);
+  <style type="text/css" >
+        
+        .cal-wraper{
             @apply(--layout-center);
-        }   
-        .vertical{
-            @apply(--layout-vertical);
+            text-align: center;
         }
-        span { font-weight: bold; }
-        .co2Value{
-            font-size: 150%;
+        .cal-container{
+            @apply(--layout-horizontal);
+            @apply(--layout-center-justified);
+            @apply(--layout-wrap);
+            @apply(--layout-self-center);
+            @apply(--layout-flex);
+            
         }
-        .container{
+        .wrapper-card{
+            @apply(--layout-horizontal);
+        }
+        .informationstafel{
+            @apply(--layout-self-center);
             @apply(--layout-center-justified);
         }
-        .wrapper-card {
+        .question-container{
+            @apply(--layout-self-stretch);
+          
+        }
+        .buttons{
             @apply(--layout-horizontal);
-            width: 900px;
- 
-            @apply(--layout-center);
+            @apply(‑‑layout-self-stretch);
+        }
+        .leftbtn{
+          margin-right: 20px;
+
+          border-radius: 10px;
+        }
+        .rightbtn{
+            @apply(--layout-self-end);
+            background-color: white;
+            margin-left: 20px;
+            border-radius: 10px;
         }
         .left-container{
+            width: 500px;
+            @apply(--layout-self-center);
+            @apply(--layout-vertical); 
+            @apply(--layout-center);
+            @apply(--layout-center-justified);
+            @apply(‑‑self-stretch);
 
-            @apply(--layout-flex); 
-            @apply(--layout-center-justified);  
-
-        }
-        .left{
-           @apply(--layout-start); 
-        }
-        .right{
-            @apply(--layout-end);         
-            @apply(--layout-flex);   
 
         }
-
-  </style>
-  <template >
-    <div class="container horizontal">
-        <paper-card class="wrapper-card " elevation="1" animated-shadow="false">
-
-        <div class="left-container">
-            <template is="dom-if" if={{!questionsResponse}}>
-                <iron-ajax id="menu-data" auto url="http://cn.convive.io/wp-json/wp/v2/posts/?filter[cat]=3" handle-as="json" last-response="{{questionsResponse}}" ></iron-ajax>
-            </template>
-            <iron-localstorage name="questions" value="{{questionsResponse}}"></iron-localstorage>
-            <iron-pages selected="0">
-                <selection>
-                    <h1>Los Geht's</h1>
-                    <paper-button id="btnnext" class="right" on-click="_addEventListn">weiter</paper-button>
-                </selection>
-                <template is="dom-repeat" items="{{questionsResponse}}">
-                    <section> 
-                        <cal-question data="[[item]]">
-                            <div class="container buttons">
-                                <paper-button id="btnback">zurück</paper-button>
-                                <paper-button id="btnnext" class="right">weiter</paper-button>
-
-                            </div>
-                        </cal-question>
-                    </section>
-                </template>
-                <selection>
-                    <h1>Dankeschön</h1>
-                    <paper-button id="btnback">zurück</paper-button>
-                    <paper-button id="btnfin" class="right">finished</paper-button>
-                </selection>
-            </iron-pages>
- 
+        .right-container{
+            @apply(--layout-self-end);
             
-        </div>
+        }
+        .placeholder{
+            width: 350px;
+            height: 150px;
+            background-color: #D9D9D9;
+            border-radius: 4px;
+            box-shadow: 1px;
+        }
+        .ka{
+            font-size: 70%;
+            float: right;
+        }
+        .co2Value{
+            font-size: 150%;
+            border-radius: 20px;
+            margin-bottom:10px;
+        }
+        .co2Value span{
+           font-size: 180%; 
+        }
+  
+  </style>
+  <template class="cal-wrapper">
 
-            <div class="right vertical">
-                
-                <paper-card elevation="0" heading="Deine CO2 Emissionen" image="" elevation="1" animated-shadow="false">
-                  <div class="card-content vertical">
-                  <paper-material elevation="1">
-                       <div class="co2Value"><span>{{finalValue}}</span> t C02/Jahr</div>
-                  </paper-material>
-                 
-                <iron-image src="../data/fever.png" class="vertical" ></iron-image>
-                </paper-card>
+    <div class="cal-container">
+            <div class="left-container">
+                <template is="dom-if" if={{!questionsResponse}}>
+                    <iron-ajax id="menu-data" auto url="http://cn.convive.io/wp-json/wp/v2/posts/?filter[cat]=3" handle-as="json" last-response="{{questionsResponse}}" ></iron-ajax>
+                </template>
+                <iron-localstorage name="questions" value="{{questionsResponse}}"></iron-localstorage>
+                <iron-pages selected="0">
+                    <selection>
+                        <div class="informationstafel">
+                            <h1>Los Geht's</h1>
+                            <div class="right">
+                                <paper-button id="btnnext" on-click="_addEventListn">Starten</paper-button>
+                            </div>
+                        </div>
+                    </selection>
+                    <template is="dom-repeat" items="{{questionsResponse}}">
+                        <section>
+                            <div class="question-container">
+                                <cal-question data="[[item]]" class="left wp-questions">
+                                    <div class="buttons">
+                                        <div class="leftbtn"><paper-button id="btnback">zurück</paper-button></div>
+                                        <div class="rightbtn"><paper-button id="btnnext" >weiter</paper-button></div>
 
+                                    </div>
+                                </cal-question>
+                            </div> 
+                        </section>
+                    </template>
+                    <selection>
+                        <div class="informationstafel">
+                            <h1>Dankeschön</h1>
+                            <paper-button id="btnback">zurück</paper-button>
+                            <paper-button id="btnfin" data-dialog="modal" class="right">Ergebniss</paper-button>
+                        </div>
+                    </selection>
+                </iron-pages>           
             </div>
-                      <div class="card-content"></div>
-        </paper-card>
+
+            <div class="right-container">
+                <paper-card elevation="0" elevation="1" animated-shadow="false">
+                    <div class="keine-anzeige">
+                        <div class="placeholder"></div>
+                        <span class="ka">keine Anzeige</span>
+                    </div>
+                    <div class="card-content vertical">
+                        <paper-material elevation="2" class="co2Value">
+                           <span>{{finalValue}}</span> <div >t  co² pro Jahr</div>
+                        </paper-material>
+                        <iron-image src="../data/fever.png" class="vertical" ></iron-image>
+                    </div>
+                </paper-card>
+            </div>
+            </div>
     </div>
-        
-  </template>
+
+    </template>
+
   <script>
     Polymer({
         is: 'calculator-el',
         properties: {
-
             position:1,
-            q1:{type:Number,Value:0},
-            q2:{type:Number,Value:0},
-            q3:{type:Number,Value:0},
-            q4:{type:Number,Value:0},
-            q5:{type:Number,Value:0},
-            q6:{type:Number,Value:0},
-            q7:{type:Number,Value:0},
-            q8:{type:Number,Value:0},
-            q8:{type:Number,Value:0},
-            q10:{type:Number,Value:0},
             finalValue:{type:Number,Value:0}    
         },
-        _hresponse: function (request) {
-            this.empty=false;
-           localStorage.setItem("questions",JSON.stringify(request.detail.response));
-        },
+        answers:Object,
         questionsResponse:{
             type:Object        
-        },
-        srchandler:function (){
-            var cal = document.querySelector('calculator-el');
-
         },
         getValues(){
             var cal = document.querySelector('calculator-el');
             var quest = document.querySelectorAll('cal-question');
-            cal.q1=parseInt(quest[0].co2);
-            cal.q2=parseInt(quest[1].co2);
-            cal.q3=parseInt(quest[2].co2);
-            cal.q4=parseInt(quest[3].co2);
-            // cal.q5=parseInt(quest[1].co2);
-            // cal.q6=parseInt(quest[1].co2);
-            // cal.q7=parseInt(quest[1].co2);
-            // cal.q8=parseInt(quest[1].co2);
-            // cal.q9=parseInt(quest[1].co2);
-            // cal.q10=parseInt(quest[1].co2);
-
-             // body...  
+            for (var i=0;i<cal.questionsResponse.length;i++){
+                cal.answers[i]=parseInt(quest[i].co2)
+            }
         },
         calFinalValue:function (){
             var cal = document.querySelector('calculator-el');
-           cal.finalValue= parseInt(cal.q1)+parseInt(cal.q2)+parseInt(cal.q3)+parseInt(cal.q4)+parseInt(cal.q5)+parseInt(cal.q6)+parseInt(cal.q7)+parseInt(cal.q8)+parseInt(cal.q8)+parseInt(cal.q10);
+            cal.finalValue= 0;
+            for (var i=0;i<cal.questionsResponse.length;i++){
+                cal.finalValue+=parseInt(cal.answers[i]);
+            }
+           cal.finalValue= cal.finalValue/1000;
         },
         evented:false,
-        _addEventListn:function () {
+        _addEventListn:function () { //um die click-events der Buttons zu initiieren
             if (!this.evented){
                 console.log('here I am ');
                 var cal = document.querySelector('calculator-el');
                 var next =document.querySelectorAll('#btnnext'); 
                 var pages = document.querySelector('iron-pages');
+                //var radiogroups=document.querySelectorAll('paper-radio-group');
                 cal.evented=true;
                 pages.selectNext();
                 for (i = 0; i < next.length; ++i) {
                     next[i].addEventListener('click', function(e) {
-                            console.log();
+                            //if (!radiogroups[i].selected)console.log('NOnononon');
                             //check if answer else ale rt
                             pages.selectNext();
                             cal.getValues ();
@@ -173,19 +191,9 @@
             }
         },
         ready:function (){
-            localStorage.clear();
             var cal = document.querySelector('calculator-el');
+
             cal.finalValue=0;
-            cal.q1=0;
-            cal.q2=0;
-            cal.q3=0;
-            cal.q4=0;
-            cal.q5=0;
-            cal.q6=0;
-            cal.q7=0;
-            cal.q8=0;
-            cal.q8=0;
-            cal.q10=0;
         }
 
 

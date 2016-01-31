@@ -8,43 +8,50 @@ properties: post:<post-number>
     <style>
         :host {
         }
-        .flex{
-          @apply(--layout-vertical);
-          @apply(--layout-wrap);
-          @apply(--layout-center-justified);
+        .question{
+          top:0px;
         }
-        .questions{
+        .question-wrapper{
+          @apply(--layout-wrap);
+        @apply(--layout-self-stretch);
+          padding:20px;
+        }
+        .answers{
           @apply(--layout-vertical);
           @apply(--layout-wrap);
           @apply(--layout-start);
         }
-        .horizontal{
+        .image{
+          @apply(--layout-self-end);
+        }
+        .buttons{
+          @apply(--layout-self-stretch);
           @apply(--layout-horizontal);
-         
+          @apply(--layout-center-justified);
         }
     </style>
     <template id="question">
-         <div class="container question-wrapper flex">
-        <paper-card elevation="0" heading="{{data.titel.rendered}}"> 
-              <paper-material elevation=0 class="flex"><h2>{{data.acf.frage}}</h2></paper-material>
-          <div class="card-content horizontal">
-          <iron-image src="{{data.better_featured_image.media_details.sizes.medium.source_url}}" ></iron-image>
-          <paper-radio-group class="questions"
-            on-change=_changeHandler>
-          >
-           
+        <div class="question-wrapper">
+          <div class="question" ><paper-material elevation=0 >
+            <h2>{{data.acf.frage}}</h2>
+          </paper-material></div>
+          <div class="category" ><paper-material elevation=0 >
+            <h2>{{data.titel.rendered}}</h2>
+          </paper-material></div>
+          <div class="image">
+            <iron-image src="{{data.better_featured_image.media_details.sizes.medium.source_url}}" style="width:300px; height:170px" ></iron-image>
+          </div>
+          <div class="answers" ><paper-material elevation=0 >
+            <paper-radio-group on-change=_changeHandler class="answers">
               <paper-radio-button noink name="1">{{data.acf.antwort1}}</paper-radio-button>
               <paper-radio-button noink name="2">{{data.acf.antwort2}}</paper-radio-button>
               <paper-radio-button noink name="3">{{data.acf.antwort3}}</paper-radio-button>
               <paper-radio-button noink name="4">{{data.acf.antwort4}}</paper-radio-button>
-              
             </paper-radio-group>
-           
-          </div>
-            <div class="card-actions">
-              <content></content>
-            </div>
-        </paper-card>
+          </paper-material></div>
+          <div class="buttons" ><paper-material elevation=0 >
+            <content></content>
+          </paper-material></div>
         </div>
     </template>
 </dom-module>
@@ -90,11 +97,6 @@ properties: post:<post-number>
               this.co2=0;
               break;
           }
-        },
-        getMyValue: function () {
-          var radioButtons = document.querySelector('paper-radio-button');
-          var question =  document.querySelector('#question');
-          return "50";
         }
 
     });
