@@ -7,28 +7,35 @@ properties:
   <dom-module id="paper-circle">
       <style is="custom-style">
 		
-	paper-material {
+	#a1,#a2 {
       display: inline-block;
       background: white;
       box-sizing: border-box;
 	  height: 200px;
 	  width: 200px;
-      margin: 150px;
-      padding: 50px;
+      margin: 120px;
       border-radius: 100px;
 		 background-color: var(--paper-circle-bg-color);
 		 color: var(--paper-circle-color);
 		 font: var(--paper-circle-font)
 	  }
+    .circle-wrapper{
+
+
+    }
+    .text{
+
+      background-color: green;
+    }
 	  
 	  #a1, #a2 { cursor: pointer; }
        </style>
 	   	
 
       <template>
-        <div>
-          <paper-material elevation="2" animated=true id="a1">CO2 Rechner</paper-material>
-          <paper-material elevation="2" animated=true id="a2">Offsetting</paper-material>
+        <div class="circel-wrapper">
+          <paper-material elevation="2" animated=true id="a1"><div class="text"><paper-material>CO2 Rechner</paper-material></div></paper-material>
+          <paper-material elevation="2" animated=true id="a2"><div class="text"><paper-material>Offsetting</paper-material></div></paper-material>
         </div>
     
       </template>

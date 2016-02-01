@@ -2,6 +2,11 @@
 body{
 	margin: 0px;
 	font-size: 140%;
+	background-color: #B0BDCE;
+	font-family: 'Advent Pro' !important;
+}
+.header-panel{
+	background-color: white;
 }
 
 #spinner{
@@ -21,6 +26,10 @@ body{
     margin-top: 20px;
     @apply(--layout-center-justified);
     text-align: center;
+    font-size: 130%;
+}
+paper-header-panel{
+	margin-bottom: 10px;
 }
 .horizontal{
     @apply(--layout-horizontal);
@@ -31,7 +40,7 @@ body{
 }
 
 .paper-card-fw {
-	margin-bottom: 10%;
+	/*margin-bottom: 10%;*/
 }
 
 #owl-demo .item{
@@ -47,4 +56,14 @@ body{
 #owl-demo .item img{
 	max-width: 100%;
 	height: auto;
+}
+.first{
+	background-color: #DDDDDD;
+}
+.second{
+	color: white;
+	background-color: #304D7E;
+}
+.third{
+	background-color: #29304D;
 }

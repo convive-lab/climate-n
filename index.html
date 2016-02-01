@@ -22,6 +22,10 @@
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.transitions.css"></link>
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.transitions.min.css"></link>
 
+
+<link href='https://fonts.googleapis.com/css?family=Advent+Pro' rel='stylesheet' type='text/css'>
+
+
 	<link rel="import" href="elements.html">
 	<!--css-->
 	<link rel="stylesheet" type="text/css" href="./css/main.css">
@@ -30,18 +34,18 @@
   <div id="spinner">
     <p><img src="data/logo.png"> <br/><h1>Loading...</h1></p></div>
   <div class="wrapper" unresolved>
-    <paper-header-panel>
+    <paper-header-panel mode="seamed" class="header-panel">
       <div class="paper-header">
         <wp-menu menu="2" class></wp-menu>
       </div>
     </paper-header-panel>
     <div class="main-content">
-		<paper-card-fw><wp-cards post="41"> title=false</wp-cards></paper-card-fw>
-		<paper-card-fw><wp-cards post="43" titel=true></wp-cards></paper-card-fw>
-		<paper-circle></paper-circle>
-		<paper-card-fw><wp-cards post="45" titel=true></wp-cards></paper-card-fw>
-		<paper-card-fw><wp-cards post="47" titel=true></wp-cards>
-		<div id="owl-demo" class="owl-carousel owl-theme">
+    <div class="first"><paper-card-fw><wp-cards post="41"> title=false</wp-cards></paper-card-fw></div>
+		<div class="second"><paper-card-fw><wp-cards post="43" titel=true></wp-cards></paper-card-fw></div>
+		<div class="third"><paper-circle></paper-circle></div>
+		<div class="first"><paper-card-fw><wp-cards post="45" titel=true></wp-cards></paper-card-fw></div>
+		<div class="first"><paper-card-fw><wp-cards post="47" titel=true></wp-card></paper-card-fw>
+		  <div id="owl-demo" class="owl-carousel owl-theme">
 			  
 		  
 			  <div class="item"><img src="https://pixabay.com/static/uploads/photo/2015/08/30/21/52/feet-914737_960_720.jpg" alt="feet"></img></div>
@@ -53,9 +57,10 @@
 			  <div class="item"><h1>8</h1></div>
 			  <div class="item"><h1>9</h1></div>
 			  <div class="item"><h1>10</h1></div>
-			</div></paper-card-fw>
-		<paper-card-fw><wp-cards post="51"></wp-cards></paper-card-fw>
+			</div>
     </div>
+	  <paper-card-fw><wp-cards post="51"></wp-cards></paper-card-fw>
+  </div>
 	<div class="footer">
 	<p>Footer to come</p>
 	</div>	

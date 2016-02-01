@@ -22,11 +22,15 @@ description: get wp menu number 2
    .wp-menu > ::content a:hover {
       color: #4b92d8 !important;
     }
+    .image{
+     margin-top:10px;
+     margin-bottom:10px;
+    }
   </style>
   <template>
     <content>
       <div class="container flex wp-menu">
-        <iron-image src="../data/logo.png" style="width:83px; height:70px;"></iron-image>
+        <iron-image class="image"src="../data/logo.png" ></iron-image>
         <template is="dom-if" if={{!ajaxResponse}}>
           <iron-ajax id="menu-data" auto url="http://cn.convive.io/wp-json/wp-api-menus/v2/menus/{{menu}}" handle-as="json" last-response="{{ajaxResponse}}" ></iron-ajax>
         </template>

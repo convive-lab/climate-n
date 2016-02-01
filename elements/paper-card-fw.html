@@ -6,19 +6,22 @@ properties:
   <dom-module id="paper-card-fw">
       <style is="custom-style">
 		.card-fw {
-		 width: 100%;
-		 padding: 2%;
-		 background-color: var(--paper-card-fw-bg-color);
-		 color: var(--paper-card-fw-color);
-		 font: var(--paper-card-font)
+		 margin: 0px;
+		 margin-bottom: 30px;
+		 padding:0 10%;
+		 /*background-color: var(--paper-card-fw-bg-color);*/
+		 color: var(--paper-card-fw-color); 
+		 font: var(--paper-card-font);
+		 @apply(--layout-vertical);
+		 @apply(--layout-center-justified);
 		 }
        </style>
 			<template>
-				<paper-card class=card-fw>
+				<paper-material class="card-fw">
 					<div class="card-content">
 						<content></content>
 					</div>
-				</paper-card>
+				</paper-material>
 			</template>
 	</dom-module>
 			<script>
