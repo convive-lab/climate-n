@@ -14,7 +14,9 @@ properties: post:<post-number>
         <template is="dom-if" if={{!ajaxResponse}}>
           <iron-ajax id="menu-data" auto url="http://cn.convive.io/wp-json/wp/v2/posts/[[post]]" handle-as="json" last-response="{{ajaxResponse}}" ></iron-ajax>
         </template>
-        <paper-card heading="{{ajaxResponse.title.rendered}}" elevation="0"> 
+        <paper-card elevation="0"> 
+        <template is="dom-if" if=[[titel]]><h1>{{ajaxResponse.title.rendered}}</h1></template>
+        
           <div class="card-content">
             <html-echo html="{{ajaxResponse.content.rendered}}"></html-echo>             
           </div>
@@ -28,7 +30,8 @@ properties: post:<post-number>
        properties:{
           post:{
             type:String
-          }
+          },
+          titel:false,
         }
     });
 </script>

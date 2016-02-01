@@ -34,6 +34,8 @@
     "iron-icon": "PolymerElements/iron-icon#~1.0.7",
     "iron-localstorage": "PolymerElements/iron-localstorage#~1.0.5",
     "iron-pages": "PolymerElements/iron-pages#~1.0.5",
-    "paper-material": "PolymerElements/paper-material#~1.0.6"
+    "paper-material": "PolymerElements/paper-material#~1.0.6",
+    "neon-animation": "PolymerElements/neon-animated-pages#~1.1.0",
+    "paper-dialog": "PolymerElements/paper-dialog#~1.0.3"
   }
 }

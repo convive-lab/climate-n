@@ -1,3 +1,4 @@
+<link rel="import" href="modal-after-calc.html">
 <dom-module id="calculator-el">
   <style type="text/css" >
         
@@ -108,7 +109,7 @@
                         <div class="informationstafel">
                             <h1>Dankeschön</h1>
                             <paper-button id="btnback">zurück</paper-button>
-                            <paper-button id="btnfin" data-dialog="modal" class="right">Ergebniss</paper-button>
+                            <paper-button id="btnfin" class="right">Ergebniss</paper-button>
                         </div>
                     </selection>
                 </iron-pages>           
@@ -130,7 +131,7 @@
             </div>
             </div>
     </div>
-
+    <modal-after-calc></modal-after-calc>
     </template>
 
   <script>
@@ -158,6 +159,7 @@
                 cal.finalValue+=parseInt(cal.answers[i]);
             }
            cal.finalValue= cal.finalValue/1000;
+           localStorage.setItem("finalValue",cal.finalValue)
         },
         evented:false,
         _addEventListn:function () { //um die click-events der Buttons zu initiieren
@@ -188,12 +190,19 @@
                             cal.calFinalValue();
                     });
                 }
+                var fin =document.querySelector('#btnfin');
+                fin.addEventListener('click', function(e) {
+                    var dia=document.querySelector('paper-dialog');
+                    dia.open();
+                });
+
             }
         },
         ready:function (){
             var cal = document.querySelector('calculator-el');
 
             cal.finalValue=0;
+            localStorage.setItem("finalValue",0);
         }
 
 

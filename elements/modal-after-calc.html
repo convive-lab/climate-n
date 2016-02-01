@@ -1,0 +1,38 @@
+
+<!-- 
+author:Aaron
+description: 
+-->
+<link rel="import" href="../bower_components/paper-dialog/paper-dialog.html">
+
+<dom-module id="modal-after-calc">
+  <style type="text/css">
+  .wp-content{
+  	margin: 0px;
+  }
+  paper-dialog{
+  	@apply(--layout-self-stretch)
+  }
+  </style>
+  <template>
+	  <paper-dialog modal=true>
+	  	<iron-localstorage name="finalValue" value="{{value}}"></iron-localstorage>
+	  	<wp-cards post="63" titel=true></wp-cards>
+	  	<p>
+	  	<h2>{{value}} t co2 ausgleichen</h2>
+	  	</p>
+	  <div class="buttons">
+	    <paper-button dialog-confirm>Accept</paper-button>
+	  </div>
+	</paper-dialog>
+  </template>
+  <script>
+    Polymer({
+      is: 'modal-after-calc',
+      properties:{
+      	
+      }
+      
+    });
+  </script>
+</dom-module>
