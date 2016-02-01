@@ -17,15 +17,18 @@ properties:
       border-radius: 100px;
 		 background-color: var(--paper-circle-bg-color);
 		 color: var(--paper-circle-color);
-		 font: var(--paper-circle-font)
+		 font: var(--paper-circle-font);
+     overflow: hidden;
 	  }
     .circle-wrapper{
 
-
+      margin-bottom: 30px;
     }
     .text{
-
-      background-color: green;
+      margin-top: 150px;
+      @apply(--layout-vertical)
+      @apply(--layout-center);
+      height: 100%;
     }
 	  
 	  #a1, #a2 { cursor: pointer; }

@@ -1,7 +1,6 @@
 
 body{
 	margin: 0px;
-
 	font-family: 'Advent Pro' !important;
 }
 .header-panel{
@@ -64,6 +63,7 @@ paper-header-panel{
 .second{
 	color: white;
 	background-color: #304D7E;
+	
 }
 .third{
 	background-color: #29304D;
