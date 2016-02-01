@@ -1,7 +1,9 @@
 
 body{
 	margin: 0px;
+	font-size: 140%;
 }
+
 #spinner{
 	position: absolute;
 	top: 0px;
