@@ -15,23 +15,18 @@
 
   </style>
  <template class="offsetting-wrapper">
-        <paper-card-fw><wp-cards post="75" titel=true></wp-cards></paper-card-fw>
-			<template is="dom-if" if={{!offsetResponse}}>
-				<iron-ajax id="offset-data" auto url="http://cn.convive.io/wp-json/wp/v2/posts/?filter[cat]=11" handle-as="json" last-response="{{offsetResponse}}" ></iron-ajax>
-			</template>
-				<iron-localstorage name="offsetting" value="{{offsetResponse}}"></iron-localstorage>
-					<div class="flex-horizontal">
-							<template is="dom-repeat" items="{{offsetResponse}}" filter="computeFilter">
-								<div class="paper-box-wrapper">
-									<paper-box-thin>
-										<offset-project data="[[item]]" class="left">
-										
-										</offset-project>
-									</paper-box-thin>
-								</div>
-							</template>
-						
-					</div>
+    <paper-card-fw><wp-cards post="75" titel=true></wp-cards></paper-card-fw>
+	<iron-ajax id="offset-data" auto url="http://cn.convive.io/wp-json/wp/v2/posts/?filter[cat]=11&filter[orderby]=rand&filter[posts_per_page]=3" handle-as="json" last-response="{{offsetResponse}}" ></iron-ajax>
+	<div class="flex-horizontal">
+		<template is="dom-repeat" items="{{offsetResponse}}" filter="computeFilter">
+			<div class="paper-box-wrapper">
+				<paper-box-thin>
+					<offset-project data="[[item]]" class="left">
+					</offset-project>
+				</paper-box-thin>
+			</div>
+		</template>
+	</div>
 							
 
 </template>
