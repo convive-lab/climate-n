@@ -65,7 +65,7 @@
   $.getJSON( "http://cn.convive.io/wp-json/wp/v2/posts/?filter[orderby]=modified&filter[posts_per_page]=1", function( data ) { console.log(data[0].modified);
       //das ist für die gecacheten wp-posts
       if (localStorage.getItem("version")!=data[0].modified){
-        sKey;
+        var sKey;
         var string="wp"
         for (var i=0; sKey = window.localStorage.key(i); i++) {
           if(sKey.indexOf(string )> -1){
