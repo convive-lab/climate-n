@@ -1,0 +1,31 @@
+<!--Autorin: Iris
+description: customizable box element
+properties:
+-->
+
+  <dom-module id="paper-box-thin">
+      <style is="custom-style">
+		.box-thin {
+		 width: 100%;
+		 background-color: var(--paper-box-thin-bg-color);
+		 color: var(--paper-box-thin-color);
+		 font: var(--paper-box-thin-font)
+		 }
+       </style>
+			<template>
+				<paper-material class=box-thin elevation=1>
+					<div class="box-content">
+						<content></content>
+					</div>
+				</paper-material>
+			</template>
+	</dom-module>
+			<script>
+    Polymer({
+        is:"paper-box-thin",
+			properties: {
+        }
+    });
+</script>
+
+
