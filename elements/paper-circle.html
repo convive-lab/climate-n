@@ -11,11 +11,11 @@ properties:
       display: inline-block;
       background: white;
       box-sizing: border-box;
-	  height: 100px;
-	  width: 100px;
-      margin: 8px;
-      padding: 16px;
-      border-radius: 50px;
+	  height: 200px;
+	  width: 200px;
+      margin: 150px;
+      padding: 50px;
+      border-radius: 100px;
 		 background-color: var(--paper-circle-bg-color);
 		 color: var(--paper-circle-color);
 		 font: var(--paper-circle-font)
@@ -27,19 +27,12 @@ properties:
 
       <template>
         <div>
-          <paper-material elevation="1" animated=true id="a1">CO2 Rechner</paper-material>
-          <paper-material elevation="1" animated=true id="a1">Offsetting</paper-material>
+          <paper-material elevation="2" animated=true id="a1">CO2 Rechner</paper-material>
+          <paper-material elevation="2" animated=true id="a2">Offsetting</paper-material>
         </div>
     
       </template>
-   	
-		<!-- <template>
-				<paper-material class=circle elevation=1 animated="true">
-					<div class="box-content">
-						<content></content>
-					</div>
-				</paper-material>
-			</template> -->
+
 
 	</dom-module>
 
@@ -51,23 +44,13 @@ properties:
         },
 		ready:function(){ document.addEventListener('WebComponentsReady', function() {
             a1.addEventListener('click', _onTap);
-            a2.addEventListener('click', _onTap);
+			a2.addEventListener('click', _onTap);
           });
-          function _onTap(e) {
-		  console.log("animation-here");
-            var target = e.target;
-            if (!target.down) {
-              target.elevation += 1;
-              if (target.elevation === 5) {
-                target.down = true;
-              }
-            } else {
-              target.elevation -= 1;
-              if (target.elevation === 0) {
-                target.down = false;
-              }
-            }
-          };}
+			  function _onTap(e) {
+				var target = e.target;
+				 target.elevation += 2;
+			};
+          }
     });
 </script>
 
