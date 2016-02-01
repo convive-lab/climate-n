@@ -36,11 +36,13 @@
         is: 'offsetting-el',
         questionsResponse:{
             type:Object        
-        }, 
+        },
+        counter:0,
 		shuffeld:false,
         computeFilter: function(string) {
           this.counter++;
           if (this.counter>=4)return false;
+        	console.log(this.counter);
 
           return true;
         },
