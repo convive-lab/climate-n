@@ -1,8 +1,7 @@
 
 body{
 	margin: 0px;
-	font-size: 140%;
-	background-color: #B0BDCE;
+
 	font-family: 'Advent Pro' !important;
 }
 .header-panel{
@@ -23,6 +22,8 @@ body{
 	margin-top: 20%;
 }
 .main-content{
+	font-size: 140%;
+	background-color: #B0BDCE;
     margin-top: 20px;
     @apply(--layout-center-justified);
     text-align: center;
