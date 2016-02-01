@@ -24,7 +24,7 @@ body{
 .main-content{
 	font-size: 140%;
 	background-color: #B0BDCE;
-    margin-top: 20px;
+    padding-top: 20px;
     @apply(--layout-center-justified);
     text-align: center;
     font-size: 130%;
