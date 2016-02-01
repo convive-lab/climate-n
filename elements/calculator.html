@@ -131,7 +131,7 @@
             </div>
             </div>
     </div>
-    <modal-after-calc></modal-after-calc>
+    <modal-after-calc value={{finalValue}}></modal-after-calc>
     </template>
 
   <script>
@@ -150,16 +150,18 @@
             var quest = document.querySelectorAll('cal-question');
             for (var i=0;i<cal.questionsResponse.length;i++){
                 cal.answers[i]=parseInt(quest[i].co2)
+                console.log(cal.answers[i]);
             }
         },
         calFinalValue:function (){
             var cal = document.querySelector('calculator-el');
             cal.finalValue= 0;
             for (var i=0;i<cal.questionsResponse.length;i++){
+                if (cal.answers[i])
                 cal.finalValue+=parseInt(cal.answers[i]);
             }
-           cal.finalValue= cal.finalValue/1000;
-           localStorage.setItem("finalValue",cal.finalValue)
+            if (cal.finalValue>0)cal.finalValue= cal.finalValue/1000;
+           localStorage.setItem("finalValue",cal.finalValue);
         },
         evented:false,
         _addEventListn:function () { //um die click-events der Buttons zu initiieren

@@ -75,28 +75,29 @@ properties: post:<post-number>
           }
         },
         _changeHandler(old){ 
-          var question =  document.querySelector('cal-question'); 
+          
           switch (old.target.name) {
             case '1':
               // statements_1
-              this.co2=question.data.acf.antwort1wert;
+              this.co2=parseInt(this.data.acf.antwort1wert);
               break;
             case '2':
               // statements_1
-              this.co2=question.data.acf.antwort2wert;
+              this.co2=parseInt(this.data.acf.antwort2wert);
               break;
             case '3':
               // statements_1
-              this.co2=question.data.acf.antwort3wert;
+              this.co2=parseInt(this.data.acf.antwort3wert);
               break;
             case '4':
               // statements_1
-              this.co2=question.data.acf.antwort4wert;
+              this.co2=parseInt(this.data.acf.antwort4wert);
               break;
             default:
               this.co2=0;
               break;
           }
+          console.log(this.co2);
         }
 
     });
