@@ -18,7 +18,7 @@
 			</template>
 				<iron-localstorage name="offsetting" value="{{offsetResponse}}"></iron-localstorage>
 					<div class="flex-horizontal">
-							<template is="dom-repeat" items="{{offsetResponse}}">
+							<template is="dom-repeat" items="{{offsetResponse}}" filter="computeFilter">
 								<paper-box-thin>
 									<offset-project data="[[item]]" class="left">
 									
@@ -37,6 +37,13 @@
         questionsResponse:{
             type:Object        
         }, 
+		shuffeld:false,
+        computeFilter: function(string) {
+          this.counter++;
+          if (this.counter>=4)return false;
+
+          return true;
+        },
 	});
 	
     
