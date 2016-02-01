@@ -6,19 +6,16 @@ properties: post:<post-number>
 
 <dom-module id="offset-project">
    <style is="custom-style">
-img {
-	max-width: 50%;
-	height: auto;
-}
+
+
     </style>
     <template>
-            <h2>{{data.title.rendered}}</h2>
-
-            <p><html-echo html="{{data.content.rendered}}"></html-echo> </p>
-          
-          <div class="image">
-           <!-- <iron-image src="{{data.better_featured_image.media_details.sizes.medium.source_url}}" style="width:300px; height:170px" ></iron-image>-->
-          </div>
+        <h2>{{data.title.rendered}}</h2>
+		<div class="image">
+           <iron-image src="{{data.better_featured_image.media_details.sizes.medium.source_url}}" style="width:300px; height:170px" ></iron-image>
+         </div>
+         <p><html-echo html="{{data.excerpt.rendered}}"></html-echo> </p>
+         
           <content></content>
         
     </template>
