@@ -1,0 +1,32 @@
+<link rel="import" href="offset-project.html">
+<dom-module id="offsetting-el">
+  <style type="text/css" >
+        
+  
+  </style>
+  <template class="offsetting-wrapper">
+        <paper-card-fw><wp-cards post="75" titel=true></wp-cards></paper-card-fw>
+        <template is="dom-if" if={{!questionsResponse}}>
+            <iron-ajax id="menu-data" auto url="http://cn.convive.io/wp-json/wp/v2/posts/?filter[cat]=11" handle-as="json" last-response="{{questionsResponse}}" ></iron-ajax>
+        </template>
+        <iron-localstorage name="offsetting" value="{{questionsResponse}}"></iron-localstorage>
+        <template is="dom-repeat" items="{{questionsResponse}}">
+            <div class="offset-container">
+                  <offset-project data="[[item]]" class="left">
+                  test
+                  </offset-project>
+            </div> 
+    </template>
+
+</template>
+
+  <script>
+    Polymer({
+        is: 'offsetting-el',
+        questionsResponse:{
+            type:Object        
+        },
+
+    });
+  </script>
+</dom-module>

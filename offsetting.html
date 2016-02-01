@@ -8,6 +8,7 @@
   <link rel="import" href="bower_components/polymer/polymer.html">
   <!-- Polyfill Web Components support for older browsers -->
   <script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
+  <link rel="import" href="elements/offsetting-el.html">
 
 	<link rel="import" href="elements.html">
 	<!--css-->
@@ -21,19 +22,7 @@
       </div>
     </paper-header-panel>
     <div class="main-content">
-		<paper-card-fw><wp-cards post="75" titel=true></wp-cards></paper-card-fw>
-    <template is="dom-if" if={{!questionsResponse}}>
-                    <iron-ajax id="menu-data" auto url="http://cn.convive.io/wp-json/wp/v2/posts/?filter[cat]=11" handle-as="json" last-response="{{questionsResponse}}" ></iron-ajax>
-                </template>
-    <iron-localstorage name="offsetting" value="{{questionsResponse}}"></iron-localstorage>
-    <template is="dom-repeat" items="{{questionsResponse}}">
-      <section>
-      <div class="offset-container">
-          <cal-question data="[[item]]" class="left">
-          </cal-question>
-          </div> 
-      </section>
-    </template>
+    <offsetting-el></offsetting-el>
 
     </div>
 	<div class="footer">
