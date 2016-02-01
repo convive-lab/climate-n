@@ -42,49 +42,7 @@
 		<paper-card-fw><wp-cards post="47" titel=true></wp-cards>
 		<div id="owl-demo" class="owl-carousel owl-theme">
 			  
-
-<!--ist das Kunst oder kann das weg?
-
- <iron-request id="flickrJson"></iron-request> 
-			 <iron-ajax auto
-			  url="https://api.flickr.com/services/rest/"
-			  params='{"method" : "flickr.photos.search", "api_key" : "04358fea9e362af2b213c82d4711179c", "tags" : "sports&per_page=10"}'
-			  handle-as="json"
-			  last-response="{{ajaxResponse}}">
-			 </iron-ajax>
-			  
-			<template is="dom-repeat" items="[[ajaxResponse.items]]">
-			  
-			  
-			  <div class="horizontal-section">
-				<h2><a href="[[url(item.id.videoId)]]" target="_blank">[[item.snippet.title]]</a></h2>
-				<iron-image src= "http://farm" photo.farm + ".static.flickr.com/" + photo.server + "/" + photo.id + "_" + photo.secret + "_" + "t.jpg";[[item.snippet.thumbnails.high.url]]" width="256" height="256" sizing="cover" preload fade></iron-image>
-				<p>[[item.snippet.description]]</p>
-			  </div>
-			</template>
-			  
-			<script>
-			/*
-		  function jsonFlickrApi(rsp) {
-			window.rsp = rsp;
-			var s = "";
-			// http://farm{id}.static.flickr.com/{server-id}/{id}_{secret}_[mstb].jpg
-			// http://www.flickr.com/photos/{user-id}/{photo-id}
-			s = "total number is: " + rsp.photos.photo.length + "<br/>";
-			
-			for (var i=0; i < rsp.photos.photo.length; i++) {
-			  photo = rsp.photos.photo[i];
-			  t_url = "http://farm" + photo.farm + ".static.flickr.com/" + photo.server + "/" + photo.id + "_" + photo.secret + "_" + "t.jpg";
-			  p_url = "http://www.flickr.com/photos/" + photo.owner + "/" + photo.id;
-			  s +=  '<div class="item"><a href="' + p_url + '">' + '<img alt="'+ photo.title + 
-				'"src="' + t_url + '"/>' + '</a></div>';
-			}
-			document.writeln(s);
-		  }*/
-		  </script>
--->
-			  
-			  
+		  
 			  <div class="item"><img src="https://pixabay.com/static/uploads/photo/2015/08/30/21/52/feet-914737_960_720.jpg" alt="feet"></img></div>
 			  <div class="item"><img src="https://pixabay.com/static/uploads/photo/2013/07/13/13/40/penguin-161319_960_720.png" alt="penguin"></img></div>
 			  <div class="item"><h1>4</h1></div>
