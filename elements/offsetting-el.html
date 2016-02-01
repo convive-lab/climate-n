@@ -1,4 +1,5 @@
 <link rel="import" href="offset-project.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
 <dom-module id="offsetting-el">
   <style type="text/css" >
         
@@ -6,17 +7,21 @@
   </style>
   <template class="offsetting-wrapper">
         <paper-card-fw><wp-cards post="75" titel=true></wp-cards></paper-card-fw>
-        <template is="dom-if" if={{!questionsResponse}}>
-            <iron-ajax id="menu-data" auto url="http://cn.convive.io/wp-json/wp/v2/posts/?filter[cat]=11" handle-as="json" last-response="{{questionsResponse}}" ></iron-ajax>
-        </template>
-        <iron-localstorage name="offsetting" value="{{questionsResponse}}"></iron-localstorage>
-        <template is="dom-repeat" items="{{questionsResponse}}">
-            <div class="offset-container">
-                  <offset-project data="[[item]]" class="left">
-                  test
-                  </offset-project>
-            </div> 
-    </template>
+			
+				<template is="dom-if" if={{!offsetResponse}}>
+					<iron-ajax id="offset-data" auto url="http://cn.convive.io/wp-json/wp/v2/posts/?filter[cat]=11" handle-as="json" last-response="{{questionsResponse}}" ></iron-ajax>
+				</template>
+				<iron-localstorage name="offsetting" value="{{offsetResponse}}"></iron-localstorage>
+					<div class="container flex">
+						<template is="dom-repeat" items="{{offsetResponse}}">
+<!-- <div class="offset-container">  -->					
+						  <div><paper-box-thin>
+							<offset-project data="[[item]]" class="left">
+								test
+							</offset-project>
+						</paper-box-thin></div>
+					</div> 
+						</template>
 
 </template>
 
@@ -25,8 +30,26 @@
         is: 'offsetting-el',
         questionsResponse:{
             type:Object        
-        },
+        }, 
+		ready:function(){
+			this.shuffle()},
+		
+		shuffle:function() {
+			var data=document.querySelector('offsetting-el');
+			
+			for (var i = 0; i < data.offsetResponse.length - 1; i++) {
+				var j = i + Math.floor(Math.random() * (data.offsetResponse.length - i));
 
-    });
+				var temp = data.offsetResponse[j];
+				data.offsetResponse[j] = data.offsetResponse[i];
+				data.offsetResponse[i] = temp;
+			}
+			console.log(data.offsetResponse);
+			localStorage.setItem("offsetting",JSON.stringify(data.offsetResponse ));
+
+		}
+	});
+	
+    
   </script>
 </dom-module>
