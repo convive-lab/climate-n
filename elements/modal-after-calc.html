@@ -22,7 +22,7 @@ description:
 	  	<h2>{{value}} t co2 ausgleichen</h2>
 	  	</p>
 	  <div class="buttons">
-	    <paper-button dialog-confirm>Accept</paper-button>
+	    <paper-button dialog-confirm on-click="_eventListn">Accept</paper-button>
 	  </div>
 	</paper-dialog>
   </template>
@@ -31,6 +31,9 @@ description:
       is: 'modal-after-calc',
       properties:{
       	
+      },
+      _eventListn:function () {
+      	window.location.href = "";
       }
       
     });
