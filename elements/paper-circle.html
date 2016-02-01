@@ -13,20 +13,20 @@ properties:
       box-sizing: border-box;
 	  height: 200px;
 	  width: 200px;
-      margin: 120px;
       border-radius: 100px;
 		 background-color: var(--paper-circle-bg-color);
 		 color: var(--paper-circle-color);
 		 font: var(--paper-circle-font);
      overflow: hidden;
-	  }
+      margin: 60px 0;
+    }
     .circle-wrapper{
-
-      margin-bottom: 30px;
+      @apply(--layout-horizontal);
+      @apply(--layout-around-justified);
     }
     .text{
       margin-top: 150px;
-      @apply(--layout-vertical)
+      @apply(--layout-vertical);
       @apply(--layout-center);
       height: 100%;
     }
@@ -36,7 +36,7 @@ properties:
 	   	
 
       <template>
-        <div class="circel-wrapper">
+        <div class="circle-wrapper">
           <paper-material elevation="2" animated=true id="a1"><div class="text"><paper-material>CO2 Rechner</paper-material></div></paper-material>
           <paper-material elevation="2" animated=true id="a2"><div class="text"><paper-material>Offsetting</paper-material></div></paper-material>
         </div>
