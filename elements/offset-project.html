@@ -1,23 +1,38 @@
 <!-- 
 author:Aaron
-description: fetch a question from wp
-properties: post:<post-number>
+description: 
+properties: 
 -->
-
+<link rel="import" href="randus.html">
 <dom-module id="offset-project">
    <style is="custom-style">
+   .offset-wrap{
+      height: 100%;
+      @apply(--layout-vertical);
+    }
 
+   .quote{
+    @apply(--layout-flex);
+   }
 
     </style>
     <template>
+      <div class="offset-wrap">
         <h2>{{data.title.rendered}}</h2>
-		<div class="image">
+		    <div class="image">
            <a href="../offset-projektdetails.html"> <iron-image src="{{data.better_featured_image.media_details.sizes.medium.source_url}}" style="width:300px; height:170px" ></iron-image></a>
-         </div>
-         <p><html-echo html="{{data.excerpt.rendered}}"></html-echo> </p>
-         
+        </div>
+        <p><html-echo html="{{data.excerpt.rendered}}"></html-echo> </p>
+        <iron-localstorage name="ru{{data.id}}" value="{{randuser}}"></iron-localstorage>
+        <iron-ajax id="randomuser" auto url="http://api.randomuser.me/" handle-as="json" last-response="{{randuser}}" ></iron-ajax>
+        {{randuser.results.user}}
+        <template is="dom-repeat" items="{{randuser.results}}">
+        <div class="quote"><rand-user data="{{item}}">{{data.acf.quote}}</rand-user></div>
+        </template>
+
           <content></content>
-        
+      </div>
+  
     </template>
 </dom-module>
 
@@ -26,6 +41,8 @@ properties: post:<post-number>
     Polymer({
         is: "offset-project",
         selected:String,
+        randuser:Object,
+
        properties:{
           position:{
             type:String

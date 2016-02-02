@@ -1,0 +1,48 @@
+<!-- 
+author:Aaron
+description:
+-->
+
+<dom-module id="rand-user">
+  <style type="text/css">
+          :host {
+            @apply(--layout-vertical);
+            @apply(--layout-flex);
+            @apply(--layout-self-end);
+
+        }
+        .image{
+          border-radius:60px;
+          overflow: hidden;
+          border-style: 1px solid grey;
+        }
+        .text{
+          @apply(--layout-flex);
+          @apply(--layout-vertical);
+          @apply(--layout-center-justified);
+        }
+        .rand-user-wrap{
+            @apply(--layout-horizontal);
+        }
+        .quote{
+          font-size: 80%;
+        }
+  </style>
+  <template>
+    <div class="rand-user-wrap">
+        <div class="image"><iron-image src="[[data.user.picture.thumbnail]]" ></iron-image></div>
+        <paper-material class="text" elevation="0">
+              <div><b><span>{{data.user.name.first}}</span> <span> {{data.user.name.last}}</span></b><div>
+              <div class="quote"><content></content></div>
+        </paper-material>
+      </div>
+  </template>
+  <script>
+    Polymer({
+      is: 'rand-user',
+      properties: {
+        data: Object,
+      }
+    });
+  </script>
+</dom-module>
