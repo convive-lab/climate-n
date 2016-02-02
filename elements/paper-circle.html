@@ -3,6 +3,8 @@ description: customizable round paper-element
 properties:
 -->
 
+<link rel="import" href="../data/iconsmaps-icons.html">
+
  
   <dom-module id="paper-circle">
       <style is="custom-style">
@@ -38,10 +40,9 @@ properties:
 
       <template>
         <div class="circle-wrapper">
-          <paper-material elevation="2" animated=true id="a1"><div class="text"><paper-material>CO2 Rechner</paper-material></div></paper-material>
-          <paper-material elevation="2" animated=true id="a2"><div class="text"><paper-material>Offsetting</paper-material></div></paper-material>
+          <paper-material elevation="2" animated=true id="a1"><a href="calculator.htm"><div class="text"><paper-material>berechnen</paper-material></div></a></paper-material>
+          <paper-material elevation="2" animated=true id="a2"><div class="text"><a href="offsetting.html"><paper-material>kompensieren</paper-material></a></div></paper-material>
         </div>
-    
       </template>
 
 
