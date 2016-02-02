@@ -37,6 +37,7 @@
     "paper-material": "PolymerElements/paper-material#~1.0.6",
     "neon-animation": "PolymerElements/neon-animated-pages#~1.1.0",
     "paper-dialog": "PolymerElements/paper-dialog#~1.0.3",
-    "iron-icons": "PolymerElements/iron-icons#^1.1.2"
+    "iron-icons": "PolymerElements/iron-icons#^1.1.2",
+    "google-youtube": "GoogleWebComponents/google-youtube#^1.1.3"
   }
 }

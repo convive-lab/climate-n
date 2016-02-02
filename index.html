@@ -8,6 +8,13 @@
   <link rel="import" href="bower_components/polymer/polymer.html">
   <!-- Polyfill Web Components support for older browsers -->
   <script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
+
+<link href='https://fonts.googleapis.com/css?family=Advent+Pro' rel='stylesheet' type='text/css'>
+
+
+  <link rel="import" href="elements.html">
+  <!--css-->
+  <link rel="stylesheet" type="text/css" href="./css/main.css">
   <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
   <script></script>
 <!-- <script>https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/AjaxLoader.gif</script>-->
@@ -23,16 +30,10 @@
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.transitions.min.css"></link>
 
 
-<link href='https://fonts.googleapis.com/css?family=Advent+Pro' rel='stylesheet' type='text/css'>
-
-
-	<link rel="import" href="elements.html">
-	<!--css-->
-	<link rel="stylesheet" type="text/css" href="./css/main.css">
 </head>
 <body class="fullbleed vertical layout">
-  <div id="spinner">
-    <p><img src="data/logo.png"> <br/><h1>Loading...</h1></p></div>
+ <!--  <div id="spinner">
+    <p><img src="data/logo.png"> <br/><h1>Loading...</h1></p></div> -->
   <div class="wrapper" unresolved>
     <paper-header-panel mode="seamed" class="header-panel">
       <div class="paper-header">
@@ -43,7 +44,9 @@
     <div class="first"><paper-card-fw><wp-cards post="41"> title=false</wp-cards></paper-card-fw></div>
 		<div class="second"><paper-card-fw><wp-cards post="43" titel=true></wp-cards></paper-card-fw></div>
 		<div class="third"><paper-circle></paper-circle></div>
-		<div class="first"><paper-card-fw><wp-cards post="45" titel=true></wp-cards></paper-card-fw></div>
+		<div class="first"><paper-card-fw><wp-cards post="45" titel=true>
+      
+    </wp-cards></paper-card-fw></div>
 		<div class="first"><paper-card-fw><wp-cards post="47" titel=true></wp-card></paper-card-fw>
 		  <div id="owl-demo" class="owl-carousel owl-theme">
 			  
