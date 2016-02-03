@@ -1,0 +1,24 @@
+<dom-module id="projekt-details">
+  <style type="text/css" >
+
+
+  </style>
+  <template class="offsetting-wrapper">
+
+            <iron-ajax id="menu-data" auto url="http://cn.convive.io/wp-json/wp/v2/posts/71" handle-as="json" last-response="{{questionsResponse}}" ></iron-ajax>
+        
+
+        <h2>{{questionsResponse.title.rendered}}</h2>
+
+</template>
+
+  <script>
+    Polymer({
+        is: 'projekt-details',
+        questionsResponse:{
+            type:Object
+        },
+
+    });
+  </script>
+</dom-module>

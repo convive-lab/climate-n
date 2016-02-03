@@ -4,6 +4,7 @@ description:
 properties:
 -->
 <link rel="import" href="randus.html">
+<link rel="import" href="offset-popup.html">
 <dom-module id="offset-project">
    <style is="custom-style">
    .offset-wrap{
@@ -14,6 +15,11 @@ properties:
    .quote{
     @apply(--layout-flex);
    }
+
+   .buttons{
+       @apply(--layout-horizontal);
+       @apply(‑‑layout-self-stretch);
+     }
 
     </style>
     <template>
@@ -29,11 +35,10 @@ properties:
         <template is="dom-repeat" items="{{randuser.results}}">
         <div class="quote"><rand-user data="{{item}}">{{data.acf.quote}}</rand-user></div>
         </template>
-
           <content></content>
+        <paper-button raised id="offMore" on-click="popup">Mehr Infos</paper-button>
+        <offset-popup id="off{{data.id}}" data="{{data}}"></offset-popup>
       </div>
-      <paper-button id="offMore" class="right">Mehr Infos</paper-button>
-      <offset-popup data="{{data}}"></offset-popup>
     </template>
 </dom-module>
 
@@ -54,12 +59,9 @@ properties:
           }
         },
 
-        _addEventListn:function () {
-          var fin =document.querySelector('#offMore');
-          fin.addEventListener('click', function(e) {
-              var dia=document.querySelector('paper-dialog');
+        popup:function () {
+              var dia=document.querySelector('#off' + this.data.id + ' paper-dialog');
               dia.open();
-          });
         }
     });
 
