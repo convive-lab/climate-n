@@ -25,19 +25,25 @@ description: get wp menu number 2
       color: #4b92d8 !important;
     }
     
-	.image{
+	.image {
 	 margin-top:5px;
      margin-bottom:5px;
+	 max-width: 100%;
+	 height:auto;
+    }
+	
+	.logocontainer {
+	 width: 115px;
 	 padding-left: 15px;
 	 padding-right: 10%;
-    }
+	}
 	
   </style>
   <template>
     <content>
        
 	  <div class="container flex wp-menu">
-       <iron-image class="image"src="../data/CN-Logo-web.png" ></iron-image>
+       <div class="logocontainer"><img class="image" src="../data/CN-Logo-web.png" ></img></div>
         <template is="dom-if" if={{!ajaxResponse}}>
           <iron-ajax id="menu-data" auto url="http://cn.convive.io/wp-json/wp-api-menus/v2/menus/{{menu}}" handle-as="json" last-response="{{ajaxResponse}}" ></iron-ajax>
         </template>

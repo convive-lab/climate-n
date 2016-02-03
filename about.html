@@ -9,11 +9,15 @@
   <!-- Polyfill Web Components support for older browsers -->
   <script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
 <link rel="import" href="elements.html">
+
 	<!--css-->
 	<link rel="stylesheet" type="text/css" href="css/main.css">
   <link href='https://fonts.googleapis.com/css?family=Advent+Pro' rel='stylesheet' type='text/css'>
+  
 </head>
 <body>
+
+
   <div class="wrapper" unresolved>
     <paper-header-panel>
       <div class="paper-header">
@@ -21,18 +25,22 @@
       </div>
     </paper-header-panel>
     <div class="main-content">
-    <paper-card-fw><wp-cards post="130"></wp-cards></paper-card-fw>
+    <div class="first"> <paper-card-fw><wp-cards post="130"></wp-cards></paper-card-fw></div>
+	 <div class="second"><paper-card-fw><wp-cards post="136"></wp-cards></paper-card-fw></div>
+	 <paper-card-fw>Über uns
+        <iron-ajax id="randomuser" auto url="http://api.randomuser.me/" handle-as="json" last-response="{{randuser}}" ></iron-ajax>
+        <rand-user data="{{randuser}}"></rand-user>
+	 </paper-card-fw>
     </div>
 	<div class="footer">
 	<p>Footer to come</p>
 	</div>	
   </div>
 
-<script> //for clearing the cache
+<script> 
+
 </script>
 
-<script>
-    </script>
 </body>
 
 
