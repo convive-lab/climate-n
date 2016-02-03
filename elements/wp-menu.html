@@ -9,28 +9,35 @@ description: get wp menu number 2
     :host {}
     .flex {
       @apply(--layout-horizontal);
-      @apply(--layout-center-justified);
+      @apply(--layout-center-left);
       @apply(--layout-wrap);
     } 
    .wp-menu > ::content a {
       text-transform: uppercase;
       text-decoration: none;
-      color: black;
-      font-family: GCFCamingo;
+      color: #574184;
+      font-family: Calibri !important;
+	  font-size: 250%;
       font-weight: /*500*/bold;
+	  padding: 5%;
     }
    .wp-menu > ::content a:hover {
       color: #4b92d8 !important;
     }
-    .image{
-     margin-top:10px;
-     margin-bottom:10px;
+    
+	.image{
+	 margin-top:5px;
+     margin-bottom:5px;
+	 padding-left: 15px;
+	 padding-right: 10%;
     }
+	
   </style>
   <template>
     <content>
-      <div class="container flex wp-menu">
-        <iron-image class="image"src="../data/logo.png" ></iron-image>
+       
+	  <div class="container flex wp-menu">
+       <iron-image class="image"src="../data/CN-logo-web.png" ></iron-image>
         <template is="dom-if" if={{!ajaxResponse}}>
           <iron-ajax id="menu-data" auto url="http://cn.convive.io/wp-json/wp-api-menus/v2/menus/{{menu}}" handle-as="json" last-response="{{ajaxResponse}}" ></iron-ajax>
         </template>
