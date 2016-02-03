@@ -21,27 +21,37 @@ properties:
 		 font: var(--paper-circle-font);
      overflow: hidden;
       margin: 60px 0;
+	  @apply (--layout-center);
+	  @apply (--layout-center-justified);
+	  @apply (--horizontal-align-center);
     }
     .circle-wrapper{
       @apply(--layout-horizontal);
       @apply(--layout-around-justified);
       @apply(--layout-wrap);
-    }
-    .text{
-      margin-top: 150px;
-      @apply(--layout-vertical);
-      @apply(--layout-center);
-      height: 100%;
-    }
 	  
+    }
+    iron-icon {
+      
+	  margin-left: 4px;
+	  margin-top: 60px;
+    }
+	.big{
+	 --iron-icon-height: 80px;
+    --iron-icon-width: 80px;	
+	}
+	  
+
 	  #a1, #a2 { cursor: pointer; }
        </style>
 	   	
+<link rel="import" href="../bower_components/iron-icons/editor-icons.html">
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
 
       <template>
         <div class="circle-wrapper">
-          <paper-material elevation="2" animated=true id="a1"><a href="calculator.htm"><div class="text"><paper-material>berechnen</paper-material></div></a></paper-material>
-          <paper-material elevation="2" animated=true id="a2"><div class="text"><a href="offsetting.html"><paper-material>kompensieren</paper-material></a></div></paper-material>
+          <a href="../calculator.htm"><paper-material elevation="2" animated=true id="a1"><iron-icon class="big" icon="icons:apps"></iron-icon></paper-material></a>
+          <a href="../offsetting.html"><paper-material elevation="2" animated=true id="a2"><iron-icon class="big" icon="editor:attach-money"></iron-icon></paper-material></a>
         </div>
       </template>
 
