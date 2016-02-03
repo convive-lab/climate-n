@@ -6,6 +6,7 @@
  	<meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
   <!-- Polymer -->
   <link rel="import" href="bower_components/polymer/polymer.html">
+	<link rel="import" href="/elements/randus.html">
   <!-- Polyfill Web Components support for older browsers -->
   <script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
 <link rel="import" href="elements.html">
@@ -13,7 +14,7 @@
 	<!--css-->
 	<link rel="stylesheet" type="text/css" href="css/main.css">
   <link href='https://fonts.googleapis.com/css?family=Advent+Pro' rel='stylesheet' type='text/css'>
-  
+
 </head>
 <body>
 
@@ -29,15 +30,18 @@
 	 <div class="second"><paper-card-fw><wp-cards post="136"></wp-cards></paper-card-fw></div>
 	 <paper-card-fw>Über uns
         <iron-ajax id="randomuser" auto url="http://api.randomuser.me/" handle-as="json" last-response="{{randuser}}" ></iron-ajax>
-        <rand-user data="{{randuser}}"></rand-user>
+				{{randuser.results.user}}
+				<template is="dom-repeat" items="{{randuser.results}}">
+				<div class="quote"><rand-user data="{{item}}">{{data.acf.quote}}</rand-user></div>
+				</template>
 	 </paper-card-fw>
     </div>
 	<div class="footer">
 	<p>Footer to come</p>
-	</div>	
+	</div>
   </div>
 
-<script> 
+<script>
 
 </script>
 
