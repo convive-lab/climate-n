@@ -1,7 +1,7 @@
-<!-- 
+<!--
 author:Aaron
-description: 
-properties: 
+description:
+properties:
 -->
 <link rel="import" href="randus.html">
 <dom-module id="offset-project">
@@ -32,7 +32,8 @@ properties:
 
           <content></content>
       </div>
-  
+      <paper-button id="offMore" class="right">Mehr Infos</paper-button>
+      <offset-popup data="{{data}}"></offset-popup>
     </template>
 </dom-module>
 
@@ -53,6 +54,13 @@ properties:
           }
         },
 
+        _addEventListn:function () {
+          var fin =document.querySelector('#offMore');
+          fin.addEventListener('click', function(e) {
+              var dia=document.querySelector('paper-dialog');
+              dia.open();
+          });
+        }
     });
 
 </script>

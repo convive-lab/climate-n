@@ -1,0 +1,39 @@
+
+<!--
+author:Martin
+description:
+-->
+<link rel="import" href="../bower_components/paper-dialog/paper-dialog.html">
+
+<dom-module id="offset-popup">
+  <style type="text/css">
+  .wp-content{
+  	margin: 0px;
+  }
+  paper-dialog{
+  	@apply(--layout-self-stretch)
+  }
+  </style>
+  <template>
+	  <paper-dialog modal=true>
+	  	<wp-cards post="63" titel=true></wp-cards>
+	  <div class="buttons">
+	    <paper-button dialog-confirm on-click="_eventListn">Accept</paper-button>
+	  </div>
+	</paper-dialog>
+  </template>
+  <script>
+    Polymer({
+      is: 'offset-popup',
+      properties:{
+        data:{
+          type:Object
+        }
+      },
+      _eventListn:function () {
+      	window.location.href = "offsetting.html";
+      }
+
+    });
+  </script>
+</dom-module>
