@@ -1,0 +1,35 @@
+<!-- 
+author:Aaron
+description: This for rendering jsonhtml to html
+-->
+<dom-module id="about-element">
+  <style>
+    :host {
+     
+    }
+  </style>
+  <template>
+      <div class="first"> <paper-card-fw><wp-cards post="130"></wp-cards></paper-card-fw></div>
+   <div class="second"><paper-card-fw><wp-cards post="136"></wp-cards></paper-card-fw></div>
+   <paper-card-fw>Über uns
+        <template is="dom-bind">
+            <iron-ajax id="randomuser" auto url="http://api.randomuser.me/" handle-as="json" last-response="{{randuser}}" ></iron-ajax>
+            <span>{{randuser.results.user}}</span>
+            <template is="dom-repeat" items="{{randuser.results}}">
+            <div class="quote"><rand-user data="{{item}}"></rand-user></div>
+            </template>
+        </template>
+   </paper-card-fw>
+  </template>
+</dom-module>
+
+<script>
+  (function () {
+    Polymer({
+      is: 'about-element',
+      properties: {
+
+      },
+    });
+  })();
+</script>

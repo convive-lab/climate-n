@@ -10,6 +10,7 @@
   <!-- Polyfill Web Components support for older browsers -->
   <script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
 <link rel="import" href="elements.html">
+<link rel="import" href="elements/about-element.html">
 
 	<!--css-->
 	<link rel="stylesheet" type="text/css" href="css/main.css">
@@ -26,15 +27,7 @@
       </div>
     </paper-header-panel>
     <div class="main-content">
-    <div class="first"> <paper-card-fw><wp-cards post="130"></wp-cards></paper-card-fw></div>
-	 <div class="second"><paper-card-fw><wp-cards post="136"></wp-cards></paper-card-fw></div>
-	 <paper-card-fw>Über uns
-        <iron-ajax id="randomuser" auto url="http://api.randomuser.me/" handle-as="json" last-response="{{randuser}}" ></iron-ajax>
-				{{randuser.results.user}}
-				<template is="dom-repeat" items="{{randuser.results}}">
-				<div class="quote"><rand-user data="{{item}}">{{data.acf.quote}}</rand-user></div>
-				</template>
-	 </paper-card-fw>
+    <about-element></about-element>
     </div>
 	<div class="footer">
 	<p>Footer to come</p>
