@@ -8,174 +8,48 @@
   <link rel="import" href="bower_components/polymer/polymer.html">
   <!-- Polyfill Web Components support for older browsers -->
   <script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
-
-<link href='https://fonts.googleapis.com/css?family=Advent+Pro' rel='stylesheet' type='text/css'>
-
-
   <link rel="import" href="elements.html">
+  <!--FONT-->
+  <link href='https://fonts.googleapis.com/css?family=Advent+Pro' rel='stylesheet' type='text/css'>
   <!--css-->
   <link rel="stylesheet" type="text/css" href="./css/main.css">
-  <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
-  <script></script>
-<!-- <script>https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/AjaxLoader.gif</script>-->
-	<!--Owl-Carousel-Slider importieren-->
-<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/grabbing.png"></script>-->
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.css"></link>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.js"></script>
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.css"></link>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js"></script>
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.theme.css"></link>
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.theme.min.css"></link>
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.transitions.css"></link>
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.transitions.min.css"></link>
-
-
 </head>
 <body class="fullbleed vertical layout">
- <!--  <div id="spinner">
-    <p><img src="data/logo.png"> <br/><h1>Loading...</h1></p></div> -->
+ <div id="spinner">
+    <p>
+      <img src="data/logo.png"> <br/>
+      <h1>Loading...</h1><br/>
+      Addblock Plus is breaking the page. Please disable.
+    </p>
+  </div>
   <div class="wrapper" unresolved>
     <paper-header-panel mode="seamed" class="header-panel">
       <div class="paper-header">
         <wp-menu menu="2" class></wp-menu>
       </div>
     </paper-header-panel>
-    <div class="main-content">
-    <div class="first"><paper-card-fw><wp-cards post="41"> title=false</wp-cards></paper-card-fw></div>
-		<div class="second"><paper-card-fw><wp-cards post="43" titel=true></wp-cards></paper-card-fw></div>
-		<div class="third"><paper-circle></paper-circle></div>
-		<div class="first"><paper-card-fw><wp-cards post="45" titel=true>
+
+      <iron-pages selected="home" attr-for-selected="path">
+        <div path="home" class="main-content"><start-page></start-page></div>
+        <div path="calculator"><calculator-el></calculator-el></div>
+        <div path="offsetting"><offsetting-el></offsetting-el></div>
+        <div path="project-details"><projekt-details></projekt-details></div>
+        <div path="about"><about-element></about-element></div>
+      </iron-pages>
       
-    </wp-cards></paper-card-fw></div>
-		<div class="first"><paper-card-fw><wp-cards post="47" titel=true></wp-card></paper-card-fw>
-		  <div id="owl-demo" class="owl-carousel owl-theme">
-			  
-		  
-			  <div class="item"><img src="https://pixabay.com/static/uploads/photo/2015/08/30/21/52/feet-914737_960_720.jpg" alt="feet"></img></div>
-			  <div class="item"><img src="https://pixabay.com/static/uploads/photo/2013/07/13/13/40/penguin-161319_960_720.png" alt="penguin"></img></div>
-			  <div class="item"><h1>4</h1></div>
-			  <div class="item"><h1>5</h1></div>
-			  <div class="item"><h1>6</h1></div>
-			  <div class="item"><h1>7</h1></div>
-			  <div class="item"><h1>8</h1></div>
-			  <div class="item"><h1>9</h1></div>
-			  <div class="item"><h1>10</h1></div>
-			</div>
     </div>
-	  <paper-card-fw><wp-cards post="51"></wp-cards></paper-card-fw>
-  </div>
 	<div class="footer">
 	<p>Footer to come</p>
 	</div>	
-  </div>
+</div>
 
-<script> //for clearing the cache
-  var test=Object;
-  $.getJSON( "http://cn.convive.io/wp-json/wp/v2/posts/?filter[orderby]=modified&filter[posts_per_page]=1", function( data ) { console.log(data[0].modified);
-      //das ist für die gecacheten wp-posts
-      if (localStorage.getItem("version")!=data[0].modified){
-        var sKey;
-        var string="wp"
-        for (var i=0; sKey = window.localStorage.key(i); i++) {
-          if(sKey.indexOf(string )> -1){
-            localStorage.removeItem(sKey);
-          }
-        }
 
-        localStorage.removeItem("questions");
-        localStorage.removeItem("menu");
-        localStorage.setItem("version",data[0].modified);
-        
-      }
-    });
-
+<script>
       window.addEventListener('WebComponentsReady', function() {
         document.querySelector('#spinner').classList.add('hidden');
       });
 </script>
 
-<script>
-    $(document).ready(function() {
-     var owl = $("#owl-demo");
-       owl.owlCarousel({
-		  
-		  // Most important owl features
-    items : 5,
-    itemsCustom : false,
-    itemsDesktop : [1199,4],
-    itemsDesktopSmall : [980,3],
-    itemsTablet: [768,2],
-    itemsTabletSmall: false,
-    itemsMobile : [479,1],
-    singleItem : false,
-    itemsScaleUp : false,
- 
-    //Basic Speeds
-    slideSpeed : 200,
-    paginationSpeed : 800,
-    rewindSpeed : 1000,
- 
-    //Autoplay
-    autoPlay : false,
-    stopOnHover : false,
- 
-    // Navigation
-    navigation : false,
-    navigationText : ["prev","next"],
-    rewindNav : true,
-    scrollPerPage : false,
- 
-    //Pagination
-    pagination : true,
-    paginationNumbers: false,
- 
-    // Responsive 
-    responsive: true,
-    responsiveRefreshRate : 200,
-    responsiveBaseWidth: window,
- 
-    // CSS Styles
-    baseClass : "owl-carousel",
-    theme : "owl-theme",
- 
-    //Lazy load
-    lazyLoad : false,
-    lazyFollow : true,
-    lazyEffect : "fade",
- 
-    //Auto height
-    autoHeight : false,
- 
-    //JSON 
-    jsonPath : false, 
-    jsonSuccess : false,
- 
-    //Mouse Events
-    dragBeforeAnimFinish : true,
-    mouseDrag : true,
-    touchDrag : true,
- 
-    //Transitions
-    transitionStyle : false,
- 
-    // Other
-    addClassActive : false,
- 
-    //Callbacks
-    beforeUpdate : false,
-    afterUpdate : false,
-    beforeInit: false, 
-    afterInit: false, 
-    beforeMove: false, 
-    afterMove: false,
-    afterAction: false,
-    startDragging : false,
-    afterLazyLoad : false
- 
-      });  
-    });
-
-    </script>
 </body>
 
 

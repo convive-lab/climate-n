@@ -1,0 +1,108 @@
+<dom-module id="start-page">
+  <style type="text/css" >
+    .paper-card-fw {
+      /*margin-bottom: 10%;*/
+    }
+
+    .first{
+      background-color: #DDDDDD;
+    }
+    .second{
+      color: white;
+      background-color: #304D7E;
+
+    }
+    .third{
+      background-color: #29304D;
+    }
+    .videoWrapper {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 */
+      padding-top: 25px;
+      height: 0;
+    }
+    .videoWrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .carousel{
+      width: 70%;
+      max-width: 500px;
+      margin:auto;
+      padding-bottom: 20px;
+      height: auto;
+    }
+    .carousel img{
+      width: 100%;
+      height: auto;
+    }
+    .video{
+      
+    }
+
+
+  </style>
+  <template>
+    <div class="first"><paper-card-fw><wp-cards post="41"> title=false</wp-cards></paper-card-fw></div>
+    <div class="second"><paper-card-fw><wp-cards post="43" titel=true></wp-cards></paper-card-fw></div>
+    <div class="third"><paper-circle></paper-circle></div>
+    <div class="video"><paper-card-fw><wp-cards post="45" titel=true></wp-cards></paper-card-fw></div>
+
+    <div class="first"><paper-card-fw><wp-cards post="47" titel=true></wp-card></paper-card-fw>
+      <div class="carousel">
+        <sc-swiper  a11y slidesPerView="2" navigationButtons loop  pagination paginationClickable>
+          <img src="http://lorempixel.com/640/480/transport">
+          <img src="http://lorempixel.com/640/480/city">
+          <img src="http://lorempixel.com/640/480/nature">
+          <img src="http://lorempixel.com/640/480/transport">
+          <img src="http://lorempixel.com/640/480/city">
+          <img src="http://lorempixel.com/640/480/nature">
+          <img src="http://lorempixel.com/640/480/transport">
+          <img src="http://lorempixel.com/640/480/city">
+          <img src="http://lorempixel.com/640/480/nature">          
+        </sc-swiper>     
+    </div>
+      
+    </div>
+    <paper-card-fw><wp-cards post="51"></wp-cards></paper-card-fw>
+  </div>
+  <iron-ajax 
+    auto 
+    id="version" 
+    url="http://cn.convive.io/wp-json/wp/v2/posts/?filter[orderby]=modified&filter[posts_per_page]=1" 
+    handle-as="json" 
+    last-response="{{version}}" 
+    on-response="checkVersion"
+  ></iron-ajax>
+
+</template>
+
+  <script>
+    Polymer({
+        is: 'start-page',
+        questionsResponse:{
+            type:Object
+        },
+        checkVersion:function(version){
+          console.log(version.srcElement.lastResponse[0].modified);
+           //das ist für die gecacheten wp-posts
+          if (localStorage.getItem("version")!=version.srcElement.lastResponse[0].modified){
+            var sKey;
+            var string="wp"
+            for (var i=0; sKey = window.localStorage.key(i); i++) {
+              if(sKey.indexOf(string )> -1){
+                localStorage.removeItem(sKey);
+              }
+            }
+            localStorage.removeItem("questions");
+            localStorage.removeItem("menu");
+            localStorage.setItem("version",version.srcElement.lastResponse[0].modified);
+          }
+        }
+    });
+
+  </script>
+</dom-module>
