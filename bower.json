@@ -42,6 +42,8 @@
     "basic-carousel": "^0.6.4",
     "sc-swiper": "*",
     "page": "page.js#^1.6.4",
-    "more-routing": "PolymerLabs/more-routing#^1.0.0"
+    "more-routing": "PolymerLabs/more-routing#^1.0.0",
+    "app-router": "^2.6.1",
+    "excess-router": "^0.9.12"
   }
 }
