@@ -25,8 +25,7 @@ background-color: #BDE3C8;
 			<paper-card heading="{{projektDetailsResponse.title.rendered}}">
 			<div class="card-content"><html-echo html="{{projektDetailsResponse.content.rendered}}"></html-echo></div>
 			</paper-card>
-      <post-popup id="pop" post="73"></post-popup>
-      <paper-button raised id="offMore" on-click="popup">Mehr Infos</paper-button>
+      <post-popup id="pop" post="146"></post-popup>
 </template>
 
   <script>
@@ -44,9 +43,11 @@ background-color: #BDE3C8;
           console.log(this.projekt);
            /* body... */
         },
-        popup:function () {
+        ready:function () {
+          setTimeout(function(){
               var dia=document.querySelector('#pop' + ' paper-dialog');
               dia.open();
+          }, 7000);
         }
 
     });
