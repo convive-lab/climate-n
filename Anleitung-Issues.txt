@@ -1,5 +1,10 @@
 #Issues
-* about.html und randuser geht nicht
+* about.html und randuser geht nicht PLZ help Aaron
+*-Offsetting-Seite: es sollten mehr Kasteln angezeigt werden bzw. ein Link zu weiteren Projekten
+*Greyout auf Offset Projektdetails
+*Pop up nach Greyout auf Offset Projektdetails mit Alert
+*Responsive-Menu
+
 
 Stylesheets sollten immer in die Datei reingeschrieben werden,
 
