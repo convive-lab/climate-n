@@ -1,16 +1,24 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <dom-module id="projekt-details">
   <style type="text/css" >
+paper-card {
+width: 95%;
+margin: auto;
+@apply (--layout-vertical);
+@apply (--layout-center);
+@apply (--layout-flex);
+background-color: #DDDDDD;
+}
 
 
   </style>
   <template id="projekt-details-wrapper">
           <template is="dom-if" if={{projekt}}>
-            <iron-ajax id="menu-data" auto url="http://cn.convive.io/wp-json/wp/v2/posts/{{projekt}}" handle-as="json" last-response="{{projektDetailsResponse}}" on-response="ready"></iron-ajax>
-          </template>
-          heyhey
-        <h2>{{projektDetailsResponse.title.rendered}}</h2>
-
+				<iron-ajax id="menu-data" auto url="http://cn.convive.io/wp-json/wp/v2/posts/{{projekt}}" handle-as="json" last-response="{{projektDetailsResponse}}" on-response="ready"></iron-ajax>
+		  </template>
+			<paper-card heading="{{projektDetailsResponse.title.rendered}}">
+			<div class="card-content"><html-echo html="{{projektDetailsResponse.content.rendered}}"></html-echo></div>
+			</paper-card>
 </template>
 
   <script>
