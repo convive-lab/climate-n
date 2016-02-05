@@ -25,6 +25,8 @@ background-color: #DDDDDD;
 			<paper-card heading="{{projektDetailsResponse.title.rendered}}">
 			<div class="card-content"><html-echo html="{{projektDetailsResponse.content.rendered}}"></html-echo></div>
 			</paper-card>
+      <post-popup id="pop" post="73"></post-popup>
+      <paper-button raised id="offMore" on-click="popup">Mehr Infos</paper-button>
 </template>
 
   <script>
@@ -41,8 +43,11 @@ background-color: #DDDDDD;
         ready:function () {
           console.log(this.projekt);
            /* body... */
+        },
+        popup:function () {
+              var dia=document.querySelector('#pop' + ' paper-dialog');
+              dia.open();
         }
-
 
     });
   </script>
