@@ -1,0 +1,29 @@
+<script src="../bower_components/page/page.js"></script>
+<script>
+  window.addEventListener('WebComponentsReady', function() {
+    var app=document.querySelector('#app');
+    // Routes
+    page('/', function() {
+      app.route = 'home';
+    });
+    page('/calculator',function(){
+      app.route ='calculator';
+    });
+    page('/offsetting',function(){
+      app.route ='offsetting';
+    });
+    page('/project/:number',function(){
+      app.route ='project';
+       app.params = data.params;
+    });
+    page('/about',function(){
+      app.route ='about';
+    });
+    // // 404
+    // page('*', function() {
+    //   app.$.toast.text = 'Can\'t find: ' + window.location.href  + '. Redirected you to Home Page';
+    //   app.$.toast.show();
+    //   page.redirect(app.baseUrl);
+    // });
+  });
+</script>

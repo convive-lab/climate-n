@@ -1,7 +1,4 @@
-<link rel="import" href="offset-project.html">
-<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
-<link rel="import" href="paper-box-thin.html">
-
+<link rel="import" href="../bower_components/polymer/polymer.html">
 <dom-module id="offsetting-el">
  <style is="custom-style">
     .flex-horizontal {
@@ -45,8 +42,6 @@
         computeFilter: function(string) {
           this.counter++;
           if (this.counter>=4)return false;
-        	console.log(this.counter);
-
           return true;
         },
 	});

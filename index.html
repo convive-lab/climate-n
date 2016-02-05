@@ -5,37 +5,41 @@
 	<meta charset="utf-8">
  	<meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
   <!-- Polymer -->
-  <link rel="import" href="bower_components/polymer/polymer.html">
-  <!-- Polyfill Web Components support for older browsers -->
   <script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
+
+  <!-- Polyfill Web Components support for older browsers -->
   <link rel="import" href="elements.html">
+
   <!--FONT-->
   <link href='https://fonts.googleapis.com/css?family=Advent+Pro' rel='stylesheet' type='text/css'>
   <!--css-->
   <link rel="stylesheet" type="text/css" href="./css/main.css">
 </head>
-<body class="fullbleed vertical layout">
- <div id="spinner">
+<body unresolved class="fullbleed vertical layout">
+
+<div id="spinner">
     <p>
       <img src="data/logo.png"> <br/>
       <h1>Loading...</h1><br/>
       Addblock Plus is breaking the page. Please disable.
     </p>
   </div>
-  <div class="wrapper" unresolved>
-    <paper-header-panel mode="seamed" class="header-panel">
-      <div class="paper-header">
-        <wp-menu menu="2" class></wp-menu>
-      </div>
-    </paper-header-panel>
 
-      <iron-pages selected="home" attr-for-selected="path">
-        <div path="home" class="main-content"><start-page></start-page></div>
-        <div path="calculator"><calculator-el></calculator-el></div>
-        <div path="offsetting"><offsetting-el></offsetting-el></div>
-        <div path="project-details"><projekt-details></projekt-details></div>
-        <div path="about"><about-element></about-element></div>
-      </iron-pages>
+ <template is="dom-bind" id="app">
+    <div class="wrapper" unresolved>
+      <paper-header-panel mode="seamed" class="header-panel">
+        <div class="paper-header">
+          <wp-menu menu="2" class></wp-menu>
+        </div>
+      </paper-header-panel>
+         
+        <iron-pages attr-for-selected="path" selected="home">
+          <section path="home" class="main-content"><start-page></start-page></section>
+          <!-- <section path="calculator"><calculator-el></calculator-el></section> -->
+          <section path="offsetting"><offsetting-el></offsetting-el></section>
+          <section path="project"><projekt-details></projekt-details></section>
+          <section path="about"><about-element></about-element></section>
+        </iron-pages>
       
     </div>
 	<div class="footer">
@@ -43,7 +47,7 @@
 	</div>	
 </div>
 
-
+</template>
 <script>
       window.addEventListener('WebComponentsReady', function() {
         document.querySelector('#spinner').classList.add('hidden');
