@@ -26,7 +26,7 @@ properties:
       <div class="offset-wrap">
         <h2>{{data.title.rendered}}</h2>
 		    <div class="image">
-           <a href="{{url}}#!/projekt/{{data.id}}"> <iron-image src="{{data.better_featured_image.media_details.sizes.medium.source_url}}" style="width:300px; height:170px" ></iron-image></a>
+           <a href="{{url}}/projekt/{{data.id}}"> <iron-image src="{{data.better_featured_image.media_details.sizes.medium.source_url}}" style="width:300px; height:170px" ></iron-image></a>
         </div>
         <p><html-echo html="{{data.excerpt.rendered}}"></html-echo> </p>
         <iron-localstorage name="ru{{data.id}}" value="{{randuser}}"></iron-localstorage>
