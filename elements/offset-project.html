@@ -26,7 +26,7 @@ properties:
       <div class="offset-wrap">
         <h2>{{data.title.rendered}}</h2>
 		    <div class="image">
-           <a href="/projekt/{{data.id}}"> <iron-image src="{{data.better_featured_image.media_details.sizes.medium.source_url}}" style="width:300px; height:170px" ></iron-image></a>
+           <a href="/{{data.id}}"> <iron-image src="{{data.better_featured_image.media_details.sizes.medium.source_url}}" style="width:300px; height:170px" ></iron-image></a>
         </div>
         <p><html-echo html="{{data.excerpt.rendered}}"></html-echo> </p>
         <iron-localstorage name="ru{{data.id}}" value="{{randuser}}"></iron-localstorage>
@@ -48,7 +48,7 @@ properties:
         is: "offset-project",
         selected:String,
         randuser:Object,
-
+        url:String
        properties:{
           position:{
             type:String
@@ -62,6 +62,9 @@ properties:
         popup:function () {
               var dia=document.querySelector('#off' + this.data.id + ' paper-dialog');
               dia.open();
+        }
+        ready:function () {
+           this.url=app.baseUrl; 
         }
     });
 
