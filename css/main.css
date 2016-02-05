@@ -22,7 +22,7 @@ body{
 }
 .main-content{
 	font-size: 140%;
-	background-color: #D3D0D7;
+	/*background-color: #D3D0D7;*/
     padding-top: 20px;
     @apply(--layout-center-justified);
     text-align: center;
