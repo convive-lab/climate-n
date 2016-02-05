@@ -76,7 +76,7 @@
         }
   
   </style>
-  <template class="cal-wrapper">
+  <template class="cal-wrapper" id="calculator">
 
     <div class="cal-container">
             <div class="left-container">
@@ -84,7 +84,7 @@
                     <iron-ajax id="menu-data" auto url="http://cn.convive.io/wp-json/wp/v2/posts/?filter[cat]=3" handle-as="json" last-response="{{questionsResponse}}" ></iron-ajax>
                 </template>
                 <iron-localstorage name="questions" value="{{questionsResponse}}"></iron-localstorage>
-                <iron-pages selected="0">
+                <iron-pages id="cal-question-pages" selected="0">
                     <selection>
                         <div class="informationstafel">
                             <h1>Los Geht's</h1>
@@ -148,6 +148,7 @@
             type:Object        
         },
         getValues(){
+
             var cal = document.querySelector('calculator-el');
             var quest = document.querySelectorAll('cal-question');
             for (var i=0;i<cal.questionsResponse.length;i++){
@@ -171,7 +172,7 @@
                 console.log('here I am ');
                 var cal = document.querySelector('calculator-el');
                 var next =document.querySelectorAll('#btnnext'); 
-                var pages = document.querySelector('iron-pages');
+                var pages = document.querySelector('#cal-question-pages');
                 //var radiogroups=document.querySelectorAll('paper-radio-group');
                 cal.evented=true;
                 pages.selectNext();

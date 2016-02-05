@@ -1,7 +1,9 @@
 <script src="../bower_components/page/page.js"></script>
 <script>
   window.addEventListener('WebComponentsReady', function() {
-    var app=document.querySelector('#app');
+    if (window.location.port === '') {  // if production
+      page.base(app.baseUrl.replace(/\/$/, ''));
+    }
     // Routes
     page('/', function() {
       app.route = 'home';
@@ -12,9 +14,11 @@
     page('/offsetting',function(){
       app.route ='offsetting';
     });
-    page('/project/:number',function(){
-      app.route ='project';
-       app.params = data.params;
+    page('/projekt/:number',function(data){
+
+      app.route ='projekt';
+       app.projekt = data.params;
+       console.log(data.params);
     });
     page('/about',function(){
       app.route ='about';
@@ -25,5 +29,8 @@
     //   app.$.toast.show();
     //   page.redirect(app.baseUrl);
     // });
+    page({
+      hashbang: true
+    });
   });
 </script>

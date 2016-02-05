@@ -4,21 +4,27 @@
 
 
   </style>
-  <template class="offsetting-wrapper">
-
-            <iron-ajax id="menu-data" auto url="http://cn.convive.io/wp-json/wp/v2/posts/71" handle-as="json" last-response="{{questionsResponse}}" ></iron-ajax>
-        
-
-        <h2>{{questionsResponse.title.rendered}}</h2>
+  <template id="projekt-details-wrapper">
+          <template is="dom-if" if={{projekt}}>
+            <iron-ajax id="menu-data" auto url="http://cn.convive.io/wp-json/wp/v2/posts/{{projekt.number}}" handle-as="json" last-response="{{projektDetailsResponse}}" ></iron-ajax>
+          </template>
+          heyhey
+        <h2>{{projektDetailsResponse.title.rendered}}</h2>
 
 </template>
 
   <script>
     Polymer({
         is: 'projekt-details',
-        questionsResponse:{
+        properties:{
+          projekt:{
+            type:String,
+          }
+        },
+        projektDetailsResponse:{
             type:Object
         },
+
 
     });
   </script>

@@ -33,11 +33,11 @@
         </div>
       </paper-header-panel>
          
-        <iron-pages attr-for-selected="path" selected="home">
+        <iron-pages attr-for-selected="path" selected="{{route}}">
           <section path="home" class="main-content"><start-page></start-page></section>
-          <!-- <section path="calculator"><calculator-el></calculator-el></section> -->
+          <section path="calculator" class="cal-content"><calculator-el></calculator-el></section>
           <section path="offsetting"><offsetting-el></offsetting-el></section>
-          <section path="project"><projekt-details></projekt-details></section>
+          <section path="projekt"><projekt-details projekt="{{projekt}}"></projekt-details></section>
           <section path="about"><about-element></about-element></section>
         </iron-pages>
       
@@ -49,9 +49,21 @@
 
 </template>
 <script>
+(function(document) {
+  'use strict';
+  var app = document.querySelector('#app');
+
+  // Sets app default base URL
+  app.baseUrl = '/';
+  if (window.location.port === '') {  // if production
+    // Uncomment app.baseURL below and
+    // set app.baseURL to '/your-pathname/' if running from folder in production
+    // app.baseUrl = '/polymer-starter-kit/';
+  }
       window.addEventListener('WebComponentsReady', function() {
         document.querySelector('#spinner').classList.add('hidden');
       });
+    })(document);
 </script>
 
 </body>
