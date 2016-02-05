@@ -1,21 +1,21 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <dom-module id="projekt-details">
   <style type="text/css" >
-paper-card {
-width: 95%;
-margin: auto;
-@apply (--layout-vertical);
-@apply (--layout-center);
-@apply (--layout-flex);
-background-color: #BDE3C8;
-}
+    paper-card {
+    width: 95%;
+    margin: auto;
+    @apply (--layout-vertical);
+    @apply (--layout-center);
+    @apply (--layout-flex);
+    background-color: #BDE3C8;
+    }
 
-  .fade {
-   opacity: 1;
-   transition: opacity .25s ease-in-out;
-   -moz-transition: opacity .25s ease-in-out;
-   -webkit-transition: opacity .25s ease-in-out;
-   }
+    .fade {
+     opacity: 1;
+     transition: opacity .25s ease-in-out;
+     -moz-transition: opacity .25s ease-in-out;
+     -webkit-transition: opacity .25s ease-in-out;
+     }
 
   </style>
   <template id="projekt-details-wrapper">
@@ -43,11 +43,15 @@ background-color: #BDE3C8;
           console.log(this.projekt);
            /* body... */
         },
-        ready:function () {
-          setTimeout(function(){
-              var dia=document.querySelector('#pop' + ' paper-dialog');
-              dia.open();
-          }, 7000);
+        ready:function () {/*
+          var observer = new ObjectObserver(app.route);
+          observer.open(function(changed){
+            if (app.route == "projekt")
+              setTimeout(function(){
+                  var dia=document.querySelector('#pop' + ' paper-dialog');
+                  dia.open();
+              }, 7000);
+          });*/
         }
 
     });
