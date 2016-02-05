@@ -1,0 +1,39 @@
+
+<!--
+author:Martin
+description:
+-->
+  <link rel="import" href="../bower_components/polymer/polymer.html">
+
+<dom-module id="post-popup">
+  <style type="text/css">
+  .wp-content{
+  	margin: 0px;
+  }
+  paper-dialog{
+  	@apply(--layout-self-stretch)
+  }
+  </style>
+  <template>
+	  <paper-dialog modal=true>
+      <wp-cards post=[[post]]></wp-cards>
+	  <div class="buttons">
+	    <paper-button dialog-confirm on-click="_eventListn">Kauf Dich Frei!</paper-button>
+	  </div>
+	</paper-dialog>
+  </template>
+  <script>
+    Polymer({
+      is: 'post-popup',
+      properties:{
+        post:{
+          type:String
+        }
+      },
+      _eventListn:function () {
+      	window.location.href = "/";
+      }
+
+    });
+  </script>
+</dom-module>

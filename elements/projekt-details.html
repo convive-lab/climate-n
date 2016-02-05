@@ -10,6 +10,12 @@ margin: auto;
 background-color: #DDDDDD;
 }
 
+  .fade {
+   opacity: 1;
+   transition: opacity .25s ease-in-out;
+   -moz-transition: opacity .25s ease-in-out;
+   -webkit-transition: opacity .25s ease-in-out;
+   }
 
   </style>
   <template id="projekt-details-wrapper">
@@ -34,7 +40,7 @@ background-color: #DDDDDD;
         },
         ready:function () {
           console.log(this.projekt);
-           /* body... */ 
+           /* body... */
         }
 
 
