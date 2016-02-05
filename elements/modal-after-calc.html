@@ -1,21 +1,23 @@
 
-<!-- 
+<!--
 author:Aaron
-description: 
+description:
 -->
   <link rel="import" href="../bower_components/polymer/polymer.html">
 
 <dom-module id="modal-after-calc">
   <style type="text/css">
-  .wp-content{
-  	margin: 0px;
+  #modal-after-calc{
+    padding:30px;
+    border-radius: 30px;
   }
+
   paper-dialog{
   	@apply(--layout-self-stretch)
   }
   </style>
   <template>
-	  <paper-dialog modal=true>
+	  <paper-dialog modal=true id="modal-after-calc">
 	  	<iron-localstorage name="finalValue" value="{{value}}"></iron-localstorage>
 	  	<wp-cards post="63" titel=true></wp-cards>
 	  	<p>
@@ -30,12 +32,12 @@ description:
     Polymer({
       is: 'modal-after-calc',
       properties:{
-      	
+
       },
       _eventListn:function () {
-      	window.location.href = "offsetting.html";
+      	window.location.href = "/#/offsetting";
       }
-      
+
     });
   </script>
 </dom-module>

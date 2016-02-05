@@ -20,23 +20,20 @@ properties:
        @apply(--layout-horizontal);
        @apply(‑‑layout-self-stretch);
      }
+    .offset-button{
+      background-color: #B0BDCE;
+    }
 
     </style>
     <template>
       <div class="offset-wrap">
-        <h2>{{data.title.rendered}}</h2>
+        <h1>{{data.title.rendered}}</h1>
 		    <div class="image">
-           <a href="{{url}}/projekt/{{data.id}}"> <iron-image src="{{data.better_featured_image.media_details.sizes.medium.source_url}}" style="width:300px; height:170px" ></iron-image></a>
+           <a href="{{url}}/projekt/{{data.id}}"> <img src="{{data.better_featured_image.media_details.sizes.medium.source_url}}" style="width:300px; height:170px" ></img></a>
         </div>
         <p><html-echo html="{{data.excerpt.rendered}}"></html-echo> </p>
-        <iron-localstorage name="ru{{data.id}}" value="{{randuser}}"></iron-localstorage>
-        <iron-ajax id="randomuser" auto url="http://api.randomuser.me/" handle-as="json" last-response="{{randuser}}" ></iron-ajax>
-        {{randuser.results.user}}
-        <template is="dom-repeat" items="{{randuser.results}}">
-        <div class="quote"><rand-user data="{{item}}">{{data.acf.quote}}</rand-user></div>
-        </template>
           <content></content>
-        <paper-button raised id="offMore" on-click="popup">Mehr Infos</paper-button>
+        <paper-button class="offset-button" raised id="offMore" on-click="popup">Mehr Infos</paper-button>
         <offset-popup id="off{{data.id}}" data="{{data}}"></offset-popup>
       </div>
     </template>
@@ -64,7 +61,7 @@ properties:
               dia.open();
         },
         ready:function () {
-           this.url=app.baseUrl; 
+           this.url=app.baseUrl;
         }
     });
 

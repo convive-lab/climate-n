@@ -1,8 +1,19 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <dom-module id="offsetting-el">
- <style is="custom-style">
-    .flex-horizontal {
+ <style>
+  .offsetting-wrapper{
+    background-color: #B0BDCE;
+    padding-bottom:40px;
+  }
+  .info-box{
+    color: white;
+    background-color: #304D7E;
+  }
+  .flex-horizontal {
         @apply(--layout-horizontal);
+        @apply(--layout-center);
+        @apply(--layout-center-justified);
+        @apply(--layout-wrap);
 		max-width: 100%;
 	}
 	.paper-box-wrapper {
@@ -14,8 +25,9 @@
  </style>
 
   </style>
- <template class="offsetting-wrapper">
-    <div class="second"><paper-card-fw><wp-cards post="75" titel=true></wp-cards></paper-card-fw></div>
+ <template>
+  <div  class="offsetting-wrapper">
+    <div class="info-box"><paper-card-fw><wp-cards post="75" titel=true></wp-cards></paper-card-fw></div>
 	<iron-ajax id="offset-data" auto url="http://cn.convive.io/wp-json/wp/v2/posts/?filter[cat]=11&filter[orderby]=rand&filter[posts_per_page]=3" handle-as="json" last-response="{{offsetResponse}}" ></iron-ajax>
 	<div class="flex-horizontal">
 		<template is="dom-repeat" items="{{offsetResponse}}" filter="computeFilter">
@@ -27,7 +39,7 @@
 			</div>
 		</template>
 	</div>
-							
+</div>
 
 </template>
 
@@ -35,7 +47,7 @@
     Polymer({
         is: 'offsetting-el',
         questionsResponse:{
-            type:Object        
+            type:Object
         },
         counter:0,
 		shuffeld:false,
@@ -45,7 +57,7 @@
           return true;
         },
 	});
-	
-    
+
+
   </script>
 </dom-module>
