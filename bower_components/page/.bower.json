@@ -36,6 +36,5 @@
   },
   "_source": "git://github.com/visionmedia/page.js.git",
   "_target": "^1.6.4",
-  "_originalSource": "page.js",
-  "_direct": true
+  "_originalSource": "page.js"
 }

@@ -38,6 +38,5 @@
   },
   "_source": "git://github.com/safetychanger/sc-swiper.git",
   "_target": "*",
-  "_originalSource": "sc-swiper",
-  "_direct": true
+  "_originalSource": "sc-swiper"
 }

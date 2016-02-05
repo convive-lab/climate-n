@@ -44,6 +44,5 @@
   },
   "_source": "git://github.com/PolymerElements/paper-card.git",
   "_target": "~1.0.9",
-  "_originalSource": "PolymerElements/paper-card",
-  "_direct": true
+  "_originalSource": "PolymerElements/paper-card"
 }

@@ -26,8 +26,8 @@
   </div>
 
  <template is="dom-bind" id="app">
-    <excess-route route="/:main" main="{{route}}"></excess-route>
-      <excess-route route="/(.*)" redirect-to="/home" activation-modifiers="x"></excess-route>
+  <excess-route route="/:main/:num?" main="{{route}}" num="{{projekt}}"></excess-route>
+    <excess-route route="/(.*)" redirect-to="/home" activation-modifiers="x"></excess-route>
     <div class="wrapper" unresolved>
       <paper-header-panel mode="seamed" class="header-panel">
         <div class="paper-header">
@@ -53,7 +53,7 @@
 (function(document) {
   'use strict';
   var app = document.querySelector('#app');
-
+  localStorage.clear();
   // Sets app default base URL
   app.baseUrl = '/';
   if (window.location.port === '') {  // if production

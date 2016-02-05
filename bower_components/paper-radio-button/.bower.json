@@ -43,6 +43,5 @@
   },
   "_source": "git://github.com/PolymerElements/paper-radio-button.git",
   "_target": "~1.0.12",
-  "_originalSource": "PolymerElements/paper-radio-button",
-  "_direct": true
+  "_originalSource": "PolymerElements/paper-radio-button"
 }

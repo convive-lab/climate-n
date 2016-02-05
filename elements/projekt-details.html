@@ -6,7 +6,7 @@
   </style>
   <template id="projekt-details-wrapper">
           <template is="dom-if" if={{projekt}}>
-            <iron-ajax id="menu-data" auto url="http://cn.convive.io/wp-json/wp/v2/posts/{{projekt.number}}" handle-as="json" last-response="{{projektDetailsResponse}}" ></iron-ajax>
+            <iron-ajax id="menu-data" auto url="http://cn.convive.io/wp-json/wp/v2/posts/{{projekt}}" handle-as="json" last-response="{{projektDetailsResponse}}" on-response="ready"></iron-ajax>
           </template>
           heyhey
         <h2>{{projektDetailsResponse.title.rendered}}</h2>
@@ -24,6 +24,10 @@
         projektDetailsResponse:{
             type:Object
         },
+        ready:function () {
+          console.log(this.projekt);
+           /* body... */ 
+        }
 
 
     });

@@ -38,6 +38,5 @@
   },
   "_source": "git://github.com/PolymerElements/paper-header-panel.git",
   "_target": "~1.1.2",
-  "_originalSource": "PolymerElements/paper-header-panel",
-  "_direct": true
+  "_originalSource": "PolymerElements/paper-header-panel"
 }
