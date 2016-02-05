@@ -12,6 +12,7 @@ properties:
       @apply(--layout-vertical);
     }
 
+
    .quote{
     @apply(--layout-flex);
    }
@@ -25,16 +26,15 @@ properties:
     }
 
     </style>
-    <template>
+    <template on-click="onTap">
       <div class="offset-wrap">
         <h1>{{data.title.rendered}}</h1>
 		    <div class="image">
-           <a href="#/projekt/{{data.id}}"> <img src="{{data.better_featured_image.media_details.sizes.medium.source_url}}" style="width:300px; height:170px" ></img></a>
+            <img src="{{data.better_featured_image.media_details.sizes.medium.source_url}}" style="width:300px; height:170px" ></img>
         </div>
         <p><html-echo html="{{data.excerpt.rendered}}"></html-echo> </p>
           <content></content>
-        <paper-button class="offset-button" raised id="offMore" on-click="popup">Mehr Infos</paper-button>
-        <offset-popup id="off{{data.id}}" data="{{data}}"></offset-popup>
+        <paper-button class="offset-button" raised id="offMore">Mehr Infos</paper-button>
       </div>
     </template>
 </dom-module>
@@ -44,8 +44,6 @@ properties:
     Polymer({
         is: "offset-project",
         selected:String,
-        randuser:Object,
-        url:String,
        properties:{
           position:{
             type:String
@@ -55,14 +53,15 @@ properties:
             type:Object
           }
         },
+         listeners: {
+           'tap':'onTap'
+         },
 
-        popup:function () {
-              var dia=document.querySelector('#off' + this.data.id + ' paper-dialog');
-              dia.open();
+        onTap:function () {
+              window.location.href ='#/projekt/'+this.data.id;
+
         },
-        ready:function () {
-           this.url=app.baseUrl;
-        }
+
     });
 
 </script>
