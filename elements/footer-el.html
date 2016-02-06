@@ -6,11 +6,38 @@ description: Footer
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <dom-module id="footer-el">
   <style>
-    :host {}
+    :host {
+     
+      @apply(--layout-wrap);
+      margin: auto;
+    }
     .flex {
       @apply(--layout-horizontal);
-      @apply(--layout-center-left);
       @apply(--layout-wrap);
+      @apply(--layout-flex);
+       @apply(--layout-center-justified);
+      background-color: rgb(74, 74, 74);
+      color: white;
+      font-size: 110%;
+      margin: auto;
+    }
+    .footer ul{
+      list-style: none;
+    }
+    .footer a{
+      color: white;
+    }
+    .footer a:hover{
+      color: #BCB3CE;
+    }
+    .underline {
+      text-decoration: underline;
+    }
+    .uppercase{
+       text-transform: uppercase;
+    }
+    ul.social-media-buttons li{
+       display:inline;
     }
 
   </style>
@@ -18,17 +45,31 @@ description: Footer
     <content>
 	  <div class="container flex footer">
 
-			<ul>
-				<li>Climate Neutral</li>
-				<li>Himmelfahrtsstraße</li>
-				<li>Wolkendorf</li>
+			<ul  class="uppercase">
+				<li><a href="#">Impressum</a></li>
+				<li></li>
+				<li></li>
 			</ul>
 
 			<ul>
 				<li>Climate Neutral</li>
-				<li>Himmelfahrtsstraße</li>
-				<li>Wolkendorf</li>
+				<li>Himmelfahrtsstraße 10</li>
+				<li>1030 Wolkendorf</li>
 			</ul>
+      <ul>
+        <li> <span class="underline">Contact us at </span> <br/>
+              climate&commat;convive.io
+        </li>
+      </ul>
+      <ul >
+        <li class="underline ">Get social</li>
+        <ul class="social-media-buttons">
+        <li><a href="#"><social-media-icons icon="facebook" color="white"></social-media-icons></a></li>
+        <li><a href="#"><social-media-icons icon="twitter" color="white"></social-media-icons></a></li>
+        <li><a href="#"><social-media-icons icon="googleplus" color="white"></social-media-icons></a></li>
+        </ul>
+
+      </ul>
 
 
     </content>

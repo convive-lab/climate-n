@@ -40,6 +40,7 @@
     "google-youtube": "GoogleWebComponents/google-youtube#^1.1.3",
     "sc-swiper": "*",
     "page": "page.js#^1.6.4",
-    "excess-router": "^0.9.12"
+    "excess-router": "^0.9.12",
+    "social-media-icons": "^1.0.3"
   }
 }
