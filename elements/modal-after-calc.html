@@ -10,18 +10,38 @@ description:
   #modal-after-calc{
     padding:30px;
     border-radius: 30px;
+    text-align: center;
+    font-size: 130%;
   }
 
   paper-dialog{
   	@apply(--layout-self-stretch)
   }
+  #modal-after-calc span{
+    font-size: 140%;
+  }
+  #modal-after-calc paper-material{
+      color: white;
+    background-color: #304D7E;
+    padding:20px;
+    font-size: 100%;
+  }
+  #num{
+    color: #304D7E;
+
+  }
   </style>
   <template>
 	  <paper-dialog modal=true id="modal-after-calc">
+        <h1> <span><span id="num">{{value}}</span> t co2</span> </h1>
+        <h1>jetzt ausgleichen</h1>
 	  	<iron-localstorage name="finalValue" value="{{value}}"></iron-localstorage>
+      <paper-material elevation="1">
+        
 	  	<wp-cards post="63" titel=true></wp-cards>
+      </paper-material>
 	  	<p>
-	  	<h2>{{value}} t co2 ausgleichen</h2>
+	  	
 	  	</p>
 	  <div class="buttons">
 	    <paper-button dialog-confirm on-click="_eventListn">Accept</paper-button>
