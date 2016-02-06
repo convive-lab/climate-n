@@ -30,11 +30,16 @@ description:
     color: #304D7E;
 
   }
+  #aufforderung{
+    color: #F0B133;
+    margin-top: 10px;
+  }
   </style>
   <template>
 	  <paper-dialog modal=true id="modal-after-calc">
+        <span>Sie produzieren</span>
         <h1> <span><span id="num">{{value}}</span> t co2</span> </h1>
-        <h1>jetzt ausgleichen</h1>
+        <h1><span id="aufforderung">Jetzt Klimasünden ausgleichen</span></h1>
 	  	<iron-localstorage name="finalValue" value="{{value}}"></iron-localstorage>
       <paper-material elevation="1">
         

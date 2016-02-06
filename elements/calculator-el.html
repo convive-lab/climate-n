@@ -18,9 +18,11 @@
         }
         #wrapper-card{
             @apply(--layout-horizontal);
+            @apply(--layout-center-justified);
             background-color: white;
             padding: 20px;
             margin: 20px;
+            @apply(--layout-wrap);
         }
         .informationstafel{
             @apply(--layout-self-center);
@@ -52,8 +54,10 @@
             @apply(--layout-center);
             @apply(--layout-center-justified);
             @apply(‑‑self-stretch);
-
-
+        }
+        .informationstafel{
+            text-align: center;
+            font-size: 120%;
         }
         .right-container{
             @apply(--layout-self-end);
@@ -96,60 +100,75 @@
 
     <div class="cal-container">
         <paper-material id="wrapper-card" elevation="1">
-            <div class="left-container">
-                <template is="dom-if" if={{!questionsResponse}}>
-                    <iron-ajax id="menu-data" auto url="http://cn.convive.io/wp-json/wp/v2/posts/?filter[cat]=3" handle-as="json" last-response="{{questionsResponse}}" ></iron-ajax>
-                </template>
-                <iron-localstorage name="questions" value="{{questionsResponse}}"></iron-localstorage>
-                <iron-pages id="cal-question-pages" selected="0">
-                    <selection>
-                        <div class="informationstafel">
-                            <h1>Los Geht's</h1>
-                            <div class="right">
-                                <paper-button id="btnnext" on-click="_addEventListn">Starten</paper-button>
-                            </div>
+<!--             <iron-pages id="cal-wrap" selected="0">
+                <selection> -->
+<!--                     <div class="informationstafel">
+                        <h1>CO2 Emissionsrechner</h1>
+                        <wp-cards post="152"></wp-cards>
+                        <div class="right">
+                            <paper-button id="btnstart" on-click="_addEventListn" raised>Starten</paper-button>
                         </div>
-                    </selection>
-                    <template is="dom-repeat" items="{{questionsResponse}}">
-                        <section>
-                            <div class="question-container">
-                                <cal-question data="[[item]]" class="left wp-questions">
-                                    <div class="buttons">
-                                        <div class="leftbtn"><paper-button id="btnback">zurück</paper-button></div>
-                                        <div class="rightbtn"><paper-button id="btnnext" >weiter</paper-button></div>
-
+                    </div> -->
+<!--                 </selection>
+                <selection> -->
+                    <div class="left-container">
+                        <template is="dom-if" if={{!questionsResponse}}>
+                            <iron-ajax id="menu-data" auto url="http://cn.convive.io/wp-json/wp/v2/posts/?filter[cat]=3" handle-as="json" last-response="{{questionsResponse}}" ></iron-ajax>
+                        </template>
+                            <iron-localstorage name="questions" value="{{questionsResponse}}"></iron-localstorage>
+                            <iron-pages id="cal-question-pages" selected="0">
+                                <selection>
+                                    <div class="informationstafel">
+                                        <h1>CO2 Emissionsrechner</h1>
+                                        <wp-cards post="152"></wp-cards>
+                                        <div class="right">
+                                            <paper-button id="btnnext" on-click="_addEventListn" raised>Starten</paper-button>
+                                        </div>
                                     </div>
-                                </cal-question>
-                            </div>
-                        </section>
-                    </template>
-                    <selection>
-                        <div class="informationstafel">
-                            <h1>Dankeschön</h1>
-                            <paper-button id="btnback">zurück</paper-button>
-                            <paper-button id="btnfin" class="right">Ergebniss</paper-button>
-                        </div>
-                    </selection>
-                </iron-pages>
-            </div>
+                                </selection>
+                                <template is="dom-repeat" items="{{questionsResponse}}">
+                                    <section>
+                                        <div class="question-container">
+                                            <cal-question data="[[item]]" class="left wp-questions">
+                                                <div class="buttons">
+                                                    <div class="leftbtn"><paper-button id="btnback" raised>zurück</paper-button></div>
+                                                    <div class="rightbtn"><paper-button id="btnnext"  raised>weiter</paper-button></div>
 
-            <div class="right-container">
-                <paper-card elevation="0" elevation="1" animated-shadow="false">
-                    <div class="keine-anzeige">
-                        <div class="placeholder"></div>
-                        <span class="ka">keine Anzeige</span>
+                                                </div>
+                                            </cal-question>
+                                        </div>
+                                    </section>
+                                </template>
+                                <selection>
+                                    <div class="informationstafel">
+                                        <h1>Dankeschön</h1>
+                                        <p>
+                                            Jetz dass Gesamtergebniss brechnen
+                                        </p>
+                                        <paper-button id="btnback" raised>zurück</paper-button>
+                                        <paper-button id="btnfin" class="right" raised>Ergebniss</paper-button>
+                                    </div>
+                                </selection>
+                             </iron-pages>
                     </div>
-
-                        <paper-material elevation="2" class="co2Value">
-                           <span>{{finalValue}}</span> <div >t  co² pro Jahr</div>
-                        </paper-material>
-                        <iron-image src="../data/fever.png" class="vertical" ></iron-image>
-
-                </paper-card>
-            </div>
-            </div>
+                    <div class="right-container">
+                        <paper-card elevation="0" elevation="1" animated-shadow="false">
+                            <div class="keine-anzeige">
+                                <div class="placeholder"></div>
+                                <span class="ka">keine Anzeige</span>
+                            </div>
+                            <paper-material elevation="2" class="co2Value">
+                                <span>{{finalValue}}</span> <div >t  co² pro Jahr</div>
+                            </paper-material>
+                            <iron-image src="../data/fever.png" class="vertical" ></iron-image>
+                        </paper-card>
+                    </div>
+<!--                 </selection>
+            </iron-pages> -->
+        </paper-material>
     </div>
-          </paper-material>
+        
+    
     <modal-after-calc value={{finalValue}}></modal-after-calc>
     </template>
 
@@ -193,6 +212,8 @@
                 var pages = document.querySelector('#cal-question-pages');
                 //var radiogroups=document.querySelectorAll('paper-radio-group');
                 cal.evented=true;
+                // var pages2 = document.querySelector('#cal-wrap');
+                // pages2.selectNext();
                 pages.selectNext();
                 for (i = 0; i < next.length; ++i) {
                     next[i].addEventListener('click', function(e) {
