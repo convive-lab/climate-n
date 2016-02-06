@@ -1,13 +1,17 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <dom-module id="projekt-details">
   <style type="text/css" >
+  .projekt-details-wrap{
+    font-size: 130%
+  }
     paper-card {
     width: 95%;
     margin: auto;
-    @apply (--layout-vertical);
+    @apply (--layout-horizontal);
     @apply (--layout-center);
     @apply (--layout-flex);
     background-color: #BDE3C8;
+    margin-bottom: 30px;
     }
 
     .fade {
@@ -19,13 +23,19 @@
 
   </style>
   <template id="projekt-details-wrapper">
+    <div class="projekt-details-wrap">
           <template is="dom-if" if={{projekt}}>
 				<iron-ajax id="menu-data" auto url="http://cn.convive.io/wp-json/wp/v2/posts/{{projekt}}" handle-as="json" last-response="{{projektDetailsResponse}}" on-response="ready"></iron-ajax>
 		  </template>
-			<paper-card heading="{{projektDetailsResponse.title.rendered}}">
-			<div class="card-content"><html-echo html="{{projektDetailsResponse.content.rendered}}"></html-echo></div>
+			<paper-card>
+
+
+			<div class="card-content">
+        <h1>{{projektDetailsResponse.title.rendered}}</h1>
+        <html-echo html="{{projektDetailsResponse.content.rendered}}"></html-echo></div>
 			</paper-card>
       <post-popup id="pop" post="146"></post-popup>
+    </div>
 </template>
 
   <script>
