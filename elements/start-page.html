@@ -21,14 +21,13 @@
       padding-bottom: 56.25%; /* 16:9 */
       padding-top: 25px;
       height: 0;
+      @apply(--layout-self-end);
+      @apply(--layout-vertical);
+      @apply(--layout-center);
+      @apply(--layout-center-justified);
+      text-align: center;
     }
-    .videoWrapper iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-    }
+
     .carousel{
       width: 70%;
       max-width: 500px;
@@ -41,7 +40,7 @@
       height: auto;
     }
     .video{
-      
+
     }
 
 
@@ -63,19 +62,19 @@
           <img src="http://lorempixel.com/640/480/nature">
           <img src="http://lorempixel.com/640/480/transport">
           <img src="http://lorempixel.com/640/480/city">
-          <img src="http://lorempixel.com/640/480/nature">          
-        </sc-swiper>     
+          <img src="http://lorempixel.com/640/480/nature">
+        </sc-swiper>
     </div>
-      
+
     </div>
     <paper-card-fw><wp-cards post="51"></wp-cards></paper-card-fw>
   </div>
-  <iron-ajax 
-    auto 
-    id="version" 
-    url="http://cn.convive.io/wp-json/wp/v2/posts/?filter[orderby]=modified&filter[posts_per_page]=1" 
-    handle-as="json" 
-    last-response="{{version}}" 
+  <iron-ajax
+    auto
+    id="version"
+    url="http://cn.convive.io/wp-json/wp/v2/posts/?filter[orderby]=modified&filter[posts_per_page]=1"
+    handle-as="json"
+    last-response="{{version}}"
     on-response="checkVersion"
   ></iron-ajax>
 

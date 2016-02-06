@@ -2,7 +2,7 @@
 
 <dom-module id="calculator-el">
   <style type="text/css" >
-        
+
         .cal-wraper{
             @apply(--layout-center);
             text-align: center;
@@ -13,10 +13,14 @@
             @apply(--layout-wrap);
             @apply(--layout-self-center);
             @apply(--layout-flex);
-            
+            background-color: #B0BDCE;
+
         }
-        .wrapper-card{
+        #wrapper-card{
             @apply(--layout-horizontal);
+            background-color: white;
+            padding: 20px;
+            margin: 20px;
         }
         .informationstafel{
             @apply(--layout-self-center);
@@ -24,7 +28,7 @@
         }
         .question-container{
             @apply(--layout-self-stretch);
-          
+
         }
         .buttons{
             @apply(--layout-horizontal);
@@ -44,7 +48,7 @@
         .left-container{
             width: 500px;
             @apply(--layout-self-center);
-            @apply(--layout-vertical); 
+            @apply(--layout-vertical);
             @apply(--layout-center);
             @apply(--layout-center-justified);
             @apply(‑‑self-stretch);
@@ -53,7 +57,11 @@
         }
         .right-container{
             @apply(--layout-self-end);
-            
+            @apply(--layout-vertical);
+            @apply(--layout-center);
+            @apply(--layout-center-justified);
+            text-align: center;
+
         }
         .placeholder{
             width: 350px;
@@ -66,19 +74,27 @@
             font-size: 70%;
             float: right;
         }
+        .keine-anzeige{
+          margin-bottom:20px;
+        }
         .co2Value{
             font-size: 150%;
-            border-radius: 20px;
+            border-radius: 10px;
             margin-bottom:10px;
+            text-align: center;
+            @apply(--layout-center);
+            @apply(--layout-center-justified);
+
         }
         .co2Value span{
-           font-size: 180%; 
+           font-size: 180%;
         }
-  
+
   </style>
   <template class="cal-wrapper" id="calculator">
 
     <div class="cal-container">
+        <paper-material id="wrapper-card" elevation="1">
             <div class="left-container">
                 <template is="dom-if" if={{!questionsResponse}}>
                     <iron-ajax id="menu-data" auto url="http://cn.convive.io/wp-json/wp/v2/posts/?filter[cat]=3" handle-as="json" last-response="{{questionsResponse}}" ></iron-ajax>
@@ -103,7 +119,7 @@
 
                                     </div>
                                 </cal-question>
-                            </div> 
+                            </div>
                         </section>
                     </template>
                     <selection>
@@ -113,7 +129,7 @@
                             <paper-button id="btnfin" class="right">Ergebniss</paper-button>
                         </div>
                     </selection>
-                </iron-pages>           
+                </iron-pages>
             </div>
 
             <div class="right-container">
@@ -122,16 +138,17 @@
                         <div class="placeholder"></div>
                         <span class="ka">keine Anzeige</span>
                     </div>
-                    <div class="card-content vertical">
+
                         <paper-material elevation="2" class="co2Value">
                            <span>{{finalValue}}</span> <div >t  co² pro Jahr</div>
                         </paper-material>
                         <iron-image src="../data/fever.png" class="vertical" ></iron-image>
-                    </div>
+
                 </paper-card>
             </div>
             </div>
     </div>
+          </paper-material>
     <modal-after-calc value={{finalValue}}></modal-after-calc>
     </template>
 
@@ -140,12 +157,12 @@
         is: 'calculator-el',
         properties: {
             position:1,
-            finalValue:{type:Number,Value:0}    
+            finalValue:{type:Number,Value:0}
         },
         finalValue:0,
         answers:Object,
         questionsResponse:{
-            type:Object        
+            type:Object
         },
         getValues(){
 
@@ -171,7 +188,7 @@
             if (!this.evented){
                 console.log('here I am ');
                 var cal = document.querySelector('calculator-el');
-                var next =document.querySelectorAll('#btnnext'); 
+                var next =document.querySelectorAll('#btnnext');
                 var pages = document.querySelector('#cal-question-pages');
                 //var radiogroups=document.querySelectorAll('paper-radio-group');
                 cal.evented=true;
@@ -183,7 +200,7 @@
                             pages.selectNext();
                             cal.getValues ();
                             cal.calFinalValue();
-                            
+
                     });
                 }
                 var back =document.querySelectorAll('#btnback');

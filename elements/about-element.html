@@ -1,18 +1,28 @@
-<!-- 
+<!--
 author:Aaron
 description: This for rendering jsonhtml to html
 -->
   <link rel="import" href="../bower_components/polymer/polymer.html">
 <dom-module id="about-element">
   <style>
-    :host {
-     
+    #about-wrap {
+     background-color: #D3D0D7;
+     font-size: 120%;
+    }
+    .first{
+      color: white;
+      background-color: #304D7E;
+    }
+    .second{
+      background-color: white;
+      color:black;
     }
   </style>
-  <template>
-      <div class="first"> <paper-card-fw><wp-cards post="130"></wp-cards></paper-card-fw></div>
+  <template id="about-wrap">
+    <div id="about-wrap">
+      <div class="first"> <paper-card-fw><wp-cards post="130" title=true></wp-cards></paper-card-fw></div>
    <div class="second"><paper-card-fw><wp-cards post="136"></wp-cards></paper-card-fw></div>
-   <paper-card-fw>Über uns
+   <paper-card-fw><h1>Über uns</h1>
         <template is="dom-bind">
             <iron-ajax id="randomuser" auto url="http://api.randomuser.me/" handle-as="json" last-response="{{randuser}}" ></iron-ajax>
             <span>{{randuser.results.user}}</span>
@@ -21,6 +31,7 @@ description: This for rendering jsonhtml to html
             </template>
         </template>
    </paper-card-fw>
+ </div>
   </template>
 </dom-module>
 
