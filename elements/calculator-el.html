@@ -207,7 +207,7 @@
                 var back =document.querySelectorAll('#btnback');
                 for (i = 0; i < next.length; ++i) {
                     back[i].addEventListener('click', function(e) {
-                            var pages = document.querySelector('iron-pages');
+                        var pages = document.querySelector('#cal-question-pages');
                             pages.selectPrevious();
                             cal.getValues ();
                             cal.calFinalValue();
