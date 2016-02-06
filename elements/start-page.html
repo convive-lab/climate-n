@@ -21,7 +21,6 @@
       padding-bottom: 56.25%; /* 16:9 */
       padding-top: 25px;
       height: 0;
-      @apply(--layout-self-end);
       @apply(--layout-vertical);
       @apply(--layout-center);
       @apply(--layout-center-justified);
@@ -40,16 +39,23 @@
       height: auto;
     }
     .video{
+    width:100%;
+      @apply(--layout-vertical);
+      @apply(--layout-center);
+      @apply(--layout-center-justified);
+      @apply(--layout-flex);
+      padding-bottom: 20px;
 
     }
 
 
   </style>
   <template>
+    <div class="start-page-wrap">
     <div class="first"><paper-card-fw><wp-cards post="41"> title=false</wp-cards></paper-card-fw></div>
     <div class="second"><paper-card-fw><wp-cards post="43" titel=true></wp-cards></paper-card-fw></div>
     <div class="third"><paper-circle></paper-circle></div>
-    <div class="video"><paper-card-fw><wp-cards post="45" titel=true></wp-cards></paper-card-fw></div>
+    <div class="video"><paper-material elevation="0"><wp-cards post="45" titel=true></paper-material></wp-cards></div>
 
     <div class="first"><paper-card-fw><wp-cards post="47" titel=true></wp-card></paper-card-fw>
       <div class="carousel">
