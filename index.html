@@ -9,11 +9,14 @@
 
   <!-- Polyfill Web Components support for older browsers -->
   <link rel="import" href="elements.html">
-
-  <!--FONT-->
-  <link href='https://fonts.googleapis.com/css?family=Advent+Pro' rel='stylesheet' type='text/css'>
+  <!--Owl-Slider-->
+  <script src="data/Owl-Slider/assets/js/jquery-1.9.1.min.js"></script>
+  <script src="data/Owl-Slider/owl-carousel/owl.carousel.js"></script>
+  <!--FONTS-->
   <!--css-->
   <link rel="stylesheet" type="text/css" href="./css/main.css">
+  <link rel="stylesheet" href="data/Owl-Slider/owl-carousel/owl.carousel.css">
+  <link rel="stylesheet" href="data/Owl-Slider/owl-carousel/owl.theme.css">
 </head>
 <body unresolved class="fullbleed vertical layout">
  <template is="dom-bind" id="app">
@@ -25,8 +28,29 @@
           <wp-menu menu="2" class></wp-menu>
         </div>
       </paper-header-panel>
+	  
         <iron-pages attr-for-selected="path" selected="{{route}}">
-          <section path="home" class="main-content"><start-page></start-page></section>
+          <section path="home" class="main-content">
+			<div class="start-page-wrap">
+				<div class="first"><paper-card-fw><wp-cards post="41"> title=false</wp-cards></paper-card-fw></div>
+				<div class="second"><paper-card-fw><wp-cards post="43" titel=true></wp-cards></paper-card-fw></div>
+				<div class="third center"><paper-circle></paper-circle></div>
+				<div class="video"><paper-material elevation="0"><wp-cards post="45" titel=true></paper-material></wp-cards></div>
+				<div class="first sliderwrap">
+				<div class="first"><wp-cards post="47" titel=false></wp-card></div>
+							<div id="owl-demo" class="owl-carousel owl-theme">
+							  <div class="item"><img src="http://lorempixel.com/image_output/animals-h-c-200-250-1.jpg"><img></div>
+							  <div class="item"><img src="http://lorempixel.com/image_output/animals-h-c-200-250-2.jpg"><img></div>
+							  <div class="item"><img src="http://lorempixel.com/image_output/animals-h-c-200-250-3.jpg"><img></div>
+							  <div class="item"><img src="http://lorempixel.com/image_output/animals-h-c-200-250-4.jpg"><img></div>
+							  <div class="item"><img src="http://lorempixel.com/image_output/animals-h-c-200-250-5.jpg"><img></div>
+							  <div class="item"><h1>6</h1></div>
+							  <div class="item"><h1>7</h1></div>
+							  <div class="item"><h1>8</h1></div>
+				</div> 
+				<!--<div class="second"><paper-card-fw><wp-cards post="51"></wp-cards></paper-card-fw></div>-->
+			</div>
+		  </section>
           <section path="calculator"  ><calculator-el></calculator-el></section>
           <section path="offsetting"><offsetting-el></offsetting-el></section>
           <section path="projekt"><projekt-details projekt="{{projekt}}" route="{{route}}"></projekt-details></section>
@@ -53,11 +77,97 @@
     // app.baseUrl = '/polymer-starter-kit/';
   }
       window.addEventListener('WebComponentsReady', function() {
-        document.querySelector('#spinner').classList.add('hidden');
+        var owl = $("#owl-demo");
+     
+      owl.owlCarousel({
+         
+          // Most important owl features
+    items : 5,
+    itemsCustom : false,
+    itemsDesktop : [1199,4],
+    itemsDesktopSmall : [980,3],
+    itemsTablet: [768,2],
+    itemsTabletSmall: false,
+    itemsMobile : [479,1],
+    singleItem : false,
+    itemsScaleUp : false,
+ 
+    //Basic Speeds
+    slideSpeed : 200,
+    paginationSpeed : 800,
+    rewindSpeed : 1000,
+ 
+    //Autoplay
+    autoPlay : false,
+    stopOnHover : false,
+ 
+    // Navigation
+    navigation : false,
+    navigationText : ["prev","next"],
+    rewindNav : true,
+    scrollPerPage : false,
+ 
+    //Pagination
+    pagination : true,
+    paginationNumbers: false,
+ 
+    // Responsive 
+    responsive: true,
+    responsiveRefreshRate : 200,
+    responsiveBaseWidth: window,
+ 
+    // CSS Styles
+    baseClass : "owl-carousel",
+    theme : "owl-theme",
+ 
+    //Lazy load
+    lazyLoad : false,
+    lazyFollow : true,
+    lazyEffect : "fade",
+ 
+    //Auto height
+    autoHeight : false,
+ 
+    //JSON 
+    jsonPath : false, 
+    jsonSuccess : false,
+ 
+    //Mouse Events
+    dragBeforeAnimFinish : true,
+    mouseDrag : true,
+    touchDrag : true,
+ 
+    //Transitions
+    transitionStyle : false,
+ 
+    // Other
+    addClassActive : false,
+ 
+    //Callbacks
+    beforeUpdate : false,
+    afterUpdate : false,
+    beforeInit: false, 
+    afterInit: false, 
+    beforeMove: false, 
+    afterMove: false,
+    afterAction: false,
+    startDragging : false,
+    afterLazyLoad : false,
+ 
+	});
       });
     })(document);
 </script>
 
+<!--<script>
+$(document).ready(function() {
+     
+      
+     
+});
+     
+
+</script>-->
 </body>
 
 

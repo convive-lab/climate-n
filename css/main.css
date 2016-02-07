@@ -47,3 +47,74 @@ paper-header-panel{
 .footer{
 	background-color: white;
 }
+
+/* Startseite */
+
+.first{
+      background-color: #DDDDDD;
+    }
+    .second{
+      color: black;
+      background-color: #BCB3CE;
+
+    }
+    li {
+      text-align: left !important;
+    }
+    .third{
+      background-color: #29304D;
+    }
+    .videoWrapper {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 */
+      padding-top: 25px;
+      height: 0;
+      @apply(--layout-vertical);
+      @apply(--layout-center);
+      @apply(--layout-center-justified);
+      text-align: center;
+    }
+/*
+    .carousel{
+      width: 70%;
+      max-width: 500px;
+      margin:auto;
+      padding-bottom: 20px;
+      height: auto;
+    }
+    .carousel img{
+      width: 100%;
+      height: auto;
+    }
+*/
+    .video{
+    width:100%;
+      @apply(--layout-vertical);
+      @apply(--layout-center);
+      @apply(--layout-center-justified);
+      @apply(--layout-flex);
+      padding-bottom: 20px;
+
+    }
+    .center,.start-page-wrap h1{
+      text-align: center;
+    }
+
+/*OWL Carousel*/
+
+    #owl-demo .item{
+        background: #42bdc2;
+        padding: 30px 0px;
+        margin: 5px;
+        color: #FFF;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+        text-align: center;
+    }
+
+	.sliderwrap {
+		
+	}
+
+
