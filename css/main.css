@@ -57,9 +57,14 @@ body{
 	background-color: white;
 	text-align: center;
 }
-#spinner p{
-	margin-top: 20%;
+
+.alignleft{
+	float:left;
 }
+.alignright{
+	float: right;
+}
+
 .main-content{
 	font-size: 140%;
 	/*background-color: #D3D0D7;*/
