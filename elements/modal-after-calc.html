@@ -23,7 +23,7 @@ description:
   #modal-after-calc paper-material{
       color: white;
     background-color: #211637;
-    padding:10px;
+    padding-top:10px;
     font-size: 100%;
   }
   #num{
@@ -37,17 +37,18 @@ description:
   </style>
   <template>
 	  <paper-dialog modal=true id="modal-after-calc">
-        <span>Sie produzieren</span>
-        <h1> <span><span id="num">{{value}}</span> t co2</span> </h1>
-        <h1><span id="aufforderung">Jetzt Klimasünden ausgleichen</span></h1>
-	  	<iron-localstorage name="finalValue" value="{{value}}"></iron-localstorage>
-      <paper-material elevation="1">
-        
-	  	<wp-cards post="63"></wp-cards>
+    <paper-dialog-scrollable>
+      <span>Sie produzieren</span>
+      <h1> <span><span id="num">{{value}}</span> t co2</span> </h1>
+      <h1><span id="aufforderung">Jetzt Klimasünden ausgleichen</span></h1>
+  	 	<iron-localstorage name="finalValue" value="{{value}}"></iron-localstorage>
+      <paper-material elevation="1">  
+  	    <wp-cards post="63"></wp-cards>
       </paper-material>
-	  <div class="buttons">
-	    <paper-button dialog-confirm on-click="_eventListn">Weiter</paper-button>
-	  </div>
+  	  <div class="buttons">
+  	    <paper-button dialog-confirm on-click="_eventListn">Weiter</paper-button>
+  	  </div>
+    </paper-dialog-scrollable>
 	</paper-dialog>
   </template>
   <script>
