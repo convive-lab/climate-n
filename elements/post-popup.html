@@ -10,13 +10,19 @@ description:
   .wp-content{
   	margin: 0px;
   }
+
   paper-dialog{
   	@apply(--layout-self-stretch)
   }
+
+  #content {
+    padding: 0 20px;
+  }
+
   </style>
   <template>
-	  <paper-dialog modal=true>
-      <wp-cards post=[[post]]></wp-cards>
+	  <paper-dialog id="popup" modal=true>
+      <wp-cards id="content" post=[[post]]></wp-cards>
 	  <div class="buttons">
 	    <paper-button dialog-confirm on-click="_eventListn">Kauf Dich Frei!</paper-button>
 	  </div>
