@@ -53,26 +53,26 @@
         properties:{
           projekt:{
             type:String,
+          },
+          route:{
+            type:Object,
+            notify: true,
           }
         },
         projektDetailsResponse:{
             type:Object
         },
         ready:function () {
-          console.log(this.projekt);
-           /* body... */
+          if (this.route == "projekt")
+            setTimeout(function(){
+                var dia=document.querySelector('#pop' + ' paper-dialog');
+                dia.open();
+            }, 7000);
         },
-        ready:function () {/*
-          var observer = new ObjectObserver(app.route);
-          observer.open(function(changed){
-            if (app.route == "projekt")
-              setTimeout(function(){
-                  var dia=document.querySelector('#pop' + ' paper-dialog');
-                  dia.open();
-              }, 7000);
-          });*/
-        }
-
-    });
+        attributeChanged: function(name, type) {
+    console.log(this.localName + '#' + this.id + ' attribute ' + name +
+      ' was changed to ' + this.getAttribute(name));
+  }
+      });
   </script>
 </dom-module>
