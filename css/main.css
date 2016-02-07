@@ -34,9 +34,9 @@ GRÜN
 
 
 
-@font-face { 
-font-family: "ARCON"; 
-src: url("../data/fonts/arcon/Arcon-Regular.otf"); 
+@font-face {
+font-family: "ARCON";
+src: url("../data/fonts/arcon/Arcon-Regular.otf");
 }
 
 body{
@@ -96,11 +96,11 @@ paper-header-panel{
 li {
    text-align: left !important;
 }
-	
+
 .third{
     background-color: #A7A283;
     }
-	
+
 .fourth {
 	background-color: #6C9C7A;
 }
@@ -126,10 +126,10 @@ li {
       @apply(--layout-flex);
 	  margin-top: 3%;
     }
- 
+
 #vid {
 	padding-left: 17%;
-} 
+}
  .center,.start-page-wrap h1{
       text-align: center;
     }
@@ -148,10 +148,16 @@ li {
     }
 
 	.sliderwrap {
-	margin-bottom: 5%;	
+	margin-bottom: 5%;
 	}
 
 #post47 {
 	padding-top: 2%;
 }
 
+.link{
+	text-decoration: underline;
+}
+.link:hover{
+	color: #FFF;
+}
