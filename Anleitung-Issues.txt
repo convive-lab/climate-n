@@ -1,9 +1,12 @@
 #Issues
 * about.html und randuser geht nicht PLZ help Aaron
-*-Offsetting-Seite: es sollten mehr Kasteln angezeigt werden bzw. ein Link zu weiteren Projekten
-*Greyout auf Offset Projektdetails
-*Pop up nach Greyout auf Offset Projektdetails mit Alert
-*Responsive-Menu
+*-Offsetting-Seite: es sollten mehr Kasteln angezeigt werden bzw. ein Link zu weiteren Projekten (DONE)
+*Greyout auf Offset Projektdetails (DONE)
+*Pop up nach Greyout auf Offset Projektdetails mit Alert (DONE)
+*Responsive-Menu 
+*Owl-Slider wieder im Index einbauen (DONE)
+*Farben anpassen nach neuem Farbschema (Iris)(DONE)
+
 
 
 Stylesheets sollten immer in die Datei reingeschrieben werden,
