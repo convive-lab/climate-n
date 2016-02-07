@@ -90,8 +90,7 @@ paper-header-panel{
     }
 .second{
     color: black;
-    background-color: #BCB3CE;
-
+    background-color: #BDE3C8;
     }
 
 li {
@@ -103,7 +102,7 @@ li {
     }
 	
 .fourth {
-	background-color: #90D1A3;
+	background-color: #6C9C7A;
 }
 
 .videoWrapper {
@@ -135,7 +134,7 @@ li {
 /*OWL Carousel*/
 
     #owl-demo .item{
-        background: #BCB3CE;
+        background: #877773;
         padding: 30px 0px;
         margin: 10px;
         color: #FFF;
@@ -146,7 +145,10 @@ li {
     }
 
 	.sliderwrap {
-		
+	margin-bottom: 5%;	
 	}
 
+#post47 {
+	padding-top: 2%;
+}
 
