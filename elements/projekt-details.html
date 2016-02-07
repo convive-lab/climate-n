@@ -1,17 +1,22 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <dom-module id="projekt-details">
   <style type="text/css" >
-  .projekt-details-wrap{
-    font-size: 130%
+  :host{
+    @apply (--layout-horizontal); 
   }
-    paper-card {
-    width: 95%;
-    margin: auto;
-    @apply (--layout-horizontal);
-    @apply (--layout-center);
-    @apply (--layout-flex);
+    #projekt-details-wrapper {
+      padding:30px;
     background-color: #BDE3C8;
     margin-bottom: 30px;
+     font-size: 130%;
+     @apply (--layout-vertical); 
+    }
+    .horizontal{
+      @apply (--layout-horizontal); 
+      background-color: white;
+    }
+    .horizontal paper-material{
+      padding: 10px;
     }
 
     .fade {
@@ -22,18 +27,22 @@
      }
 
   </style>
-  <template id="projekt-details-wrapper">
-    <div class="projekt-details-wrap">
-          <template is="dom-if" if={{projekt}}>
+  <template>
+    <div id="projekt-details-wrapper" >
+      <template is="dom-if" if={{projekt}}>
 				<iron-ajax id="menu-data" auto url="http://cn.convive.io/wp-json/wp/v2/posts/{{projekt}}" handle-as="json" last-response="{{projektDetailsResponse}}" on-response="ready"></iron-ajax>
 		  </template>
-			<paper-card>
+      <h1>{{projektDetailsResponse.title.rendered}}</h1>
+      <div class="horizontal">
+        <paper-material elevation="0">
+          <img src="{{projektDetailsResponse.better_featured_image.media_details.sizes.medium.source_url}}" style="width:300px; height:200px" >
+        </paper-material>
+        <paper-material elevation="0">
+         <html-echo html="{{projektDetailsResponse.content.rendered}}"></html-echo></div>
+        </paper-material> 
+        
+      </div>
 
-
-			<div class="card-content">
-        <h1>{{projektDetailsResponse.title.rendered}}</h1>
-        <html-echo html="{{projektDetailsResponse.content.rendered}}"></html-echo></div>
-			</paper-card>
       <post-popup id="pop" post="146"></post-popup>
     </div>
 </template>

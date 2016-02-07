@@ -16,15 +16,6 @@
   <link rel="stylesheet" type="text/css" href="./css/main.css">
 </head>
 <body unresolved class="fullbleed vertical layout">
-
-<div id="spinner">
-    <p>
-      <img src="data/logo.png"> <br/>
-      <h1>Loading...</h1><br/>
-      Addblock Plus is breaking the page. Please disable.
-    </p>
-  </div>
-
  <template is="dom-bind" id="app">
   <excess-route route="/:main/:num?" main="{{route}}" num="{{projekt}}"></excess-route>
     <excess-route route="/(.*)" redirect-to="/home" activation-modifiers="x"></excess-route>

@@ -21,24 +21,29 @@ description: This for rendering jsonhtml to html
 
     background-color: #BDE3C8;
     }
+    .quote{
+      background-color: #BCB3CE;
+
+    }
   </style>
   <template id="about-wrap">
     <div id="about-wrap">
       <div class="first"> <paper-card-fw><wp-cards post="130" title=true></wp-cards></paper-card-fw></div>
    <div class="second"><paper-card-fw><wp-cards post="136"></wp-cards></paper-card-fw></div>
-   <paper-card-fw>
-   <div >
-      <h1>Über uns</h1>
-
-        <template is="dom-bind">
-            <iron-ajax id="randomuser" auto url="http://api.randomuser.me/" handle-as="json" last-response="{{randuser}}" ></iron-ajax>
-            <span>{{randuser.results.user}}</span>
-            <template is="dom-repeat" items="{{randuser.results}}">
-            <div class="quote"><rand-user data="{{item}}"></rand-user></div>
+    <div class="quote">
+     <paper-card-fw>
+       <div >
+          <h1>Über uns</h1>
+            <template is="dom-bind">
+                <iron-ajax id="randomuser" auto url="http://api.randomuser.me/" handle-as="json" last-response="{{randuser}}" ></iron-ajax>
+                <span>{{randuser.results.user}}</span>
+                <template is="dom-repeat" items="{{randuser.results}}">
+                <div class="quote"><rand-user data="{{item}}"></rand-user></div>
+                </template>
             </template>
-        </template>
         </div>
-   </paper-card-fw>
+     </paper-card-fw>
+    </div>
  </div>
   </template>
 </dom-module>
