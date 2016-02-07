@@ -2,17 +2,17 @@
 <dom-module id="projekt-details">
   <style type="text/css" >
   :host{
-    @apply (--layout-horizontal); 
+    @apply (--layout-horizontal);
   }
     #projekt-details-wrapper {
       padding:30px;
     background-color: #BDE3C8;
     margin-bottom: 30px;
      font-size: 130%;
-     @apply (--layout-vertical); 
+     @apply (--layout-vertical);
     }
     .horizontal{
-      @apply (--layout-horizontal); 
+      @apply (--layout-horizontal);
       background-color: white;
     }
     .horizontal paper-material{
@@ -39,8 +39,8 @@
         </paper-material>
         <paper-material elevation="0">
          <html-echo html="{{projektDetailsResponse.content.rendered}}"></html-echo></div>
-        </paper-material> 
-        
+        </paper-material>
+
       </div>
 
       <post-popup id="pop" post="146"></post-popup>
@@ -67,7 +67,7 @@
             setTimeout(function(){
                 var dia=document.querySelector('#pop' + ' paper-dialog');
                 dia.open();
-            }, 1500);
+            }, 7000);
         },
         attributeChanged: function(name, type) {
     console.log(this.localName + '#' + this.id + ' attribute ' + name +
