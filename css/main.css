@@ -1,7 +1,12 @@
 
+@font-face { 
+font-family: "ARCON"; 
+src: url("../data/fonts/arcon/Arcon-Regular.otf"); 
+}
+
 body{
 	margin: 0px;
-	font-family: 'Advent Pro' !important;
+	font-family: 'ARCON' !important;
 }
 .header-panel{
 	background-color: white;
