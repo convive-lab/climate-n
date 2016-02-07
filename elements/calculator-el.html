@@ -48,7 +48,7 @@
             border-radius: 10px;
         }
         .left-container{
-            width: 500px;
+            max-width: 500px;
             @apply(--layout-self-center);
             @apply(--layout-vertical);
             @apply(--layout-center);
@@ -58,7 +58,8 @@
         .informationstafel{
             text-align: center;
             font-size: 120%;
-            padding:20px;
+            padding:3%;
+            max-width: 100%;
         }
         .right-container{
             @apply(--layout-self-end);
@@ -95,6 +96,9 @@
         .co2Value span{
            font-size: 180%;
         }
+        paper-material{
+            max-width: 100%;
+        }
 
   </style>
   <template class="cal-wrapper" id="calculator">
@@ -112,6 +116,7 @@
                     </div> -->
 <!--                 </selection>
                 <selection> -->
+                <paper-material elevation="0">
                     <div class="left-container">
                         <template is="dom-if" if={{!questionsResponse}}>
                             <iron-ajax id="menu-data" auto url="http://cn.convive.io/wp-json/wp/v2/posts/?filter[cat]=3" handle-as="json" last-response="{{questionsResponse}}" ></iron-ajax>
@@ -151,7 +156,9 @@
                                     </div>
                                 </selection>
                              </iron-pages>
-                    </div>
+                    </div>   
+                </paper-material>
+                <paper-material elevation="0">
                     <div class="right-container">
                         <paper-card elevation="0" elevation="1" animated-shadow="false">
                             <div class="keine-anzeige">
@@ -164,6 +171,7 @@
                             <iron-image src="../data/fever.png" class="vertical" ></iron-image>
                         </paper-card>
                     </div>
+                </paper-material>
 <!--                 </selection>
             </iron-pages> -->
         </paper-material>
