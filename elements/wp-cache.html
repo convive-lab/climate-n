@@ -1,0 +1,43 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<dom-module id="wp-cache">
+  <style type="text/css" >
+  </style>
+  <template>
+
+  <iron-ajax
+    auto
+    id="version"
+    url="http://cn.convive.io/wp-json/wp/v2/posts/?filter[orderby]=modified&filter[posts_per_page]=1"
+    handle-as="json"
+    last-response="{{version}}"
+    on-response="checkVersion"
+  ></iron-ajax>
+
+</template>
+
+  <script>
+    Polymer({
+        is: 'wp-cache',
+        questionsResponse:{
+            type:Object
+        },
+        checkVersion:function(version){
+          console.log(version.srcElement.lastResponse[0].modified);
+           //das ist für die gecacheten wp-posts
+          if (localStorage.getItem("version")!=version.srcElement.lastResponse[0].modified){
+            var sKey;
+            var string="wp"
+            for (var i=0; sKey = window.localStorage.key(i); i++) {
+              if(sKey.indexOf(string )> -1){
+                localStorage.removeItem(sKey);
+              }
+            }
+            localStorage.removeItem("questions");
+            localStorage.removeItem("menu");
+            localStorage.setItem("version",version.srcElement.lastResponse[0].modified);
+          }
+        }
+    });
+
+  </script>
+</dom-module>
