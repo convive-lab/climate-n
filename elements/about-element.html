@@ -5,26 +5,36 @@ description: This for rendering jsonhtml to html
   <link rel="import" href="../bower_components/polymer/polymer.html">
 <dom-module id="about-element">
   <style>
-    #about-wrap {
-     background-color: #D3D0D7;
+h1 {
+text-align: center;
+}   
+
+   #about-wrap {
+     background-color: white;
      font-size: 120%;
     }
     .first{
-      color: white;
-      background-color: #304D7E;
+      color: black;
+      background-color: #6C9C7A;
     }
     .second{
-      background-color: white;
+      background-color: #BDB9A2;
       color:black;
     }
     .about-wrap{
 
-    background-color: #BDE3C8;
+    background-color: white;
     }
     .quote{
       background-color: #BCB3CE;
 
     }
+	.face-wrap {
+	 @apply(--layout-horizontal);
+     @apply(--layout-around-justified);
+     @apply(--layout-wrap);
+	  }
+	
   </style>
   <template id="about-wrap">
     <div id="about-wrap">
@@ -34,13 +44,15 @@ description: This for rendering jsonhtml to html
      <paper-card-fw>
        <div >
           <h1>Über uns</h1>
-            <template is="dom-bind">
-                <iron-ajax id="randomuser" auto url="http://api.randomuser.me/" handle-as="json" last-response="{{randuser}}" ></iron-ajax>
-                <span>{{randuser.results.user}}</span>
-                <template is="dom-repeat" items="{{randuser.results}}">
-                <div class="quote"><rand-user data="{{item}}"></rand-user></div>
-                </template>
-            </template>
+            <div class="face-wrap">
+				<template is="dom-bind">
+					<iron-ajax id="randomuser" auto url="http://api.randomuser.me/?results=3" handle-as="json" last-response="{{randuser}}" ></iron-ajax>
+					<span>{{randuser.results.user}}</span>
+					<template is="dom-repeat" items="{{randuser.results}}">
+					<div class="quote"><rand-user data="{{item}}"></rand-user></div>
+					</template>
+				</template>
+			</div>
         </div>
      </paper-card-fw>
     </div>
