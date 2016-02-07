@@ -118,15 +118,18 @@ li {
 */
 
 .video{
-    width:100%;
+    background-color: #D3D1C1;
+	width:100%;
       @apply(--layout-vertical);
       @apply(--layout-center);
       @apply(--layout-center-justified);
       @apply(--layout-flex);
-      
-	margin-top: 10%;
+	  margin-top: 3%;
     }
  
+#vid {
+	padding-left: 17%;
+} 
  .center,.start-page-wrap h1{
       text-align: center;
     }
