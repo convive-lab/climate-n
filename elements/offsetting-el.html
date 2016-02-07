@@ -17,11 +17,20 @@
 		max-width: 100%;
 	}
 	.paper-box-wrapper {
-	margin: 2%;
-	}
-	.pb-thin{
+  	margin: 2%;
 
-	}
+  }
+  .more-button{
+  
+    margin: auto;
+
+  }
+  .button-text{
+    background-color: white;
+    font-size: 140%;
+    @apply(--layout-self-center);
+
+  }
  </style>
 
   </style>
@@ -39,6 +48,9 @@
 			</div>
 		</template>
 	</div>
+  <div class="more-button">
+    <paper-button class="button-text" raised><span>Mehr Projekte</span></paper-button>
+  </div>
 </div>
 
 </template>
