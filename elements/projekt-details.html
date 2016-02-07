@@ -42,8 +42,6 @@
         </paper-material>
 
       </div>
-
-      <post-popup id="pop" post="146"></post-popup>
     </div>
 </template>
 
@@ -65,7 +63,7 @@
         ready:function () {
           if (this.route == "projekt")
             setTimeout(function(){
-                var dia=document.querySelector('#pop' + ' paper-dialog');
+                var dia=document.querySelector('#pop-aufloesung' + ' paper-dialog');
                 dia.open();
             }, 7000);
         },
