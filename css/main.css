@@ -123,8 +123,8 @@ li {
       @apply(--layout-center);
       @apply(--layout-center-justified);
       @apply(--layout-flex);
-      padding-bottom: 40px;
-
+      
+	margin-top: 10%;
     }
  
  .center,.start-page-wrap h1{
