@@ -17,20 +17,33 @@
 		max-width: 100%;
 	}
 	.paper-box-wrapper {
-	margin: 2%;
-	}
-	.pb-thin{
+  	margin: 2%;
 
-	}
+  }
+  .more-button{
+  
+    margin: auto;
+    text-align: center;
+
+  }
+  .button-text{
+    background-color: white;
+    font-size: 140%;
+    @apply(--layout-self-center);
+
+  }
+  .hidden{
+    display: none !important;   
+  }
  </style>
 
   </style>
  <template>
   <div  class="offsetting-wrapper">
     <div class="info-box"><paper-card-fw><wp-cards post="75" titel=true></wp-cards></paper-card-fw></div>
-	<iron-ajax id="offset-data" auto url="http://cn.convive.io/wp-json/wp/v2/posts/?filter[cat]=11&filter[orderby]=rand&filter[posts_per_page]=3" handle-as="json" last-response="{{offsetResponse}}" ></iron-ajax>
+	<iron-ajax id="offset-data" auto url="http://cn.convive.io/wp-json/wp/v2/posts/?filter[cat]=11&filter[orderby]=rand" handle-as="json" last-response="{{offsetResponse}}" ></iron-ajax>
 	<div class="flex-horizontal">
-		<template is="dom-repeat" items="{{offsetResponse}}" filter="computeFilter">
+		<template is="dom-repeat" items="{{offsetResponse}}" filter="initialFilter">
 			<div class="paper-box-wrapper">
 				<paper-box-thin class="pb-thin">
 					<offset-project data="[[item]]" class="left">
@@ -39,6 +52,23 @@
 			</div>
 		</template>
 	</div>
+  <template is="dom-if" if={{hidden}} >
+  <div class="more-button">
+    <paper-button class="button-text" on-click="clickthebutton" raised><span>Mehr Projekte</span></paper-button>
+  </div>
+  </template>
+  <template is="dom-if" if={{!hidden}} >
+  <div class="flex-horizontal" id="more">
+    <template is="dom-repeat" items="{{offsetResponse}}" filter="moreFilter">
+      <div class="paper-box-wrapper">
+        <paper-box-thin class="pb-thin">
+          <offset-project data="[[item]]" class="left">
+          </offset-project>
+        </paper-box-thin>
+      </div>
+    </template>
+  </div>
+  </template>
 </div>
 
 </template>
@@ -50,12 +80,27 @@
             type:Object
         },
         counter:0,
-		shuffeld:false,
-        computeFilter: function(string) {
+        counter2:0,
+        initialFilter: function(string) {
+          if (this.counter>2)return false;
           this.counter++;
-          if (this.counter>=4)return false;
           return true;
         },
+        moreFilter: function(string) {
+          console.log("c2-->"+this.counter2);
+          if (this.counter2<3){
+          this.counter2++;
+            return false;
+          }
+          return true;
+        },
+        hidden:true,
+        ready:function () {
+           this.hidden=true;
+        },
+        clickthebutton:function (e) {
+          this.hidden=false;
+        }
 	});
 
 

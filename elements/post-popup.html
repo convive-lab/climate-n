@@ -18,26 +18,42 @@ description:
   #content {
     padding: 0 20px;
   }
+  #post-popup-wrapper{
+    margin: 30px;
+    font-size: 130%;
+  }
 
   </style>
   <template>
+
 	  <paper-dialog id="popup" modal=true>
-      <wp-cards id="content" post=[[post]]></wp-cards>
-	  <div class="buttons">
-	    <paper-button dialog-confirm on-click="_eventListn">Kauf Dich Frei!</paper-button>
-	  </div>
+      <paper-dialog-scrollable>
+        <div id="post-popup-wrapper">
+          <wp-cards id="content" post=[[post]]></wp-cards>
+        </div>
+
+      </paper-dialog-scrollable>
+        <div class="buttons">
+            <paper-button dialog-confirm on-click="_eventListn" raised>Kauf Dich Frei!</paper-button>
+        </div>
 	</paper-dialog>
   </template>
   <script>
     Polymer({
       is: 'post-popup',
       properties:{
+        close:{
+          type:Boolean,
+          value:false
+        },
         post:{
           type:String
         }
       },
       _eventListn:function () {
-      	window.location.href = "/";
+      	//window.location.href = "/";
+        var dia=document.querySelector('#pop' + ' paper-dialog');
+        dia.close();
       }
 
     });

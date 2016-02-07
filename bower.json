@@ -41,6 +41,7 @@
     "sc-swiper": "*",
     "page": "page.js#^1.6.4",
     "excess-router": "^0.9.12",
-    "social-media-icons": "^1.0.3"
+    "social-media-icons": "^1.0.3",
+    "paper-dialog-scrollable": "PolymerElements/paper-dialog-scrollable#^1.1.0"
   }
 }
