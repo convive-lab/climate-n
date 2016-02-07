@@ -105,25 +105,18 @@ li {
 	background-color: #6C9C7A;
 }
 
-/*.videoWrapper {
-      position: relative;
-      padding-bottom: 60px;
-      padding-top: 25px;
-      height: 0;
-      @apply(--layout-vertical);
-      @apply(--layout-center);
-      @apply(--layout-center-justified);
+.videoWrapper {
+      width:600px;
+      margin:auto;
       text-align: center;
     }
-*/
+
 
 .video{
-    width:100%;
-      @apply(--layout-vertical);
-      @apply(--layout-center);
-      @apply(--layout-center-justified);
-      @apply(--layout-flex);
-      padding-bottom: 40px;
+      width: 100%;
+      text-align: center;
+      margin-top: 20px;
+      background-color: #D3D1C1;
 
     }
  
