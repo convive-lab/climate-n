@@ -13,6 +13,9 @@
       background-color: #BCB3CE;
 
     }
+    li {
+      text-align: left !important;
+    }
     .third{
       background-color: #29304D;
     }
@@ -47,6 +50,9 @@
       padding-bottom: 20px;
 
     }
+    .center,.start-page-wrap h1{
+      text-align: center;
+    }
 
 
   </style>
@@ -54,10 +60,10 @@
     <div class="start-page-wrap">
     <div class="first"><paper-card-fw><wp-cards post="41"> title=false</wp-cards></paper-card-fw></div>
     <div class="second"><paper-card-fw><wp-cards post="43" titel=true></wp-cards></paper-card-fw></div>
-    <div class="third"><paper-circle></paper-circle></div>
+    <div class="third center"><paper-circle></paper-circle></div>
     <div class="video"><paper-material elevation="0"><wp-cards post="45" titel=true></paper-material></wp-cards></div>
 
-    <div class="first"><paper-card-fw><wp-cards post="47" titel=true></wp-card></paper-card-fw>
+    <div class="first center"><paper-card-fw><wp-cards post="47" titel=true></wp-card></paper-card-fw>
       <div class="carousel">
         <sc-swiper  a11y slidesPerView="2" navigationButtons loop  pagination paginationClickable>
           <img src="http://lorempixel.com/640/480/transport">

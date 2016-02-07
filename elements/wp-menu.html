@@ -37,6 +37,14 @@ description: get wp menu number 2
 	 padding-left: 15px;
 	 padding-right: 10%;
 	}
+  .menu-item{
+    @apply(--layout-vertical);
+    @apply(--layout-self-end);
+  }
+  .item{
+    @apply(--layout-vertical);
+    @apply(--layout-self-end);
+  }
 	
   </style>
   <template>
@@ -51,7 +59,9 @@ description: get wp menu number 2
         
         
         <template is="dom-repeat" items="{{ajaxResponse.items}}">
-          <paper-item> <div> <a  href="[[item.url]]">{{item.title}}</a></div></paper-item>
+          <div class="menu-item">
+            <paper-item class="item"> <div> <a  href="[[item.url]]">{{item.title}}</a></div></paper-item>
+          </div>
         </template>
       </div>
     </content>
