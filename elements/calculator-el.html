@@ -60,14 +60,15 @@
             font-size: 120%;
             padding:20px;
         }
-        .right-container{
+        
+		.right-container{
             @apply(--layout-self-end);
             @apply(--layout-vertical);
             @apply(--layout-center);
             @apply(--layout-center-justified);
             text-align: center;
-
         }
+		
         .placeholder{
             width: 350px;
             height: 150px;
@@ -144,10 +145,10 @@
                                     <div class="informationstafel">
                                         <h1>Dankeschön</h1>
                                         <p>
-                                            Jetz dass Gesamtergebniss berechnen
+                                           <!-- Das Gesamtergebnis berechnen -->
                                         </p>
                                         <paper-button id="btnback" raised>zurück</paper-button>
-                                        <paper-button id="btnfin" class="right" raised>Ergebniss</paper-button>
+                                        <paper-button id="btnfin" class="right" raised>Ergebnis</paper-button>
                                     </div>
                                 </selection>
                              </iron-pages>
@@ -159,7 +160,7 @@
                                 <span class="ka">keine Anzeige</span>
                             </div>
                             <paper-material elevation="2" class="co2Value">
-                                <span>{{finalValue}}</span> <div >t  co² pro Jahr</div>
+                                <span>{{finalValue}}</span> <div >t  CO2 pro Jahr</div>
                             </paper-material>
                             <iron-image src="../data/fever.png" class="vertical" ></iron-image>
                         </paper-card>
