@@ -21,17 +21,19 @@ description:
     font-size: 140%;
   }
   #modal-after-calc paper-material{
-      color: white;
+    color: white;
     background-color: #211637;
     padding-top:10px;
     font-size: 100%;
+	border-radius: 30px;
+	
   }
   #num{
-    color: #304D7E;
+    color: #6C9C7A;
 
   }
   #aufforderung{
-    color: #F0B133;
+    color: #6C9C7A;
     margin-top: 10px;
   }
   </style>
@@ -39,8 +41,8 @@ description:
 	  <paper-dialog modal=true id="modal-after-calc">
     <paper-dialog-scrollable>
       <span>Sie produzieren</span>
-      <h1> <span><span id="num">{{value}}</span> t co2</span> </h1>
-      <h1><span id="aufforderung">Jetzt Klimasünden ausgleichen</span></h1>
+      <h1> <span><span id="num">{{value}}</span> t CO2</span> </h1>
+      <h1><span id="aufforderung">Jetzt Klimasünden ausgleichen!</span></h1>
   	 	<iron-localstorage name="finalValue" value="{{value}}"></iron-localstorage>
       <paper-material elevation="1">  
   	    <wp-cards post="63"></wp-cards>

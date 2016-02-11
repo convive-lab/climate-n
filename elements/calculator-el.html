@@ -100,6 +100,10 @@
         paper-material{
             max-width: 100%;
         }
+		
+		.toast {
+		margin-bottom: 100px;
+		}
 
   </style>
   <template class="cal-wrapper" id="calculator">
@@ -150,17 +154,19 @@
                                     <div class="informationstafel">
                                         <h1>Dankeschön</h1>
                                         <p>
-<<<<<<< HEAD
+
                                            <!-- Das Gesamtergebnis berechnen -->
-=======
-                                            Jetzt dass Gesamtergebnis berechnen
->>>>>>> origin/master
+
                                         </p>
                                         <paper-button id="btnback" raised>zurück</paper-button>
                                         <paper-button id="btnfin" class="right" raised>Ergebnis</paper-button>
                                     </div>
                                 </selection>
                              </iron-pages>
+							 <paper-toast class="toast" on-click="openToast" opened duration="0">
+								<wp-cards post="278"><wp-cards>
+							 </paper-toast>
+
                     </div>   
                 </paper-material>
                 <paper-material elevation="0">
@@ -265,5 +271,17 @@
 
 
     });
+	
+
+	openToast: function() {
+		"#btnnext".$.toast.open();
+	});
+
   </script>
 </dom-module>
+
+
+
+
+
+
