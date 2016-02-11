@@ -112,7 +112,7 @@ li {
 }
 
 .videoWrapper {
-      width:600px;
+      max-width:600px;
       margin:auto;
       text-align: center;
     }
