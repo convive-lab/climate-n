@@ -1,4 +1,4 @@
-<!-- 
+<!--
 author:Aaron
 description: get wp menu number 2
 -->
@@ -11,7 +11,7 @@ description: get wp menu number 2
       @apply(--layout-horizontal);
       @apply(--layout-center-left);
       @apply(--layout-wrap);
-    } 
+    }
    .wp-menu > ::content a {
       text-decoration: none;
       color: #574184;
@@ -23,15 +23,19 @@ description: get wp menu number 2
    .wp-menu > ::content a:hover {
       color: #BDB9A2 !important;
     }
+<<<<<<< HEAD
+
+=======
     
 	
+>>>>>>> origin/master
 	.image {
 	 margin-top:5px;
      margin-bottom:5px;
 	 max-width: 100%;
 	 height:auto;
     }
-	
+
 	.logocontainer {
 	 width: 115px;
 	 padding-left: 35px;
@@ -45,19 +49,19 @@ description: get wp menu number 2
     @apply(--layout-vertical);
     @apply(--layout-self-end);
   }
-	
+
   </style>
   <template>
     <content>
-       
+
 	  <div class="container flex wp-menu">
        <div class="logocontainer"><img class="image" src="../data/CN-Logo-web.png" ></img></div>
         <template is="dom-if" if={{!ajaxResponse}}>
           <iron-ajax id="menu-data" auto url="http://cn.convive.io/wp-json/wp-api-menus/v2/menus/{{menu}}" handle-as="json" last-response="{{ajaxResponse}}" ></iron-ajax>
         </template>
         <iron-localstorage name="menu" value="{{ajaxResponse}}"></iron-localstorage>
-        
-        
+
+
         <template is="dom-repeat" items="{{ajaxResponse.items}}">
           <div class="menu-item">
             <paper-item class="item"> <div> <a  href="[[item.url]]">{{item.title}}</a></div></paper-item>
@@ -75,7 +79,7 @@ description: get wp menu number 2
           menu:{
             type:String
           }
-        },  
+        },
         ajaxResponse:{
           type:Object
         }

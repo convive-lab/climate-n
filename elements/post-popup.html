@@ -16,11 +16,13 @@ description:
   }
 
   #content {
-    padding: 0 20px;
+    padding: 0 2%;
+
   }
   #post-popup-wrapper{
-    margin: 30px;
+    margin: 3%;
     font-size: 130%;
+    width:94%;
   }
 
   </style>
@@ -31,12 +33,8 @@ description:
         <div id="post-popup-wrapper">
           <wp-cards id="content" post=[[post]]></wp-cards>
         </div>
-
       </paper-dialog-scrollable>
-        <div class="buttons">
-            <paper-button dialog-confirm on-click="_eventListn" raised>Kauf Dich Frei!</paper-button>
-        </div>
-	</paper-dialog>
+  	</paper-dialog>
   </template>
   <script>
     Polymer({

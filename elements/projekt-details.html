@@ -5,15 +5,19 @@
     @apply (--layout-horizontal);
   }
     #projekt-details-wrapper {
-      padding:30px;
+      padding:2%;
     background-color: #A6A2AF;
     margin-bottom: 30px;
      font-size: 130%;
      @apply (--layout-vertical);
+     width: 100%
+
     }
     .horizontal{
       @apply (--layout-horizontal);
       background-color: white;
+      @apply (--layout-wrap);
+      @apply (--layout-center);
     }
     .horizontal paper-material{
       padding: 10px;
@@ -25,7 +29,9 @@
      -moz-transition: opacity .25s ease-in-out;
      -webkit-transition: opacity .25s ease-in-out;
      }
-
+     .text{
+        max-width: 700px;
+     }
   </style>
   <template>
     <div id="projekt-details-wrapper" >
@@ -38,7 +44,9 @@
           <img src="{{projektDetailsResponse.better_featured_image.media_details.sizes.medium.source_url}}" style="width:300px; height:200px" >
         </paper-material>
         <paper-material elevation="0">
-         <html-echo html="{{projektDetailsResponse.content.rendered}}"></html-echo></div>
+          <div class="text">
+            <html-echo html="{{projektDetailsResponse.content.rendered}}"></html-echo></div>
+          </div>
         </paper-material>
 
       </div>
