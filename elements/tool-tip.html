@@ -1,0 +1,51 @@
+
+<!--
+author:Martin
+description:
+-->
+  <link rel="import" href="../bower_components/polymer/polymer.html">
+
+<dom-module id="tool-tip">
+  <style type="text/css">
+  .wp-content{
+  	margin: 0px;
+  }
+
+  paper-dialog{
+  	@apply(--layout-self-stretch)
+  }
+
+  #content {
+    padding: 0 2%;
+
+  }
+  #post-popup-wrapper{
+    margin: 3%;
+    font-size: 130%;
+    width:94%;
+  }
+
+  </style>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+
+  <template>
+    <span class="link" title="{{tipcontent}}">
+     <content></content>
+    </span>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'tool-tip',
+      properties:{
+        tipcontent:{
+          type:String
+        }
+      },
+      ready:function () {
+          $( document ).tooltip();
+      }
+
+    });
+  </script>
+</dom-module>
