@@ -163,7 +163,7 @@
                                     </div>
                                 </selection>
                              </iron-pages>
-							 <paper-toast class="toast" on-click="openToast" opened duration="0">
+							 <paper-toast class="toast-cal" on-click="openToast" closed duration="0">
 								<wp-cards post="278"><wp-cards>
 							 </paper-toast>
 
@@ -226,6 +226,7 @@
         evented:false,
         _addEventListn:function () { //um die click-events der Buttons zu initiieren
             if (!this.evented){
+                document.querySelector('.toast-cal').open();
                 console.log('here I am ');
                 var cal = document.querySelector('calculator-el');
                 var next =document.querySelectorAll('#btnnext');
@@ -267,15 +268,17 @@
 
             this.finalValue=0;
             localStorage.setItem("finalValue",0);
+        },
+        openToast: function() {
+            
+            document.querySelector('.toast-cal').close();
         }
 
 
     });
 	
 
-	openToast: function() {
-		"#btnnext".$.toast.open();
-	});
+
 
   </script>
 </dom-module>
