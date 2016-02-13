@@ -11,7 +11,7 @@ description: Footer
       @apply(--layout-wrap);
       margin: auto;
     }
-    .flex {
+    .flex-footer {
       @apply(--layout-horizontal);
       @apply(--layout-wrap);
       @apply(--layout-flex);
@@ -50,24 +50,27 @@ display: inline;
 
   </style>
   <template>
-    <content>
-	  <div class="container flex footer">
-			<ul  class="uppercase">
-				<li><a href="#/about">About</a></li>
-				<li><a href="#">Impressum</a></li>
-				<li></li>
-			</ul>
 
-			<ul>
-				<li>Platzhalter</li>
-				<li>Evt. Kontakt?</li>
-				<li>Evt. Mailadresse</li>
-			</ul>
-			<!--<ul>
-				<li> <span class="underline">Contact us at </span> <br/>
-					  climate&commat;convive.io
-				</li>
-			</ul>-->
+    <content>
+	  <div class="container flex-footer footer">
+    <paper-material elevation="0">
+      
+      <ul  class="uppercase">
+        <li><a href="#/about">About</a></li>
+        <li><a href="#">Impressum</a></li>
+        <li></li>
+      </ul>
+
+      <ul>
+        <li>Platzhalter</li>
+        <li>Evt. Kontakt?</li>
+        <li>Evt. Mailadresse</li>
+      </ul>
+      <!--<ul>
+        <li> <span class="underline">Contact us at </span> <br/>
+            climate&commat;convive.io
+        </li>
+      </ul>-->
       <div class="social-media-buttons">
         <a href="#">
           <div >
@@ -93,7 +96,9 @@ display: inline;
         </a>
       </div>
 
-
+    
+      </paper-material>
+      </div><!--container flex-footer footer-->
     </content>
   </template>
 </dom-module>
