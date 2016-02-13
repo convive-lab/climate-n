@@ -35,13 +35,20 @@ GRÜN
 
 
 @font-face {
+/*
+Damit die Schrift geht brauchen wir:
+TTF - Works in most browsers except IE and iPhone.
+EOT - IE only.
+WOFF - Compressed, emerging standard.
+SVG - iPhone/iPad.
+Das gibts für acron nicht.
 font-family: "ARCON";
-src: url("../data/fonts/arcon/Arcon-Regular.otf");
+src: url("../data/fonts/arcon/Arcon-Regular.otf");*/
 }
 
 body{
 	margin: 0px;
-	font-family: 'ARCON' !important;
+	/*font-family: 'ARCON' !important;*/
 }
 
 .header-panel{
