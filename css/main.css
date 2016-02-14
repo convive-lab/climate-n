@@ -37,6 +37,8 @@ GRÜN
 
 
 @font-face {
+	src: url("data/fonts/lato/Lato-Light.ttf");
+	font-family: "LATO";
 /*
 Damit die Schrift geht brauchen wir:
 TTF - Works in most browsers except IE and iPhone.
@@ -48,9 +50,10 @@ font-family: "ARCON";
 src: url("../data/fonts/arcon/Arcon-Regular.otf");*/
 }
 
-body{
+body {
 	margin: 0px;
 	/*font-family: 'ARCON' !important;*/
+	font-family: 'Lato Light', LATO, sans-serif  !important;
 }
 
 .header-panel{
@@ -144,12 +147,12 @@ li {
 /*OWL Carousel*/
 
  .owl-item  {
-        background: #d2c8c6;
+        background: #877773;
         margin: 20px;
         color: #FFF;		
-        -webkit-border-radius: 3px;
-        -moz-border-radius: 3px;
-        border-radius: 3px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
         text-align: center;
     }
 
