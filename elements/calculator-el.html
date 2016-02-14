@@ -19,7 +19,10 @@
         #wrapper-card{
             @apply(--layout-horizontal);
             @apply(--layout-center-justified);
-            background-color: white;
+            /*background-color: white;
+            
+            
+            */
             padding: 20px;
             margin: 20px;
             @apply(--layout-wrap);
@@ -30,6 +33,7 @@
         }
         .question-container{
             @apply(--layout-self-stretch);
+            max-width:98%;
 
         }
         .buttons{
@@ -48,18 +52,23 @@
             border-radius: 10px;
         }
         .left-container{
-            width: 500px;
+            width: 98%;
+            max-width: 500px;
+            min-height: 525px;
+            background-color: white;
             @apply(--layout-self-center);
             @apply(--layout-vertical);
             @apply(--layout-center);
-            @apply(--layout-center-justified);
+
             @apply(‑‑self-stretch);
         }
         .informationstafel{
             text-align: center;
             font-size: 120%;
             padding:3%;
-            max-width: 100%;
+            max-width:98%;
+            @apply(‑‑layout-self-stretch);
+            @apply(--layout-center-justified);
         }
         
 		.right-container{
@@ -104,34 +113,33 @@
 		.toast {
 		margin-bottom: 100px;
 		}
+        co2-fever{
+
+        }
 
   </style>
   <template class="cal-wrapper" id="calculator">
-
     <div class="cal-container">
-        <paper-material id="wrapper-card" elevation="1">
-<!--             <iron-pages id="cal-wrap" selected="0">
-                <selection> -->
-<!--                     <div class="informationstafel">
-                        <h1>CO2 Emissionsrechner</h1>
-                        <wp-cards post="152"></wp-cards>
-                        <div class="right">
-                            <paper-button id="btnstart" on-click="_addEventListn" raised>Starten</paper-button>
-                        </div>
-                    </div> -->
-<!--                 </selection>
-                <selection> -->
+        <paper-material id="wrapper-card" elevation="0">    
                 <paper-material elevation="0">
                     <div class="left-container">
                         <template is="dom-if" if={{!questionsResponse}}>
                             <iron-ajax id="menu-data" auto url="http://cn.convive.io/wp-json/wp/v2/posts/?filter[cat]=3" handle-as="json" last-response="{{questionsResponse}}" ></iron-ajax>
                         </template>
                             <iron-localstorage name="questions" value="{{questionsResponse}}"></iron-localstorage>
+                            <div>
+                                
+                                <co2-fever value="{{finalValue}}" percentage="{{percentage}}"></co2-fever>
+
+
+                            </div>
                             <iron-pages id="cal-question-pages" selected="0">
                                 <selection>
                                     <div class="informationstafel">
                                         <h1>CO2 Emissionsrechner</h1>
-                                        <wp-cards post="152"></wp-cards>
+                                        <paper-material elevation="0">
+                                            <wp-cards post="152"></wp-cards>
+                                        </paper-material>
                                         <div class="right">
                                             <paper-button id="btnnext" on-click="_addEventListn" raised>Starten</paper-button>
                                         </div>
@@ -171,24 +179,14 @@
                 </paper-material>
                 <paper-material elevation="0">
                     <div class="right-container">
-                        <paper-card elevation="0" elevation="1" animated-shadow="false">
-                            <div class="keine-anzeige">
-                                <div class="placeholder"></div>
-                                <span class="ka">keine Anzeige</span>
-                            </div>
-                            <paper-material elevation="2" class="co2Value">
-                                <span>{{finalValue}}</span> <div >t  CO2 pro Jahr</div>
-                            </paper-material>
-                            <iron-image src="../data/fever.png" class="vertical" ></iron-image>
-                        </paper-card>
+                        <div class="keine-anzeige">
+                            <div class="placeholder"></div>
+                            <span class="ka">keine Anzeige</span>
+                        </div>
                     </div>
                 </paper-material>
-<!--                 </selection>
-            </iron-pages> -->
         </paper-material>
     </div>
-        
-    
     <modal-after-calc value={{finalValue}}></modal-after-calc>
     </template>
 
@@ -200,6 +198,7 @@
             finalValue:{type:Number,Value:0}
         },
         finalValue:0,
+        percentage:0,
         answers:Object,
         questionsResponse:{
             type:Object
@@ -210,7 +209,7 @@
             var quest = document.querySelectorAll('cal-question');
             for (var i=0;i<cal.questionsResponse.length;i++){
                 cal.answers[i]=parseInt(quest[i].co2)
-                console.log(cal.answers[i]);
+                //console.log(cal.answers[i]);
             }
         },
         calFinalValue:function (){
@@ -220,7 +219,14 @@
                 if (cal.answers[i])
                 cal.finalValue+=parseInt(cal.answers[i]);
             }
-            if (cal.finalValue>0)cal.finalValue= cal.finalValue/1000;
+            if (cal.finalValue>0) {
+                console.log(cal.finalValue);
+                console.log(100*cal.finalValue/2014380);
+                console.log(1014380/cal.finalValue);
+
+                this.percentage= 100*cal.finalValue/2014380;
+                cal.finalValue= cal.finalValue/1000;
+            }
            localStorage.setItem("finalValue",cal.finalValue);
         },
         evented:false,

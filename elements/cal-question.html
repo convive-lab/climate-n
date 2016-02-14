@@ -13,8 +13,9 @@ properties: post:<post-number>
         }
         .question-wrapper{
           @apply(--layout-wrap);
-        @apply(--layout-self-stretch);
-          padding:20px;
+          @apply(--layout-self-stretch);
+          padding-left: 10px;
+          padding-right: 10px;
         }
         .answers{
           @apply(--layout-vertical);
@@ -97,7 +98,6 @@ properties: post:<post-number>
               this.co2=0;
               break;
           }
-          console.log(this.co2);
         }
 
     });
