@@ -1,4 +1,6 @@
 /*Faben aus unserer Farbpalette
+Dunkel zu hell
+
 LILA
 
 #574184 (Schriftfarbe Logo)
@@ -141,16 +143,22 @@ li {
 
 /*OWL Carousel*/
 
-    #owl-demo .item{
-        background: #877773;
-        padding: 30px 0px;
-        margin: 10px;
-        color: #FFF;
+ .owl-item  {
+        background: #d2c8c6;
+        margin: 20px;
+        color: #FFF;		
         -webkit-border-radius: 3px;
         -moz-border-radius: 3px;
         border-radius: 3px;
         text-align: center;
     }
+
+	
+	#owl-demo img  {
+		padding: 10px;
+		max-width: 100%;
+		
+	}
 
 	.sliderwrap {
 	margin-bottom: 5%;
