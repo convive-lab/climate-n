@@ -34,13 +34,10 @@ description:
           <wp-cards id="content" post=[[post]]></wp-cards>
         </div>
         <div class="buttons">
-    	    <paper-button dialog-confirm on-click="_btnImp">Über das Projekt Climate Neutral</paper-button>
-          <paper-button dialog-confirm on-click="_btnClose">Fenster Schließen</paper-button>
+    	    <paper-button raised dialog-confirm on-click="_btnImp">Über das Projekt Climate Neutral</paper-button>
+          <paper-button raised dialog-confirm on-click="_btnClose">Fenster Schließen</paper-button>
     	  </div>
       </paper-dialog-scrollable>
-		<div class="buttons">
-			<paper-button raised dialog-confirm>Weiter</paper-button>
-		</div>
 		</paper-dialog>
   </template>
   <script>
@@ -56,16 +53,13 @@ description:
         }
       },
       _btnImp:function () {
-      	//window.location.href = "/";
-        //ar dia=document.querySelector('#pop' + ' paper-dialog');
-        //dia.close();
         window.location.href = "/#/impressum";
       },
       _btnClose:function () {
         var dia=document.querySelector('#pop-aufloesung' + ' paper-dialog');
         dia.close();
       }
-	  
+
 
     });
   </script>
