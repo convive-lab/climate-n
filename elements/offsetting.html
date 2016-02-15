@@ -1,11 +1,11 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <dom-module id="offsetting-el">
   <style type="text/css" >
-        
-  
+
+
   </style>
   <template class="offsetting-wrapper">
-        <paper-card-fw><wp-cards post="75" titel=true></wp-cards></paper-card-fw>
+        <paper-card-fw><wp-cards post="75" wptitel=true></wp-cards></paper-card-fw>
         <template is="dom-if" if={{!questionsResponse}}>
             <iron-ajax id="menu-data" auto url="http://cn.convive.io/wp-json/wp/v2/posts/?filter[cat]=11" handle-as="json" last-response="{{questionsResponse}}" ></iron-ajax>
         </template>
@@ -14,7 +14,7 @@
             <div class="offset-container">
                   <cal-question data="[[item]]" class="left">
                   </cal-question>
-            </div> 
+            </div>
     </template>
 
 </template>
@@ -23,7 +23,7 @@
     Polymer({
         is: 'offsetting-el',
         questionsResponse:{
-            type:Object        
+            type:Object
         },
 
     });
