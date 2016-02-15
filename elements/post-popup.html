@@ -34,7 +34,10 @@ description:
           <wp-cards id="content" post=[[post]]></wp-cards>
         </div>
       </paper-dialog-scrollable>
-  	</paper-dialog>
+		<div class="buttons">
+			<paper-button raised dialog-confirm>Weiter</paper-button>
+		</div>
+		</paper-dialog>
   </template>
   <script>
     Polymer({
@@ -53,6 +56,7 @@ description:
         var dia=document.querySelector('#pop' + ' paper-dialog');
         dia.close();
       }
+	  
 
     });
   </script>
