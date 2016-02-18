@@ -5,12 +5,7 @@ description:
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <dom-module id="rand-user">
   <style type="text/css">
-          :host {
-            @apply(--layout-vertical);
-            @apply(--layout-flex);
-            @apply(--layout-self-end);
-
-        }
+      
         .image{
           border-radius:60px;
           overflow: hidden;
@@ -23,8 +18,8 @@ description:
         }
         .rand-user-wrap{
             @apply(--layout-horizontal);
-            
-        }
+           
+        } 
         .quote{
           font-size: 80%;
 		  margin-left: 5px;
@@ -34,10 +29,10 @@ description:
     <div class="rand-user-wrap">
         <div class="image"><iron-image src="[[data.user.picture.thumbnail]]" ></iron-image></div>
         <paper-material class="text" elevation="0">
-              <div><b><span>{{data.user.name.first}}</span> <span> {{data.user.name.last}}</span></b><div>
+              <div><b><span>{{data.user.name.first}}</span> <span> {{data.user.name.last}}</span></b></div>
               <div class="quote"><content></content></div>
         </paper-material>
-      </div>
+    </div>
   </template>
   <script>
     Polymer({
