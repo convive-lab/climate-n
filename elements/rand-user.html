@@ -11,11 +11,15 @@ description:
           overflow: hidden;
           border-style: 1px solid grey;
         }
-        .text{
-          @apply(--layout-flex);
-          @apply(--layout-vertical);
-          @apply(--layout-center-justified);
-        }
+        .spacing {
+          padding-left: 10px;
+		  }
+		  
+		  .face-wrap > div:nth-child(3) > rand-user:nth-child(1) > div:nth-child(1) > paper-material:nth-child(2) > div:nth-child(1) > b:nth-child(1)
+		  {
+          margin-left: 5px;
+		  }
+		  
         .rand-user-wrap{
             @apply(--layout-horizontal);
            
@@ -29,7 +33,7 @@ description:
     <div class="rand-user-wrap">
         <div class="image"><iron-image src="[[data.user.picture.thumbnail]]" ></iron-image></div>
         <paper-material class="text" elevation="0">
-              <div><b><span>{{data.user.name.first}}</span> <span> {{data.user.name.last}}</span></b></div>
+              <div class="spacing"><b><span>{{data.user.name.first}}</span> <span> {{data.user.name.last}}</span></b></div>
               <div class="quote"><content></content></div>
         </paper-material>
     </div>
