@@ -111,14 +111,21 @@ paper-header-panel{
     color: white;
     min-height: 450px;
     font-size: 120%;
+
 }
 .firstText{
-  background-color: rgba(255,255,255,0.3);
-  border-radius: 10px;
-  padding: 10px;
+    background-color: rgba(0,0,0,0.5);
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 20px;
+
+}
+.firstText p{
+  text-align: left !important;
 }
 .firstText strong{
   font-size: 120%;
+
 }
 .owl{
   background-color: #DDDDDD;
