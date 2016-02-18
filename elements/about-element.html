@@ -13,13 +13,9 @@ text-align: center;
      background-color: white;
      font-size: 120%;
     }
-<<<<<<< HEAD
-    .first{
-      color: white !important;
-=======
+
     .first-about{
-      color: black;
->>>>>>> origin/master
+      color: black; 
       background-color: #6C9C7A;
     }
     .second{
@@ -32,10 +28,11 @@ text-align: center;
     }
     .quote{
       background-color: #BCB3CE;
+      text-align: center;
 
     }
 	.face-wrap {
-	 @apply(--layout-horizontal);
+	   @apply(--layout-horizontal);
      @apply(--layout-around-justified);
      @apply(--layout-wrap);
 	  }
@@ -48,7 +45,7 @@ text-align: center;
     <div class="quote">
      <paper-card-fw>
        <div >
-          <h1>Über uns</h1>
+          <wp-cards post="331" wptitel=true ></wp-cards>
             <div class="face-wrap">
 				<template is="dom-bind">
 					<iron-ajax id="randomuser" auto url="http://api.randomuser.me/?results=3" handle-as="json" last-response="{{randuser}}" ></iron-ajax>

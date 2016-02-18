@@ -54,7 +54,7 @@
         .left-container{
             /*width: 98%;*/
             width: 500px;
-            min-height: 540px;
+            min-height: 575px;
             background-color: white;
             @apply(--layout-self-center);
             @apply(--layout-vertical);
@@ -182,12 +182,7 @@
                                 </template>
                                 <selection>
                                     <div class="informationstafel">
-                                        <h1>Dankeschön</h1>
-                                        <p>
-
-                                           <!-- Das Gesamtergebnis berechnen -->
-
-                                        </p>
+                                        <wp-cards post="333" wptitel=true></wp-cards>
                                         <paper-button id="btnback" raised>{{translation.acf.calculator_back_button}}</paper-button>
                                         <paper-button id="btnfin" class="right" raised>{{translation.acf.calculator_finished_button}}</paper-button>
                                     </div>
