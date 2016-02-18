@@ -108,7 +108,7 @@ paper-header-panel{
     background: #fff url("../data/startbild.jpg") no-repeat center center;
     -webkit-background-size: cover;
     background-size: cover;
-    font-size: 154%;
+    font-size: 130%;
     color: white;
 
 
@@ -118,7 +118,7 @@ paper-header-panel{
 }
 .second{
     color: black;
-    background-color: #BDE3C8;
+    background-color: #A6A2AF;
     }
 
 li {
