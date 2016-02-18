@@ -30,7 +30,10 @@
           <wp-menu menu="2" class></wp-menu>
         </div>
       </paper-header-panel>
-
+      <template is="dom-if" if={{!translation}}>
+        <iron-ajax id="translation-data" auto url="http://cn.convive.io/wp-json/wp/v2/posts/321" handle-as="json" last-response="{{translation}}" ></iron-ajax>
+      </template>
+      <iron-localstorage name="translation" value="{{translation}}"></iron-localstorage>
       <iron-pages attr-for-selected="path" selected="{{route}}">
         <section path="home" class="main-content">
 			    <div class="start-page-wrap">
@@ -63,8 +66,10 @@
         <section path="projekt"><projekt-details projekt="{{projekt}}" route="{{route}}"></projekt-details></section>
         <section path="about"><about-element></about-element></section>
         <section path="impressum">
-          <wp-full-post post="288"></wp-full-post>
-          <wp-full-post post="302"></wp-full-post>
+          <div>
+            <wp-full-post post="288"></wp-full-post>
+            <wp-full-post post="302"></wp-full-post>
+          </div>
         </section>
       </iron-pages>
       <div class="footer">

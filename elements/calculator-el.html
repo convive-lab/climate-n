@@ -140,29 +140,30 @@
 
   </style>
   <template class="cal-wrapper" id="calculator">
+    <iron-localstorage name="translation" value="{{translation}}"></iron-localstorage>
     <div class="cal-container">
         <paper-material id="wrapper-card" elevation="0">    
                 <paper-material elevation="0">
                     <div class="left-container">
+                        <iron-localstorage name="questions" value="{{questionsResponse}}"></iron-localstorage>
                         <template is="dom-if" if={{!questionsResponse}}>
                             <iron-ajax id="menu-data" auto url="http://cn.convive.io/wp-json/wp/v2/posts/?filter[cat]=3" handle-as="json" last-response="{{questionsResponse}}" ></iron-ajax>
                         </template>
-                            <iron-localstorage name="questions" value="{{questionsResponse}}"></iron-localstorage>
+                        <iron-localstorage name="translation" value="{{translation}}"></iron-localstorage>
+                        <template is="dom-if" if={{!translation}}>
+                            <iron-ajax id="translation-data" auto url="http://cn.convive.io/wp-json/wp/v2/posts/321" handle-as="json" last-response="{{translation}}" ></iron-ajax>
+                        </template>
                             <div>
-                                
                                 <co2-fever value="{{finalValue}}" percentage="{{percentage}}"></co2-fever>
-
-
                             </div>
                             <iron-pages id="cal-question-pages" selected="0">
                                 <selection>
                                     <div class="informationstafel">
-                                        <h1>CO2 Emissionsrechner</h1>
                                         <paper-material elevation="0">
-                                            <wp-cards post="152"></wp-cards>
+                                            <wp-cards post="152" wptitel=true></wp-cards>
                                         </paper-material>
                                         <div class="right">
-                                            <paper-button id="btnnext" on-click="_addEventListn" raised>Starten</paper-button>
+                                            <paper-button id="btnnext" on-click="_addEventListn" raised>{{translation.acf.calculator_start_button}}</paper-button>
                                         </div>
                                     </div>
                                 </selection>
@@ -171,8 +172,8 @@
                                         <div class="question-container">
                                             <cal-question data="[[item]]" class="left wp-questions">
                                                 <div class="buttons">
-                                                    <div class="leftbtn"><paper-button id="btnback" raised>zurück</paper-button></div>
-                                                    <div class="rightbtn"><paper-button id="btnnext"  raised>weiter</paper-button></div>
+                                                    <div class="leftbtn"><paper-button id="btnback" raised>{{translation.acf.calculator_back_button}}</paper-button></div>
+                                                    <div class="rightbtn"><paper-button id="btnnext"  raised>{{translation.acf.calculator_next_button}}</paper-button></div>
 
                                                 </div>
                                             </cal-question>
@@ -187,8 +188,8 @@
                                            <!-- Das Gesamtergebnis berechnen -->
 
                                         </p>
-                                        <paper-button id="btnback" raised>zurück</paper-button>
-                                        <paper-button id="btnfin" class="right" raised>Ergebnis</paper-button>
+                                        <paper-button id="btnback" raised>{{translation.acf.calculator_back_button}}</paper-button>
+                                        <paper-button id="btnfin" class="right" raised>{{translation.acf.calculator_finished_button}}</paper-button>
                                     </div>
                                 </selection>
                              </iron-pages>
@@ -202,15 +203,15 @@
                     <div class="right-container">
                         <div class="keine-anzeige">
                             <div class="placeholder"></div>
-                            <span class="ka">keine Anzeige</span>
+                            <span class="ka">{{translation.acf.calculator_no_advertisment}}</span>
                         </div>
 						<div class="keine-anzeige">
                             <div class="placeholder1"></div>
-                            <span class="ka">keine Anzeige</span>
+                            <span class="ka">{{translation.acf.calculator_no_advertisment}}</span>
                         </div>
 						<div class="keine-anzeige">
                             <div class="placeholder2"></div>
-                            <span class="ka">keine Anzeige</span>
+                            <span class="ka">{{translation.acf.calculator_no_advertisment}}</span>
                         </div>
 										
                     </div>
@@ -299,13 +300,14 @@
 
             }
         },
+        caltranslation:Object,
         ready:function (){
-            var cal = document.querySelector('calculator-el');
-
             this.finalValue=0;
             localStorage.setItem("finalValue",0);
+            this.caltranslation=localStorage.getItem("translation");
         },
         openToast: function() {
+
             
             document.querySelector('.toast-cal').close();
         }
