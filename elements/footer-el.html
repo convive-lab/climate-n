@@ -56,8 +56,8 @@ display: inline;
     <paper-material elevation="0">
 
       <ul  class="uppercase">
-        <li><a href="#/about">About</a></li>
-        <li><a href="#/impressum">Impressum</a></li>
+        <li><a href="#/about" on-click="scrollUp">About</a></li>
+        <li><a href="#/impressum" on-click="scrollUp">Impressum</a></li>
         <li></li>
       </ul>
 
@@ -107,6 +107,14 @@ display: inline;
 
 <script>
 Polymer({
-    is: "footer-el"
+    is: "footer-el",
+	
+	scrollUp:function () {
+       jQuery('html').animate({ scrollTop: 0 }, 'fast');
+      }
+
 });
+
 </script>
+
+
