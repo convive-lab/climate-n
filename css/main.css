@@ -108,18 +108,25 @@ paper-header-panel{
     background: #fff url("../data/startbild.jpg") no-repeat center center;
     -webkit-background-size: cover;
     background-size: cover;
-    font-size: 130%;
     color: white;
-
-
-    }
+    min-height: 450px;
+    font-size: 120%;
+}
+.firstText{
+  background-color: rgba(255,255,255,0.3);
+  border-radius: 10px;
+  padding: 10px;
+}
+.firstText strong{
+  font-size: 120%;
+}
 .owl{
   background-color: #DDDDDD;
 }
 .second{
     color: black;
     background-color: #A6A2AF;
-    }
+}
 
 li {
    text-align: left !important;
