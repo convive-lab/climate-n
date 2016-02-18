@@ -19,7 +19,10 @@
         #wrapper-card{
             @apply(--layout-horizontal);
             @apply(--layout-center-justified);
-            background-color: white;
+            /*background-color: white;
+            
+            
+            */
             padding: 20px;
             margin: 20px;
             @apply(--layout-wrap);
@@ -30,6 +33,7 @@
         }
         .question-container{
             @apply(--layout-self-stretch);
+            max-width:98%;
 
         }
         .buttons{
@@ -48,18 +52,23 @@
             border-radius: 10px;
         }
         .left-container{
+            /*width: 98%;*/
             width: 500px;
+            min-height: 540px;
+            background-color: white;
             @apply(--layout-self-center);
             @apply(--layout-vertical);
             @apply(--layout-center);
-            @apply(--layout-center-justified);
-            @apply(‑‑self-stretch);
+
+            @apply(--self-stretch);
         }
         .informationstafel{
             text-align: center;
             font-size: 120%;
             padding:3%;
-            max-width: 100%;
+            max-width:98%;
+            @apply(--layout-self-stretch);
+            @apply(--layout-center-justified);
         }
         
 		.right-container{
@@ -76,14 +85,35 @@
             background-color: #D9D9D9;
             border-radius: 4px;
             box-shadow: 1px;
-            background-image: url("../data/rr.png");
+            background-image: url("../data/adbusting/rr.png");
         }
+		
+		 .placeholder1{
+            width: 350px;
+            height: 175px;
+            background-color: #D9D9D9;
+            border-radius: 4px;
+            box-shadow: 1px;
+            background-image: url("../data/adbusting/airberlin-adbust.png");
+        }
+		
+		 .placeholder2{
+            width: 350px;
+            height: 175px;
+            background-color: #D9D9D9;
+            border-radius: 4px;
+            box-shadow: 1px;
+            background-image: url("../data/adbusting/ama-adbust.png");
+        }
+		
+		 	
         .ka{
-            font-size: 70%;
+            font-size: 10px;
             float: right;
         }
         .keine-anzeige{
-          margin-bottom:20px;
+          margin-bottom:8px;
+		  margin-left: 8px;
         }
         .co2Value{
             font-size: 150%;
@@ -104,36 +134,36 @@
 		.toast {
 		margin-bottom: 100px;
 		}
+        co2-fever{
+
+        }
 
   </style>
   <template class="cal-wrapper" id="calculator">
-
+    <iron-localstorage name="translation" value="{{translation}}"></iron-localstorage>
     <div class="cal-container">
-        <paper-material id="wrapper-card" elevation="1">
-<!--             <iron-pages id="cal-wrap" selected="0">
-                <selection> -->
-<!--                     <div class="informationstafel">
-                        <h1>CO2 Emissionsrechner</h1>
-                        <wp-cards post="152"></wp-cards>
-                        <div class="right">
-                            <paper-button id="btnstart" on-click="_addEventListn" raised>Starten</paper-button>
-                        </div>
-                    </div> -->
-<!--                 </selection>
-                <selection> -->
+        <paper-material id="wrapper-card" elevation="0">    
                 <paper-material elevation="0">
                     <div class="left-container">
+                        <iron-localstorage name="questions" value="{{questionsResponse}}"></iron-localstorage>
                         <template is="dom-if" if={{!questionsResponse}}>
                             <iron-ajax id="menu-data" auto url="http://cn.convive.io/wp-json/wp/v2/posts/?filter[cat]=3" handle-as="json" last-response="{{questionsResponse}}" ></iron-ajax>
                         </template>
-                            <iron-localstorage name="questions" value="{{questionsResponse}}"></iron-localstorage>
+                        <iron-localstorage name="translation" value="{{translation}}"></iron-localstorage>
+                        <template is="dom-if" if={{!translation}}>
+                            <iron-ajax id="translation-data" auto url="http://cn.convive.io/wp-json/wp/v2/posts/321" handle-as="json" last-response="{{translation}}" ></iron-ajax>
+                        </template>
+                            <div>
+                                <co2-fever value="{{finalValue}}" percentage="{{percentage}}"></co2-fever>
+                            </div>
                             <iron-pages id="cal-question-pages" selected="0">
                                 <selection>
                                     <div class="informationstafel">
-                                        <h1>CO2 Emissionsrechner</h1>
-                                        <wp-cards post="152"></wp-cards>
+                                        <paper-material elevation="0">
+                                            <wp-cards post="152" wptitel=true></wp-cards>
+                                        </paper-material>
                                         <div class="right">
-                                            <paper-button id="btnnext" on-click="_addEventListn" raised>Starten</paper-button>
+                                            <paper-button id="btnnext" on-click="_addEventListn" raised>{{translation.acf.calculator_start_button}}</paper-button>
                                         </div>
                                     </div>
                                 </selection>
@@ -142,8 +172,8 @@
                                         <div class="question-container">
                                             <cal-question data="[[item]]" class="left wp-questions">
                                                 <div class="buttons">
-                                                    <div class="leftbtn"><paper-button id="btnback" raised>zurück</paper-button></div>
-                                                    <div class="rightbtn"><paper-button id="btnnext"  raised>weiter</paper-button></div>
+                                                    <div class="leftbtn"><paper-button id="btnback" raised>{{translation.acf.calculator_back_button}}</paper-button></div>
+                                                    <div class="rightbtn"><paper-button id="btnnext"  raised>{{translation.acf.calculator_next_button}}</paper-button></div>
 
                                                 </div>
                                             </cal-question>
@@ -158,12 +188,12 @@
                                            <!-- Das Gesamtergebnis berechnen -->
 
                                         </p>
-                                        <paper-button id="btnback" raised>zurück</paper-button>
-                                        <paper-button id="btnfin" class="right" raised>Ergebnis</paper-button>
+                                        <paper-button id="btnback" raised>{{translation.acf.calculator_back_button}}</paper-button>
+                                        <paper-button id="btnfin" class="right" raised>{{translation.acf.calculator_finished_button}}</paper-button>
                                     </div>
                                 </selection>
                              </iron-pages>
-							 <paper-toast class="toast" on-click="openToast" opened duration="0">
+							 <paper-toast class="toast-cal" on-click="openToast" closed duration="0">
 								<wp-cards post="278"><wp-cards>
 							 </paper-toast>
 
@@ -171,24 +201,23 @@
                 </paper-material>
                 <paper-material elevation="0">
                     <div class="right-container">
-                        <paper-card elevation="0" elevation="1" animated-shadow="false">
-                            <div class="keine-anzeige">
-                                <div class="placeholder"></div>
-                                <span class="ka">keine Anzeige</span>
-                            </div>
-                            <paper-material elevation="2" class="co2Value">
-                                <span>{{finalValue}}</span> <div >t  CO2 pro Jahr</div>
-                            </paper-material>
-                            <iron-image src="../data/fever.png" class="vertical" ></iron-image>
-                        </paper-card>
+                        <div class="keine-anzeige">
+                            <div class="placeholder"></div>
+                            <span class="ka">{{translation.acf.calculator_no_advertisment}}</span>
+                        </div>
+						<div class="keine-anzeige">
+                            <div class="placeholder1"></div>
+                            <span class="ka">{{translation.acf.calculator_no_advertisment}}</span>
+                        </div>
+						<div class="keine-anzeige">
+                            <div class="placeholder2"></div>
+                            <span class="ka">{{translation.acf.calculator_no_advertisment}}</span>
+                        </div>
+										
                     </div>
                 </paper-material>
-<!--                 </selection>
-            </iron-pages> -->
         </paper-material>
     </div>
-        
-    
     <modal-after-calc value={{finalValue}}></modal-after-calc>
     </template>
 
@@ -200,17 +229,18 @@
             finalValue:{type:Number,Value:0}
         },
         finalValue:0,
+        percentage:0,
         answers:Object,
         questionsResponse:{
             type:Object
         },
-        getValues(){
+        getValues:function(){
 
             var cal = document.querySelector('calculator-el');
             var quest = document.querySelectorAll('cal-question');
             for (var i=0;i<cal.questionsResponse.length;i++){
                 cal.answers[i]=parseInt(quest[i].co2)
-                console.log(cal.answers[i]);
+                //console.log(cal.answers[i]);
             }
         },
         calFinalValue:function (){
@@ -220,12 +250,20 @@
                 if (cal.answers[i])
                 cal.finalValue+=parseInt(cal.answers[i]);
             }
-            if (cal.finalValue>0)cal.finalValue= cal.finalValue/1000;
+            if (cal.finalValue>0) {
+                console.log(cal.finalValue);
+                console.log(100*cal.finalValue/2014380);
+                console.log(1014380/cal.finalValue);
+
+                this.percentage= 100*cal.finalValue/2014380;
+                cal.finalValue= cal.finalValue/1000;
+            }
            localStorage.setItem("finalValue",cal.finalValue);
         },
         evented:false,
         _addEventListn:function () { //um die click-events der Buttons zu initiieren
             if (!this.evented){
+                document.querySelector('.toast-cal').open();
                 console.log('here I am ');
                 var cal = document.querySelector('calculator-el');
                 var next =document.querySelectorAll('#btnnext');
@@ -262,20 +300,23 @@
 
             }
         },
+        caltranslation:Object,
         ready:function (){
-            var cal = document.querySelector('calculator-el');
-
             this.finalValue=0;
             localStorage.setItem("finalValue",0);
+            this.caltranslation=localStorage.getItem("translation");
+        },
+        openToast: function() {
+
+            
+            document.querySelector('.toast-cal').close();
         }
 
 
     });
 	
 
-	openToast: function() {
-		"#btnnext".$.toast.open();
-	});
+
 
   </script>
 </dom-module>

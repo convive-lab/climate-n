@@ -27,14 +27,21 @@ description:
 
   </style>
   <template>
-
+    <iron-localstorage name="translation" value="{{translation}}"></iron-localstorage>
+    <template is="dom-if" if={{!translation}}>
+      <iron-ajax id="translation-data" auto url="http://cn.convive.io/wp-json/wp/v2/posts/321" handle-as="json" last-response="{{translation}}" ></iron-ajax>
+    </template>
 	  <paper-dialog id="popup" modal=true>
       <paper-dialog-scrollable>
         <div id="post-popup-wrapper">
           <wp-cards id="content" post=[[post]]></wp-cards>
         </div>
+        <div class="buttons">
+    	    <paper-button raised dialog-confirm on-click="_btnImp">{translation.acf.post-popup_button_1}}</paper-button>
+          <paper-button raised dialog-confirm on-click="_btnClose">{translation.acf.post-popup_button_2}}</paper-button>
+    	  </div>
       </paper-dialog-scrollable>
-  	</paper-dialog>
+		</paper-dialog>
   </template>
   <script>
     Polymer({
@@ -48,11 +55,14 @@ description:
           type:String
         }
       },
-      _eventListn:function () {
-      	//window.location.href = "/";
-        var dia=document.querySelector('#pop' + ' paper-dialog');
+      _btnImp:function () {
+        window.location.href = "/#/impressum";
+      },
+      _btnClose:function () {
+        var dia=document.querySelector('#pop-aufloesung' + ' paper-dialog');
         dia.close();
       }
+
 
     });
   </script>

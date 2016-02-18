@@ -1,0 +1,36 @@
+<!-- 
+author:Aaron
+description: 
+properties: 
+-->
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<dom-module id="co2-fever">
+  <style>
+    :host {
+      margin: 10px;
+    }
+    paper-progress {
+       --paper-progress-active-color: linear-gradient(to right, #1e5799 0%,#2989d8 10%,#207cca 35%,#f96800 55%,#af0000 100%); /*W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+       /*--paper-progress-active-color:#af0000 ;*/
+       --paper-progress-transition-delay:6s;
+       --paper-progress-transition-duration:6s;
+       --paper-progress-height:8px;
+    }
+  </style>
+
+  <template>
+  <div><span>{{value}}</span> t  CO<sub>2</sub> /year</div>
+  <paper-progress value="{{percentage}}"></paper-progress>
+  </template>
+</dom-module>
+
+<script>
+    Polymer({
+        is: "co2-fever",
+        properties:{
+          value:String,
+          percentage:String
+        }
+
+    });
+</script>

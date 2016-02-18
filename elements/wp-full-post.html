@@ -1,0 +1,28 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<dom-module id="wp-full-post">
+ <style>
+  .wp-full-wrapper{
+    padding-bottom:40px;
+  }
+  .wp-full-wrapper .wp-full-post{
+    background-color: #B0BDCE;
+  }
+ </style>
+<template>
+  <div  class="wp-full-wrapper">
+    <div class="info-box"><paper-card-fw><wp-cards post="[[post]]" wptitel=true></wp-cards></paper-card-fw></div>
+  </div>
+
+</template>
+
+  <script>
+    Polymer({
+        is: 'wp-full-post',
+        post:{
+            type:String
+        }
+	});
+
+
+  </script>
+</dom-module>

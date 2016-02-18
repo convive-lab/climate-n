@@ -11,7 +11,7 @@ description: Footer
       @apply(--layout-wrap);
       margin: auto;
     }
-    .flex {
+    .flex-footer {
       @apply(--layout-horizontal);
       @apply(--layout-wrap);
       @apply(--layout-flex);
@@ -50,24 +50,27 @@ display: inline;
 
   </style>
   <template>
-    <content>
-	  <div class="container flex footer">
-			<ul  class="uppercase">
-				<li><a href="#/about">About</a></li>
-				<li><a href="#">Impressum</a></li>
-				<li></li>
-			</ul>
 
-			<ul>
-				<li>Platzhalter</li>
-				<li>Evt. Kontakt?</li>
-				<li>Evt. Mailadresse</li>
-			</ul>
-			<!--<ul>
-				<li> <span class="underline">Contact us at </span> <br/>
-					  climate&commat;convive.io
-				</li>
-			</ul>-->
+    <content>
+	  <div class="container flex-footer footer">
+    <paper-material elevation="0">
+
+      <ul  class="uppercase">
+        <li><a href="#/about">About</a></li>
+        <li><a href="#/impressum">Impressum</a></li>
+        <li></li>
+      </ul>
+
+      <ul>
+        <li>Platzhalter</li>
+        <li>Evt. Kontakt?</li>
+        <li>Evt. Mailadresse</li>
+      </ul>
+      <!--<ul>
+        <li> <span class="underline">Contact us at </span> <br/>
+            climate&commat;convive.io
+        </li>
+      </ul>-->
       <div class="social-media-buttons">
         <a href="https://www.facebook.com/sharer/sharer.php?u=www.climate-neutral.org" target="_blank">
           <div >
@@ -77,7 +80,11 @@ display: inline;
           </div>
           </a>
 
+<<<<<<< HEAD
         <a target="_blank" href="https://twitter.com/home?status=Check%20this%20out,%20it%20sets%20you%20off!%20%23ClimateNeutralNow%20www.climate-neutral.org">
+=======
+        <a href="#">
+>>>>>>> origin/master
           <div >
             <svg height="32" width="32" style="width: 32px; height: 32px;"  id="svg" preserveAspectRatio="xMinYMin meet" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" aria-labelledby="title" role="img">
               <title>Twitter Logo</title>
@@ -94,6 +101,8 @@ display: inline;
       </div>
 
 
+      </paper-material>
+      </div><!--container flex-footer footer-->
     </content>
   </template>
 </dom-module>

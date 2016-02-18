@@ -1,4 +1,6 @@
 /*Faben aus unserer Farbpalette
+Dunkel zu hell
+
 LILA
 
 #574184 (Schriftfarbe Logo)
@@ -35,13 +37,23 @@ GRÜN
 
 
 @font-face {
+	src: url("data/fonts/lato/Lato-Light.ttf");
+	font-family: "LATO";
+/*
+Damit die Schrift geht brauchen wir:
+TTF - Works in most browsers except IE and iPhone.
+EOT - IE only.
+WOFF - Compressed, emerging standard.
+SVG - iPhone/iPad.
+Das gibts für acron nicht.
 font-family: "ARCON";
-src: url("../data/fonts/arcon/Arcon-Regular.otf");
+src: url("../data/fonts/arcon/Arcon-Regular.otf");*/
 }
 
-body{
+body {
 	margin: 0px;
-	font-family: 'ARCON' !important;
+	/*font-family: 'ARCON' !important;*/
+	font-family: 'Lato Light', LATO, sans-serif  !important;
 }
 
 .header-panel{
@@ -92,11 +104,21 @@ paper-header-panel{
 /* Startseite */
 
 .first{
-      background-color: #DDDDDD;
+    
+    background: #fff url("../data/startbild.jpg") no-repeat center center;
+    -webkit-background-size: cover;
+    background-size: cover;
+    font-size: 130%;
+    color: white;
+
+
     }
+.owl{
+  background-color: #DDDDDD;
+}
 .second{
     color: black;
-    background-color: #BDE3C8;
+    background-color: #A6A2AF;
     }
 
 li {
@@ -134,16 +156,22 @@ li {
 
 /*OWL Carousel*/
 
-    #owl-demo .item{
+ .owl-item  {
         background: #877773;
-        padding: 30px 0px;
-        margin: 10px;
-        color: #FFF;
-        -webkit-border-radius: 3px;
-        -moz-border-radius: 3px;
-        border-radius: 3px;
+        margin: 20px;
+        color: #FFF;		
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
         text-align: center;
     }
+
+	
+	#owl-demo img  {
+		padding: 10px;
+		max-width: 100%;
+		
+	}
 
 	.sliderwrap {
 	margin-bottom: 5%;

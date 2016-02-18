@@ -1,4 +1,4 @@
-<!-- 
+<!--
 author:Aaron
 description: fetch a wp-post by its id
 properties: post:<post-number>
@@ -14,11 +14,11 @@ properties: post:<post-number>
         <template is="dom-if" if={{!ajaxResponse}}>
           <iron-ajax id="menu-data" auto url="http://cn.convive.io/wp-json/wp/v2/posts/[[post]]" handle-as="json" last-response="{{ajaxResponse}}" ></iron-ajax>
         </template>
-        <paper-material elevation="0"> 
-        <template is="dom-if" if=[[titel]]><h1><html-echo html="{{ajaxResponse.title.rendered}}"></html-echo> </h1></template>
-        
+        <paper-material elevation="0">
+        <template is="dom-if" if=[[wptitel]]><h1><html-echo html="{{ajaxResponse.title.rendered}}"></html-echo> </h1></template>
+
           <div class="card-content">
-            <html-echo html="{{ajaxResponse.content.rendered}}"></html-echo>             
+            <html-echo html="{{ajaxResponse.content.rendered}}"></html-echo>
           </div>
         </paper-material>
     </template>
@@ -31,7 +31,7 @@ properties: post:<post-number>
           post:{
             type:String
           },
-          titel:false,
+          wptitel:false,
         }
     });
 </script>
