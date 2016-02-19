@@ -128,7 +128,7 @@
           <div class="left-container">
             <iron-localstorage name="questions" value="{{questionsResponse}}"></iron-localstorage>
             <template is="dom-if" if={{!questionsResponse}}>
-              <iron-ajax id="menu-data" auto url="http://cn.convive.io/wp-json/wp/v2/posts/?filter[cat]=3" handle-as="json" last-response="{{questionsResponse}}" ></iron-ajax>
+              <iron-ajax id="menu-data" auto url="http://cn.convive.io/wp-json/wp/v2/posts/?filter[cat]=3&filter[orderby]=rand" handle-as="json" last-response="{{questionsResponse}}" ></iron-ajax>
             </template>
             <iron-localstorage name="translation" value="{{translation}}"></iron-localstorage>
             <template is="dom-if" if={{!translation}}>
@@ -218,7 +218,7 @@
                 if (this.answers[i])
                 this.finalValue+=parseInt(this.answers[i]);
             }
-            if (cal.finalValue>0) {
+            if (this.finalValue>0) {
                 this.percentage= 100*this.finalValue/2014380;
                 this.finalValue= this.finalValue/1000;
             }
