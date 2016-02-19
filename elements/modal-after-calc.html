@@ -26,7 +26,7 @@ description:
     padding-top:10px;
     font-size: 100%;
 	border-radius: 30px;
-	
+
   }
   #num{
     color: #6C9C7A;
@@ -45,14 +45,14 @@ description:
 	  <paper-dialog modal=true id="modal-after-calc">
     <paper-dialog-scrollable>
       <span>{{translation.acf.popup_after_calc_title_part1}}</span>
-      <h1> <span><span id="num">{{value}}</span><html-echo html="{translation.acf.popup_after_calc_title_part2}}"></html-echo></span> </h1>
-      <h1><span id="aufforderung">{translation.acf.popup_after_calc_demand}}</span></h1>
+      <h1> <span><span id="num">{{value}}</span><html-echo html="{{translation.acf.popup_after_calc_title_part2}}"></html-echo></span> </h1>
+      <h1><span id="aufforderung">{{translation.acf.popup_after_calc_demand}}</span></h1>
   	 	<iron-localstorage name="finalValue" value="{{value}}"></iron-localstorage>
-      <paper-material elevation="1">  
+      <paper-material elevation="1">
   	    <wp-cards post="63"></wp-cards>
       </paper-material>
   	  <div class="buttons">
-  	    <paper-button dialog-confirm on-click="_eventListn">{translation.acf.popup_after_calc_button}}</paper-button>
+  	    <paper-button dialog-confirm on-click="_eventListn">{{translation.acf.popup_after_calc_button}}</paper-button>
   	  </div>
     </paper-dialog-scrollable>
 	</paper-dialog>

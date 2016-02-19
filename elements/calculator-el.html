@@ -2,219 +2,196 @@
 
 <dom-module id="calculator-el">
   <style type="text/css" >
-
-        .cal-wraper{
-            @apply(--layout-center);
-            text-align: center;
-        }
-        .cal-container{
-            @apply(--layout-horizontal);
-            @apply(--layout-center-justified);
-            @apply(--layout-wrap);
-            @apply(--layout-self-center);
-            @apply(--layout-flex);
-            background-color: #B0BDCE;
-
-        }
-        #wrapper-card{
-            @apply(--layout-horizontal);
-            @apply(--layout-center-justified);
-            /*background-color: white;
-            
-            
-            */
-            padding: 20px;
-            margin: 20px;
-            @apply(--layout-wrap);
-        }
-        .informationstafel{
-            @apply(--layout-self-center);
-            @apply(--layout-center-justified);
-        }
-        .question-container{
-            @apply(--layout-self-stretch);
-            max-width:98%;
-
-        }
-        .buttons{
-            @apply(--layout-horizontal);
-            @apply(‑‑layout-self-stretch);
-        }
-        .leftbtn{
-          margin-right: 20px;
-
-          border-radius: 10px;
-        }
-        .rightbtn{
-            @apply(--layout-self-end);
-            background-color: white;
-            margin-left: 20px;
-            border-radius: 10px;
-        }
-        .left-container{
-            /*width: 98%;*/
-            width: 500px;
-            min-height: 575px;
-            background-color: white;
-            @apply(--layout-self-center);
-            @apply(--layout-vertical);
-            @apply(--layout-center);
-
-            @apply(--self-stretch);
-        }
-        .informationstafel{
-            text-align: center;
-            font-size: 120%;
-            padding:3%;
-            max-width:98%;
-            @apply(--layout-self-stretch);
-            @apply(--layout-center-justified);
-        }
-        
+    .cal-wraper{
+      @apply(--layout-center);
+      text-align: center;
+    }
+    .cal-container{
+      @apply(--layout-horizontal);
+      @apply(--layout-center-justified);
+      @apply(--layout-wrap);
+      @apply(--layout-self-center);
+      @apply(--layout-flex);
+      background-color: #B0BDCE;
+    }
+    #wrapper-card{
+      @apply(--layout-horizontal);
+      @apply(--layout-center-justified);
+      padding: 20px;
+      margin: 20px;
+      @apply(--layout-wrap);
+    }
+    .informationstafel{
+      @apply(--layout-self-center);
+      @apply(--layout-center-justified);
+    }
+    .question-container{
+      @apply(--layout-self-stretch);
+      max-width:98%;
+    }
+    .buttons{
+      @apply(--layout-horizontal);
+      @apply(‑‑layout-self-stretch);
+    }
+    .leftbtn{
+      margin-right: 20px;
+      border-radius: 10px;
+    }
+    .rightbtn{
+      @apply(--layout-self-end);
+      background-color: white;
+      margin-left: 20px;
+      border-radius: 10px;
+    }
+   .left-container{
+      /*width: 98%;*/
+      width: 500px;
+      min-height: 575px;
+      background-color: white;
+      @apply(--layout-self-center);
+      @apply(--layout-vertical);
+      @apply(--layout-center);
+      @apply(--self-stretch);
+    }
+    .informationstafel{
+      text-align: center;
+      font-size: 120%;
+      padding:3%;
+      max-width:98%;
+      @apply(--layout-self-stretch);
+      @apply(--layout-center-justified);
+    }
 		.right-container{
-            @apply(--layout-self-end);
-            @apply(--layout-vertical);
-            @apply(--layout-center);
-            @apply(--layout-center-justified);
-            text-align: center;
-        }
-		
-        .placeholder{
-            width: 350px;
-            height: 150px;
-            background-color: #D9D9D9;
-            border-radius: 4px;
-            box-shadow: 1px;
-            background-image: url("../data/adbusting/rr.png");
-        }
-		
-		 .placeholder1{
-            width: 350px;
-            height: 175px;
-            background-color: #D9D9D9;
-            border-radius: 4px;
-            box-shadow: 1px;
-            background-image: url("../data/adbusting/airberlin-adbust.png");
-        }
-		
-		 .placeholder2{
-            width: 350px;
-            height: 175px;
-            background-color: #D9D9D9;
-            border-radius: 4px;
-            box-shadow: 1px;
-            background-image: url("../data/adbusting/ama-adbust.png");
-        }
-		
-		 	
-        .ka{
-            font-size: 10px;
-            float: right;
-        }
-        .keine-anzeige{
-          margin-bottom:8px;
+      @apply(--layout-self-end);
+      @apply(--layout-vertical);
+      @apply(--layout-center);
+      @apply(--layout-center-justified);
+      text-align: center;
+    }
+    .placeholder{
+      width: 350px;
+      height: 150px;
+      background-color: #D9D9D9;
+      border-radius: 4px;
+      box-shadow: 1px;
+      background-image: url("../data/adbusting/rr.png");
+    }
+
+		.placeholder1{
+      width: 350px;
+      height: 175px;
+      background-color: #D9D9D9;
+      border-radius: 4px;
+      box-shadow: 1px;
+      background-image: url("../data/adbusting/airberlin-adbust.png");
+    }
+
+		.placeholder2{
+      width: 350px;
+      height: 175px;
+      background-color: #D9D9D9;
+      border-radius: 4px;
+      box-shadow: 1px;
+      background-image: url("../data/adbusting/ama-adbust.png");
+    }
+    .ka{
+      font-size: 10px;
+      float: right;
+    }
+    .keine-anzeige{
+      margin-bottom:8px;
 		  margin-left: 8px;
-        }
-        .co2Value{
-            font-size: 150%;
-            border-radius: 10px;
-            margin-bottom:10px;
-            text-align: center;
-            @apply(--layout-center);
-            @apply(--layout-center-justified);
-
-        }
-        .co2Value span{
-           font-size: 180%;
-        }
-        paper-material{
-            max-width: 100%;
-        }
-		
+    }
+    .co2Value{
+    font-size: 150%;
+    border-radius: 10px;
+    margin-bottom:10px;
+    text-align: center;
+    @apply(--layout-center);
+    @apply(--layout-center-justified);
+    }
+    .co2Value span{
+     font-size: 180%;
+    }
+    paper-material{
+      max-width: 100%;
+    }
 		.toast {
-		margin-bottom: 100px;
+		  margin-bottom: 100px;
 		}
-        co2-fever{
-
-        }
-
   </style>
   <template class="cal-wrapper" id="calculator">
     <iron-localstorage name="translation" value="{{translation}}"></iron-localstorage>
     <div class="cal-container">
-        <paper-material id="wrapper-card" elevation="0">    
-                <paper-material elevation="0">
-                    <div class="left-container">
-                        <iron-localstorage name="questions" value="{{questionsResponse}}"></iron-localstorage>
-                        <template is="dom-if" if={{!questionsResponse}}>
-                            <iron-ajax id="menu-data" auto url="http://cn.convive.io/wp-json/wp/v2/posts/?filter[cat]=3" handle-as="json" last-response="{{questionsResponse}}" ></iron-ajax>
-                        </template>
-                        <iron-localstorage name="translation" value="{{translation}}"></iron-localstorage>
-                        <template is="dom-if" if={{!translation}}>
-                            <iron-ajax id="translation-data" auto url="http://cn.convive.io/wp-json/wp/v2/posts/321" handle-as="json" last-response="{{translation}}" ></iron-ajax>
-                        </template>
-                            <div>
-                                <co2-fever value="{{finalValue}}" percentage="{{percentage}}"></co2-fever>
-                            </div>
-                            <iron-pages id="cal-question-pages" selected="0">
-                                <selection>
-                                    <div class="informationstafel">
-                                        <paper-material elevation="0">
-                                            <wp-cards post="152" wptitel=true></wp-cards>
-                                        </paper-material>
-                                        <div class="right">
-                                            <paper-button id="btnnext" on-click="_addEventListn" raised>{{translation.acf.calculator_start_button}}</paper-button>
-                                        </div>
-                                    </div>
-                                </selection>
-                                <template is="dom-repeat" items="{{questionsResponse}}">
-                                    <section>
-                                        <div class="question-container">
-                                            <cal-question data="[[item]]" class="left wp-questions">
-                                                <div class="buttons">
-                                                    <div class="leftbtn"><paper-button id="btnback" raised>{{translation.acf.calculator_back_button}}</paper-button></div>
-                                                    <div class="rightbtn"><paper-button id="btnnext"  raised>{{translation.acf.calculator_next_button}}</paper-button></div>
-
-                                                </div>
-                                            </cal-question>
-                                        </div>
-                                    </section>
-                                </template>
-                                <selection>
-                                    <div class="informationstafel">
-                                        <wp-cards post="333" wptitel=true></wp-cards>
-                                        <paper-button id="btnback" raised>{{translation.acf.calculator_back_button}}</paper-button>
-                                        <paper-button id="btnfin" class="right" raised>{{translation.acf.calculator_finished_button}}</paper-button>
-                                    </div>
-                                </selection>
-                             </iron-pages>
-							 <paper-toast class="toast-cal" on-click="openToast" closed duration="0">
-								<wp-cards post="278"><wp-cards>
-							 </paper-toast>
-
-                    </div>   
-                </paper-material>
-                <paper-material elevation="0">
-                    <div class="right-container">
-                        <div class="keine-anzeige">
-                            <div class="placeholder"></div>
-                            <span class="ka">{{translation.acf.calculator_no_advertisment}}</span>
-                        </div>
-						<div class="keine-anzeige">
-                            <div class="placeholder1"></div>
-                            <span class="ka">{{translation.acf.calculator_no_advertisment}}</span>
-                        </div>
-						<div class="keine-anzeige">
-                            <div class="placeholder2"></div>
-                            <span class="ka">{{translation.acf.calculator_no_advertisment}}</span>
-                        </div>
-										
-                    </div>
-                </paper-material>
+      <paper-material id="wrapper-card" elevation="0">
+        <paper-material elevation="0">
+          <div class="left-container">
+            <iron-localstorage name="questions" value="{{questionsResponse}}"></iron-localstorage>
+            <template is="dom-if" if={{!questionsResponse}}>
+              <iron-ajax id="menu-data" auto url="http://cn.convive.io/wp-json/wp/v2/posts/?filter[cat]=3" handle-as="json" last-response="{{questionsResponse}}" ></iron-ajax>
+            </template>
+            <iron-localstorage name="translation" value="{{translation}}"></iron-localstorage>
+            <template is="dom-if" if={{!translation}}>
+              <iron-ajax id="translation-data" auto url="http://cn.convive.io/wp-json/wp/v2/posts/321" handle-as="json" last-response="{{translation}}" ></iron-ajax>
+            </template>
+            <div>
+              <co2-fever value="{{finalValue}}" percentage="{{percentage}}"></co2-fever>
+            </div>
+            <iron-pages id="cal-question-pages" selected="0">
+              <selection>
+                <div class="informationstafel">
+                  <paper-material elevation="0">
+                    <wp-cards post="152" wptitel=true></wp-cards>
+                  </paper-material>
+                  <div class="right">
+                    <paper-button id="btnnext" on-click="_addEventListn" raised>{{translation.acf.calculator_start_button}}</paper-button>
+                  </div>
+                </div>
+              </selection>
+              <template is="dom-repeat" items="{{questionsResponse}}">
+                <section>
+                  <div class="question-container">
+                    <cal-question data="[[item]]" class="left wp-questions">
+                      <div class="buttons">
+                      <div class="leftbtn"><paper-button id="btnback" raised>{{translation.acf.calculator_back_button}}</paper-button></div>
+                      <div class="rightbtn"><paper-button id="btnnext"  raised>{{translation.acf.calculator_next_button}}</paper-button></div>                          </div>
+                    </cal-question>
+                  </div>
+                </section>
+              </template>
+              <selection>
+                <div class="informationstafel">
+                  <wp-cards post="333" wptitel=true></wp-cards>
+                  <paper-button id="btnback" raised>{{translation.acf.calculator_back_button}}</paper-button>
+                  <paper-button id="btnfin" class="right" raised>{{translation.acf.calculator_finished_button}}</paper-button>
+                </div>
+              </selection>
+            </iron-pages>
+						<paper-toast class="toast-cal" on-click="openToast" closed duration="0">
+							<wp-cards post="278"><wp-cards>
+						</paper-toast>
+          </div>
         </paper-material>
+        <paper-material elevation="0">
+          <div class="right-container">
+            <div class="keine-anzeige">
+              <div class="placeholder"></div>
+              <span class="ka">{{translation.acf.calculator_no_advertisment}}</span>
+            </div>
+            <div class="keine-anzeige">
+              <div class="placeholder1"></div>
+              <span class="ka">{{translation.acf.calculator_no_advertisment}}</span>
+            </div>
+					  <div class="keine-anzeige">
+              <div class="placeholder2"></div>
+              <span class="ka">{{translation.acf.calculator_no_advertisment}}</span>
+            </div>
+          </div>
+        </paper-material>
+      </paper-material>
     </div>
     <modal-after-calc value={{finalValue}}></modal-after-calc>
-    </template>
+  </template>
 
   <script>
     Polymer({
@@ -230,61 +207,45 @@
             type:Object
         },
         getValues:function(){
-
-            var cal = document.querySelector('calculator-el');
             var quest = document.querySelectorAll('cal-question');
-            for (var i=0;i<cal.questionsResponse.length;i++){
-                cal.answers[i]=parseInt(quest[i].co2)
-                //console.log(cal.answers[i]);
+            for (var i=0;i<this.questionsResponse.length;i++){
+                this.answers[i]=parseInt(quest[i].co2)
             }
         },
         calFinalValue:function (){
-            var cal = document.querySelector('calculator-el');
-            cal.finalValue= 0;
-            for (var i=0;i<cal.questionsResponse.length;i++){
-                if (cal.answers[i])
-                cal.finalValue+=parseInt(cal.answers[i]);
+            this.finalValue= 0;
+            for (var i=0;i<this.questionsResponse.length;i++){
+                if (this.answers[i])
+                this.finalValue+=parseInt(this.answers[i]);
             }
             if (cal.finalValue>0) {
-                console.log(cal.finalValue);
-                console.log(100*cal.finalValue/2014380);
-                console.log(1014380/cal.finalValue);
-
-                this.percentage= 100*cal.finalValue/2014380;
-                cal.finalValue= cal.finalValue/1000;
+                this.percentage= 100*this.finalValue/2014380;
+                this.finalValue= this.finalValue/1000;
             }
-           localStorage.setItem("finalValue",cal.finalValue);
+           localStorage.setItem("finalValue",this.finalValue);
         },
         evented:false,
         _addEventListn:function () { //um die click-events der Buttons zu initiieren
             if (!this.evented){
                 document.querySelector('.toast-cal').open();
-                console.log('here I am ');
-                var cal = document.querySelector('calculator-el');
                 var next =document.querySelectorAll('#btnnext');
                 var pages = document.querySelector('#cal-question-pages');
-                //var radiogroups=document.querySelectorAll('paper-radio-group');
-                cal.evented=true;
-                // var pages2 = document.querySelector('#cal-wrap');
-                // pages2.selectNext();
+                var cal = document.querySelector('calculator-el');
+                this.evented=true;
                 pages.selectNext();
                 for (i = 0; i < next.length; ++i) {
                     next[i].addEventListener('click', function(e) {
-                            //if (!radiogroups[i].selected)console.log('NOnononon');
-                            //check if answer else ale rt
-                            pages.selectNext();
-                            cal.getValues ();
-                            cal.calFinalValue();
-
+                      pages.selectNext();
+                      cal.getValues ();
+                      cal.calFinalValue();
                     });
                 }
                 var back =document.querySelectorAll('#btnback');
                 for (i = 0; i < next.length; ++i) {
                     back[i].addEventListener('click', function(e) {
-                        var pages = document.querySelector('#cal-question-pages');
-                            pages.selectPrevious();
-                            cal.getValues ();
-                            cal.calFinalValue();
+                      pages.selectPrevious();
+                      cal.getValues ();
+                      cal.calFinalValue();
                     });
                 }
                 var fin =document.querySelector('#btnfin');
@@ -292,7 +253,6 @@
                     var dia=document.querySelector('paper-dialog');
                     dia.open();
                 });
-
             }
         },
         caltranslation:Object,
@@ -302,22 +262,8 @@
             this.caltranslation=localStorage.getItem("translation");
         },
         openToast: function() {
-
-            
             document.querySelector('.toast-cal').close();
         }
-
-
     });
-	
-
-
-
   </script>
 </dom-module>
-
-
-
-
-
-
