@@ -41,7 +41,7 @@ properties:
         <iron-ajax id="translation-data" auto url="http://cn.convive.io/wp-json/wp/v2/posts/321" handle-as="json" last-response="{{translation}}" ></iron-ajax>
       </template>
       <div class="offset-wrap">
-        <div class="titel"> <h1>{{data.title.rendered}}</h1></div>
+        <div class="titel"> <h1><html-echo html="{{data.title.rendered}}"></html-echo></h1></div>
 		    <div class="image">
             <img src="{{data.better_featured_image.media_details.sizes.medium.source_url}}" style="width:300px; height:170px" ></img>
         </div>
@@ -49,7 +49,7 @@ properties:
          <p><html-echo html="{{data.acf.exzerpt}}"></html-echo> </p>
         </div>
           <content></content>
-        <paper-button class="offset-button" raised id="offMore">{{translation.acf.offsetting_page_more_information_button}}</paper-button>
+        <paper-button class="offset-button" raised id="offMore"><html-echo html="{{translation.acf.offsetting_page_more_information_button}}"></html-echo></paper-button>
       </div>
     </template>
 </dom-module>
