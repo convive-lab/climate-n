@@ -8,18 +8,24 @@ description: get wp menu number 2
   <style is="custom-style">
     :host {}
     .flex-menu {
-      @apply(--layout-horizontal);
-      @apply(--layout-center-left);
-      @apply(--layout-wrap);
+      @apply(--layout-horizontal);  	  
     }
+	
+	
    .wp-menu > ::content a {
       text-decoration: none;
-      color: #574184;
+      color: #001480;
       font-family: Calibri !important;
-	  font-size: 250%;
-      font-weight: /*500*/bold;
+	  font-size: 150%;
+      font-weight: bold;
+	  border-style: solid;
+	  heigth: 20px !important;
 	  padding: 5%;
     }
+	.wp-menu > ::content div{
+	
+	}
+	
    .wp-menu > ::content a:hover {
       color: #BDB9A2 !important;
     }
@@ -37,11 +43,13 @@ description: get wp menu number 2
 	}
   .menu-item{
     @apply(--layout-vertical);
-    @apply(--layout-self-end);
+    @apply(--layout-end-justified);
+	@apply(--layout-self-end);
   }
   .item{
     @apply(--layout-vertical);
     @apply(--layout-self-end);
+
   }
 
   </style>

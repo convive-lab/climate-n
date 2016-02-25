@@ -109,8 +109,10 @@ paper-header-panel{
     -webkit-background-size: cover;
     background-size: cover;
     color: white;
-    min-height: 450px;
-    font-size: 120%;
+    min-height: 350px;
+    font-size: 130%;
+	margin-bottom: 20px;
+	
 
 }
 .firstText{
@@ -120,9 +122,9 @@ paper-header-panel{
     margin-top: 20px;
 
 }
-.firstText p{
+/*.firstText p{
   text-align: left !important;
-}
+}*/
 .firstText strong{
   font-size: 120%;
 
@@ -133,6 +135,7 @@ paper-header-panel{
 .second{
     color: black;
     background-color: #A6A2AF;
+	text-align: center;
 }
 
 li {
