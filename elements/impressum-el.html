@@ -14,18 +14,35 @@ properties:
 
 paper-material {
 max-width: 200px;
-margin: 10px;
+margin: 10px 10px 30px 10px;
 padding: 2%;
+border-radius: 4px;
 }
 
-wp-full-wrapper.full-post {
-padding: 0px;
+wp-cards {
+text-align: center;
 }
-        
+ 
+
+.second{
+    color: black;
+    background-color: #349E61;
+	text-align: center;
+}
+
+
+.third{
+    background-color: #A7A283;
+    } 
+	
+
+.fourth {
+	background-color: #6C9C7A;
+}
     </style>
 
       <template>
-        <wp-full-post post="288" style="padding: 0px;"></wp-full-post>
+        <wp-full-post post="288"></wp-full-post>
 		 
 			 <div id="wrap-it">
 				<paper-material><wp-cards post="382"></wp-cards></paper-material>
@@ -34,9 +51,9 @@ padding: 0px;
 				<paper-material><wp-cards post="388"></wp-cards></paper-material>
 			</div>
 	
-			<wp-full-post post="392" title=false></wp-full-post>
-			<wp-full-post post="394" title=false></wp-full-post>
-            <wp-full-post post="302" title=false></wp-full-post>
+			<wp-full-post post="392" title=false class="forth"></wp-full-post>
+			<wp-full-post post="394" title=false class="second"></wp-full-post>
+            <wp-full-post post="302" title=false class="third"></wp-full-post>
        </template>
 </dom-module>
 

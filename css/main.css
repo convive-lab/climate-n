@@ -39,7 +39,7 @@ hellgrün: #71EFA6
 blau: #1D5FA2 (Schriftfarbe Logo)
 blau gedeckt: #669999
 hellblau: #65EBE9
-hellblau weich: #80aaff
+hellblau weich: #B0BDCE;
 hellgrün: #66FF99
  
 */
@@ -140,7 +140,7 @@ paper-header-panel{
 
 }
 .owl{
-  background-color: #b3ccff;
+  background-color: #B0BDCE;
 }
 .second{
     color: black;
@@ -216,10 +216,4 @@ li {
 }
 
 /*Impressum*/
-#wrap-it {
-	 @apply(--layout-flex);
-	  @apply(--layout-horizontal);
-      @apply(--layout-wrap);
-      @apply(--layout-center-justified);
-	  max-width: 100%;
-}
+
