@@ -98,6 +98,9 @@
       // app.baseUrl = '/polymer-starter-kit/';
     }
     window.addEventListener('WebComponentsReady', function() {
+      if (navigator.userAgent.match("MSIE") && $('html').class != 'ie')
+          $('html').addClass('ie');
+
       var owl = $("#owl-demo");
       owl.owlCarousel({
         // Most important owl features
