@@ -61,7 +61,7 @@
       @apply(--layout-self-stretch);
       @apply(--layout-center-justified);
     }
-		.right-container{
+	.right-container{
       @apply(--layout-self-end);
       @apply(--layout-vertical);
       @apply(--layout-center);
@@ -77,7 +77,7 @@
       background-image: url("../data/adbusting/rr.png");
     }
 
-		.placeholder1{
+	.placeholder1{
       width: 350px;
       height: 175px;
       background-color: #D9D9D9;
@@ -86,7 +86,7 @@
       background-image: url("../data/adbusting/airberlin-adbust.png");
     }
 
-		.placeholder2{
+	.placeholder2{
       width: 350px;
       height: 175px;
       background-color: #D9D9D9;
@@ -100,25 +100,25 @@
     }
     .keine-anzeige{
       margin-bottom:8px;
-		  margin-left: 8px;
+	  margin-left: 8px;
     }
     .co2Value{
-    font-size: 150%;
-    border-radius: 10px;
-    margin-bottom:10px;
-    text-align: center;
-    @apply(--layout-center);
-    @apply(--layout-center-justified);
+      font-size: 150%;
+      border-radius: 10px;
+      margin-bottom:10px;
+      text-align: center;
+      @apply(--layout-center);
+      @apply(--layout-center-justified);
     }
     .co2Value span{
-     font-size: 180%;
+      font-size: 180%;
     }
     paper-material{
       max-width: 100%;
     }
-		.toast {
-		  margin-bottom: 100px;
-		}
+	.toast {
+	  margin-bottom: 100px;
+	}
   </style>
   <template class="cal-wrapper" id="calculator">
     <iron-localstorage name="translation" value="{{translation}}"></iron-localstorage>
@@ -167,9 +167,9 @@
                 </div>
               </selection>
             </iron-pages>
-						<paper-toast class="toast-cal" on-click="openToast" closed duration="0">
-							<wp-cards post="278"><wp-cards>
-						</paper-toast>
+			<paper-toast class="toast-cal" on-click="openToast" closed duration="0">
+				<wp-cards post="278"><wp-cards>
+			</paper-toast>
           </div>
         </paper-material>
         <paper-material elevation="0">
@@ -182,7 +182,7 @@
               <div class="placeholder1"></div>
               <span class="ka">{{translation.acf.calculator_no_advertisment}}</span>
             </div>
-					  <div class="keine-anzeige">
+			<div class="keine-anzeige">
               <div class="placeholder2"></div>
               <span class="ka">{{translation.acf.calculator_no_advertisment}}</span>
             </div>
@@ -201,6 +201,7 @@
             finalValue:{type:Number,Value:0}
         },
         finalValue:0,
+        finalPrice:0,
         percentage:0,
         answers:Object,
         questionsResponse:{
@@ -214,6 +215,7 @@
         },
         calFinalValue:function (){
             this.finalValue= 0;
+            this.finalPrice= 0;
             for (var i=0;i<this.questionsResponse.length;i++){
                 if (this.answers[i])
                 this.finalValue+=parseInt(this.answers[i]);
@@ -221,8 +223,10 @@
             if (this.finalValue>0) {
                 this.percentage= 100*this.finalValue/2014380;
                 this.finalValue= this.finalValue/1000;
+                this.finalPrice= this.finalValue*2.5;
             }
            localStorage.setItem("finalValue",this.finalValue);
+           localStorage.setItem("finalPrice",this.finalPrice);
         },
         evented:false,
         _addEventListn:function () { //um die click-events der Buttons zu initiieren
@@ -250,7 +254,7 @@
                 }
                 var fin =document.querySelector('#btnfin');
                 fin.addEventListener('click', function(e) {
-                    var dia=document.querySelector('paper-dialog');
+                    var dia=document.querySelector('#post-calc-popup');
                     dia.open();
                 });
             }
@@ -259,6 +263,7 @@
         ready:function (){
             this.finalValue=0;
             localStorage.setItem("finalValue",0);
+            localStorage.setItem("finalPrice",0);
             this.caltranslation=localStorage.getItem("translation");
         },
         openToast: function() {
