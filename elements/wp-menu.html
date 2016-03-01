@@ -57,7 +57,7 @@ description: get wp menu number 2
     <content>
 
 	  <div class="container flex-menu wp-menu">
-       <div class="logocontainer"><img class="image" src="../data/CN-Logo-web.png" ></img></div>
+       <div class="logocontainer"><img class="image" src="../data/CN-Logo-blau_web.png" ></img></div>
         <template is="dom-if" if={{!ajaxResponse}}>
           <iron-ajax id="menu-data" auto url="http://cn.convive.io/wp-json/wp-api-menus/v2/menus/{{menu}}" handle-as="json" last-response="{{ajaxResponse}}" ></iron-ajax>
         </template>
