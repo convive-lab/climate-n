@@ -5,9 +5,9 @@ description:
 -->
   <link rel="import" href="../bower_components/polymer/polymer.html">
 
-<dom-module id="modal-after-calc">
+<dom-module id="post-calc-popup">
   <style type="text/css">
-  #modal-after-calc{
+  #post-calc-popup{
     padding:30px;
     border-radius: 30px;
     text-align: center;
@@ -17,10 +17,10 @@ description:
   paper-dialog{
   	@apply(--layout-self-stretch)
   }
-  #modal-after-calc span{
+  #post-calc-popup span{
     font-size: 140%;
   }
-  #modal-after-calc paper-material{
+  #post-calc-popup paper-material{
     color: white;
     background-color: #211637;
     padding-top:10px;
@@ -42,7 +42,7 @@ description:
     <template is="dom-if" if={{!translation}}>
         <iron-ajax id="translation-data" auto url="http://cn.convive.io/wp-json/wp/v2/posts/321" handle-as="json" last-response="{{translation}}" ></iron-ajax>
     </template>
-	  <paper-dialog modal=true id="modal-after-calc">
+	  <paper-dialog modal=true id="post-calc-popup">
     <paper-dialog-scrollable>
       <span>{{translation.acf.popup_after_calc_title_part1}}</span>
       <h1> <span><span id="num">{{value}}</span><html-echo html="{{translation.acf.popup_after_calc_title_part2}}"></html-echo></span> </h1>
@@ -59,7 +59,7 @@ description:
   </template>
   <script>
     Polymer({
-      is: 'modal-after-calc',
+      is: 'post-calc-popup',
       properties:{
 
       },
