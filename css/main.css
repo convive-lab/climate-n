@@ -214,3 +214,12 @@ li {
 .link:hover{
 	color: #FFF;
 }
+
+/*Impressum*/
+#wrap-it {
+	 @apply(--layout-flex);
+	  @apply(--layout-horizontal);
+      @apply(--layout-wrap);
+      @apply(--layout-center-justified);
+	  max-width: 100%;
+}

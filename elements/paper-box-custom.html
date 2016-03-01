@@ -1,0 +1,53 @@
+<!--Autorin: Iris
+description: Box-Element, das sich an Inhalt anpasst
+properties:
+-->
+<link rel="import" href="../bower_components/polymer/polymer.html">
+  <dom-module id="paper-box-custom">
+      <style is="custom-style">
+      	:host{
+
+      	}
+    .box-custom
+		 {
+       box-sizing: border-box;
+		 max-width: 25%;
+		 padding: 2%;
+		 font-size: 100%;
+		 /*background-color: var(--paper-box-thin-bg-color);*/
+		 	background-color: white;
+		 color: var(--paper-box-thin-color);
+		 font: var(--paper-box-thin-font);
+     margin-bottom:20px;
+     border-radius: 10px;
+     text-align: center;
+		 }
+    .box-thin:hover{
+
+      -moz-box-shadow:    inset 0 0 5px #304D7E;
+      -webkit-box-shadow: inset 0 0 5px #304D7E;
+      box-shadow:         inset 0 0 5px #304D7E;
+
+
+     }
+		 .box-content{
+		 	@apply(--layout-flex;)
+		 	height: 98%;
+		 }
+
+       </style>
+			<template>
+				<paper-material class="box-custom" elevation=1>
+					<div class="box-content">
+						<content></content>
+					</div>
+				</paper-material>
+			</template>
+	</dom-module>
+			<script>
+    Polymer({
+        is:"paper-box-custom",
+			properties: {
+        }
+    });
+</script>

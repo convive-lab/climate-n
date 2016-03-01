@@ -3,7 +3,7 @@
 <!--[if IE 7]>     <html class="ie ie7 lte9 lte8 lte7"> <![endif]-->
 <!--[if IE 8]>     <html class="ie ie8 lte9 lte8"> <![endif]-->
 <!--[if IE 9]>     <html class="ie ie9 lte9"> <![endif]-->
-<!--[if gt IE 9]>  <html class="ie"> <![endif]-->
+<!--[if IE]>  <html class="ie"> <![endif]-->
 <!--[if !IE]><!--> <html>             <!--<![endif]-->
 <head>
   <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE" />
@@ -75,6 +75,16 @@
         <section path="impressum">
           <div>
             <wp-full-post post="288"></wp-full-post>
+			<paper-card-fw elevation=0>
+			  <div id="wrap-it">
+				<paper-box-custom><wp-cards post="382"></wp-cards></paper-box-custom>
+				<paper-box-custom><wp-cards post="384"></wp-cards></paper-box-custom>
+				<paper-box-custom><wp-cards post="386"></wp-cards></paper-box-custom>
+				<paper-box-custom><wp-cards post="388"></wp-cards></paper-box-custom>
+			 </div>
+			</paper-card-fw>
+			<wp-full-post post="392" title=false></wp-full-post>
+			<wp-full-post post="394" title=false></wp-full-post>
             <wp-full-post post="302" title=false></wp-full-post>
           </div>
         </section>
@@ -98,6 +108,9 @@
       // app.baseUrl = '/polymer-starter-kit/';
     }
     window.addEventListener('WebComponentsReady', function() {
+      if (navigator.userAgent.match("MSIE") && $('html').class != 'ie')
+          $('html').addClass('ie');
+
       var owl = $("#owl-demo");
       owl.owlCarousel({
         // Most important owl features
