@@ -36,11 +36,12 @@ NEUE PALETTE
 Grün: #349E61
 dunkelgrün: #669966
 hellgrün: #71EFA6
+hellgrün: #66FF99
 blau: #1D5FA2 (Schriftfarbe Logo)
 blau gedeckt: #669999
 hellblau: #65EBE9
 hellblau weich: #B0BDCE;
-hellgrün: #66FF99
+
  
 */
 
@@ -157,7 +158,7 @@ li {
     }
 
 .fourth {
-	background-color: #6C9C7A;
+	background-color: #1D5FA2;
 }
 
 .videoWrapper {
