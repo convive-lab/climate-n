@@ -74,7 +74,7 @@ description:
             <div><html-echo html="{{translation.acf.popup_after_calc_title_part2}}"></html-echo></div> 
             <div> x 2,5 &euro;</div>
             <br/>
-            <div> {{price}} &euro;</div>
+            <div> = {{price}} &euro;</div>
           </paper-material>
         </div>
         <h1><span id="aufforderung">{{translation.acf.popup_after_calc_demand}}</span></h1>
@@ -96,10 +96,9 @@ description:
       },
       finalPrice:0,
       ready:function () {
-         this.getPrice();
+
       },
       getPrice:function () {
-        console.log('hier ist das popup')
          this.price=localStorage.getItem("finalPrice");
       }
     });
