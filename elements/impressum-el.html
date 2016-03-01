@@ -1,25 +1,49 @@
 <!-- 
-author:Aaron
-description: 
+author:Iris
+description: Impressum-Seite
 properties: 
 -->
 <link rel="import" href="../bower_components/polymer/polymer.html">
-<dom-module id="page-selector">
+<dom-module id="impressum-el">
     <style>
-        :host {
-        }
+		#wrap-it {
+	  @apply(--layout-horizontal);
+      @apply(--layout-wrap);
+      @apply(--layout-center-justified);
+}
+
+paper-material {
+max-width: 200px;
+margin: 10px;
+padding: 2%;
+}
+
+wp-full-wrapper.full-post {
+padding: 0px;
+}
+        
     </style>
 
       <template>
-
+        <wp-full-post post="288" style="padding: 0px;"></wp-full-post>
+		 
+			 <div id="wrap-it">
+				<paper-material><wp-cards post="382"></wp-cards></paper-material>
+				<paper-material><wp-cards post="384"></wp-cards></paper-material>
+				<paper-material><wp-cards post="386"></wp-cards></paper-material>
+				<paper-material><wp-cards post="388"></wp-cards></paper-material>
+			</div>
+	
+			<wp-full-post post="392" title=false></wp-full-post>
+			<wp-full-post post="394" title=false></wp-full-post>
+            <wp-full-post post="302" title=false></wp-full-post>
        </template>
 </dom-module>
 
 <script>
     Polymer({
-        is: "page-selector",
+        is: "impressum-el",
         properties:{
-          route:"home"  
         }
 
     });
