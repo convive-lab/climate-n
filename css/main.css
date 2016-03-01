@@ -35,10 +35,11 @@ GRÜN
 NEUE PALETTE
 Grün: #349E61
 dunkelgrün: #669966
-hellgrün: #66FF66
+hellgrün: #71EFA6
 blau: #1D5FA2 (Schriftfarbe Logo)
 blau gedeckt: #669999
 hellblau: #65EBE9
+hellblau weich: #80aaff
 hellgrün: #66FF99
  
 */
@@ -139,11 +140,11 @@ paper-header-panel{
 
 }
 .owl{
-  background-color: #DDDDDD;
+  background-color: #b3ccff;
 }
 .second{
     color: black;
-    background-color: #A6A2AF;
+    background-color: #349E61;
 	text-align: center;
 }
 
