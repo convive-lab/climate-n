@@ -119,6 +119,9 @@
 	.toast {
 	  margin-bottom: 100px;
 	}
+  #informationSlide {
+    max-width: 410px;
+  }
   </style>
   <template class="cal-wrapper" id="calculator">
     <iron-localstorage name="translation" value="{{translation}}"></iron-localstorage>
@@ -140,7 +143,7 @@
             <iron-pages id="cal-question-pages" selected="0">
               <selection>
                 <div class="informationstafel">
-                  <paper-material elevation="0">
+                  <paper-material elevation="0" id="informationSlide">
                     <wp-cards post="152" wptitel=true></wp-cards>
                   </paper-material>
                   <div class="right">

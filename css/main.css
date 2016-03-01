@@ -42,7 +42,7 @@ blau gedeckt: #669999
 hellblau: #65EBE9
 hellblau weich: #B0BDCE;
 
- 
+
 */
 
 
@@ -100,6 +100,9 @@ body {
 paper-header-panel{
 	margin-bottom: 10px;
 }
+.paper-header{
+  max-height: 190px;
+}
 .horizontal{
     @apply(--layout-horizontal);
     @apply(--layout-wrap);
@@ -115,7 +118,7 @@ paper-header-panel{
 /* Startseite */
 
 .first{
-    
+
     background: #fff url("../data/startbild.jpg") no-repeat center center;
     -webkit-background-size: cover;
     background-size: cover;
@@ -123,7 +126,7 @@ paper-header-panel{
     min-height: 350px;
     font-size: 130%;
 	margin-bottom: 20px;
-	
+
 
 }
 .firstText{
@@ -187,18 +190,18 @@ li {
  .owl-item  {
         background: #877773;
         margin: 20px;
-        color: #FFF;		
+        color: #FFF;
         -webkit-border-radius: 5px;
         -moz-border-radius: 5px;
         border-radius: 5px;
         text-align: center;
     }
 
-	
+
 	#owl-demo img  {
 		padding: 10px;
 		max-width: 100%;
-		
+
 	}
 
 	.sliderwrap {
@@ -217,4 +220,3 @@ li {
 }
 
 /*Impressum*/
-
