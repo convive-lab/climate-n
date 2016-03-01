@@ -8,50 +8,50 @@ description: get wp menu number 2
   <style is="custom-style">
     :host {}
     .flex-menu {
-      @apply(--layout-horizontal);  	  
+      @apply(--layout-horizontal);
+      @apply(--layout-end); 
     }
-	
-	
-   .wp-menu > ::content a {
+    .menu-items{
+      @apply(--layout-flex);
+      @apply(--layout-horizontal);
+      @apply(--layout-end-justified);
+      @apply(--layout-wrap);
+      padding-top: 10px;
+    }
+    .wp-menu > ::content a {
       text-decoration: none;
       color: #001480;
       font-family: Calibri !important;
-	  font-size: 150%;
+	    font-size: 150%;
       font-weight: bold;
-	  border-style: solid;
-	  heigth: 20px !important;
-	  padding: 5%;
+	    border-style: solid;
+	    height: 20px !important;
+	    padding: 10px;
     }
-	.wp-menu > ::content div{
-	
-	}
-	
-   .wp-menu > ::content a:hover {
+    .wp-menu > ::content a:hover {
       color: #BDB9A2 !important;
     }
-	.image {
-	 margin-top:5px;
-     margin-bottom:5px;
-	 max-width: 100%;
-	 height:auto;
+	  .image {
+	    margin-top:5px;
+      margin-bottom:5px;
+	    max-width: 100%;
+	    height:auto;
     }
 
-	.logocontainer {
-	 width: 115px;
-	 padding-left: 35px;
-	 padding-right: 10%;
-	}
-  .menu-item{
-    @apply(--layout-vertical);
-    @apply(--layout-end-justified);
-	@apply(--layout-self-end);
-  }
-  .item{
-    @apply(--layout-vertical);
-    @apply(--layout-self-end);
-
-  }
-
+	  .logocontainer {
+	    width: 115px;
+	    padding-left: 35px;
+	    padding-right: 10%;
+	  }
+    .menu-item{
+      @apply(--layout-vertical);
+      @apply(--layout-end-justified);
+  	  @apply(--layout-self-end);
+    }
+    .item{
+      @apply(--layout-vertical);
+      @apply(--layout-self-end);
+    }
   </style>
   <template>
     <content>
@@ -62,13 +62,13 @@ description: get wp menu number 2
           <iron-ajax id="menu-data" auto url="http://cn.convive.io/wp-json/wp-api-menus/v2/menus/{{menu}}" handle-as="json" last-response="{{ajaxResponse}}" ></iron-ajax>
         </template>
         <iron-localstorage name="menu" value="{{ajaxResponse}}"></iron-localstorage>
-
-
-        <template is="dom-repeat" items="{{ajaxResponse.items}}">
-          <div class="menu-item">
-            <paper-item class="item"> <div> <a  href="[[item.url]]">{{item.title}}</a></div></paper-item>
-          </div>
-        </template>
+        <paper-material elevation="0" class="menu-items">
+          <template is="dom-repeat" items="{{ajaxResponse.items}}">
+            <div class="menu-item">
+              <paper-item class="item"> <div> <a  href="[[item.url]]">{{item.title}}</a></div></paper-item>
+            </div>
+          </template>
+        </paper-material>
       </div>
     </content>
   </template>
