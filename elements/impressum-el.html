@@ -11,50 +11,62 @@ properties:
       @apply(--layout-wrap);
       @apply(--layout-center-justified);
 }
-
 paper-material {
-max-width: 200px;
+
 margin: 10px 10px 30px 10px;
 padding: 2%;
 border-radius: 4px;
 }
-
+#wrap-it paper-material {
+  max-width: 200px;
+}
 wp-cards {
 text-align: center;
 }
- 
+#first{
+  color:#860000;
+  background-color: #B0BDCE;
+  font-size: 120%;
 
-.second{
-    color: black;
-    background-color: #349E61;
-	text-align: center;
 }
-
-
-.third{
+#box1{
+    color: black;
+    background-color: #669966;
+}
+#box2{
     background-color: #A7A283;
     } 
 	
 
-.fourth {
+#box3 {
 	background-color: #6C9C7A;
+}
+#box4{
+  background-color: #B0BDCE;
+}
+#logos{
+  min-height: 180px;;
+}
+#impressum{
+  background-color: #B0BDCE;
+  text-align: left;
+  @apply(--layout-start);
 }
     </style>
 
       <template>
-        <wp-full-post post="288"></wp-full-post>
+        <paper-material id="first"><wp-cards post="288"></wp-cards></paper-material>
 		 
 			 <div id="wrap-it">
-				<paper-material><wp-cards post="382"></wp-cards></paper-material>
-				<paper-material><wp-cards post="384"></wp-cards></paper-material>
-				<paper-material><wp-cards post="386"></wp-cards></paper-material>
-				<paper-material><wp-cards post="388"></wp-cards></paper-material>
+				<paper-material id="box1"><wp-cards post="382"></wp-cards></paper-material>
+				<paper-material id="box2"><wp-cards post="384"></wp-cards></paper-material>
+				<paper-material id="box3"><wp-cards post="386"></wp-cards></paper-material>
+				<paper-material id="box4"><wp-cards post="388"></wp-cards></paper-material>
 			</div>
-	
-			<wp-full-post post="392" title=false class="forth"></wp-full-post>
-			<wp-full-post post="394" title=false class="second"></wp-full-post>
-            <wp-full-post post="302" title=false class="third"></wp-full-post>
-       </template>
+	    <paper-material id="box1"><wp-cards post="392"></wp-cards></paper-material>
+      <paper-material id="logos"><wp-cards post="394"></wp-cards></paper-material>
+      <paper-material id="impressum"><wp-cards id="impressum" post="302"></wp-cards></paper-material>
+    </template>
 </dom-module>
 
 <script>
