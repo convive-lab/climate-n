@@ -62,22 +62,17 @@ properties:
 			properties: {
 			animated:Boolean,
         },
-		ready:function(){ document.addEventListener('WebComponentsReady', function() {
-            a1.addEventListener('click', _onTap);
-			a2.addEventListener('click', _onTap);
-          });
-			  function _onTap(e) {
+		ready:function(){ 
+			document.addEventListener('WebComponentsReady', function() {
+	            a1.addEventListener('click', _onTap);
+				a2.addEventListener('click', _onTap);
+	        });
+			function _onTap(e) {
 				var target = e.target;
-				 target.elevation += 2;
-			};
-			
-		scrollUp:function () {
-       jQuery('html').animate({ scrollTop: 0 }, 'fast');
-		},
-          },
-		  
-		
-		
+				target.elevation += 2;
+				jQuery('html').animate({ scrollTop: 0 }, 'fast');
+			 };
+		},	
     });
 </script>
 
