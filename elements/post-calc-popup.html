@@ -47,6 +47,15 @@ description:
   }
   #co2{
     font-size: 200%;
+    @apply(--layout-wrap);
+  }
+  @media (max-width: 480px) {
+    #co2{
+      font-size:100%;
+    }
+  }
+  #co2 div{
+    min-width: 30px;
   }
   #costs{
     @apply(--layout-horizontal);
@@ -54,6 +63,7 @@ description:
     @apply(--layout-center-justified);
     height:  50px;
   }
+  @media
   </style>
   <template>
     <iron-localstorage name="translation" value="{{translation}}"></iron-localstorage>
