@@ -6,7 +6,7 @@ properties:
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <dom-module id="impressum-el">
     <style>
-		#wrap-it {
+#wrap-it2,#wrap-it3 {
 	  @apply(--layout-horizontal);
       @apply(--layout-wrap);
       @apply(--layout-center-justified);
@@ -18,7 +18,7 @@ padding:20px;;
 margin-left: 0px;
 margin-right: 0px
 }
-#wrap-it paper-material {
+#wrap-it3 paper-material {
   border-radius: 4px;
   max-width: 280px;
   margin-left: 20px;
@@ -26,7 +26,15 @@ margin-right: 0px
   
   hyphens: auto;
 }
-#wrap-it wp-cards {
+#wrap-it2 paper-material {
+  border-radius: 4px;
+  max-width: 440px;
+  margin-left: 20px;
+  margin-right: 20px;
+  
+  hyphens: auto;
+}
+#wrap-it3 wp-cards, #wrap-it2 wp-cards {
 text-align: justify !important;
 margin: 0px;
 }
@@ -87,25 +95,27 @@ hellblau weich: #B0BDCE;
       <template>
         <paper-material id="first"><wp-cards post="288"></wp-cards></paper-material>
 		 
-			 <div id="wrap-it">
+			 <div id="wrap-it3">
         <paper-material id="box0"><wp-cards post="411"></wp-cards></paper-material>
 				<paper-material id="box1"><wp-cards post="382"></wp-cards></paper-material>
 				<paper-material id="box2"><wp-cards post="384"></wp-cards></paper-material>
        </div>
-       <div id="wrap-it">
+       <div id="wrap-it3">
 				<paper-material id="box3"><wp-cards post="386"></wp-cards></paper-material>
 				<paper-material id="box4"><wp-cards post="388"></wp-cards></paper-material>
         <paper-material id="box5"><wp-cards post="413"></wp-cards></paper-material>
 			</div>
 	    <paper-material id="box6"><wp-cards post="392"></wp-cards></paper-material>
 
-      <div id="wrap-it">
+      <div id="wrap-it2">
         <paper-material id="box0"><wp-cards post="417"></wp-cards></paper-material>
         <paper-material id="box1"><wp-cards post="419"></wp-cards></paper-material>
-        <paper-material id="box2"><wp-cards post="421"></wp-cards></paper-material>
        </div>
-       <div id="wrap-it">
+       <div id="wrap-it2">
+        <paper-material id="box2"><wp-cards post="421"></wp-cards></paper-material>
         <paper-material id="box3"><wp-cards post="386"></wp-cards></paper-material>
+       </div>
+       <div id="wrap-it2">
         <paper-material id="box4"><wp-cards post="388"></wp-cards></paper-material>
         <paper-material id="box5"><wp-cards post="413"></wp-cards></paper-material>
       </div>
