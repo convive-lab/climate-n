@@ -14,15 +14,21 @@ properties:
 paper-material {
 
 margin: 10px 10px 30px 10px;
-padding: 2%;
+padding:20px;;
 margin-left: 0px;
 margin-right: 0px
 }
 #wrap-it paper-material {
   border-radius: 4px;
-  max-width: 200px;
+  max-width: 280px;
   margin-left: 20px;
-  margin-right: 20px
+  margin-right: 20px;
+  
+  hyphens: auto;
+}
+#wrap-it wp-cards {
+text-align: justify !important;
+margin: 0px;
 }
 wp-cards {
 text-align: center;
@@ -36,7 +42,7 @@ margin:20px;
 
 }
 
-/*Grün: #349E61
+/*Grün: #0C751D
 dunkelgrün: #669966
 hellgrün: #71EFA6
 hellgrün: #66FF99
@@ -45,21 +51,28 @@ blau gedeckt: #669999
 hellblau: #65EBE9
 hellblau weich: #B0BDCE;
 */
-
+#box0{
+    color: black;
+    background-color: #0E6F39;
+}
 #box1{
     color: black;
-    background-color: #349E61;
+    background-color: #0C751D;
 }
 #box2{
-    background-color: #A7A283;
-    } 
-
-
+    background-color: #4C9300;
+} 
 #box3 {
-	background-color: #669999;
+	background-color: #93C105;
 }
 #box4{
-  background-color: #66FF99;
+  background-color: #97E21F;
+}
+#box5{
+  background-color: #F7F010;
+}
+#box6{
+  background-color: #669999;
 }
 #logos{
   min-height: 180px;;
@@ -75,12 +88,27 @@ hellblau weich: #B0BDCE;
         <paper-material id="first"><wp-cards post="288"></wp-cards></paper-material>
 		 
 			 <div id="wrap-it">
+        <paper-material id="box0"><wp-cards post="411"></wp-cards></paper-material>
 				<paper-material id="box1"><wp-cards post="382"></wp-cards></paper-material>
 				<paper-material id="box2"><wp-cards post="384"></wp-cards></paper-material>
+       </div>
+       <div id="wrap-it">
 				<paper-material id="box3"><wp-cards post="386"></wp-cards></paper-material>
 				<paper-material id="box4"><wp-cards post="388"></wp-cards></paper-material>
+        <paper-material id="box5"><wp-cards post="413"></wp-cards></paper-material>
 			</div>
-	    <paper-material id="box3"><wp-cards post="392"></wp-cards></paper-material>
+	    <paper-material id="box6"><wp-cards post="392"></wp-cards></paper-material>
+
+      <div id="wrap-it">
+        <paper-material id="box0"><wp-cards post="417"></wp-cards></paper-material>
+        <paper-material id="box1"><wp-cards post="419"></wp-cards></paper-material>
+        <paper-material id="box2"><wp-cards post="421"></wp-cards></paper-material>
+       </div>
+       <div id="wrap-it">
+        <paper-material id="box3"><wp-cards post="386"></wp-cards></paper-material>
+        <paper-material id="box4"><wp-cards post="388"></wp-cards></paper-material>
+        <paper-material id="box5"><wp-cards post="413"></wp-cards></paper-material>
+      </div>
       <paper-material id="logos"><wp-cards post="394"></wp-cards></paper-material>
       <paper-material id="impressum"><wp-cards id="impressum" post="302"></wp-cards></paper-material>
     </template>

@@ -23,7 +23,7 @@ BRAUN
 HELLBRAUN
 #918B64
 #A7A283
-#BDB9A2
+#FFBF0B
 #D3D1C1
 
 GRÜN
@@ -33,7 +33,7 @@ GRÜN
 #BDE3C8
 
 NEUE PALETTE
-Grün: #349E61
+Grün: #0C751D
 dunkelgrün: #669966
 hellgrün: #71EFA6
 hellgrün: #66FF99
@@ -148,7 +148,7 @@ paper-header-panel{
 }
 .second{
     color: black;
-    background-color: #349E61;
+    background-color: #0C751D;
 	text-align: center;
 }
 
@@ -157,7 +157,7 @@ li {
 }
 
 .third{
-    background-color: #A7A283;
+    background-color: #4C9300;
     }
 
 .fourth {
@@ -188,7 +188,7 @@ li {
 /*OWL Carousel*/
 
  .owl-item  {
-        background: #877773;
+        background: rgba(135, 119, 115, 0.27);;
         margin: 20px;
         color: #FFF;
         -webkit-border-radius: 5px;
