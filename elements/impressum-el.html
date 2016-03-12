@@ -6,7 +6,7 @@ properties:
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <dom-module id="impressum-el">
     <style>
-#wrap-it2,#wrap-it3 {
+#wrap-it2,#wrap-it3,#impressum  {
 	  @apply(--layout-horizontal);
       @apply(--layout-wrap);
       @apply(--layout-center-justified);
@@ -17,6 +17,11 @@ margin: 10px 10px 30px 10px;
 padding:20px;;
 margin-left: 0px;
 margin-right: 0px
+}
+#impressum paper-material {
+  max-width: 500px;
+  margin: 20px;
+  background-color: white;
 }
 #wrap-it3 paper-material {
   border-radius: 4px;
@@ -125,7 +130,11 @@ hellblau weich: #B0BDCE;
         </div>
       </paper-material>
       <paper-material id="logos"><wp-cards post="394"></wp-cards></paper-material>
-      <paper-material id="impressum"><wp-cards id="impressum" post="302"></wp-cards></paper-material>
+      <paper-material id="box2"><wp-cards post="438"></wp-cards></paper-material>
+      <paper-material id="impressum">
+        <paper-material><wp-cards  post="302"></wp-cards></paper-material>
+        <paper-material><wp-cards  post="433"></wp-cards></paper-material>
+      </paper-material>
     </template>
 </dom-module>
 
