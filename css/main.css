@@ -191,8 +191,7 @@ li {
 /*OWL Carousel*/
 
  .owl-item  {
-        background: rgba(135, 119, 115, 0.27);;
-        margin: 20px;
+        background: rgba(135, 119, 115, 0.27);
         color: #FFF;
         -webkit-border-radius: 5px;
         -moz-border-radius: 5px;
