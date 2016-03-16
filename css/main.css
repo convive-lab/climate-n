@@ -70,6 +70,9 @@ body {
 .header-panel{
 	background-color: white;
 }
+a:visited, a {
+    color: #1D5FA2;
+} 
 
 #spinner{
 	position: absolute;
