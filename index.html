@@ -98,8 +98,7 @@
       // app.baseUrl = '/polymer-starter-kit/';
     }
     window.addEventListener('WebComponentsReady', function() {
-      alert (navigator.userAgent);
-      if (navigator.userAgent.match("/Trident\/7\./") && $('html').class != 'ie')
+      if (navigator.userAgent.match("Trident") && $('html').class != 'ie')
           $('html').addClass('ie');
 
       var owl = $("#owl-demo");
