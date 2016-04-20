@@ -6,7 +6,7 @@ properties:
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <dom-module id="impressum-el">
     <style>
-#wrap-it2,#wrap-it3,#impressum  {
+#wrap-it2,#wrap-it3,#impressum,#wrap-it3_2  {
 	  @apply(--layout-horizontal);
       @apply(--layout-wrap);
       @apply(--layout-center-justified);
@@ -31,15 +31,16 @@ margin-right: 0px
   
   hyphens: auto;
 }
-#wrap-it2 paper-material {
+#wrap-it3_2 paper-material {
   border-radius: 4px;
-  max-width: 440px;
+  max-width: 400px;
   margin-left: 20px;
   margin-right: 20px;
+  font-size: 
   
   hyphens: auto;
 }
-#wrap-it3 wp-cards {
+#wrap-it3 wp-cards, #wrap-it3_2 wp-cards{
 text-align: justify;
 margin: 0px;
 }
@@ -90,6 +91,7 @@ hellblau weich: #B0BDCE;
 #box7{
   background-color: white;
   color: black;
+  font-size: 80%;
 }
 #logos{
   min-height: 200px;;
@@ -119,12 +121,12 @@ hellblau weich: #B0BDCE;
 			</div>
       <paper-material id="first">
         <wp-cards post="431"></wp-cards>
-        <div id="wrap-it2">
+        <div id="wrap-it3_2">
           <paper-material id="box7"><wp-cards post="417"></wp-cards></paper-material>
           <paper-material id="box7"><wp-cards post="419"></wp-cards></paper-material>
           <paper-material id="box7"><wp-cards post="421"></wp-cards></paper-material>
          </div>
-         <div id="wrap-it2">
+         <div id="wrap-it3_2">
           <paper-material id="box7"><wp-cards post="424"></wp-cards></paper-material>
           <paper-material id="box7"><wp-cards post="427"></wp-cards></paper-material>
           <paper-material id="box7"><wp-cards post="429"></wp-cards></paper-material>
