@@ -1,48 +1,11 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <dom-module id="video-page">
   <style type="text/css" >
-  :host{
-    @apply (--layout-horizontal);
-  }
-    #projekt-details-wrapper {
-      padding:2%;
-    background-color: #A6A2AF;
-    margin-bottom: 30px;
-     font-size: 130%;
-     @apply (--layout-vertical);
-     @apply (--layout-self-stretch);
-     width: 100%;
-     overflow: hidden;
-
-    }
-    .horizontal{
-      @apply (--layout-horizontal);
-      background-color: white;
-      @apply (--layout-wrap);
-      @apply (--layout-center);
-    }
-    .horizontal paper-material{
-      padding: 10px;
-    }
-
-    .fade {
-     opacity: 1;
-     transition: opacity .25s ease-in-out;
-     -moz-transition: opacity .25s ease-in-out;
-     -webkit-transition: opacity .25s ease-in-out;
-     }
-     .text{
-        max-width: 700px;
-     }
+  
   </style>
   
-  <template>
-	<paper-header-panel mode="seamed" class="header-panel">
-        <div class="paper-header">
-          <wp-menu menu="2" class></wp-menu>
-        </div>
-    </paper-header-panel>
-	<div class="video"><paper-card-fw><div class="videoWrapper"><wp-cards post="625" style="@apply(--layout-center-justified);" wptitel=true></div></wp-cards>
+<template>
+	<div class="video"><paper-card-fw><wp-cards post="625" style="@apply(--layout-center-justified);" wptitel=true></wp-cards></paper-card-fw></div>
     
 </template>
 
