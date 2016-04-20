@@ -42,8 +42,7 @@ properties:
       </template>
       <div class="offset-wrap">
         <div class="titel"> <h1><html-echo html="{{data.title.rendered}}"></html-echo></h1></div>
-		    <div class="image">
-            <img src="{{data.better_featured_image.media_details.sizes.medium.source_url}}" style="width:300px; height:170px" ></img>
+		    <div class="image" style="background-image: url({{data.better_featured_image.media_details.sizes.medium.source_url}}); background-position: center; background-repeat: no-repeat;">
         </div>
         <div class="text-area">
          <p><html-echo html="{{data.acf.exzerpt}}"></html-echo> </p>
