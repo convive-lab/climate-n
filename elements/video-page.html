@@ -1,12 +1,16 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <dom-module id="video-page">
   <style type="text/css" >
-  
+  .video-wrap {
+  max-widht: 660px;
+  }
   </style>
   
 <template>
-	<div class="video"><paper-card-fw><wp-cards post="625" style="@apply(--layout-center-justified);" wptitel=true></wp-cards></paper-card-fw></div>
-    
+	<div class="video-wrap">
+		<div class="video"><paper-card-fw><wp-cards post="625" style="@apply(--layout-center-justified);" wptitel=true></wp-cards></paper-card-fw></div>
+    </div>
+	
 </template>
 
   <script>
