@@ -100,6 +100,17 @@
       // set app.baseURL to '/your-pathname/' if running from folder in production
       // app.baseUrl = '/polymer-starter-kit/';
     }
+    if (localStorage.getItem("lang") === null){
+      console.log(navigator.language || navigator.userLanguage);
+      var lang = navigator.language || navigator.userLanguage;
+
+        if (lang=='de')localStorage.setItem("lang",JSON.stringify('de_DE'));
+        else if (lang=='fr')localStorage.setItem("lang",JSON.stringify('fr_FR'));
+        //else if (lang=='es')localStorage.setItem("lang",JSON.stringify('es_ES'));
+        else  localStorage.setItem("lang",JSON.stringify('en_EN'));
+    }
+    // alert ("The language is: " + localStorage.getItem("lang"));
+
     window.addEventListener('WebComponentsReady', function() {
       if (navigator.userAgent.match("Trident") && $('html').class != 'ie')
           $('html').addClass('ie');

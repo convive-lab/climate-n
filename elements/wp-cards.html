@@ -10,15 +10,17 @@ properties: post:<post-number>
         }
     </style>
     <template>
+        <iron-localstorage name="lang" value="{{lg}}"></iron-localstorage>
         <iron-localstorage name="wp[[post]]" value="{{ajaxResponse}}"></iron-localstorage>
         <template is="dom-if" if={{!ajaxResponse}}>
-          <iron-ajax id="menu-data" auto url="http://cn.convive.io/wp-json/wp/v2/posts/[[post]]" handle-as="json" last-response="{{ajaxResponse}}" ></iron-ajax>
+          <iron-ajax id="wp-data" auto url="http://cn.convive.io/wp-json/wp/v2/posts/[[post]]" handle-as="json" last-response="{{ajaxResponse}}" on-response="handleResponse"></iron-ajax>
         </template>
         <paper-material elevation="0">
-        <template is="dom-if" if=[[wptitel]]><h1><html-echo html="{{ajaxResponse.title.rendered}}"></html-echo> </h1></template>
+        <template is="dom-if" if=[[wptitel]]><h1><html-echo html="[[title]]"></html-echo> </h1></template>
+
 
           <div class="card-content">
-            <html-echo html="{{ajaxResponse.content.rendered}}"></html-echo>
+            <html-echo html="[[text]]"></html-echo>
           </div>
         </paper-material>
     </template>
@@ -32,6 +34,35 @@ properties: post:<post-number>
             type:String
           },
           wptitel:false,
+          lg:{
+            type:String
+          },
+          title:{
+            type:String
+          },
+          text:{
+            type:String
+          },
+          ajaxResponse:false
+        },
+        handleResponse:function () {
+          if (this.lg=="de_DE"){
+            this.title = this.ajaxResponse.title.rendered;
+            this.text = this.ajaxResponse.content.rendered;
+          }
+          else if (this.lg=="fr_FR"){
+            this.title = this.ajaxResponse.acf.fr_FR_title;
+            this.text = this.ajaxResponse.acf.fr_FR_text;
+          }
+
+          // else if (this.lg=="es_ES"){
+          //   this.title = this.ajaxResponse.acf.es_ES_title;
+          //   this.text = this.ajaxResponse.acf.es_ES_text;
+          // }
+          else{
+            this.title = this.ajaxResponse.acf.en_EN_title;
+            this.text = this.ajaxResponse.acf.en_EN_text;
+          }
         }
     });
 </script>

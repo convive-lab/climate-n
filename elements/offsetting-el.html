@@ -42,6 +42,7 @@
 
   </style>
  <template>
+  <iron-localstorage name="lang" value="{{lg}}"></iron-localstorage>
   <div  class="offsetting-wrapper">
     <div class="info-box"><paper-card-fw><wp-cards post="75" wptitel=true></wp-cards></paper-card-fw></div>
 	<iron-ajax id="offset-data" auto url="http://cn.convive.io/wp-json/wp/v2/posts/?filter[cat]=11&filter[orderby]=rand" handle-as="json" last-response="{{offsetResponse}}" ></iron-ajax>
@@ -107,6 +108,25 @@
         },
         clickthebutton:function (e) {
           this.hidden=false;
+        },
+        handleResponse:function () {
+          if (this.lg=="de_DE"){
+            this.title = this.ajaxResponse.title.rendered;
+            this.text = this.ajaxResponse.content.rendered;
+          }
+          else if (this.lg=="fr_FR"){
+            this.title = this.ajaxResponse.acf.fr_FR_title;
+            this.text = this.ajaxResponse.acf.fr_FR_text;
+          }
+
+          // else if (this.lg=="es_ES"){
+          //   this.title = this.ajaxResponse.acf.es_ES_title;
+          //   this.text = this.ajaxResponse.acf.es_ES_text;
+          // }
+          else{
+            this.title = this.ajaxResponse.acf.en_EN_title;
+            this.text = this.ajaxResponse.acf.en_EN_text;
+          }
         }
 	});
 

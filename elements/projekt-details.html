@@ -34,20 +34,27 @@
      .text{
         max-width: 700px;
      }
+     .offset_image{
+      @apply (--layout-self-start);
+      box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+      border-radius: 3px;
+      margin: 10px;
+     }
   </style>
   <template>
+    <iron-localstorage name="lang" value="{{lg}}"></iron-localstorage>
     <div id="projekt-details-wrapper" >
       <template is="dom-if" if={{projekt}}>
-				<iron-ajax id="menu-data" auto url="http://cn.convive.io/wp-json/wp/v2/posts/{{projekt}}" handle-as="json" last-response="{{projektDetailsResponse}}" on-response="ready"></iron-ajax>
+				<iron-ajax id="menu-data" auto url="http://cn.convive.io/wp-json/wp/v2/posts/{{projekt}}" handle-as="json" last-response="{{projektDetailsResponse}}" on-response="handleResponse"></iron-ajax>
 		  </template>
       <h1>{{projektDetailsResponse.title.rendered}}</h1>
       <div class="horizontal">
-        <paper-material elevation="0">
+        <paper-material class="offset_image" elevation="0">
           <img src="{{projektDetailsResponse.better_featured_image.media_details.sizes.medium.source_url}}" style="max-width:300px; height:200px" >
         </paper-material>
         <paper-material elevation="0">
           <div class="text">
-            <html-echo html="{{projektDetailsResponse.content.rendered}}"></html-echo></div>
+            <html-echo html="{{text}}"></html-echo></div>
           </div>
         </paper-material>
 
@@ -65,18 +72,39 @@
           route:{
             type:Object,
             notify: true,
+          },
+          lg:{
+            type:String
+          },
+          text:{
+            type:String
+          },
+        },
+        projektDetailsResponse:{type:Object},
+        handleResponse:function () {
+                  if (this.lg=="de_DE"){
+            this.text = this.projektDetailsResponse.content.rendered;
+          }
+          else if (this.lg=="fr_FR"){
+            this.text = this.projektDetailsResponse.acf.fr_FR_text;
+          }
+
+          // else if (this.lg=="es_ES"){
+          //   this.title = this.projektDetailsResponse.acf.es_ES_title;
+          //   this.text = this.projektDetailsResponse.acf.es_ES_text;
+          // }
+          else{
+            this.text = this.projektDetailsResponse.acf.en_EN_text;
           }
         },
-        projektDetailsResponse:{
-            type:Object
-        },
         ready:function () {
+          console.log(this.projektDetailsResponse);
+
           if (this.route == "projekt")
             setTimeout(function(){
                 var dia=document.querySelector('#pop-aufloesung' + ' paper-dialog');
                 dia.open();
-            }, 7000);
-        },
+            }, 7000);}, 
         attributeChanged: function(name, type) {
     console.log(this.localName + '#' + this.id + ' attribute ' + name +
       ' was changed to ' + this.getAttribute(name));
