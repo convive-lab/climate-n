@@ -10,15 +10,13 @@ properties: post:<post-number>
         }
     </style>
     <template>
-        <iron-localstorage name="lang" value="{{lg}}"></iron-localstorage>
+        <iron-localstorage name="lang" value={{lg}}  iron-localstorage-load="_langchange"></iron-localstorage>
         <iron-localstorage name="wp[[post]]" value="{{ajaxResponse}}"></iron-localstorage>
         <template is="dom-if" if={{!ajaxResponse}}>
-          <iron-ajax id="wp-data" auto url="http://cn.convive.io/wp-json/wp/v2/posts/[[post]]" handle-as="json" last-response="{{ajaxResponse}}" on-response="handleResponse"></iron-ajax>
+          <iron-ajax id="wp-data" auto url="http://cn.convive.io/wp-json/wp/v2/posts/[[post]]" handle-as="json" last-response="{{ajaxResponse}}" on-response="_langchange"></iron-ajax>
         </template>
         <paper-material elevation="0">
         <template is="dom-if" if=[[wptitel]]><h1><html-echo html="[[title]]"></html-echo> </h1></template>
-
-
           <div class="card-content">
             <html-echo html="[[text]]"></html-echo>
           </div>
@@ -34,18 +32,28 @@ properties: post:<post-number>
             type:String
           },
           wptitel:false,
-          lg:{
-            type:String
-          },
           title:{
             type:String
           },
           text:{
             type:String
           },
-          ajaxResponse:false
+          ajaxResponse:{
+            type:Object
+          }
+          , 
+          lg:{
+            type:String,
+            observer:'_langchange',
+            notify: true,
+            value:"la"
+
         },
-        handleResponse:function () {
+
+    }, 
+         _langchange:function (newVal, oldVal) {
+        if(typeof this.ajaxResponse != "undefined"){
+          console.log(this.oldVal);
           if (this.lg=="de_DE"){
             this.title = this.ajaxResponse.title.rendered;
             this.text = this.ajaxResponse.content.rendered;
@@ -64,5 +72,6 @@ properties: post:<post-number>
             this.text = this.ajaxResponse.acf.en_EN_text;
           }
         }
-    });
+        }
+      });
 </script>

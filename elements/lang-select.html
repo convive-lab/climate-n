@@ -33,11 +33,12 @@ description:
     }
   </style>
   <template>
+    <div>la {{lg}}</div>
     <content>
     <iron-localstorage name="lang" value="{{lg}}"></iron-localstorage>
 
           <paper-dropdown-menu class="lang-select" label="language" >
-            <paper-listbox class="dropdown-content" selected="{{selectedSuggestionId}}" >
+            <paper-listbox class="dropdown-content" attr-for-selected="value"  selected="{{lg}}"  >
               <paper-item value="de_DE">Deutsch</paper-item>
               <paper-item value="en_EN">English</paper-item>
               <paper-item value="fr_FR">Francais</paper-item>
@@ -57,6 +58,7 @@ description:
         },
         ajaxResponse:{
           type:Object
-        }
+        },
+
     });
 </script>
