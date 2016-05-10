@@ -1,0 +1,62 @@
+<!--
+author:Aaron
+description:
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<dom-module id="lang-select">
+  <style is="custom-style">
+    :host {}
+
+    .lang-select {
+
+    --paper-input-container-label: {
+      text-decoration: none;
+      color: #1D5FA2;
+      font-family: Calibri !important;
+      font-size: 110%;
+      font-weight: bold;
+      line-height: 30px;
+    };
+    /* no underline */
+    --paper-input-container-underline: {
+      display: none;
+    };
+    }
+    .lang-selsect .floated-label-placeholder{
+      display: none;
+    }
+    .lang-select{
+      width:100px;
+      margin: 10px;
+
+    }
+  </style>
+  <template>
+    <content>
+    <iron-localstorage name="lang" value="{{lg}}"></iron-localstorage>
+
+          <paper-dropdown-menu class="lang-select" label="language" >
+            <paper-listbox class="dropdown-content" selected="{{selectedSuggestionId}}" >
+              <paper-item value="de_DE">Deutsch</paper-item>
+              <paper-item value="en_EN">English</paper-item>
+              <paper-item value="fr_FR">Francais</paper-item>
+              <paper-item value="es_ES">Espanol</paper-item>
+            </paper-listbox>
+          </paper-dropdown-menu>
+      </div>
+    </content>
+  </template>
+</dom-module>
+
+<script>
+    Polymer({
+        is: "lang-select",
+        properties:{
+
+        },
+        ajaxResponse:{
+          type:Object
+        }
+    });
+</script>

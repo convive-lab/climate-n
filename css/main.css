@@ -103,7 +103,7 @@ paper-header-panel{
 	margin-bottom: 10px;
 }
 .paper-header{
-  max-height: 225px;
+  max-height: 310px;
 }
 .horizontal{
     @apply(--layout-horizontal);

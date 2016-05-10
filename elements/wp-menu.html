@@ -18,58 +18,36 @@ description: get wp menu number 2
       @apply(--layout-wrap);
       padding-top: 10px;
     }
-    .lang-select {
-
-    --paper-input-container-label: {
+    .wp-menu > ::content a , label#paper-input-label-1{
       text-decoration: none;
       color: #1D5FA2;
       font-family: Calibri !important;
       font-size: 110%;
       font-weight: bold;
       border-style: solid;
-      height: 17px !important;
-      padding-right:20px;
-    };
-    --paper-input-container-input: {
-      color: var(--paper-indigo-500);
-      font-style: normal;
-      font-family: serif;
-      text-transform: uppercase;
-    }
-    /* no underline */
-    --paper-input-container-underline: {
-      display: none;
-    };
-  }
-    .wp-menu > ::content a , label#paper-input-label-1{
-      text-decoration: none;
-      color: #1D5FA2;
-      font-family: Calibri !important;
-	    font-size: 110%;
-      font-weight: bold;
-	    border-style: solid;
-	    height: 15px !important;
-	    padding: 7px;
+      height: 15px !important;
+      padding: 7px;
     }
     .wp-menu > ::content a:hover {
       color: #0C751D !important;
     }
-	  .image {
-	    margin-top:5px;
+    .image {
+      margin-top:5px;
       margin-bottom:5px;
-	    max-width: 100%;
-	    height:auto;
+      max-width: 100%;
+      height:auto;
     }
 
-	  .logocontainer {
-	    width: 150px;
-	    padding-left: 35px;
-	    padding-right: 10%;
-	  }
+    .logocontainer {
+      width: 150px;
+      padding-left: 35px;
+      float: left
+
+    }
     .menu-item{
       @apply(--layout-vertical);
       @apply(--layout-end-justified);
-  	  @apply(--layout-self-end);
+      @apply(--layout-self-end);
     }
     .item{
       @apply(--layout-vertical);
@@ -78,18 +56,39 @@ description: get wp menu number 2
     .lang-select{
       width:100px;
       margin: 10px;
-      margin-right: 30px;
+      line-height: 30px;
+
+    }
+    .left-header{
+      @apply(--layout-self-end);
+      @apply(--layout-flex);
+      @apply(--layout-vertical);
+      /*display: inline-block !important; */
+
+    }
+    .lg-select{
+      @apply(--layout-self-start);
+    }
+    .right{
+      @apply(--layout-horizontal);
+      @apply(--layout-wrap-reverse);
+
     }
   </style>
   <template>
     <content>
     <iron-localstorage name="lang" value="{{lg}}"></iron-localstorage>
 	  <div class="container flex-menu wp-menu">
+      <div class="left-header">
        <div class="logocontainer"><img class="image" src="../data/CN-Logo-blau_web.png" ></img></div>
+      </div>
         <template is="dom-if" if={{!ajaxResponse}}>
           <iron-ajax id="menu-data" auto url="http://cn.convive.io/wp-json/wp-api-menus/v2/menus/{{menu}}" handle-as="json" last-response="{{ajaxResponse}}" ></iron-ajax>
         </template>
         <iron-localstorage name="menu" value="{{ajaxResponse}}"></iron-localstorage>
+        <paper-material class="right" elevation="0">
+       
+
         <paper-material elevation="0" class="menu-items">
           <template is="dom-repeat" items="{{ajaxResponse.items}}">
             <div class="menu-item">
@@ -97,15 +96,8 @@ description: get wp menu number 2
             </div>
           </template>
           {{selectedSuggestionId}}
-          <paper-dropdown-menu class="lang-select" label="language" >
-            <paper-listbox class="dropdown-content" selected="{{selectedSuggestionId}}" >
-              <paper-item value="de_DE">Deutsch</paper-item>
-              <paper-item value="en_EN">English</paper-item>
-              <paper-item value="fr_FR">Francais</paper-item>
-              <paper-item value="es_ES">Espanol</paper-item>
-            </paper-listbox>
-          </paper-dropdown-menu>
-          <div>{{test}}</div>
+        </paper-material>
+        <div class="lg-select"><lang-select></lang-select></div>
         </paper-material>
       </div>
     </content>
