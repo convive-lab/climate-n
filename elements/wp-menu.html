@@ -18,7 +18,30 @@ description: get wp menu number 2
       @apply(--layout-wrap);
       padding-top: 10px;
     }
-    .wp-menu > ::content a {
+    .lang-select {
+
+    --paper-input-container-label: {
+      text-decoration: none;
+      color: #1D5FA2;
+      font-family: Calibri !important;
+      font-size: 110%;
+      font-weight: bold;
+      border-style: solid;
+      height: 17px !important;
+      padding-right:20px;
+    };
+    --paper-input-container-input: {
+      color: var(--paper-indigo-500);
+      font-style: normal;
+      font-family: serif;
+      text-transform: uppercase;
+    }
+    /* no underline */
+    --paper-input-container-underline: {
+      display: none;
+    };
+  }
+    .wp-menu > ::content a , label#paper-input-label-1{
       text-decoration: none;
       color: #1D5FA2;
       font-family: Calibri !important;
@@ -52,10 +75,15 @@ description: get wp menu number 2
       @apply(--layout-vertical);
       @apply(--layout-self-end);
     }
+    .lang-select{
+      width:100px;
+      margin: 10px;
+      margin-right: 30px;
+    }
   </style>
   <template>
     <content>
-
+    <iron-localstorage name="lang" value="{{lg}}"></iron-localstorage>
 	  <div class="container flex-menu wp-menu">
        <div class="logocontainer"><img class="image" src="../data/CN-Logo-blau_web.png" ></img></div>
         <template is="dom-if" if={{!ajaxResponse}}>
@@ -68,6 +96,16 @@ description: get wp menu number 2
               <paper-item class="item"> <div> <a  href="[[item.url]]">{{item.title}}</a></div></paper-item>
             </div>
           </template>
+          {{selectedSuggestionId}}
+          <paper-dropdown-menu class="lang-select" label="language" >
+            <paper-listbox class="dropdown-content" selected="{{selectedSuggestionId}}" >
+              <paper-item value="de_DE">Deutsch</paper-item>
+              <paper-item value="en_EN">English</paper-item>
+              <paper-item value="fr_FR">Francais</paper-item>
+              <paper-item value="es_ES">Espanol</paper-item>
+            </paper-listbox>
+          </paper-dropdown-menu>
+          <div>{{test}}</div>
         </paper-material>
       </div>
     </content>
