@@ -43,17 +43,10 @@ hellblau: #65EBE9
 hellblau weich: #B0BDCE;
 
 ALLERNEUSTE PALETTE
-BLAU	
-#211637
-#4D445F
-#A6A2AF
-#D3D0D7
-
-
-#4C8AA2 (Hinterund der Schrift in den GEsichtern)
-#94B9C7
-rgb(76, 138, 162)
-rgb(164, 205, 214)
+#4C8AA2 (Hinterund der Schrift in den GEsichtern, graublau)
+#94B9C7 (helles Graublau)
+rgb(164, 205, 214)/ #A4CDD6 (hellblau)
+#0072BC (mittelblau)
 */
 
 
@@ -162,7 +155,7 @@ paper-header-panel{
 }
 .second{
     color: black;
-    background-color: #0C751D;
+    background-color: #94B9C7;
 	text-align: center;
 }
 
@@ -171,7 +164,7 @@ li {
 }
 
 .third{
-    background-color: #4C9300;
+    background-color: #A4CDD6;
     }
 
 .fourth {
