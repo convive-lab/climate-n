@@ -41,7 +41,7 @@ properties: post:<post-number>
           ajaxResponse:{
             type:Object
           }
-          , 
+          ,
           lg:{
             type:String,
             observer:'_langchange',
@@ -50,7 +50,7 @@ properties: post:<post-number>
 
         },
 
-    }, 
+    },
          _langchange:function (newVal, oldVal) {
         if(typeof this.ajaxResponse != "undefined"){
           console.log(this.oldVal);
@@ -63,10 +63,10 @@ properties: post:<post-number>
             this.text = this.ajaxResponse.acf.fr_FR_text;
           }
 
-          // else if (this.lg=="es_ES"){
-          //   this.title = this.ajaxResponse.acf.es_ES_title;
-          //   this.text = this.ajaxResponse.acf.es_ES_text;
-          // }
+          else if (this.lg=="es_ES"){
+             this.title = this.ajaxResponse.acf.es_ES_title;
+             this.text = this.ajaxResponse.acf.es_ES_text;
+           }
           else{
             this.title = this.ajaxResponse.acf.en_EN_title;
             this.text = this.ajaxResponse.acf.en_EN_text;

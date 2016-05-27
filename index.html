@@ -55,14 +55,14 @@
   				  <div class="third"><paper-card-fw><wp-cards lg={{lg}} post="200" wptitel=true></wp-cards><s-buttons></s-buttons></paper-card-fw></div>
 				<div class="fourth center"><paper-circle style="--paper-circle-color: #1D5FA2;"></paper-circle></div>
   				  <div class="video"><paper-card-fw><wp-cards lg={{lg}} post="625" style="@apply(--layout-center-justified);" wptitel=true></wp-cards></paper-card-fw></div>
-              
-                
+
+
 				<!--
 				<h1>So funktioniert Emissionshandel</h1>
                 <google-youtube video-id="0ja9q8mns8U" height="338px" width="600px" rel="0" start="5" autoplay="0" chromeless="true" >
                 </google-youtube>
 				-->
-				
+
   				  <div class="owl sliderwrap">
 					  <div class="owl" id="post47"><wp-cards lg={{lg}} post="47" title=false></wp-cards></div>
 							<div id="owl-demo" class="owl-carousel owl-theme">
@@ -107,7 +107,7 @@
 
         if (lang=='de')localStorage.setItem("lang",JSON.stringify('de_DE'));
         else if (lang=='fr')localStorage.setItem("lang",JSON.stringify('fr_FR'));
-        //else if (lang=='es')localStorage.setItem("lang",JSON.stringify('es_ES'));
+        else if (lang=='es')localStorage.setItem("lang",JSON.stringify('es_ES'));
         else  localStorage.setItem("lang",JSON.stringify('en_EN'));
     }
     // alert ("The language is: " + localStorage.getItem("lang"));
@@ -180,7 +180,7 @@
   	  });
     });
   })(document);
-  function scrollUp(){ 
+  function scrollUp(){
         jQuery('html').animate({ scrollTop: 0 }, 'fast');
   }
 
