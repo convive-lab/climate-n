@@ -38,7 +38,7 @@ description:
     <iron-localstorage name="lang" value="{{lg}}"></iron-localstorage>
 
           <paper-dropdown-menu class="lang-select" label="language" >
-            <paper-listbox class="dropdown-content" attr-for-selected="value"  selected="{{lg}}"  >
+            <paper-listbox class="dropdown-content" attr-for-selected="value"  selected="{{lg}}" on-iron-select="_itemSelected" >
               <paper-item value="de_DE">Deutsch</paper-item>
               <paper-item value="en_EN">English</paper-item>
               <paper-item value="fr_FR">Francais</paper-item>
@@ -59,6 +59,15 @@ description:
         ajaxResponse:{
           type:Object
         },
+        first:false,
+        _itemSelected:function(){
+          if (localStorage.getItem("lang")!=this.lg&&this.first) {
+             location.reload();
+            //console.log("hey");
+          }
+            this.first=true;
+        //
+        }
 
     });
 </script>

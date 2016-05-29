@@ -10,17 +10,19 @@ properties: post:<post-number>
         }
     </style>
     <template>
+      <div class="wp-cards[[post]]">
         <iron-localstorage name="lang" value={{lg}}  iron-localstorage-load="_langchange"></iron-localstorage>
         <iron-localstorage name="wp[[post]]" value="{{ajaxResponse}}"></iron-localstorage>
         <template is="dom-if" if={{!ajaxResponse}}>
           <iron-ajax id="wp-data" auto url="http://cn.convive.io/wp-json/wp/v2/posts/[[post]]" handle-as="json" last-response="{{ajaxResponse}}" on-response="_langchange"></iron-ajax>
         </template>
         <paper-material elevation="0">
-        <template is="dom-if" if=[[wptitel]]><h1><html-echo html="[[title]]"></html-echo> </h1></template>
+        <template is="dom-if" if="{{wptitle}}"><h1><html-echo html="[[title]]"></html-echo> </h1></template>
           <div class="card-content">
             <html-echo html="[[text]]"></html-echo>
           </div>
         </paper-material>
+      </div>
     </template>
 </dom-module>
 
@@ -33,10 +35,12 @@ properties: post:<post-number>
           },
           wptitel:false,
           title:{
-            type:String
+            type:String,
+            notify: true,
           },
           text:{
-            type:String
+            type:String,
+            notify: true,
           },
           ajaxResponse:{
             type:Object
@@ -46,8 +50,6 @@ properties: post:<post-number>
             type:String,
             observer:'_langchange',
             notify: true,
-            value:"la"
-
         },
 
     },
@@ -71,7 +73,17 @@ properties: post:<post-number>
             this.title = this.ajaxResponse.acf.en_EN_title;
             this.text = this.ajaxResponse.acf.en_EN_text;
           }
+          return true;
         }
-        }
-      });
+      },
+      ready:function(){
+        this.lg=localStorage.getItem("lang");
+        //console.log(this.lg);
+        this._langchange();
+        this.ajaxResponse=JSON.parse(localStorage.getItem("wp"+this.post));
+
+      //console.log(this.ajaxResponse);
+
+      },
+    });
 </script>
