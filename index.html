@@ -41,8 +41,9 @@
           <wp-menu menu="2" class></wp-menu>
         </div>
       </paper-header-panel>
+      <iron-localstorage name="lang_wp" value="{{lang_wp}}"></iron-localstorage>
       <template is="dom-if" if={{!translation}}>
-        <iron-ajax id="translation-data" auto url="http://cn.convive.io/wp-json/wp/v2/posts/321" handle-as="json" last-response="{{translation}}" ></iron-ajax>
+        <iron-ajax id="translation-data" auto url="http://cn.convive.io/wp-json/wp/v2/posts/{{lang_wp}}" handle-as="json" last-response="{{translation}}" ></iron-ajax>
       </template>
       <iron-localstorage name="translation" value="{{translation}}"></iron-localstorage>
       <iron-pages attr-for-selected="path" selected="{{route}}">
@@ -105,10 +106,14 @@
       console.log(navigator.language || navigator.userLanguage);
       var lang = navigator.language || navigator.userLanguage;
 
-        if (lang=='de')localStorage.setItem("lang",JSON.stringify('de_DE'));
-        else if (lang=='fr')localStorage.setItem("lang",JSON.stringify('fr_FR'));
-        else if (lang=='es')localStorage.setItem("lang",JSON.stringify('es_ES'));
-        else  localStorage.setItem("lang",JSON.stringify('en_EN'));
+        if (lang=='de'){localStorage.setItem("lang",JSON.stringify('de_DE'));
+      }
+        else if (lang=='fr'){localStorage.setItem("lang",JSON.stringify('fr_FR'));
+      }
+        else if (lang=='es'){localStorage.setItem("lang",JSON.stringify('es_ES'));
+      }
+        else { localStorage.setItem("lang",JSON.stringify('en_EN'));
+      }
     }
     // alert ("The language is: " + localStorage.getItem("lang"));
 

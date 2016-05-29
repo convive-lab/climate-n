@@ -55,7 +55,7 @@ properties: post:<post-number>
     },
          _langchange:function (newVal, oldVal) {
         if(typeof this.ajaxResponse != "undefined"){
-          console.log(this.oldVal);
+          //console.log(this.oldVal);
           if (this.lg=="de_DE"){
             this.title = this.ajaxResponse.title.rendered;
             this.text = this.ajaxResponse.content.rendered;
@@ -73,6 +73,7 @@ properties: post:<post-number>
             this.title = this.ajaxResponse.acf.en_EN_title;
             this.text = this.ajaxResponse.acf.en_EN_text;
           }
+          console.log(this.text);
           return true;
         }
       },

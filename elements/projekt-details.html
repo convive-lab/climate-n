@@ -47,7 +47,7 @@
       <template is="dom-if" if={{projekt}}>
 				<iron-ajax id="menu-data" auto url="http://cn.convive.io/wp-json/wp/v2/posts/{{projekt}}" handle-as="json" last-response="{{projektDetailsResponse}}" on-response="handleResponse"></iron-ajax>
 		  </template>
-      <h1>{{projektDetailsResponse.title.rendered}}</h1>
+      <h1>{{title}}</h1>
       <div class="horizontal">
         <paper-material class="offset_image" elevation="0">
           <img src="{{projektDetailsResponse.better_featured_image.media_details.sizes.medium.source_url}}" style="max-width:300px; height:200px" >
@@ -79,21 +79,27 @@
           text:{
             type:String
           },
+          title:{
+            type:String
+          },
         },
         projektDetailsResponse:{type:Object},
         handleResponse:function () {
                   if (this.lg=="de_DE"){
+            this.title =  this.projektDetailsResponse.title.rendered;
             this.text = this.projektDetailsResponse.content.rendered;
           }
           else if (this.lg=="fr_FR"){
+            this.title = this.projektDetailsResponse.acf.fr_FR_title;
             this.text = this.projektDetailsResponse.acf.fr_FR_text;
           }
 
-          // else if (this.lg=="es_ES"){
-          //   this.title = this.projektDetailsResponse.acf.es_ES_title;
-          //   this.text = this.projektDetailsResponse.acf.es_ES_text;
-          // }
+           else if (this.lg=="es_ES"){
+             this.title = this.projektDetailsResponse.acf.es_ES_title;
+            this.text = this.projektDetailsResponse.acf.es_ES_text;
+           }
           else{
+            this.title = this.projektDetailsResponse.acf.en_EN_title;
             this.text = this.projektDetailsResponse.acf.en_EN_text;
           }
         },
@@ -104,7 +110,7 @@
             setTimeout(function(){
                 var dia=document.querySelector('#pop-aufloesung' + ' paper-dialog');
                 dia.open();
-            }, 7000);}, 
+            }, 7000);},
         attributeChanged: function(name, type) {
     console.log(this.localName + '#' + this.id + ' attribute ' + name +
       ' was changed to ' + this.getAttribute(name));

@@ -1,4 +1,4 @@
-<!-- 
+<!--
 author:Aaron
 description: fetch a question from wp
 properties: post:<post-number>
@@ -34,20 +34,17 @@ properties: post:<post-number>
     <template id="question">
         <div class="question-wrapper">
           <div class="question" ><paper-material elevation=0 >
-            <h2>{{data.acf.frage}}</h2>
-          </paper-material></div>
-          <div class="category" ><paper-material elevation=0 >
-            <h2>{{data.titel.rendered}}</h2>
+            <h2>{{question}}</h2>
           </paper-material></div>
           <div class="image">
             <iron-image src="{{data.better_featured_image.media_details.sizes.medium.source_url}}" style="width:300px; height:170px" ></iron-image>
           </div>
           <div class="answers" ><paper-material elevation=0 >
             <paper-radio-group on-change=_changeHandler class="answers">
-              <paper-radio-button noink name="1">{{data.acf.antwort1}}</paper-radio-button>
-              <paper-radio-button noink name="2">{{data.acf.antwort2}}</paper-radio-button>
-              <paper-radio-button noink name="3">{{data.acf.antwort3}}</paper-radio-button>
-              <paper-radio-button noink name="4">{{data.acf.antwort4}}</paper-radio-button>
+              <paper-radio-button noink name="1">{{answer1}}</paper-radio-button>
+              <paper-radio-button noink name="2">{{answer2}}</paper-radio-button>
+              <paper-radio-button noink name="3">{{answer3}}</paper-radio-button>
+              <paper-radio-button noink name="4">{{answer4}}</paper-radio-button>
             </paper-radio-group>
           </paper-material></div>
           <div class="buttons" ><paper-material elevation=0 >
@@ -73,10 +70,59 @@ properties: post:<post-number>
           },
           data:{
             type:Object
+          },
+          question:{
+            type:String
+          },
+          answer1:{
+            type:String
+          },
+          answer2:{
+            type:String
+          },
+          answer3:{
+            type:String
+          },
+          answer4:{
+            type:String
           }
+
         },
-        _changeHandler:function(old){ 
-          
+        _langchange:function(){
+          if (this.lg == "de_DE"){
+            this.question = this.data.acf.frage;
+            this.answer1 = this.data.acf.antwort1;
+            this.answer2 = this.data.acf.antwort2;
+            this.answer3 = this.data.acf.antwort3;
+            this.answer4 = this.data.acf.antwort4;
+            console.log("test");
+          }
+          else if (this.lg == "fr_FR"){
+            this.question = this.data.acf.question_fr_FR;
+            this.answer1 = this.data.acf.reponse1_fr_FR;
+            this.answer2 = this.data.acf.reponse2_fr_FR;
+            this.answer3 = this.data.acf.reponse3_fr_FR;
+            this.answer4 = this.data.acf.reponse4_fr_FR;
+          }
+
+           else if (this.lg == "es_ES"){
+             this.question = this.data.acf.question_es_ES;
+             this.answer1 = this.data.acf.reponse1_es_ES;
+             this.answer2 = this.data.acf.reponse2_es_ES;
+             this.answer3 = this.data.acf.reponse3_es_ES;
+             this.answer4 = this.data.acf.reponse4_es_ES;
+           }
+          else{
+            this.question = this.data.acf.question_en_EN;
+            this.answer1 = this.data.acf.reponse1_en_EN;
+            this.answer2 = this.data.acf.reponse2_en_EN;
+            this.answer3 = this.data.acf.reponse3_en_EN;
+            this.answer4 = this.data.acf.reponse4_en_EN;
+          }
+
+        },
+        _changeHandler:function(old){
+
           switch (old.target.name) {
             case '1':
               // statements_1
@@ -98,10 +144,15 @@ properties: post:<post-number>
               this.co2=0;
               break;
           }
+        },
+        ready:function () {
+          this.lg=JSON.parse(localStorage.getItem("lang"));
+          this._langchange();
+
         }
 
     });
-    var answer=document.querySelectorAll('paper-radio-group'); 
+    var answer=document.querySelectorAll('paper-radio-group');
 
 
 </script>

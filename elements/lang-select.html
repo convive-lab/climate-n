@@ -62,6 +62,24 @@ description:
         first:false,
         _itemSelected:function(){
           if (localStorage.getItem("lang")!=this.lg&&this.first) {
+            localStorage.removeItem("translation");
+            if (this.lg=="de_DE"){
+              localStorage.setItem("lang_wp",321);
+
+            }
+            else if (this.lg=="fr_FR"){
+              localStorage.setItem("lang_wp",720);
+
+            }
+
+             else if (this.lg=="es_ES"){
+               localStorage.setItem("lang_wp",722);
+
+             }
+            else{
+              localStorage.setItem("lang_wp",323);
+
+            }
              location.reload();
             //console.log("hey");
           }

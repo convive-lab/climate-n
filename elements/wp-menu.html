@@ -9,7 +9,7 @@ description: get wp menu number 2
     :host {}
     .flex-menu {
       @apply(--layout-horizontal);
-      @apply(--layout-end); 
+      @apply(--layout-end);
     }
     .menu-items{
       @apply(--layout-flex);
@@ -87,7 +87,7 @@ description: get wp menu number 2
         </template>
         <iron-localstorage name="menu" value="{{ajaxResponse}}"></iron-localstorage>
         <paper-material class="right" elevation="0">
-       
+
 
         <paper-material elevation="0" class="menu-items">
           <template is="dom-repeat" items="{{ajaxResponse.items}}">
@@ -95,7 +95,6 @@ description: get wp menu number 2
               <paper-item class="item"> <div> <a  href="[[item.url]]">{{item.title}}</a></div></paper-item>
             </div>
           </template>
-          {{selectedSuggestionId}}
         </paper-material>
         <div class="lg-select"><lang-select></lang-select></div>
         </paper-material>

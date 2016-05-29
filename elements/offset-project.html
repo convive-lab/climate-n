@@ -37,15 +37,16 @@ properties:
     </style>
     <template on-click="onTap">
       <iron-localstorage name="translation" value="{{translation}}"></iron-localstorage>
+      <iron-localstorage name="lang_wp" value="{{lang_wp}}"></iron-localstorage>
       <template is="dom-if" if={{!translation}}>
-        <iron-ajax id="translation-data" auto url="http://cn.convive.io/wp-json/wp/v2/posts/321" handle-as="json" last-response="{{translation}}" ></iron-ajax>
+        <iron-ajax id="translation-data" auto url="http://cn.convive.io/wp-json/wp/v2/posts/{{lang_wp}}" handle-as="json" last-response="{{translation}}" ></iron-ajax>
       </template>
       <div class="offset-wrap">
-        <div class="titel"> <h1><html-echo html="{{data.title.rendered}}"></html-echo></h1></div>
+        <div class="titel"> <h1><html-echo html="{{title}}"></html-echo></h1></div>
 		    <div class="image" style="background-image: url({{data.better_featured_image.media_details.sizes.medium.source_url}}); background-position: center; background-repeat: no-repeat;">
         </div>
         <div class="text-area">
-         <p><html-echo html="{{data.acf.exzerpt}}"></html-echo> </p>
+         <p><html-echo html="{{exzerpt}}"></html-echo> </p>
         </div>
           <content></content>
         <paper-button class="offset-button" raised id="offMore"><html-echo html="{{translation.acf.offsetting_page_more_information_button}}"></html-echo></paper-button>
@@ -70,11 +71,46 @@ properties:
          listeners: {
            'tap':'onTap'
          },
+         title:{
+           type:String
+         },
+         exzerpt:{
+           type:String
+         },
 
         onTap:function () {
               window.location.href ='#/projekt/'+this.data.id;
 
         },
+        handleResponse:function () {
+
+          if (this.lg == "de_DE"){
+            this.title = this.data.title.rendered;
+            this.exzerpt = this.data.acf.exzerpt;
+            console.log("test");
+          }
+          else if (this.lg == "fr_FR"){
+            this.title = this.data.acf.fr_FR_title;
+            this.exzerpt = this.data.acf.fr_FR_exzerpt;
+          }
+
+           else if (this.lg == "es_ES"){
+             this.title = this.data.acf.es_ES_title;
+             this.exzerpt = this.data.acf.es_ES_exzerpt;
+           }
+          else{
+            console.log(this.lg);
+            this.title = this.data.acf.en_EN_title;
+            this.exzerpt = this.data.acf.en_EN_exzerpt;
+          }
+        },
+        ready:function(){
+                this.lg=JSON.parse(localStorage.getItem("lang"));
+                this.handleResponse();
+
+              //console.log(this.ajaxResponse);
+
+              },
 
     });
 
