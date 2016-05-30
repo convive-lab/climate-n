@@ -92,6 +92,10 @@
  </template>
  <script>
   (function(document) {
+
+    var w=jQuery(".iframe_video").width();
+    jQuery(".iframe_video").css({'height':w*4+'px'});
+
     'use strict';
     var app = document.querySelector('#app');
     //localStorage.clear();
@@ -188,6 +192,10 @@
   function scrollUp(){
         jQuery('html').animate({ scrollTop: 0 }, 'fast');
   }
+  window.onresize = function(event) {
+      var w=jQuery(document).width();
+      jQuery(".iframe_video").css({'height':w*0.6+'px'});
+  };
 
  </script>
 </body>

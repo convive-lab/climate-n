@@ -16,6 +16,10 @@
   <script>
     Polymer({
         is: 'video-page',
+        ready:function{
+            var w=jQuery(".iframe_video").width();
+            jQuery(".iframe_video").css({'height':w*4+'px'});
+        }
       });
   </script>
 </dom-module>

@@ -10,6 +10,7 @@ description: get wp menu number 2
     .flex-menu {
       @apply(--layout-horizontal);
       @apply(--layout-end);
+       @apply(--layout-wrap);   
     }
     .menu-items{
       @apply(--layout-flex);
@@ -95,8 +96,8 @@ description: get wp menu number 2
               <paper-item class="item"> <div> <a  href="[[item.url]]">{{item.title}}</a></div></paper-item>
             </div>
           </template>
-        </paper-material>
         <div class="lg-select"><lang-select></lang-select></div>
+        </paper-material>
         </paper-material>
       </div>
     </content>

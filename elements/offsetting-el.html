@@ -63,7 +63,7 @@
 	</div>
   <template is="dom-if" if={{hidden}} >
   <div class="more-button">
-    <paper-button class="button-text" on-click="clickthebutton" raised><span>{{translation.acf.offsetting_page_more_button}}</span></paper-button>
+    <paper-button class="button-text" on-click="clickthebutton" raised><span>{{translation.acf.offsetting_page_more_button}}ladida</span></paper-button>
   </div>
   </template>
   <template is="dom-if" if={{!hidden}} >
@@ -103,7 +103,10 @@
           }
           return true;
         },
-        hidden:true,
+        hidden:{
+          type:Boolean,
+          value:true,
+        },
         ready:function () {
            this.hidden=true;
         },

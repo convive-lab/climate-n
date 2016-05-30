@@ -12,19 +12,16 @@ description: Footer
     }
     .flex-footer {
       @apply(--layout-flex);
-	  @apply(--layout-horizontal);
+	    @apply(--layout-horizontal);
+      @apply(--layout-center);
       @apply(--layout-wrap);
       @apply(--layout-center-justified);
       background-color: #333131;
       color: white;
       font-size: 110%;
       margin: auto;
-	  padding-bottom: 3%;
-	  padding-top: 3%;
-    }
-    .footer ul{
-      list-style: none;
-	    padding: 20px;
+	    padding-bottom: 3%;
+	    padding-top: 3%;
     }
     .footer a{
       color: white;
@@ -37,28 +34,25 @@ description: Footer
     }
     .uppercase{
        text-transform: uppercase;
+
     }
+    .container div{ 
+      margin:30px;
+      
+     }
 
   </style>
   <template>
     <content>
 		<paper-material elevation="0">
-			<div class="container flex-footer footer">
-				  <ul  class="uppercase">
-					<li><a href="#/about" on-click="scrollUp">About</a></li>
-					<li><a href="#/impressum" on-click="scrollUp">Impressum</a></li>
-					<li></li>
-				  </ul>
+			<div class="container flex-footer footer uppercase">
 
-				  <ul class="uppercase">
-					<li><a href='mailto:info@climate-neutral.org'>Contact</a></li>
-					
-				  </ul>
-
-
-          <ul>
-            <s-buttons scolor="white"></s-buttons>
-          </ul>
+  					<div><a href="#/impressum" on-click="scrollUp">Impressum</a></div>
+  					
+  					<div><a href='mailto:info@climate-neutral.org'>Contact</a></div>
+            <div>
+              <s-buttons scolor="white"></s-buttons>
+            </div>
 
 				</div><!--container flex-footer footer-->
 			</paper-material>
