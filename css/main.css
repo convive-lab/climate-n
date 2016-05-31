@@ -52,8 +52,9 @@ rgb(164, 205, 214)/ #A4CDD6 (hellblau)
 
 
 @font-face {
-	src: url("data/fonts/lato/Lato-Light.ttf");
-	font-family: "LATO";
+	src: url('https://fonts.googleapis.com/css?family=Lato:400');
+	font-family: 'Lato', sans-serif;
+}
 /*
 Damit die Schrift geht brauchen wir:
 TTF - Works in most browsers except IE and iPhone.
@@ -63,11 +64,10 @@ SVG - iPhone/iPad.
 Das gibts für acron nicht.
 font-family: "ARCON";
 src: url("../data/fonts/arcon/Arcon-Regular.otf");*/
-}
+
 
 body {
 	margin: 0px;
-	/*font-family: 'ARCON' !important;*/
 	font-family: 'Lato Light', LATO, sans-serif  !important;
 }
 
