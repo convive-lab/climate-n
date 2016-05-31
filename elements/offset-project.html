@@ -105,12 +105,9 @@ properties:
           }
         },
         ready:function(){
-                this.lg=JSON.parse(localStorage.getItem("lang"));
-                this.handleResponse();
-
-              //console.log(this.ajaxResponse);
-
-              },
+          this.lg=JSON.parse(localStorage.getItem("lang"));
+          this.handleResponse();
+        },
 
     });
 
