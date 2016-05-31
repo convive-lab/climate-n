@@ -1,90 +1,9 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
-<dom-module id="start-page">
+<dom-module id="version-check">
   <style type="text/css" >
-    .paper-card-fw {
-      /*margin-bottom: 10%;*/
-    }
-
-    .first{
-      background-color: #DDDDDD;
-    }
-    .second{
-      color: black;
-      background-color: #BCB3CE;
-
-    }
-    li {
-      text-align: left !important;
-    }
-    .third{
-      background-color: #29304D;
-    }
-    .videoWrapper {
-      position: relative;
-      padding-bottom: 56.25%; /* 16:9 */
-      padding-top: 25px;
-      height: 0;
-      @apply(--layout-vertical);
-      @apply(--layout-center);
-      @apply(--layout-center-justified);
-      text-align: center;
-    }
-
-    .carousel{
-      width: 70%;
-      max-width: 500px;
-      margin:auto;
-      padding-bottom: 20px;
-      height: auto;
-    }
-    .carousel img{
-      width: 100%;
-      height: auto;
-    }
-    .video{
-    width:100%;
-      @apply(--layout-vertical);
-      @apply(--layout-center);
-      @apply(--layout-center-justified);
-      @apply(--layout-flex);
-      padding-bottom: 20px;
-
-    }
-    .center,.start-page-wrap h1{
-      text-align: center;
-    }
-
-
   </style>
   <template>
 
-<div class="start-page-wrap">
-    <div class="first"><paper-card-fw><wp-cards post="41"> title=false</wp-cards></paper-card-fw></div>
-    <div class="second"><paper-card-fw><wp-cards post="43" wptitel=true></wp-cards></paper-card-fw></div>
-    <div class="third center"><paper-circle></paper-circle></div>
-    <div class="video"><paper-material elevation="0"><wp-cards post="45" wptitel=true></paper-material></wp-cards></div>
-
-    <!--<div class="first center"><paper-card-fw></paper-card-fw>-->
-    <div class="first">
-		<paper-material elevation=1>
-			<wp-cards post="47" wptitel=true></wp-card>
-				<div class="carousel">
-					<sc-swiper  a11y slidesPerView="2" navigationButtons loop  pagination paginationClickable>
-					  <img src="http://lorempixel.com/640/480/transport">
-					  <img src="http://lorempixel.com/640/480/city">
-					  <img src="http://lorempixel.com/640/480/nature">
-					  <img src="http://lorempixel.com/640/480/transport">
-					  <img src="http://lorempixel.com/640/480/city">
-					  <img src="http://lorempixel.com/640/480/nature">
-					  <img src="http://lorempixel.com/640/480/transport">
-					  <img src="http://lorempixel.com/640/480/city">
-					  <img src="http://lorempixel.com/640/480/nature">
-					</sc-swiper>
-				</div>
-		</paper-material>
-	</div>
-    <div class="second"><paper-card-fw><wp-cards post="51"></wp-cards></paper-card-fw></div>
- </div>
   <iron-ajax
     auto
     id="version"
@@ -98,23 +17,14 @@
 
   <script>
     Polymer({
-        is: 'start-page',
+        is: 'version-check',
         questionsResponse:{
             type:Object
         },
         checkVersion:function(version){
           console.log(version.srcElement.lastResponse[0].modified);
-           //das ist für die gecacheten wp-posts
           if (localStorage.getItem("version")!=version.srcElement.lastResponse[0].modified){
-            var sKey;
-            var string="wp"
-            for (var i=0; sKey = window.localStorage.key(i); i++) {
-              if(sKey.indexOf(string )> -1){
-                localStorage.removeItem(sKey);
-              }
-            }
-            localStorage.removeItem("questions");
-            localStorage.removeItem("menu");
+            localStorage.clear();
             localStorage.setItem("version",version.srcElement.lastResponse[0].modified);
           }
         }

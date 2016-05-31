@@ -92,13 +92,8 @@
  </template>
  <script>
   (function(document) {
-
-    var w=jQuery(".iframe_video").width();
-    jQuery(".iframe_video").css({'height':w*4+'px'});
-
     'use strict';
     var app = document.querySelector('#app');
-    //localStorage.clear();
     // Sets app default base URL
     app.baseUrl = '/';
     if (window.location.port === '') {  // if production
@@ -119,7 +114,7 @@
         else { localStorage.setItem("lang",JSON.stringify('en_EN'));
       }
     }
-    // alert ("The language is: " + localStorage.getItem("lang"));
+
 
     window.addEventListener('WebComponentsReady', function() {
       if (navigator.userAgent.match("Trident") && $('html').class != 'ie')
@@ -192,10 +187,6 @@
   function scrollUp(){
         jQuery('html').animate({ scrollTop: 0 }, 'fast');
   }
-  window.onresize = function(event) {
-      var w=jQuery(document).width();
-      jQuery(".iframe_video").css({'height':w*0.6+'px'});
-  };
 
  </script>
 </body>

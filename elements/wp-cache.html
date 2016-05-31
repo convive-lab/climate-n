@@ -24,17 +24,10 @@
         checkVersion:function(version){
           console.log(version.srcElement.lastResponse[0].modified);
            //das ist für die gecacheten wp-posts
+           localStorage.getItem("version");
           if (localStorage.getItem("version")!=version.srcElement.lastResponse[0].modified){
-            var sKey;
-            var string="wp"
-            for (var i=0; sKey = window.localStorage.key(i); i++) {
-              if(sKey.indexOf(string )> -1){
-                localStorage.removeItem(sKey);
-              }
-            }
-            localStorage.removeItem("questions");
-            localStorage.removeItem("menu");
-            localStorage.removeItem("translation");
+            console.log("cache cleared")
+            localStorage.clear();
             localStorage.setItem("version",version.srcElement.lastResponse[0].modified);
           }
         }
