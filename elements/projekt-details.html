@@ -85,7 +85,7 @@
         },
         projektDetailsResponse:{type:Object},
         handleResponse:function () {
-                  if (this.lg=="de_DE"){
+          if (this.lg=="de_DE"){
             this.title =  this.projektDetailsResponse.title.rendered;
             this.text = this.projektDetailsResponse.content.rendered;
           }
@@ -104,8 +104,6 @@
           }
         },
         ready:function () {
-          console.log(this.projektDetailsResponse);
-
           if (this.route == "projekt")
             setTimeout(function(){
                 var dia=document.querySelector('#pop-aufloesung' + ' paper-dialog');
