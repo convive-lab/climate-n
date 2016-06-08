@@ -45,7 +45,9 @@
  <template>
   <iron-localstorage name="lang" value="{{lg}}"></iron-localstorage>
   <div  class="offsetting-wrapper">
-    <div class="info-box"><paper-card-fw><wp-cards post="75" wptitel=true></wp-cards></paper-card-fw></div>
+    <div class="info-box">
+      <wp-cards post="75" wptitel=true></wp-cards>
+    </div>
 	<iron-ajax id="offset-data" auto url="http://cn.convive.io/wp-json/wp/v2/posts/?filter[cat]=11&filter[orderby]=rand" handle-as="json" last-response="{{offsetResponse}}" ></iron-ajax>
   <iron-localstorage name="translation" value="{{translation}}"></iron-localstorage>
   <iron-localstorage name="lang_wp" value="{{lang_wp}}"></iron-localstorage>
@@ -62,11 +64,11 @@
 			</div>
 		</template>
 	</div>
-  <template is="dom-if" if={{hidden}} >
+
   <div class="more-button">
-    <paper-button class="button-text" on-click="clickthebutton" raised><span>{{translation.acf.offsetting_page_more_button}}ladida</span></paper-button>
+    <paper-button class="button-text" on-click="clickthebutton" raised><span>{{translation.acf.offsetting_page_more_button}}</span></paper-button>
   </div>
-  </template>
+
   <template is="dom-if" if={{!hidden}} >
   <div class="flex-horizontal" id="more">
     <template is="dom-repeat" items="{{offsetResponse}}" filter="moreFilter">
@@ -107,12 +109,14 @@
         hidden:{
           type:Boolean,
           value:true,
+          observer: '_moreProjects'
         },
         ready:function () {
            this.hidden=true;
         },
         clickthebutton:function (e) {
           this.hidden=false;
+          jQuery(".more-button").addClass("hidden");
         },
         lang_wp:{
           type:String
@@ -120,6 +124,9 @@
         ready:function () {
           lang_wp=localStorage.getItem("lang_wp");
 
+        },
+        _moreProjects:function (obs){
+          console.log(obs);
         }
 
 	});
