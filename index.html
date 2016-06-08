@@ -79,7 +79,7 @@
 		    </section>
         <section path="calculator"><calculator-el></calculator-el></section>
         <section path="offsetting"><offsetting-el></offsetting-el></section>
-		    <section path="video"><video-page></video-page></section>
+		    <section path="video"><video-page route="{{route}}></video-page></section>
         <section path="projekt"><projekt-details projekt="{{projekt}}" route="{{route}}"></projekt-details></section>
         <section path="about"><about-element></about-element></section>
         <section path="impressum"><impressum-el></impressum-el></section>
@@ -119,6 +119,9 @@
     window.addEventListener('WebComponentsReady', function() {
       if (navigator.userAgent.match("Trident") && $('html').class != 'ie')
           $('html').addClass('ie');
+
+            var w=jQuery(window).width();
+    jQuery(".iframe_video").css({'height':w*0.4+'px'});
 
       var owl = $("#owl-demo");
       owl.owlCarousel({
@@ -187,6 +190,10 @@
   function scrollUp(){
         jQuery('html').animate({ scrollTop: 0 }, 'fast');
   }
+  jQuery( window ).resize(function() {
+    var w=jQuery(window).width();
+    jQuery(".iframe_video").css({'height':w*0.4+'px'});
+  });
 
  </script>
 </body>

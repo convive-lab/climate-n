@@ -17,8 +17,9 @@
     Polymer({
         is: 'video-page',
         ready:function (){
-            var w=jQuery(".iframe_video").width();
+            var w=jQuery(window).width();
             jQuery(".iframe_video").css({'height':w*4+'px'});
+            console.log("video" + w);
         }
       });
   </script>
