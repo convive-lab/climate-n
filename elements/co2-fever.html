@@ -1,7 +1,7 @@
-<!-- 
+<!--
 author:Aaron
-description: 
-properties: 
+description:
+properties:
 -->
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <dom-module id="co2-fever">
@@ -19,8 +19,14 @@ properties:
   </style>
 
   <template>
-  <div><span>{{value}}</span> t  CO<sub>2</sub> /year</div>
-  <paper-progress value="{{percentage}}"></paper-progress>
+    <iron-localstorage name="translation" value="{{translation}}"></iron-localstorage>
+    <iron-localstorage name="lang_wp" value="{{lang_wp}}"></iron-localstorage>
+    <template is="dom-if" if={{!translation}}>
+      <iron-ajax id="translation-data" auto url="http://cn.convive.io/wp-json/wp/v2/posts/{{lang_wp}}" handle-as="json" last-response="{{translation}}" ></iron-ajax>
+    </template>
+
+    <div><span>{{value}}</span> t  CO<sub>2</sub> /{{translation.acf.calculator_year}}</div>
+    <paper-progress value="{{percentage}}"></paper-progress>
   </template>
 </dom-module>
 
