@@ -81,8 +81,8 @@ properties: post:<post-number>
 
           }
           if (this.lg=="de_DE"){
-            if (this.ajaxResponse.title) this.title = this.ajaxResponse.title.rendered;
-            if (this.ajaxResponse.content) this.text = this.ajaxResponse.content.rendered;
+            this.title = this.ajaxResponse.title.rendered;
+            this.text = this.ajaxResponse.content.rendered;
           }
           else if (this.lg=="fr_FR"){
             this.title = this.ajaxResponse.acf.fr_FR_title;
