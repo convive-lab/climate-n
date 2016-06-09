@@ -23,7 +23,7 @@
   <link rel="stylesheet" type="text/css" href="./css/main.css"/>
   <link rel="stylesheet" href="data/Owl-Slider/owl-carousel/owl.carousel.css"/>
   <link rel="stylesheet" href="data/Owl-Slider/owl-carousel/owl.theme.css"/>
-  <link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'
+  <link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 </head>
 <body unresolved class="fullbleed vertical layout">
     <!--[if IE]>
@@ -64,16 +64,10 @@
                 </google-youtube>
 				-->
 
-  				  <div class="owl sliderwrap">
+  				<div class="owl sliderwrap">
 					  <div class="owl" id="post47"><wp-cards lg={{lg}} post="47" title=false></wp-cards></div>
-							<div id="owl-demo" class="owl-carousel owl-theme">
-							  <div class="item"><img src="data/Owl-Slider/slides/1tCO2-ist_fliegen.png"></img></div>
-							  <div class="item"><img src="data/Owl-Slider/slides/1tCO2-ist_kochen.png"></img></div>
-							  <div class="item"><img src="data/Owl-Slider/slides/1tCO2-ist_burger.png"></img></div>
-							  <div class="item"><img src="data/Owl-Slider/slides/1tCO2-ist_wald.png"></img></div>
-							  <div class="item"><img src="data/Owl-Slider/slides/1tCO2-ist_rinder.png"></img></div>
-							  <div class="item"><img src="data/Owl-Slider/slides/1tCO2-ist_boden.png"></img></div>
-							</div>
+            <wp-cards post="867"></wp-cards>
+
 					</div>
 				</div>
 		    </section>
@@ -139,7 +133,11 @@
     jQuery(".iframe_video").css({'height':w*0.4+'px'});
 
       var owl = $("#owl-demo");
-      owl.owlCarousel({
+      
+      setTimeout(function(){
+        
+        console.log("now");
+        owl.owlCarousel({
         // Most important owl features
         items : 4,
         itemsCustom : false,
@@ -199,7 +197,9 @@
         afterAction: false,
         startDragging : false,
         afterLazyLoad : false,
-  	  });
+      });
+      }, 2000);
+      
     });
   })(document);
   function scrollUp(){
