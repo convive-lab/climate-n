@@ -24,11 +24,12 @@
         checkVersion:function(version){
           console.log(version.srcElement.lastResponse[0].modified);
            //das ist für die gecacheten wp-posts
-           localStorage.getItem("version");
+           //localStorage.getItem("version");
           if (localStorage.getItem("version")!=version.srcElement.lastResponse[0].modified){
             console.log("cache cleared")
             localStorage.clear();
             localStorage.setItem("version",version.srcElement.lastResponse[0].modified);
+            localstorageIni();
           }
         }
     });
