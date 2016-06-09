@@ -54,7 +54,7 @@ properties: post:<post-number>
 
     },
          _langchange:function (newVal, oldVal) {
-        if(typeof this.ajaxResponse != "undefined"){
+        if(this.ajaxResponse != null){
           //console.log(this.oldVal);
           if (this.lg==undefined){
                   var lang = navigator.language || navigator.userLanguage;
@@ -81,8 +81,8 @@ properties: post:<post-number>
 
           }
           if (this.lg=="de_DE"){
-            this.title = this.ajaxResponse.title.rendered;
-            this.text = this.ajaxResponse.content.rendered;
+            if (this.ajaxResponse.title) this.title = this.ajaxResponse.title.rendered;
+            if (this.ajaxResponse.content) this.text = this.ajaxResponse.content.rendered;
           }
           else if (this.lg=="fr_FR"){
             this.title = this.ajaxResponse.acf.fr_FR_title;
