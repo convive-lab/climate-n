@@ -1,3 +1,4 @@
+function localstorageIni() {
   if (localStorage.getItem("lang") === null){
     console.log(navigator.language || navigator.userLanguage);
     var lang = navigator.language || navigator.userLanguage;
@@ -23,3 +24,4 @@
         localStorage.setItem("translation", $.getJSON( "http://cn.convive.io/wp-json/wp/v2/posts/323" ));
     }
   };
+}
