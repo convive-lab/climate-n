@@ -53,7 +53,7 @@
               <wp-cards lg={{lg}} post="41" style="@apply(--layout-self-end)"> title=false</wp-cards>
             </div></paper-card-fw></div>
   				  <div class="second"><paper-card-fw><wp-cards lg={{lg}} post="43" wptitel=true></wp-cards></paper-card-fw></div>
-  				  <div class="third"><paper-card-fw><wp-cards lg={{lg}} post="200" wptitel=true></wp-cards><s-buttons></s-buttons></paper-card-fw></div>
+  				  <div class="third"><paper-card-fw><wp-cards lg={{lg}} post="200" wptitel=true></wp-cards><s-buttons class="s_b_index"></s-buttons></paper-card-fw></div>
 				<div class="fourth center"><paper-circle style="--paper-circle-color: #1D5FA2;"></paper-circle></div>
   				  <div class="video"><paper-card-fw><wp-cards lg={{lg}} post="625" style="@apply(--layout-center-justified);" wptitel=true></wp-cards></paper-card-fw></div>
 
@@ -133,9 +133,9 @@
     jQuery(".iframe_video").css({'height':w*0.4+'px'});
 
       var owl = $("#owl-demo");
-      
+
       setTimeout(function(){
-        
+
         console.log("now");
         owl.owlCarousel({
         // Most important owl features
@@ -199,7 +199,7 @@
         afterLazyLoad : false,
       });
       }, 2000);
-      
+
     });
   })(document);
   function scrollUp(){
