@@ -80,6 +80,8 @@ properties: post:<post-number>
               }
 
           }
+          if (typeof this.ajaxResponse.title == "undefined" || typeof this.ajaxResponse.acf == "undefined") location.reload();
+
           if (this.lg=="de_DE"){
             this.title = this.ajaxResponse.title.rendered;
             this.text = this.ajaxResponse.content.rendered;
@@ -103,8 +105,8 @@ properties: post:<post-number>
       ready:function(){
         this.lg=localStorage.getItem("lang");
         //console.log(this.lg);
-        this._langchange();
         this.ajaxResponse=JSON.parse(localStorage.getItem("wp"+this.post));
+        this._langchange();
 
       //console.log(this.ajaxResponse);
 
