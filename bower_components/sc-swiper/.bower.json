@@ -30,13 +30,13 @@
     "polymer": "latest",
     "swiper": "latest"
   },
-  "_release": "c47900c733",
+  "_release": "260bd3a63b",
   "_resolution": {
     "type": "branch",
     "branch": "master",
-    "commit": "c47900c733af35abd8fd0ab6331d949b3f6e9b4a"
+    "commit": "260bd3a63b98d183e68cb80d3af67a0c45558efa"
   },
-  "_source": "git://github.com/safetychanger/sc-swiper.git",
+  "_source": "https://github.com/safetychanger/sc-swiper.git",
   "_target": "*",
   "_originalSource": "sc-swiper"
 }

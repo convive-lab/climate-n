@@ -54,7 +54,14 @@
         randomString += charSet.substring(randomPoz,randomPoz+1);
     }
     return randomString;
-  };
+  }
+
+  function normalizeString(str) {
+    if (str === undefined || str === null)
+      str = "";
+
+    return str;
+  }
 
   /**
   RouterState stores RouteManager configuration.
@@ -317,6 +324,7 @@ setting unless you get conflicts
 - To redirect a route
   - Register the route
   - Inside routes's activate handler, abort the transition with 'redirectTo' path
+  - see https://github.com/atotic/excess-router/issues/17 for javascript example
 
 - Debugging
   - print all paths with `Excess.RouteManagerTest.print()`
@@ -366,6 +374,13 @@ setting unless you get conflicts
      * @param {boolean} options.isAliasRoute -- true if this is a aliased route
      * @param {boolean} option.activateExclusive -- true if this route can only be activated on its own
      * @param {boolean} option.activateStopPropagation -- true if no routes will match after this one
+
+     These are the transition lifecycle callbacks
+     * @param {function(transaction)} options.willDeactivate --
+     * @param {function(transaction)} options.deactivate --
+     * @param {function(transaction, { routeParams: {} }) , function done} options.willActivate --
+     * @param {function(transaction, { routeParams: {} }) , function done} options.activate --
+
      * @return {string}} -- token, you need this to unregister
      */
     register: function(path, options) {
@@ -668,20 +683,43 @@ setting unless you get conflicts
     },
 
     _routeAnchor: function(anchor) {
+  	  do {
+  		if (anchor.nodeName === 'A') break;
+  	  } while (anchor.parentNode && (anchor = anchor.parentNode));
+
+      if (anchor.target === '_blank')
+        return false;
+
+  	  if (anchor.nodeName !== 'A')
+  		  return false;
+
       if (anchor.protocol === 'javascript:')
         return false;
+
+      if (anchor.protocol !== location.protocol ||
+          // location.username and password are undefined when not set,
+          // whereas the anchor's properties are empty strings
+          normalizeString(anchor.username) !== normalizeString(location.username) ||
+          normalizeString(anchor.password) !== normalizeString(location.password) ||
+          anchor.host !== location.host)
+        return false;
+
       var route;
       switch(RouterState.pathStyle) {
         case 'hash':
           route = anchor.hash;
           if (StringStartsWith(route, RouterState.hashPrefix)) {
             route = route.replace(RouterState.hashPrefix, '');
+          } else {
+            return false;
           }
           break;
         case 'path':
           route = anchor.pathname;
           if (StringStartsWith(route,RouterState.basePath)) {
             route = route.replace(RouterState.basePath, '');
+          } else {
+            return false;
           }
           break;
       }
@@ -691,7 +729,7 @@ setting unless you get conflicts
           return true;
         }
         catch(err) {
-          console.warn('anchor route not found', route);
+          // An unknown route, something else is handling it
           return false;
         }
       }
@@ -712,10 +750,8 @@ setting unless you get conflicts
             if (ev.button !== 0 || ev.metaKey || ev.ctrlKey) {
               return null;
             }
-            if (ev.target.nodeName === 'A') {
-              if (this._routeAnchor(ev.target)) {
-                ev.preventDefault();
-              }
+            if (this._routeAnchor(ev.target)) {
+              ev.preventDefault();
             }
           }.bind(this));
         }

@@ -1,3 +1,10 @@
+0.9.14
+==================
+
+0.9.13
+==================
+* bug: Fixes for various issues connected with anchor handling
+
 0.9.12
 ==================
 * bug: #10 parameter navigation sets optionals to undefined if not present

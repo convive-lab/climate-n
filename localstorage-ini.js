@@ -1,4 +1,14 @@
 function localstorageIni() {
+  jQuery.getJSON( "http://cn.convive.io/wp-json/wp/v2/posts/?filter[orderby]=modified&filter[posts_per_page]=1", function( data ) {
+    console.log(data[0].modified);
+             //das ist für die gecacheten wp-posts
+    localStorage.getItem("version");
+    if (localStorage.getItem("version")!=data[0].modified){
+      console.log("cache cleared")
+      localStorage.clear();
+      localStorage.setItem("version",data[0].modified);
+    }
+  });
   if (localStorage.getItem("lang") === null){
     console.log(navigator.language || navigator.userLanguage);
     var lang = navigator.language || navigator.userLanguage;
