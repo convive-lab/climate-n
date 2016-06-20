@@ -45,7 +45,7 @@
     <iron-localstorage name="lang" value="{{lg}}"></iron-localstorage>
     <div id="projekt-details-wrapper" >
       <template is="dom-if" if={{projekt}}>
-				<iron-ajax id="menu-data" auto url="http://cn.convive.io/wp-json/wp/v2/posts/{{projekt}}" handle-as="json" last-response="{{projektDetailsResponse}}" on-response="handleResponse"></iron-ajax>
+				<iron-ajax id="menu-data" auto url="http://climate-neutral.org/wp/wp-json/wp/v2/posts/{{projekt}}" handle-as="json" last-response="{{projektDetailsResponse}}" on-response="handleResponse"></iron-ajax>
 		  </template>
       <h1>{{title}}</h1>
       <div class="horizontal">

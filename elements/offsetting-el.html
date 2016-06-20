@@ -49,11 +49,11 @@
     <div class="info-box">
       <wp-cards post="75" wptitel=true></wp-cards>
     </div>
-	<iron-ajax id="offset-data" auto url="http://cn.convive.io/wp-json/wp/v2/posts/?filter[cat]=11&filter[orderby]=rand" handle-as="json" last-response="{{offsetResponse}}" ></iron-ajax>
+	<iron-ajax id="offset-data" auto url="http://climate-neutral.org/wp/wp-json/wp/v2/posts/?filter[cat]=11&filter[orderby]=rand" handle-as="json" last-response="{{offsetResponse}}" ></iron-ajax>
   <iron-localstorage name="translation" value="{{translation}}"></iron-localstorage>
   <iron-localstorage name="lang_wp" value="{{lang_wp}}"></iron-localstorage>
   <template is="dom-if" if={{!translation}}>
-    <iron-ajax id="translation-data" auto url="http://cn.convive.io/wp-json/wp/v2/posts/{{lang_wp}}" handle-as="json" last-response="{{translation}}" ></iron-ajax>
+    <iron-ajax id="translation-data" auto url="http://climate-neutral.org/wp/wp-json/wp/v2/posts/{{lang_wp}}" handle-as="json" last-response="{{translation}}" ></iron-ajax>
   </template>
 	<div class="flex-horizontal">
 		<template is="dom-repeat" items="{{offsetResponse}}" filter="initialFilter">
