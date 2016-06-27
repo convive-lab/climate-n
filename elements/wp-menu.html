@@ -10,7 +10,7 @@ description: get wp menu number 2
     .flex-menu {
       @apply(--layout-horizontal);
       @apply(--layout-end);
-       @apply(--layout-wrap);   
+       @apply(--layout-wrap);
     }
     .menu-items{
       @apply(--layout-flex);
@@ -84,7 +84,7 @@ description: get wp menu number 2
        <div class="logocontainer"><img class="image" src="../data/CN-Logo-blau_web.png" ></img></div>
       </div>
         <template is="dom-if" if={{!ajaxResponse}}>
-          <iron-ajax id="menu-data" auto url="http://cn.convive.io/wp-json/wp-api-menus/v2/menus/{{menu}}" handle-as="json" last-response="{{ajaxResponse}}" ></iron-ajax>
+          <iron-ajax id="menu-data" auto url="http://climate-neutral.org/wp/wp-json/wp-api-menus/v2/menus/{{menu}}" handle-as="json" last-response="{{ajaxResponse}}" ></iron-ajax>
         </template>
         <iron-localstorage name="menu" value="{{ajaxResponse}}"></iron-localstorage>
         <paper-material class="right" elevation="0">
