@@ -32,6 +32,14 @@
         You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.
       </div>
     <![endif]-->
+ <div class="spinner" style="width: 100%; height: 100%; background-color: white; position: fixed; z-index: 100;">
+   <div class="sk-folding-cube">
+  <div class="sk-cube1 sk-cube"></div>
+  <div class="sk-cube2 sk-cube"></div>
+  <div class="sk-cube4 sk-cube"></div>
+  <div class="sk-cube3 sk-cube"></div>
+</div>
+ </div>
  <template is="dom-bind" id="app">
   <wp-cache></wp-cache>
   <excess-route route="/:main/:num?" main="{{route}}" num="{{projekt}}"></excess-route>
@@ -44,7 +52,7 @@
       </paper-header-panel>
       <iron-localstorage name="lang_wp" value="{{lang_wp}}"></iron-localstorage>
       <template is="dom-if" if={{!translation}}>
-        <iron-ajax id="translation-data" auto url="http://climate-neutral.org/wp/wp-json/wp/v2/posts/{{lang_wp}}" handle-as="json" last-response="{{translation}}" ></iron-ajax>
+        <iron-ajax id="translation-data" auto url="http://cn.convive.io/wp-json/wp/v2/posts/{{lang_wp}}" handle-as="json" last-response="{{translation}}" ></iron-ajax>
       </template>
       <iron-localstorage name="translation" value="{{translation}}"></iron-localstorage>
       <iron-pages attr-for-selected="path" selected="{{route}}">
@@ -120,6 +128,7 @@
       // onsuccess callback
       function() {
         console.log('yay! our app is ready!');
+        jQuery(".spinner").css({display: "none"});
         setTimeout(function(){
         var w=jQuery(window).width();
         jQuery(".iframe_video").css({'height':w*0.4+'px'});
