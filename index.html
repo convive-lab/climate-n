@@ -13,7 +13,7 @@
   <!-- Polyfill Web Components support for older browsers -->
   <!-- Polymer -->
   <script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
-  <link rel="import" href="elements.html"/>
+  <link rel="import" href="elements_short.html"/>
   <!--Owl-Slider-->
   <script src="data/Owl-Slider/assets/js/jquery-1.9.1.min.js"></script>
   <script src="data/Owl-Slider/owl-carousel/owl.carousel.js"></script>
@@ -67,7 +67,7 @@
 
   				<div class="owl sliderwrap">
 					  <div class="owl" id="post47"><wp-cards lg={{lg}} post="47" title=false></wp-cards></div>
-            <wp-cards lg={{lg}} post="867"></wp-cards>
+            <wp-cards lg={{lg}} post="867"></wp-cards>  
         	</div>
 				</div>
 		    </section>
@@ -84,9 +84,25 @@
       </div>
       <post-popup id="pop-aufloesung" post="146"></post-popup>
     </div><!--wrapper-->
+    <!-- Piwik -->
+		<script type="text/javascript">
+		  var _paq = _paq || [];
+		  _paq.push(['trackPageView']);
+		  _paq.push(['enableLinkTracking']);
+		  (function() {
+		    var u="//climate-neutral.org/piwik/";
+		    _paq.push(['setTrackerUrl', u+'piwik.php']);
+		    _paq.push(['setSiteId', 1]);
+		    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+		    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+		  })();
+		</script>
+		<noscript><p><img src="//climate-neutral.org/piwik/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
+	<!-- End Piwik Code -->
  </template>
  <script>
-  (function(document) {
+      (function(document) {
+
     'use strict';
     var app = document.querySelector('#app');
     // Sets app default base URL
@@ -100,16 +116,14 @@
     localstorageIni();
 
     window.addEventListener('WebComponentsReady', function() {
-      if (navigator.userAgent.match("Trident") && $('html').class != 'ie')
-          $('html').addClass('ie');
-
-            var w=jQuery(window).width();
-    jQuery(".iframe_video").css({'height':w*0.4+'px'});
-
-      var owl = $("#owl-demo");
-
-      setTimeout(function(){
-
+              Polymer.Base.importHref('./elements_long.html',
+      // onsuccess callback
+      function() {
+        console.log('yay! our app is ready!');
+        setTimeout(function(){
+        var w=jQuery(window).width();
+        jQuery(".iframe_video").css({'height':w*0.4+'px'});
+        var owl = $("#owl-demo");
         console.log("now");
         owl.owlCarousel({
         // Most important owl features
@@ -172,7 +186,19 @@
         startDragging : false,
         afterLazyLoad : false,
       });
-      }, 2000);
+      }, 3000);
+      },
+      // onerror callback
+      function(err) {
+        console.log('uh oh, something failed', err);
+      },
+      // use `async` on import
+      true);
+
+      if (navigator.userAgent.match("Trident") && $('html').class != 'ie')
+          $('html').addClass('ie');
+
+      
 
     });
   })(document);
