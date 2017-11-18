@@ -123,7 +123,7 @@
 
     localstorageIni();
 
-    window.addEventListener('WebComponentsReady', function() {
+    //window.addEventListener('WebComponentsReady', function() {
               Polymer.Base.importHref('./elements_long.html',
       // onsuccess callback
       function() {
@@ -196,13 +196,13 @@
         afterLazyLoad : false,
       });
       }, 3000);
-      },
-      // onerror callback
-      function(err) {
-        console.log('uh oh, something failed', err);
-      },
-      // use `async` on import
-      true);
+      // },
+      // // onerror callback
+      // function(err) {
+      //   console.log('uh oh, something failed', err);
+      // },
+      // // use `async` on import
+      // true);
 
       if (navigator.userAgent.match("Trident") && $('html').class != 'ie')
           $('html').addClass('ie');
