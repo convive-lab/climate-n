@@ -13,7 +13,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="iron-overlay-backdrop.html">
 
 <script>
-
   /**
    * @struct
    * @constructor
@@ -40,8 +39,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     this._backdropElement = null;
 
     // Enable document-wide tap recognizer.
-    Polymer.Gestures.add(document, 'tap', null);
-    // Need to have useCapture=true, Polymer.Gestures doesn't offer that.
+    // NOTE: Use useCapture=true to avoid accidentally prevention of the closing
+    // of an overlay via event.stopPropagation(). The only way to prevent
+    // closing of an overlay should be through its APIs.
+    // NOTE: enable tap on <html> to workaround Polymer/polymer#4459
+    // Pass no-op function because MSEdge 15 doesn't handle null as 2nd argument
+    // https://github.com/Microsoft/ChakraCore/issues/3863
+    Polymer.Gestures.add(document.documentElement, 'tap', function() {});
     document.addEventListener('tap', this._onCaptureClick.bind(this), true);
     document.addEventListener('focus', this._onCaptureFocus.bind(this), true);
     document.addEventListener('keydown', this._onCaptureKeyDown.bind(this), true);
@@ -67,10 +71,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
      * @type {!Element} activeElement the active element
      */
     get deepActiveElement() {
+      var active = document.activeElement;
       // document.activeElement can be null
       // https://developer.mozilla.org/en-US/docs/Web/API/Document/activeElement
-      // In case of null, default it to document.body.
-      var active = document.activeElement || document.body;
+      // In IE 11, it can also be an object when operating in iframes.
+      // In these cases, default it to document.body.
+      if (!active || active instanceof Element === false) {
+        active = document.body;
+      }
       while (active.root && Polymer.dom(active.root).activeElement) {
         active = Polymer.dom(active.root).activeElement;
       }
@@ -157,9 +165,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
       this._overlays.splice(insertionIndex, 0, overlay);
 
-      // Get focused node.
-      var element = this.deepActiveElement;
-      overlay.restoreFocusNode = this._overlayParent(element) ? null : element;
       this.trackBackdrop();
     },
 
@@ -173,12 +178,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
       this._overlays.splice(i, 1);
 
-      var node = overlay.restoreFocusOnClose ? overlay.restoreFocusNode : null;
-      overlay.restoreFocusNode = null;
-      // Focus back only if still contained in document.body
-      if (node && Polymer.dom(document.body).deepContains(node)) {
-        node.focus();
-      }
       this.trackBackdrop();
     },
 
@@ -210,15 +209,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     focusOverlay: function() {
       var current = /** @type {?} */ (this.currentOverlay());
-      // We have to be careful to focus the next overlay _after_ any current
-      // transitions are complete (due to the state being toggled prior to the
-      // transition). Otherwise, we risk infinite recursion when a transitioning
-      // (closed) overlay becomes the current overlay.
-      //
-      // NOTE: We make the assumption that any overlay that completes a transition
-      // will call into focusOverlay to kick the process back off. Currently:
-      // transitionend -> _applyFocus -> focusOverlay.
-      if (current && !current.transitioning) {
+      if (current) {
         current._applyFocus();
       }
     },
@@ -234,6 +225,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
       this.backdropElement.style.zIndex = this._getZ(overlay) - 1;
       this.backdropElement.opened = !!overlay;
+      // Property observers are not fired until element is attached
+      // in Polymer 2.x, so we ensure element is attached if needed.
+      // https://github.com/Polymer/polymer/issues/4526
+      this.backdropElement.prepare();
     },
 
     /**
@@ -307,27 +302,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     },
 
     /**
-     * Returns the overlay containing the provided node. If the node is an overlay,
-     * it returns the node.
-     * @param {Element=} node
-     * @return {Element|undefined}
-     * @private
-     */
-    _overlayParent: function(node) {
-      while (node && node !== document.body) {
-        // Check if it is an overlay.
-        if (node._manager === this) {
-          return node;
-        }
-        // Use logical parentNode, or native ShadowRoot host.
-        node = Polymer.dom(node).parentNode || node.host;
-      }
-    },
-
-    /**
      * Returns the deepest overlay in the path.
      * @param {Array<Element>=} path
      * @return {Element|undefined}
+     * @suppress {missingProperties}
      * @private
      */
     _overlayInPath: function(path) {
@@ -345,10 +323,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
      * @private
      */
     _onCaptureClick: function(event) {
-      var overlay = /** @type {?} */ (this.currentOverlay());
-      // Check if clicked outside of top overlay.
-      if (overlay && this._overlayInPath(Polymer.dom(event).path) !== overlay) {
+      var i = this._overlays.length - 1;
+      if (i === -1) return;
+      var path = Polymer.dom(event).path;
+      var overlay;
+      // Check if clicked outside of overlay.
+      while ((overlay = /** @type {?} */ (this._overlays[i])) && this._overlayInPath(path) !== overlay) {
         overlay._onCaptureClick(event);
+        if (overlay.allowClickThrough) {
+          i--;
+        } else {
+          break;
+        }
       }
     },
 
@@ -385,12 +371,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
      * @param {!Element} overlay1
      * @param {!Element} overlay2
      * @return {boolean}
+     * @suppress {missingProperties}
      * @private
      */
     _shouldBeBehindOverlay: function(overlay1, overlay2) {
-      var o1 = /** @type {?} */ (overlay1);
-      var o2 = /** @type {?} */ (overlay2);
-      return !o1.alwaysOnTop && o2.alwaysOnTop;
+      return !overlay1.alwaysOnTop && overlay2.alwaysOnTop;
     }
   };
 

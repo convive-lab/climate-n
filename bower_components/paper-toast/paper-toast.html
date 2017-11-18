@@ -13,7 +13,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../iron-overlay-behavior/iron-overlay-behavior.html">
 
 <!--
-Material design: [Snackbards & toasts](https://www.google.com/design/spec/components/snackbars-toasts.html)
+Material design: [Snackbars & toasts](https://www.google.com/design/spec/components/snackbars-toasts.html)
 
 `paper-toast` provides a subtle notification toast. Only one `paper-toast` will
 be visible on screen.
@@ -85,7 +85,7 @@ In order to apply the `Roboto` font to this element, make sure you've imported `
         opacity: 0;
         -webkit-transform: translateY(100px);
         transform: translateY(100px);
-        @apply(--paper-font-common-base);
+        @apply --paper-font-common-base;
       }
 
       :host(.capsule) {
@@ -107,11 +107,13 @@ In order to apply the `Roboto` font to this element, make sure you've imported `
     </style>
 
     <span id="label">{{text}}</span>
-    <content></content>
+    <slot></slot>
   </template>
 
   <script>
     (function() {
+      'use strict';
+
       // Keeps track of the toast currently opened.
       var currentToast = null;
 
