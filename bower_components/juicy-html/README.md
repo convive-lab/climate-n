@@ -1,17 +1,18 @@
 &lt;juicy-html&gt; [![Build Status](https://travis-ci.org/Juicy/juicy-html.svg?branch=master)](https://travis-ci.org/Juicy/juicy-html)
 ==============
+> Declarative way for client-side includes
 
-`<juicy-html>` is a custom element that lets you load HTML partials from JS objects and external files into your DOM. It acts more or less, as `include` statement known in many other languages. It also provides data binding, that works for native JS/HTML as well as for Polymer's `dom-bind`.
+`<juicy-html>` is a custom element that lets you load HTML partials from JS objects and external files into your DOM. It acts more or less, as `include` statement known in many other languages. It also provides a simple data binding, that works for native JS/HTML as well as for Polymer's `dom-bind`.
 
 ### External files
 To load HTML from external file all you need is:
 ```html
-<template is="juicy-html" content="./path/to/file.html"></template>
+<template is="juicy-html" href="./path/to/file.html"></template>
 ```
 
 ### Markup provided by attribute
 ```html
-<template is="juicy-html" content="<h1>Hello World</h1>"></template>
+<template is="juicy-html" html="<h1>Hello World</h1>"></template>
 ```
 
 ### Data Binding
@@ -19,7 +20,7 @@ To load HTML from external file all you need is:
 
 ```html
 <template is="juicy-html"
-  content='
+  html='
     All those nodes will get <code>.model</code> property
     with the reference to the object given in model attribute.
     <template is="dom-bind">
@@ -83,42 +84,66 @@ Please note, that loaded `<script>` and `<style>` will be executed every time HT
 	Load HTML partial from a string:
 
 	```html
-	<template is="juicy-html" content="<b>some</b> HTML"></template>
-	<!-- Or <template is="juicy-html" content="{{var}}"></template> where {{ var }} equals "<b>some</b> HTML" -->
+	<template is="juicy-html" html="<b>some</b> HTML"></template>
+	<!-- Or <template is="juicy-html" html="{{var}}"></template> where {{ var }} equals "<b>some</b> HTML" -->
 	```
 
 	Load HTML partial from a URL:
 
 	```html
-	<template is="juicy-html" content="./path/to/file.html"></template>
-	<!-- Or <template is="juicy-html" content="{{var}}"></template>
+	<template is="juicy-html" href="./path/to/file.html"></template>
+	<!-- Or <template is="juicy-html" href="{{var}}"></template>
 	     where {{var}} equals "./path/to/file.html", a path relative to the document that must start with / or ./ -->
 	```
 
-## Options/Attributes
+## Attributes
 
 Attribute           | Options         | Default     | Description
 ---                 | ---             | ---         | ---
-`content`           | *string*		  | `""`	    | Safe HTML code, or path (starts with `/`, `./`, or `../`) to partial to be loaded.
-`model`(_optional_) | *Object|String* | `undefined` | Object (or `JSON.stringify`'ied Object) to be attached to every root node of loaded document
+`html`              | *String*		  | `""`	    | Safe HTML code to be stamped. Setting this one will skip any pending request for `href` and remove `href` attribute.
+`href`              | *String*		  | `""`	    | Path of a partial to be loaded. Setting this one will remove `html` attribute.
+`model`(_optional_) | *Object/String* | `undefined` | Object (or `JSON.stringify`'ied Object) to be attached to every root node of loaded document
 
 ## Properties
 
-Property | Type     | Default     | Description
----      | ---      | ---         | ---
-`model`  | *Object* | `undefined` | see above
+Property       | Type              | Default     | Description
+---            | ---               | ---         | ---
+`model`        | *Object*          | `undefined` | See [attributes](#Attributes), plays nice with Polymer data-binding
+`html`         | *String*          | `""`	     | See [attributes](#Attributes)
+`href`         | *String*          | `""`	     | See [attributes](#Attributes)
+`pending`      | *XMLHttpRequest*  |             | pending XHR if any
+`stampedNodes` | *Array*           | `[]`        | Array of stamped nodes.
+
+Please note, that properties are available after element is upgraded.
+To provide a state before element is upgraded, please use attributes.
 
 ## Events
 
-Name      | details            | Description
----       | ---                | ---
+Name      | details             | Description
+---       | ---                 | ---
 `stamped` | *Array* of *Node* s | Trigger every time content is (re-)stamped, with array of stamped nodes in `event.detail`
 
+## Methods
+
+Name                      | Description
+---                       | ---
+`skipStampingPendingFile` | Call to disregard currently pending request
 
 ### Dependencies
 
 `<juicy-html>` is framework agnostic custom element, so all you need is Web Components support.
 However, it plays really nice with [Polymer](http://www.polymer-project.org/) [Auto-binding templates](https://www.polymer-project.org/1.0/docs/devguide/templates.html#dom-bind), or any other binding library, that sets HTML elements' properties and/or attributes. Check our demos and examples.
+
+## Browser compatibility
+
+Name         | Support    | Comments
+-------------|------------|---------
+Chrome 48    | yes        |
+Firefox 43   | yes        |
+IE 11        | partially  | `document._currentScript` behaves wrong in inserted scripts
+Edge 25      | yes        |
+Safari 10-11 | yes        |
+Safari 9-    | not tested |
 
 ## Contributing
 
@@ -134,4 +159,4 @@ For detailed changelog, check [Releases](https://github.com/Juicy/juicy-element/
 
 ## License
 
-[MIT License](http://opensource.org/licenses/MIT)
+MIT

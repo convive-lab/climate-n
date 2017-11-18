@@ -35,6 +35,6 @@
     "commit": "4b837212ce62628cd109df73434c9055d5714d10"
   },
   "_source": "https://github.com/atotic/excess-router.git",
-  "_target": "^0.9.12",
+  "_target": "*",
   "_originalSource": "excess-router"
 }

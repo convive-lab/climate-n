@@ -54,7 +54,7 @@ Value is saved as json by default.
 ### Tech notes:
 
 * * `value.*` is observed, and saved on modifications. You must use
-    path change notifification methods such as `set()` to modify value
+    path change notification methods such as `set()` to modify value
     for changes to be observed.
 
 * * Set `auto-save-disabled` to prevent automatic saving.
@@ -152,16 +152,19 @@ is resolved. Local storage will be blown away.
     },
 
     _trySaveValue: function() {
-      if (this._doNotSave) {
+      if (this.autoSaveDisabled === undefined || this._doNotSave) {
         return;
       }
+
       if (this._loaded && !this.autoSaveDisabled) {
         this.debounce('save', this.save);
       }
     },
 
     _debounceReload: function() {
-      this.debounce('reload', this.reload);
+      if (this.name !== undefined && this.useRaw !== undefined) {
+        this.debounce('reload', this.reload);
+      }
     },
 
     /**
@@ -179,21 +182,27 @@ is resolved. Local storage will be blown away.
      * @param {boolean=} externalChange true if loading changes from a different window
      */
     _load: function(externalChange) {
-      var v = window.localStorage.getItem(this.name);
+      try {
+        var v = window.localStorage.getItem(this.name);
+      } catch (ex) {
+        this.errorMessage = ex.message;
+
+        this._error("Could not save to localStorage.  Try enabling cookies for this page.", ex);
+      };
 
       if (v === null) {
         this._loaded = true;
         this._doNotSave = true;  // guard for save watchers
         this.value = null;
         this._doNotSave = false;
-        this.fire('iron-localstorage-load-empty', { externalChange: externalChange});
+        this.fire('iron-localstorage-load-empty', { externalChange: externalChange}, {composed: true});
       } else {
         if (!this.useRaw) {
           try { // parse value as JSON
             v = JSON.parse(v);
           } catch(x) {
             this.errorMessage = "Could not parse local storage value";
-            console.error("could not parse local storage value", v);
+            Polymer.Base._error("could not parse local storage value", v);
             v = null;
           }
         }
@@ -201,7 +210,7 @@ is resolved. Local storage will be blown away.
         this._doNotSave = true;
         this.value = v;
         this._doNotSave = false;
-        this.fire('iron-localstorage-load', { externalChange: externalChange});
+        this.fire('iron-localstorage-load', { externalChange: externalChange}, {composed: true});
       }
     },
 
@@ -221,7 +230,7 @@ is resolved. Local storage will be blown away.
       catch(ex) {
         // Happens in Safari incognito mode,
         this.errorMessage = ex.message;
-        console.error("localStorage could not be saved. Safari incoginito mode?", ex);
+        Polymer.Base._error("Could not save to localStorage. Incognito mode may be blocking this action", ex);
       }
     }
 

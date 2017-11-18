@@ -1,7 +1,7 @@
 {
   "name": "juicy-html",
-  "version": "1.0.2",
-  "description": "`<juicy-html>` is a custom element that let's you load HTML partials into your Web Components",
+  "version": "2.0.1",
+  "description": "A custom element that lets you load HTML partials into your Web page. Declarative way for client-side includes.",
   "homepage": "https://github.com/Juicy/juicy-html",
   "repository": {
     "type": "git",
@@ -20,6 +20,15 @@
       "type": "MIT",
       "url": "http://www.opensource.org/licenses/MIT"
     }
+  ],
+  "keywords": [
+    "include",
+    "partials",
+    "html",
+    "declarative",
+    "client-side",
+    "custom-element",
+    "web-components"
   ],
   "main": "./juicy-html.html",
   "devDependencies": {
