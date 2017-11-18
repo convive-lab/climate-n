@@ -38,7 +38,7 @@
     "paper-dialog": "PolymerElements/paper-dialog#latest",
     "iron-icons": "PolymerElements/iron-icons#latest",
     "google-youtube": "GoogleWebComponents/google-youtube#latest",
-    "sc-swiper": "*",
+    "sc-swiper": "latest",
     "page": "page.js#latest",
     "excess-router": "latest",
     "social-media-icons": "latest",
@@ -46,6 +46,7 @@
     "paper-toast": "PolymerElements/paper-toast#latest",
     "paper-progress": "PolymerElements/paper-progress#latest",
     "paper-dropdown-menu": "PolymerElements/paper-dropdown-menu#latest",
-    "paper-listbox": "polymerelements/paper-listbox#latest"
+    "paper-listbox": "polymerelements/paper-listbox#latest",
+    "app-layout": "PolymerElements/app-layout#^2.0.4"
   }
 }
