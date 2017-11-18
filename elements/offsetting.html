@@ -7,7 +7,7 @@
   <template class="offsetting-wrapper">
         <paper-card-fw><wp-cards post="75" wptitel=true></wp-cards></paper-card-fw>
         <template is="dom-if" if={{!questionsResponse}}>
-            <iron-ajax id="menu-data" auto url="https://climate-neutral.org/wp/wp-json/wp/v2/posts/?filter[cat]=11" handle-as="json" last-response="{{questionsResponse}}" ></iron-ajax>
+            <iron-ajax id="menu-data" auto url="http://climate-neutral.org/wp/wp-json/wp/v2/posts/?filter[cat]=11" handle-as="json" last-response="{{questionsResponse}}" ></iron-ajax>
         </template>
         <iron-localstorage name="offsetting" value="{{questionsResponse}}"></iron-localstorage>
         <template is="dom-repeat" items="{{questionsResponse}}">

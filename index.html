@@ -52,7 +52,7 @@
       </paper-header-panel>
       <iron-localstorage name="lang_wp" value="{{lang_wp}}"></iron-localstorage>
       <template is="dom-if" if={{!translation}}>
-        <iron-ajax id="translation-data" auto url="https://climate-neutral.org/wp/wp-json/wp/v2/posts/{{lang_wp}}" handle-as="json" last-response="{{translation}}" ></iron-ajax>
+        <iron-ajax id="translation-data" auto url="http://cn.convive.io/wp-json/wp/v2/posts/{{lang_wp}}" handle-as="json" last-response="{{translation}}" ></iron-ajax>
       </template>
       <iron-localstorage name="translation" value="{{translation}}"></iron-localstorage>
       <iron-pages attr-for-selected="path" selected="{{route}}">
@@ -75,7 +75,7 @@
 
   				<div class="owl sliderwrap">
 					  <div class="owl" id="post47"><wp-cards lg={{lg}} post="47" title=false></wp-cards></div>
-            <wp-cards lg={{lg}} post="867"></wp-cards>
+            <wp-cards lg={{lg}} post="867"></wp-cards>  
         	</div>
 				</div>
 		    </section>
@@ -207,7 +207,7 @@
       if (navigator.userAgent.match("Trident") && $('html').class != 'ie')
           $('html').addClass('ie');
 
-
+      
 
     });
   })(document);

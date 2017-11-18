@@ -14,7 +14,7 @@ properties: post:<post-number>
         <iron-localstorage name="lang" value={{lg}}  iron-localstorage-load="_langchange"></iron-localstorage>
         <iron-localstorage name="wp[[post]]" value="{{ajaxResponse}}"></iron-localstorage>
         <template is="dom-if" if={{!ajaxResponse}}>
-          <iron-ajax id="wp-data" auto url="https://climate-neutral.org/wp/wp-json/wp/v2/posts/[[post]]" handle-as="json" last-response="{{ajaxResponse}}" on-response="_langchange"></iron-ajax>
+          <iron-ajax id="wp-data" auto url="http://climate-neutral.org/wp/wp-json/wp/v2/posts/[[post]]" handle-as="json" last-response="{{ajaxResponse}}" on-response="_langchange"></iron-ajax>
         </template>
         <paper-material elevation="0">
         <template is="dom-if" if="{{wptitle}}"><h1><html-echo html="[[title]]"></html-echo> </h1></template>
@@ -61,22 +61,22 @@ properties: post:<post-number>
                 if (lang=='de'){
                   localStorage.setItem("lang",JSON.stringify('de_DE'));
                   localStorage.setItem("lang_wp",321);
-                  localStorage.setItem("translation", $.getJSON( "https://climate-neutral.org/wp/wp-json/wp/v2/posts/321" ));
+                  localStorage.setItem("translation", $.getJSON( "http://climate-neutral.org/wp/wp-json/wp/v2/posts/321" ));
               }
                 else if (lang=='fr'){
                   localStorage.setItem("lang",JSON.stringify('fr_FR'));
                   localStorage.setItem("lang_wp",720);
-                  localStorage.setItem("translation", $.getJSON( "https://climate-neutral.org/wp/wp-json/wp/v2/posts/720" ));
+                  localStorage.setItem("translation", $.getJSON( "http://climate-neutral.org/wp/wp-json/wp/v2/posts/720" ));
               }
                 else if (lang=='es'){
                   localStorage.setItem("lang",JSON.stringify('es_ES'));
                   localStorage.setItem("lang_wp",722);
-                  localStorage.setItem("translation", $.getJSON( "https://climate-neutral.org/wp/wp-json/wp/v2/posts/722" ));
+                  localStorage.setItem("translation", $.getJSON( "http://climate-neutral.org/wp/wp-json/wp/v2/posts/722" ));
               }
                 else {
                   localStorage.setItem("lang",JSON.stringify('en_EN'));
                   localStorage.setItem("lang_wp",323);
-                  localStorage.setItem("translation", $.getJSON( "https://climate-neutral.org/wp/wp-json/wp/v2/posts/323" ));
+                  localStorage.setItem("translation", $.getJSON( "http://climate-neutral.org/wp/wp-json/wp/v2/posts/323" ));
               }
 
           }
