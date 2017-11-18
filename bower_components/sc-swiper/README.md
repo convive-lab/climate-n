@@ -1,51 +1,28 @@
-`<iron-swiper>` is a Polymer 1.0 element that wraps around Swiper.js
+sc-swiper
+============
 
-## Demo
+Polymer 1.0 element that wraps Swiper.js
 
-[https://safetychanger.github.io/iron-swiper/](https://safetychanger.github.io/iron-swiper/)
+`<sc-swiper>` is an element that wraps around Swiper.js to render awesome sliders/carousels.
 
-## Install
+## Getting started
 
-Install the component using [Bower](http://bower.io/):
+### Install with bower
 
-```sh
-$ bower install iron-swiper --save
+First you need bower, [see their site](http://bower.io/) for details
+
+```
+bower install --save sc-swiper
 ```
 
-## Usage
-
-Import Custom Element:
+### How to use
 
 ```html
-<link rel="import" href="bower_components/iron-swiper/iron-swiper.html">
+  <sc-swiper>
+    <img src="http://lorempixel.com/640/480/cats">
+    <img src="http://lorempixel.com/640/480/sports">
+    <img src="http://lorempixel.com/640/480/animals">
+  </sc-swiper>
 ```
 
-And then use it:
-
-```html
-<iron-swiper>
-  <img src="sample1.jpg">
-  <img src="sample2.jpg">
-  <img src="sample3.jpg">
-</iron-swiper>
-```
-
-See the [Documentation](https://safetychanger.github.io/iron-swiper/) for more options.
-
-## Discussing
-
-If you have any questions, you can find me on the [Polymer Slack Channel](https://polymer.slack.com/), or just raise an Issue.
-
-## Contributing
-
-1. Fork it!
-2. Create your feature branch: `git checkout -b my-new-feature`
-3. Commit your changes: `git commit -m 'Add some feature'`
-4. Push to the branch: `git push origin my-new-feature`
-5. Submit a pull request :D
-
-## License
-
-[MIT License](http://opensource.org/licenses/MIT) © Ruben Stolk
-
-[![Throughput Graph](https://graphs.waffle.io/safetychanger/iron-swiper/throughput.svg)](https://waffle.io/safetychanger/iron-swiper/metrics)
+Contributions welcome, please create issues!

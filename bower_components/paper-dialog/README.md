@@ -1,19 +1,33 @@
+
+<!---
+
+This README is automatically generated from the comments in these files:
+paper-dialog.html
+
+Edit those files, and our readme bot will duplicate them over here!
+Edit this file, and the bot will squash your changes :)
+
+The bot does some handling of markdown. Please file a bug if it does the wrong
+thing! https://github.com/PolymerLabs/tedium/issues
+
+-->
+
 [![Build status](https://travis-ci.org/PolymerElements/paper-dialog.svg?branch=master)](https://travis-ci.org/PolymerElements/paper-dialog)
 
 _[Demo and API docs](https://elements.polymer-project.org/elements/paper-dialog)_
 
-## &lt;paper-dialog&gt;
+
+##&lt;paper-dialog&gt;
 
 Material design: [Dialogs](https://www.google.com/design/spec/components/dialogs.html)
 
 `<paper-dialog>` is a dialog with Material Design styling and optional animations when it is
 opened or closed. It provides styles for a header, content area, and an action area for buttons.
 You can use the `<paper-dialog-scrollable>` element (in its own repository) if you need a scrolling
-content area. To autofocus a specific child element after opening the dialog, give it the `autofocus`
-attribute. See `Polymer.PaperDialogBehavior` and `Polymer.IronOverlayBehavior` for specifics.
+content area. See `Polymer.PaperDialogBehavior` for specifics.
 
 For example, the following code implements a dialog with a header, scrolling content area and
-buttons. Focus will be given to the `dialog-confirm` button when the dialog is opened.
+buttons.
 
 ```html
 <paper-dialog>
@@ -23,15 +37,10 @@ buttons. Focus will be given to the `dialog-confirm` button when the dialog is o
   </paper-dialog-scrollable>
   <div class="buttons">
     <paper-button dialog-dismiss>Cancel</paper-button>
-    <paper-button dialog-confirm autofocus>Accept</paper-button>
+    <paper-button dialog-confirm>Accept</paper-button>
   </div>
 </paper-dialog>
 ```
-
-### Changes in 2.0
-- `paper-dialog-behavior 2.0` styles only direct `h2` and `.buttons` children of the dialog because of how [`::slotted` works](https://developers.google.com/web/fundamentals/primers/shadowdom/?hl=en#stylinglightdom) 
-(compound selector will select only top level nodes)
-- `neon-animation 2.0` doesn't import the Web Animations polyfill, so you'll have to import it ([see Animations section](#Animations))
 
 ### Styling
 
@@ -47,9 +56,8 @@ is opened or closed. See the documentation in
 For example:
 
 ```html
-<link rel="import" href="../neon-animation/web-animations.html">
-<link rel="import" href="../neon-animation/animations/scale-up-animation.html">
-<link rel="import" href="../neon-animation/animations/fade-out-animation.html">
+<link rel="import" href="components/neon-animation/animations/scale-up-animation.html">
+<link rel="import" href="components/neon-animation/animations/fade-out-animation.html">
 
 <paper-dialog entry-animation="scale-up-animation"
               exit-animation="fade-out-animation">

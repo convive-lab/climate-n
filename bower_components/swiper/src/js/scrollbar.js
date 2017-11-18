@@ -68,23 +68,19 @@ s.scrollbar = {
             s.slideReset();
         }
     },
-    draggableEvents: (function () {
-        if ((s.params.simulateTouch === false && !s.support.touch)) return s.touchEventsDesktop;
-        else return s.touchEvents;
-    })(),
     enableDraggable: function () {
         var sb = s.scrollbar;
         var target = s.support.touch ? sb.track : document;
-        $(sb.track).on(sb.draggableEvents.start, sb.dragStart);
-        $(target).on(sb.draggableEvents.move, sb.dragMove);
-        $(target).on(sb.draggableEvents.end, sb.dragEnd);
+        $(sb.track).on(s.touchEvents.start, sb.dragStart);
+        $(target).on(s.touchEvents.move, sb.dragMove);
+        $(target).on(s.touchEvents.end, sb.dragEnd);
     },
     disableDraggable: function () {
         var sb = s.scrollbar;
         var target = s.support.touch ? sb.track : document;
-        $(sb.track).off(sb.draggableEvents.start, sb.dragStart);
-        $(target).off(sb.draggableEvents.move, sb.dragMove);
-        $(target).off(sb.draggableEvents.end, sb.dragEnd);
+        $(sb.track).off(s.touchEvents.start, sb.dragStart);
+        $(target).off(s.touchEvents.move, sb.dragMove);
+        $(target).off(s.touchEvents.end, sb.dragEnd);
     },
     set: function () {
         if (!s.params.scrollbar) return;

@@ -1,7 +1,23 @@
-[![Build status](https://travis-ci.org/PolymerElements/paper-dialog-behavior.svg?branch=master)](https://travis-ci.org/PolymerElements/paper-dialog-behavior)
-[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/PolymerElements/paper-dialog-behavior)
 
-## Polymer.PaperDialogBehavior
+<!---
+
+This README is automatically generated from the comments in these files:
+paper-dialog-behavior.html
+
+Edit those files, and our readme bot will duplicate them over here!
+Edit this file, and the bot will squash your changes :)
+
+The bot does some handling of markdown. Please file a bug if it does the wrong
+thing! https://github.com/PolymerLabs/tedium/issues
+
+-->
+
+[![Build status](https://travis-ci.org/PolymerElements/paper-dialog-behavior.svg?branch=master)](https://travis-ci.org/PolymerElements/paper-dialog-behavior)
+
+_[Demo and API docs](https://elements.polymer-project.org/elements/paper-dialog-behavior)_
+
+
+##Polymer.PaperDialogBehavior
 
 Use `Polymer.PaperDialogBehavior` and `paper-dialog-shared-styles.html` to implement a Material Design
 dialog.
@@ -27,18 +43,24 @@ Use the `dialog-dismiss` and `dialog-confirm` attributes on interactive controls
 dialog. If the user dismisses the dialog with `dialog-confirm`, the `closingReason` will update
 to include `confirmed: true`.
 
-### Changes in 2.0
-- `paper-dialog-shared-styles` styles direct `h2` and `.buttons` children of the dialog because of how [`::slotted` works](https://developers.google.com/web/fundamentals/primers/shadowdom/?hl=en#stylinglightdom)
-(compound selector will select only top level nodes)
-- Removed `paper-dialog-common.css` as it's a duplicate of `paper-dialog-shared-styles.html`.
-Import the shared styles via `<style include="paper-dialog-shared-styles">` ([see example](demo/simple-dialog.html))
+### Styling
+
+The following custom properties and mixins are available for styling.
+
+| Custom property | Description | Default |
+| --- | --- | --- |
+| `--paper-dialog-background-color` | Dialog background color | `--primary-background-color` |
+| `--paper-dialog-color` | Dialog foreground color | `--primary-text-color` |
+| `--paper-dialog` | Mixin applied to the dialog | `{}` |
+| `--paper-dialog-title` | Mixin applied to the title (`<h2>`) element | `{}` |
+| `--paper-dialog-button-color` | Button area foreground color | `--default-primary-color` |
 
 ### Accessibility
 
 This element has `role="dialog"` by default. Depending on the context, it may be more appropriate
 to override this attribute with `role="alertdialog"`.
 
-If `modal` is set, the element will prevent the focus from exiting the element.
+If `modal` is set, the element will set `aria-modal` and prevent the focus from exiting the element.
 It will also ensure that focus remains in the dialog.
 
 

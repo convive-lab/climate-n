@@ -40,18 +40,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       suite('<paper-listbox>', function() {
         var listbox;
 
-        setup(function(done) {
+        setup(function() {
           listbox = fixture('basic');
-
-          // Wait for the initial items update.
-          listbox.addEventListener('iron-items-changed', function onIronItemsChanged() {
-            listbox.removeEventListener('iron-items-changed', onIronItemsChanged);
-            done();
-          });
         });
 
-        test('selected item has an appropriate className', function() {
-          assert(listbox.selectedItem.classList.contains('iron-selected'));
+        test('selected item has an appropriate className', function(done) {
+          Polymer.Base.async(function() {
+            assert(listbox.selectedItem.classList.contains('iron-selected'));
+            done();
+          }, 1);
         });
 
         test('has listbox aria role', function() {

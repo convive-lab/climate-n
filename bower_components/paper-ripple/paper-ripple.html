@@ -1,5 +1,4 @@
 <!--
-@license
 Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
 This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
 The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
@@ -38,7 +37,7 @@ Example:
     <paper-ripple id="ripple" style="pointer-events: none;"></paper-ripple>
     ...
     downAction: function(e) {
-      this.$.ripple.downAction(e.detail);
+      this.$.ripple.downAction({x: e.x, y: e.y});
     },
     upAction: function(e) {
       this.$.ripple.upAction();
@@ -75,6 +74,15 @@ Apply `circle` class to make the rippling effect within a circle.
 -->
 
 <dom-module id="paper-ripple">
+
+  <!--
+  Fired when the animation finishes. This is useful if you want to wait until the ripple
+  animation finishes to perform some action.
+
+  @event transitionend
+  @param {Object} detail
+  @param {Object} detail.node The animated node
+  -->
 
   <template>
     <style>
@@ -150,8 +158,6 @@ Apply `circle` class to make the rippling effect within a circle.
 </dom-module>
 <script>
   (function() {
-    'use strict';
-
     var Utility = {
       distance: function(x1, y1, x2, y2) {
         var xDelta = (x1 - x2);
@@ -553,7 +559,16 @@ Apply `circle` class to make the rippling effect within a circle.
       },
 
       get target () {
-        return this.keyEventTarget;
+        var ownerRoot = Polymer.dom(this).getOwnerRoot();
+        var target;
+
+        if (this.parentNode.nodeType == 11) { // DOCUMENT_FRAGMENT_NODE
+          target = ownerRoot.host;
+        } else {
+          target = this.parentNode;
+        }
+
+        return target;
       },
 
       keyBindings: {
@@ -566,20 +581,14 @@ Apply `circle` class to make the rippling effect within a circle.
         // Set up a11yKeysBehavior to listen to key events on the target,
         // so that space and enter activate the ripple even if the target doesn't
         // handle key events. The key handlers deal with `noink` themselves.
-        if (this.parentNode.nodeType == 11) { // DOCUMENT_FRAGMENT_NODE
-          this.keyEventTarget = Polymer.dom(this).getOwnerRoot().host;
-        } else {
-          this.keyEventTarget = this.parentNode;
-        }
-        var keyEventTarget = /** @type {!EventTarget} */ (this.keyEventTarget);
-        this.listen(keyEventTarget, 'up', 'uiUpAction');
-        this.listen(keyEventTarget, 'down', 'uiDownAction');
+        this.keyEventTarget = this.target;
+        this.listen(this.target, 'up', 'uiUpAction');
+        this.listen(this.target, 'down', 'uiDownAction');
       },
 
       detached: function() {
-        this.unlisten(this.keyEventTarget, 'up', 'uiUpAction');
-        this.unlisten(this.keyEventTarget, 'down', 'uiDownAction');
-        this.keyEventTarget = null;
+        this.unlisten(this.target, 'up', 'uiUpAction');
+        this.unlisten(this.target, 'down', 'uiDownAction');
       },
 
       get shouldKeepAnimating () {
@@ -627,7 +636,6 @@ Apply `circle` class to make the rippling effect within a circle.
         ripple.downAction(event);
 
         if (!this._animating) {
-          this._animating = true;
           this.animate();
         }
       },
@@ -657,7 +665,6 @@ Apply `circle` class to make the rippling effect within a circle.
           ripple.upAction(event);
         });
 
-        this._animating = true;
         this.animate();
       },
 
@@ -695,17 +702,11 @@ Apply `circle` class to make the rippling effect within a circle.
         }
       },
 
-      /**
-       * This conflicts with Element#antimate().
-       * https://developer.mozilla.org/en-US/docs/Web/API/Element/animate
-       * @suppress {checkTypes}
-       */
       animate: function() {
-        if (!this._animating) {
-          return;
-        }
         var index;
         var ripple;
+
+        this._animating = true;
 
         for (index = 0; index < this.ripples.length; ++index) {
           ripple = this.ripples[index];
@@ -751,15 +752,6 @@ Apply `circle` class to make the rippling effect within a circle.
           this.upAction();
         }
       }
-
-      /**
-      Fired when the animation finishes.
-      This is useful if you want to wait until
-      the ripple animation finishes to perform some action.
-
-      @event transitionend
-      @param {{node: Object}} detail Contains the animated node.
-      */
     });
   })();
 </script>

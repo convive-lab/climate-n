@@ -3,20 +3,6 @@
   ===========================*/
 s.controller = {
     LinearSpline: function (x, y) {
-        var binarySearch = (function() {
-            var maxIndex, minIndex, guess;
-            return function(array, val) {
-                minIndex = -1;
-                maxIndex = array.length;
-                while (maxIndex - minIndex > 1)
-                    if (array[guess = maxIndex + minIndex >> 1] <= val) {
-                        minIndex = guess;
-                    } else {
-                        maxIndex = guess;
-                    }
-                return maxIndex;
-            };
-        })();
         this.x = x;
         this.y = y;
         this.lastIndex = x.length - 1;
@@ -37,6 +23,21 @@ s.controller = {
             // y2 := ((x2−x1) × (y3−y1)) ÷ (x3−x1) + y1
             return ((x2 - this.x[i1]) * (this.y[i3] - this.y[i1])) / (this.x[i3] - this.x[i1]) + this.y[i1];
         };
+
+        var binarySearch = (function() {
+            var maxIndex, minIndex, guess;
+            return function(array, val) {
+                minIndex = -1;
+                maxIndex = array.length;
+                while (maxIndex - minIndex > 1)
+                    if (array[guess = maxIndex + minIndex >> 1] <= val) {
+                        minIndex = guess;
+                    } else {
+                        maxIndex = guess;
+                    }
+                return maxIndex;
+            };
+        })();
     },
     //xxx: for now i will just save one spline function to to
     getInterpolateFunction: function(c){
@@ -72,7 +73,7 @@ s.controller = {
             c.setWrapperTranslate(controlledTranslate, false, s);
             c.updateActiveIndex();
        }
-       if (Array.isArray(controlled)) {
+       if (s.isArray(controlled)) {
            for (var i = 0; i < controlled.length; i++) {
                if (controlled[i] !== byController && controlled[i] instanceof Swiper) {
                    setControlledTranslate(controlled[i]);
@@ -101,7 +102,7 @@ s.controller = {
                 });
             }
         }
-        if (Array.isArray(controlled)) {
+        if (s.isArray(controlled)) {
             for (i = 0; i < controlled.length; i++) {
                 if (controlled[i] !== byController && controlled[i] instanceof Swiper) {
                     setControlledTransition(controlled[i]);

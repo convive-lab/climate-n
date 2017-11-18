@@ -9,15 +9,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 
 <link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../iron-resizable-behavior/iron-resizable-behavior.html">
+<link rel="import" href="../iron-a11y-keys-behavior/iron-a11y-keys-behavior.html">
 <link rel="import" href="../iron-behaviors/iron-control-state.html">
 <link rel="import" href="../iron-overlay-behavior/iron-overlay-behavior.html">
 <link rel="import" href="../neon-animation/neon-animation-runner-behavior.html">
-<!--TODO remove this import -->
+<link rel="import" href="../neon-animation/animations/opaque-animation.html">
 <link rel="import" href="iron-dropdown-scroll-manager.html">
 
 <!--
 `<iron-dropdown>` is a generalized element that is useful when you have
-hidden content (`dropdown-content`) that is revealed due to some change in
+hidden content (`.dropdown-content`) that is revealed due to some change in
 state that should cause it to do so.
 
 Note that this is a low-level element intended to be used as part of other
@@ -27,14 +29,14 @@ Examples of elements that might be implemented using an `iron-dropdown`
 include comboboxes, menubuttons, selects. The list goes on.
 
 The `<iron-dropdown>` element exposes attributes that allow the position
-of the `dropdown-content` relative to the `dropdown-trigger` to be
+of the `.dropdown-content` relative to the `.dropdown-trigger` to be
 configured.
 
     <iron-dropdown horizontal-align="right" vertical-align="top">
-      <div slot="dropdown-content">Hello!</div>
+      <div class="dropdown-content">Hello!</div>
     </iron-dropdown>
 
-In the above example, the `<div>` assigned to the `dropdown-content` slot will be
+In the above example, the `<div>` with class `.dropdown-content` will be
 hidden until the dropdown element has `opened` set to true, or when the `open`
 method is called on the element.
 
@@ -42,23 +44,22 @@ method is called on the element.
 -->
 
 <dom-module id="iron-dropdown">
+  <style>
+    :host {
+      position: fixed;
+    }
+
+    #contentWrapper ::content > * {
+      overflow: auto;
+    }
+
+    #contentWrapper.animating ::content > * {
+      overflow: hidden;
+    }
+  </style>
   <template>
-    <style>
-      :host {
-        position: fixed;
-      }
-
-      #contentWrapper ::slotted(*) {
-        overflow: auto;
-      }
-
-      #contentWrapper.animating ::slotted(*) {
-        overflow: hidden;
-      }
-    </style>
-
     <div id="contentWrapper">
-      <slot id="content" name="dropdown-content"></slot>
+      <content id="content" select=".dropdown-content"></content>
     </div>
   </template>
 
@@ -101,9 +102,7 @@ method is called on the element.
 
           /**
            * An animation config. If provided, this will be used to animate the
-           * opening of the dropdown. Pass an Array for multiple animations.
-           * See `neon-animation` documentation for more animation configuration
-           * details.
+           * opening of the dropdown.
            */
           openAnimationConfig: {
             type: Object
@@ -111,9 +110,7 @@ method is called on the element.
 
           /**
            * An animation config. If provided, this will be used to animate the
-           * closing of the dropdown. Pass an Array for multiple animations.
-           * See `neon-animation` documentation for more animation configuration
-           * details.
+           * closing of the dropdown.
            */
           closeAnimationConfig: {
             type: Object
@@ -141,13 +138,10 @@ method is called on the element.
            * to itself when opened.
            * Set to true in order to prevent scroll from being constrained
            * to the dropdown when it opens.
-           * This property is a shortcut to set `scrollAction` to lock or refit.
-           * Prefer directly setting the `scrollAction` property.
            */
           allowOutsideScroll: {
             type: Boolean,
-            value: false,
-            observer: '_allowOutsideScrollChanged'
+            value: false
           }
         },
 
@@ -163,31 +157,20 @@ method is called on the element.
          * The element that is contained by the dropdown, if any.
          */
         get containedElement() {
-          // Polymer 2.x returns slot.assignedNodes which can contain text nodes.
-          var nodes = Polymer.dom(this.$.content).getDistributedNodes();
-          for (var i = 0, l = nodes.length; i < l; i++) {
-            if (nodes[i].nodeType === Node.ELEMENT_NODE) {
-              return nodes[i];
-            }
-          }
+          return Polymer.dom(this.$.content).getDistributedNodes()[0];
         },
 
-        ready: function() {
-          // Ensure scrollAction is set.
-          if (!this.scrollAction) {
-            this.scrollAction = this.allowOutsideScroll ? 'refit' : 'lock';
-          }
-          this._readied = true;
-        },
-
-        attached: function () {
-          if (!this.sizingTarget || this.sizingTarget === this) {
-            this.sizingTarget = this.containedElement || this;
-          }
+        /**
+         * The element that should be focused when the dropdown opens.
+         * @deprecated
+         */
+        get _focusTarget() {
+          return this.focusTarget || this.containedElement;
         },
 
         detached: function() {
           this.cancelAnimation();
+          Polymer.IronDropdownScrollManager.removeScrollLock(this);
         },
 
         /**
@@ -199,7 +182,13 @@ method is called on the element.
             this.cancel();
           } else {
             this.cancelAnimation();
+            this.sizingTarget = this.containedElement || this.sizingTarget;
             this._updateAnimationConfig();
+            if (this.opened && !this.allowOutsideScroll) {
+              Polymer.IronDropdownScrollManager.pushScrollLock(this);
+            } else {
+              Polymer.IronDropdownScrollManager.removeScrollLock(this);
+            }
             Polymer.IronOverlayBehaviorImpl._openedChanged.apply(this, arguments);
           }
         },
@@ -242,17 +231,15 @@ method is called on the element.
             this._finishRenderClosed();
           }
         },
-        
+
         /**
          * Constructs the final animation config from different properties used
          * to configure specific parts of the opening and closing animations.
          */
         _updateAnimationConfig: function() {
-          // Update the animation node to be the containedElement.
-          var animationNode = this.containedElement;
-          var animations = [].concat(this.openAnimationConfig || []).concat(this.closeAnimationConfig || []);
+          var animations = (this.openAnimationConfig || []).concat(this.closeAnimationConfig || []);
           for (var i = 0; i < animations.length; i++) {
-            animations[i].node = animationNode;
+            animations[i].node = this.containedElement;
           }
           this.animationConfig = {
             open: this.openAnimationConfig,
@@ -272,25 +259,9 @@ method is called on the element.
         },
 
         /**
-         * Sets scrollAction according to the value of allowOutsideScroll.
-         * Prefer setting directly scrollAction.
-         */
-        _allowOutsideScrollChanged: function(allowOutsideScroll) {
-          // Wait until initial values are all set.
-          if (!this._readied) {
-            return;
-          }
-          if (!allowOutsideScroll) {
-            this.scrollAction = 'lock';
-          } else if (!this.scrollAction || this.scrollAction === 'lock') {
-            this.scrollAction = 'refit';
-          }
-        },
-
-        /**
          * Apply focus to focusTarget or containedElement
          */
-        _applyFocus: function() {
+        _applyFocus: function () {
           var focusTarget = this.focusTarget || this.containedElement;
           if (focusTarget && this.opened && !this.noAutoFocus) {
             focusTarget.focus();
